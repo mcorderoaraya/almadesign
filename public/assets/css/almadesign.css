@@ -1,0 +1,309 @@
+/* ============================================================================
+   almadesign.css
+   TASK-041 – Create almadesign.css with corporate identity
+
+   [ES] Este archivo define la identidad corporativa (tokens + reglas base).
+   [ES] NO reemplaza Tailwind. Tailwind controla layout/utilidades.
+   [ES] Este CSS controla: variables :root, tipografías, colores, y estilos base.
+   [ES] Norma gráfica: 70–75% Negro/Beige | 15–20% Gris | 5–8% Naranja | <2% Rojo.
+   ============================================================================ */
+
+/* ============================================================================
+   1) FONT FACES (WOFF2) – Corporate Typography
+   ============================================================================
+
+   [ES] Ajusta los nombres de archivos según tu carpeta real:
+   [ES] /public/assets/fonts/...
+   [ES] Usa font-display: swap para rendimiento y UX.
+*/
+
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/fonts/inter-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/fonts/Inter-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/fonts/Inter_SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/fonts/Inter-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Constantia";
+  src: url("/assets/fonts/Constantia-Bold-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Playfair-Display";
+  src: url("/assets/fonts/Playfair-Display-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "SourceSans";
+  src: url("/assets/fonts/SourceSans-Regular.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+/* ============================================================================
+   2) DESIGN TOKENS (:root) – Corporate Identity System
+   ============================================================================
+
+   [ES] Esta sección es la base del sistema visual.
+   [ES] Aquí se implementa la norma porcentual como jerarquía de roles:
+   [ES] - Dominantes (70–75%): Negro/Beige (fondos + texto principal)
+   [ES] - Soporte (15–20%): Gris (bordes, texto secundario, UI neutra)
+   [ES] - Acento (5–8%): Naranja (CTA y foco, uso controlado)
+   [ES] - Alerta (<2%): Rojo (errores/estados críticos, nunca decorativo)
+*/
+
+:root {
+  /* ---------------------------
+     2.1 Core Dominants (70–75%)
+     --------------------------- */
+  --color-black: #0b0b0b;
+  --color-beige: #f5f2ed;
+
+  --color-bg-primary: var(--color-beige);
+  --color-bg-inverse: var(--color-black);
+
+  --color-text-primary: var(--color-black);
+  --color-text-inverse: var(--color-beige);
+
+  /* ---------------------------
+     2.2 Neutral Support (15–20%)
+     --------------------------- */
+  --color-gray-100: #f1f1f1;
+  --color-gray-300: #d4d4d4;
+  --color-gray-500: #9a9a9a;
+  --color-gray-700: #5f5f5f;
+
+  --color-border-default: var(--color-gray-300);
+  --color-text-secondary: var(--color-gray-700);
+  --color-surface-muted: var(--color-gray-100);
+
+  /* ---------------------------
+     2.3 Accent (5–8%)
+     --------------------------- */
+  --color-accent-orange: #f97316;
+
+  /* Semánticos para UI */
+  --color-cta-primary: var(--color-accent-orange);
+  --color-link: var(--color-accent-orange);
+  --color-focus: var(--color-accent-orange);
+
+  /* ---------------------------
+     2.4 Alerts (<2%)
+     --------------------------- */
+  --color-alert-red: #dc2626;
+
+  --color-error: var(--color-alert-red);
+  --color-danger: var(--color-alert-red);
+
+  /* ---------------------------
+     2.5 Typography Tokens
+     --------------------------- */
+  --font-primary: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Font scale (simple, readable) */
+  --font-size-00: 0.875rem; /* 14px */
+  --font-size-01: 1rem;     /* 16px */
+  --font-size-02: 1.125rem; /* 18px */
+  --font-size-03: 1.25rem;  /* 20px */
+  --font-size-04: 1.5rem;   /* 24px */
+  --font-size-05: 2rem;     /* 32px */
+
+  --line-height-base: 1.6;
+  --line-height-tight: 1.25;
+
+  /* ---------------------------
+     2.6 Radius / Shadows (minimal)
+     --------------------------- */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+
+  /* Shadow kept subtle to preserve corporate tone */
+  --shadow-01: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-02: 0 4px 10px rgba(0, 0, 0, 0.08);
+
+  /* ---------------------------
+     2.7 Layout constraints
+     --------------------------- */
+  --container-max: 72rem; /* 1152px */
+}
+
+/* ============================================================================
+   3) BASE ELEMENT RULES – Global defaults (non-layout)
+   ============================================================================
+
+   [ES] Esto no reemplaza Tailwind. Solo fija defaults coherentes:
+   [ES] - colores base
+   [ES] - tipografía base
+   [ES] - links
+   [ES] - focus visible
+*/
+
+html {
+  font-family: var(--font-primary);
+  font-size: 16px;
+  line-height: var(--line-height-base);
+  color: var(--color-text-primary);
+  background: var(--color-bg-primary);
+}
+
+body {
+  margin: 0;
+  color: var(--color-text-primary);
+  background: var(--color-bg-primary);
+}
+
+/* Default text hierarchy (simple, governable) */
+h1, h2, h3, h4 {
+  line-height: var(--line-height-tight);
+  margin: 0 0 0.75rem 0;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+h1 { font-size: var(--font-size-05); }
+h2 { font-size: var(--font-size-04); }
+h3 { font-size: var(--font-size-03); }
+h4 { font-size: var(--font-size-02); }
+
+p {
+  margin: 0 0 1rem 0;
+  color: var(--color-text-primary);
+}
+
+/* Secondary text utility */
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+/* Links: accent controlled */
+a {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Visible focus (accessibility baseline) */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Borders and surfaces */
+.hr,
+hr {
+  border: 0;
+  border-top: 1px solid var(--color-border-default);
+  margin: 1.5rem 0;
+}
+
+.surface-muted {
+  background: var(--color-surface-muted);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+}
+
+/* ============================================================================
+   4) COMPONENT-LIKE BASE CLASSES (OPTIONAL)
+   ============================================================================
+
+   [ES] Estas clases son de identidad, no de layout.
+   [ES] Úsalas solo si NO quieres depender de Tailwind para ciertos elementos base.
+   [ES] Si todo se hace con Tailwind, puedes ignorarlas.
+
+   NOTE: No se define grid/flex ni layout aquí.
+*/
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-primary);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: var(--shadow-01);
+}
+
+.btn-primary {
+  background: var(--color-cta-primary);
+  color: var(--color-text-inverse);
+}
+
+.btn-primary:hover {
+  filter: brightness(0.95);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-text-primary);
+  border-color: var(--color-border-default);
+}
+
+.btn-secondary:hover {
+  background: var(--color-surface-muted);
+}
+
+/* Alerts (strictly non-decorative) */
+.alert {
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-border-default);
+  background: var(--color-surface-muted);
+  color: var(--color-text-primary);
+}
+
+.alert-danger {
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+  background: #fff5f5; /* subtle error surface */
+}
+
+/* ============================================================================
+   5) GOVERNANCE NOTES (ENFORCEMENT)
+   ============================================================================
+
+   [ES] Reglas operativas (para QA y UX/UI):
+   [ES] - Naranja (CTA) solo para acciones principales (5–8%).
+   [ES] - Rojo solo para error/alerta (<2%).
+   [ES] - Gris solo soporte, no dominante.
+   [ES] - Negro/Beige dominan fondo y texto (70–75%).
+*/
+
+/* End of file */

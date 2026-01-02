@@ -1,0 +1,23 @@
+# --- Environment ---
+.env
+
+# --- Dependencies ---
+/vendor/
+/node_modules/
+
+# --- Logs & storage ---
+/storage/logs/*
+!/storage/logs/.gitkeep
+
+# --- OS / Editor ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# --- Build artifacts ---
+/public/assets/css/app.css
+
+# --- Misc ---
+npm-debug.log*
+composer.lock

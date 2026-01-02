@@ -1,0 +1,84 @@
+:root {
+  /* =========================
+     CORE DOMINANT COLORS
+     70–75% usage
+     ========================= */
+
+  --color-black: #0b0b0b;
+  --color-beige: #f5f2ed;
+
+  /* Texto y fondos principales */
+  --color-bg-primary: var(--color-beige);
+  --color-bg-inverse: var(--color-black);
+  --color-text-primary: var(--color-black);
+  --color-text-inverse: var(--color-beige);
+
+  /* =========================
+     NEUTRAL SUPPORT COLORS
+     15–20% usage
+     ========================= */
+
+  --color-gray-100: #f1f1f1;
+  --color-gray-300: #d4d4d4;
+  --color-gray-500: #9a9a9a;
+  --color-gray-700: #5f5f5f;
+
+  --color-border-default: var(--color-gray-300);
+  --color-text-secondary: var(--color-gray-700);
+
+  /* =========================
+     ACCENT COLOR
+     5–8% usage
+     ========================= */
+
+  --color-accent-orange: #f97316;
+
+  --color-cta-primary: var(--color-accent-orange);
+  --color-link: var(--color-accent-orange);
+  --color-focus: var(--color-accent-orange);
+
+  /* =========================
+     ALERT / EXCEPTION COLOR
+     <2% usage
+     ========================= */
+
+  --color-alert-red: #dc2626;
+
+  --color-error: var(--color-alert-red);
+  --color-danger: var(--color-alert-red);
+
+  /* =========================
+     TYPOGRAPHY TOKENS
+     ========================= */
+
+  --font-primary: 'Inter', system-ui, sans-serif;
+
+  --font-size-base: 16px;
+  --line-height-base: 1.6;
+}
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+.button-primary {
+  background-color: var(--color-cta-primary);
+  color: var(--color-text-inverse);
+}
+.alert-error {
+  color: var(--color-error);
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/fonts/inter-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/fonts/inter-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
