@@ -140,3 +140,13 @@ Rules:
 This rule is non-negotiable and applies to all roles.
 
 [ES] Con esto, Cline no puede “olvidarse” del snapshot.
+
+## Bootstrap Status (MANDATORY CONTEXT)
+
+- Apache + VirtualHost: VERIFIED
+- PHP runtime: VERIFIED
+- Composer autoload: VERIFIED
+- Kernel minimal: VERIFIED
+- public/index.php: VERIFIED
+
+No task may redefine or bypass these layers.

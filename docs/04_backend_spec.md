@@ -1,183 +1,94 @@
-# 04 – Backend Specification
-## Corporate Website Platform
-
-[ES] Este documento define en detalle el comportamiento del backend del sistema.
-[ES] Todo desarrollo PHP debe alinearse estrictamente con esta especificación.
+# Backend Specification – Almadesign
 
 ---
 
-## 1. Backend Objectives
+## 1. Scope
+
+This document specifies the **backend behavior and constraints**.
+It defines what the backend is allowed to do at this stage.
+
+[ES]
+Este documento evita que el backend se convierta en un “todo vale”.
+
+---
+
+## 2. Backend Responsibilities
 
 The backend is responsible for:
+- Application lifecycle control
+- HTTP request processing
+- Response generation
+- Security enforcement (future phases)
 
-- Handling all business logic
-- Enforcing security controls
-- Managing data persistence through ORM
-- Serving content to the frontend
-- Supporting modular plugins
+The backend is NOT responsible for:
+- Frontend design
+- Asset compilation
+- Presentation logic decisions
 
-[ES] El backend es la única fuente de verdad del sistema.
-
----
-
-## 2. Backend Architecture Overview
-
-The backend follows the architecture defined in `/docs/01_architecture.md`.
-
-Key characteristics:
-- PHP 8.x
-- ORM-based data access
-- Layered separation (Controller, Service, Repository)
-- Plugin-oriented extensibility
-
-[ES] No se permite lógica directa en vistas ni acceso SQL fuera del ORM.
+[ES]
+Backend y frontend no se mezclan.
 
 ---
 
-## 3. Request Lifecycle
+## 3. Kernel Responsibilities (Phase 1)
 
-1. HTTP request received
-2. Middleware execution
-   - Authentication
-   - Authorization
-   - CSRF validation
-3. Controller handling
-4. Service layer execution
-5. ORM interaction
-6. Response returned to frontend
+Current Kernel responsibilities:
+- Own execution flow
+- Confirm bootstrap correctness
+- Execute run()
 
-[ES] Todo request sigue este ciclo sin excepciones.
+Explicitly excluded:
+- Routing
+- Controllers
+- Database access
+- Plugins
+- Middleware
 
----
-
-## 4. Authentication and Authorization
-
-The backend must implement:
-
-- Secure login mechanism
-- Session-based authentication
-- Role-based authorization
-- Session expiration and regeneration
-
-[ES] Autenticación y autorización son obligatorias incluso para el admin interno.
+[ES]
+El Kernel todavía es mínimo a propósito.
 
 ---
 
-## 5. Security Controls
+## 4. Dependency Rules
 
-Mandatory security measures:
+- No service may be instantiated before Kernel execution
+- No global state is allowed
+- No static service locators
 
-- Input validation (server-side)
-- Output escaping
-- SQL Injection protection via ORM
-- CSRF tokens on all forms
-- Basic rate limiting
-- Anti-scraping measures
-
-[ES] La seguridad no se negocia ni se “agrega después”.
+[ES]
+Esto evita arquitecturas frágiles e imposibles de testear.
 
 ---
 
-## 6. Logging System
+## 5. Configuration Handling
 
-The backend must include a centralized logging system that records:
+- Configuration is loaded via .env
+- No config values are hardcoded
+- Missing config must fail explicitly
 
-- Authentication attempts
-- Errors and exceptions
-- Administrative actions
-- Plugin execution events
-
-[ES] Todo evento crítico debe quedar registrado.
+[ES]
+La configuración implícita es una fuente de errores.
 
 ---
 
-## 7. Plugin System
+## 6. Logging (Deferred)
 
-The backend must support the following plugins:
+Logging exists as a concept but is not active in Phase 1.
 
-### 7.1 Page Builder Plugin
-- Page creation and management
-- Block ordering
-- Media associations
-
-### 7.2 Visit Tracking Plugin
-- Visit recording per page
-- Date-based filtering
-- Asynchronous dashboard support
-
-### 7.3 Heatmap Plugin
-- Mouse interaction tracking
-- Coordinate storage
-- Page-based visualization
-
-### 7.4 Backup Plugin
-- Manual backups
-- Scheduled automatic backups
-
-### 7.5 Inbox Plugin
-- Message reception
-- Automatic replies
-- Manual response editor
-
-[ES] Cada plugin es modular y no rompe el núcleo del sistema.
+[ES]
+No se logea antes de tener flujo estable.
+Primero corre, después se observa.
 
 ---
 
-## 8. Content Delivery to Frontend
+## 7. Backend Evolution Rules
 
-The backend must provide structured data for:
+Any new backend feature must:
+- Be introduced via the Kernel
+- Respect existing validated layers
+- Be documented before implementation
 
-- Text content
-- Images
-- Audio files
-- Video files
-
-[ES] El frontend solo renderiza lo que el backend entrega.
-
----
-
-## 9. Email Service
-
-The backend must implement an email service with:
-
-Mandatory fields:
-- Sender email
-- Subject
-- Rich text body
-
-Optional fields:
-- Image attachment (≤ 5 MB, webp/png)
-- External URLs
-
-[ES] El envío de correo siempre se valida server-side.
+[ES]
+No se escribe código sin contexto documental.
 
 ---
-
-## 10. Error Handling
-
-- Controlled error responses
-- No sensitive data exposure
-- Error logging mandatory
-
-[ES] Los errores se gestionan, no se silencian.
-
----
-
-## 11. Backend Constraints
-
-- No direct SQL queries outside ORM
-- No business logic in controllers
-- No undocumented endpoints
-- No unapproved plugins
-
-[ES] Las violaciones a estas reglas son bloqueantes.
-
----
-
-## Document Status
-
-- Version: 1.0
-- Status: Approved Backend Specification
-- File: /docs/04_backend_spec.md
-
-[ES] Este documento habilita el inicio del desarrollo backend.

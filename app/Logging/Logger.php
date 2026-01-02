@@ -7,6 +7,8 @@
  * Maneja fallos si el directorio no es escribible.
  */
 
+declare(strict_types=1);
+
 namespace App\Logging;
 
 class Logger

@@ -3,106 +3,82 @@ declare(strict_types=1);
 
 /*
 |--------------------------------------------------------------------------
-| Application Bootstrap
+| Application Entry Point
 |--------------------------------------------------------------------------
-| Entry point for all HTTP requests.
-| This file must contain NO business logic.
+| Single and only entry point for the application.
 |
-| [ES] Punto único de entrada del sistema.
-| [ES] Aquí solo se inicializa y se enruta.
-|--------------------------------------------------------------------------
+| Responsibilities:
+| - Load Composer autoloader
+| - Load environment variables
+| - Build HTTP Request
+| - Delegate execution to Kernel
+| - Send HTTP Response
+|
+| [ES]
+| Este archivo NO contiene lógica de negocio.
+| NO define rutas.
+| NO instancia servicios.
+| NO incluye clases manualmente.
 */
-require __DIR__ . '/../vendor/autoload.php';
 
-use Almadesign\Backend\Test\Hello;
-
-echo Hello::say();
-exit;
 // -----------------------------------------------------
-// 1. Error reporting (development-safe)
+// Error reporting (development only)
 // -----------------------------------------------------
-error_reporting(E_ALL);
 ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 
 // -----------------------------------------------------
-// 2. Define base paths
+// Define base path
 // -----------------------------------------------------
-define('ROOT_PATH', dirname(__DIR__));
-define('APP_PATH', ROOT_PATH . '/app');
-define('CONFIG_PATH', APP_PATH . '/Config');
-define('STORAGE_PATH', ROOT_PATH . '/storage');
+define('BASE_PATH', dirname(__DIR__));
 
 // -----------------------------------------------------
-// 3. Load environment variables
+// Load Composer autoloader (ONLY autoload allowed)
 // -----------------------------------------------------
-$envFile = ROOT_PATH . '/.env';
-if (!file_exists($envFile)) {
+$autoloadPath = BASE_PATH . '/vendor/autoload.php';
+
+if (!file_exists($autoloadPath)) {
     http_response_code(500);
-    exit('Environment file not found.');
+    echo 'Composer autoload not found.';
+    exit;
 }
 
-require ROOT_PATH . '/vendor/autoload.php';
-
-$dotenv = Dotenv\Dotenv::createImmutable(ROOT_PATH);
-$dotenv->load();
+require_once $autoloadPath;
 
 // -----------------------------------------------------
-// 4. Load core configuration
+// Load environment variables (.env) if present
 // -----------------------------------------------------
-$config = require CONFIG_PATH . '/app.php';
-$databaseConfig = require CONFIG_PATH . '/database.php';
-$securityConfig = require CONFIG_PATH . '/security.php';
-$loggingConfig  = require CONFIG_PATH . '/logging.php';
-
-// -----------------------------------------------------
-// 5. Initialize Logger
-// -----------------------------------------------------
-use App\Logging\Logger;
-
-$logger = new Logger($loggingConfig);
-
-// -----------------------------------------------------
-// 6. Initialize Database / ORM
-// -----------------------------------------------------
-use App\Config\ORM;
-
-$orm = new ORM($databaseConfig, $logger);
-
-// -----------------------------------------------------
-// 7. Build Request object
-// -----------------------------------------------------
-use App\Http\Request;
-
-$request = Request::fromGlobals();
-
-// -----------------------------------------------------
-// 8. Middleware pipeline
-// -----------------------------------------------------
-use App\Middleware\CsrfMiddleware;
-use App\Middleware\AuthMiddleware;
-use App\Middleware\RateLimitMiddleware;
-
-$middlewares = [
-    new CsrfMiddleware($securityConfig, $logger),
-    new RateLimitMiddleware($securityConfig, $logger),
-    new AuthMiddleware($securityConfig, $logger),
-];
-
-// -----------------------------------------------------
-// 9. Dispatch request
-// -----------------------------------------------------
-use App\Routing\Router;
-
-$router = new Router($middlewares, $logger);
-$response = $router->dispatch($request);
-
-// -----------------------------------------------------
-// 10. Emit response
-// -----------------------------------------------------
-http_response_code($response->getStatusCode());
-
-foreach ($response->getHeaders() as $name => $value) {
-    header("$name: $value");
+if (file_exists(BASE_PATH . '/.env')) {
+    $dotenv = Dotenv\Dotenv::createImmutable(BASE_PATH);
+    $dotenv->load();
 }
 
-echo $response->getBody();
+// -----------------------------------------------------
+// Bootstrap HTTP flow
+// -----------------------------------------------------
+use Almadesign\Backend\App\Kernel;
+use Almadesign\Backend\Http\Request;
+
+try {
+    // Build normalized HTTP request
+    $request = Request::fromGlobals();
+
+    // Kernel owns lifecycle
+    $kernel = new Kernel();
+
+    // Handle request and produce response
+    $response = $kernel->handle($request);
+
+    // Emit response
+    $response->send();
+
+} catch (Throwable $e) {
+    http_response_code(500);
+
+    // Safe error output (development only)
+    echo 'Application error:<br>';
+    echo nl2br(htmlspecialchars($e->getMessage(), ENT_QUOTES, 'UTF-8'));
+
+    exit;
+}

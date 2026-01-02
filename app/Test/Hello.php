@@ -1,5 +1,5 @@
 <?php
-namespace Almadesign\Backend\Test;
+namespace App\Test;
 
 class Hello
 {

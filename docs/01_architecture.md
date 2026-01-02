@@ -1,223 +1,130 @@
-# 01 – System Architecture
-## Corporate Website Platform
-
-[ES] Este documento define la arquitectura técnica del sistema.  
-[ES] Todas las decisiones de diseño, desarrollo y despliegue deben alinearse con esta arquitectura.
+# System Architecture – Almadesign Backend
 
 ---
 
-## 1. Architectural Goals
+## 1. Purpose of This Document
 
-The architecture of this system is designed to achieve the following goals:
+This document defines the **actual, validated system architecture** of the Almadesign backend.
 
-- High performance
-- Clear separation of concerns
-- Security by default
-- Maintainability
-- Scalability within reasonable limits
+It does not describe intentions, frameworks, or future ideas.
+It documents what exists, what is allowed, and what is explicitly forbidden.
 
-[ES] La arquitectura prioriza control y claridad por sobre complejidad innecesaria.
-
----
-
-## 2. Architectural Style
-
-The system follows a layered architecture inspired by the MVC pattern.
-
-Main layers:
-- Presentation Layer
-- Application Layer
-- Domain Layer
-- Infrastructure Layer
-
-[ES] No se utiliza un framework monolítico pesado.  
-[ES] La arquitectura debe ser explícita y comprensible.
+[ES]
+Este documento describe la arquitectura REAL del sistema.
+No es un plan, no es una promesa y no es una propuesta.
+Es un contrato técnico.
 
 ---
 
-## 3. Technology Stack
+## 2. Architectural Principles
 
-- Backend Language: PHP 8.x
-- Database: MySQL 8.x
-- Frontend: HTML5, Tailwind CSS, JavaScript
-- ORM: To be selected and approved by the Project Manager
-- Version Control: Git + GitHub
+- Single entry point
+- Explicit bootstrap
+- No hidden framework assumptions
+- PSR-4 autoload compliance
+- Progressive complexity only after validation
 
-[ES] Ningún componente del stack puede ser cambiado sin aprobación del Jefe de Proyecto.
-
----
-
-## 4. System Layers
-
-### 4.1 Presentation Layer
-
-Responsibilities:
-- Render HTML views
-- Consume data provided by the backend
-- No business logic
-
-Components:
-- Public website views
-- Admin panel views
-
-[ES] Esta capa nunca accede directamente a la base de datos.
+[ES]
+La arquitectura se construye por capas validadas.
+Nada se agrega si la capa anterior no funciona en runtime.
 
 ---
 
-### 4.2 Application Layer
+## 3. Runtime Entry Point
 
-Responsibilities:
-- Handle user requests
-- Coordinate application workflows
-- Call domain services
+The system entry point is:
 
-Components:
-- Controllers
-- Request validators
-- Middleware (authentication, authorization, CSRF)
+/public/index.php
 
-[ES] Aquí se orquesta el flujo, no se define la lógica del negocio.
+Responsibilities of the entry point:
+- Load Composer autoloader
+- Load environment variables
+- Instantiate the Kernel
+- Delegate execution
 
----
+The entry point MUST NOT:
+- Contain business logic
+- Handle routing
+- Access database
+- Render views
 
-### 4.3 Domain Layer
-
-Responsibilities:
-- Business rules
-- Core logic
-- Domain services
-
-Components:
-- Entities
-- Services
-- Plugin logic
-
-[ES] Esta capa es independiente de la base de datos.
+[ES]
+index.php no decide nada.
+Solo inicia el sistema y delega control.
 
 ---
 
-### 4.4 Infrastructure Layer
+## 4. Kernel Architecture
 
-Responsibilities:
-- Database access
-- ORM integration
-- External services (email, storage, logging)
+The Kernel is defined as:
 
-Components:
-- ORM repositories
-- Database migrations
-- Mail service
-- Logging system
+Namespace:
+Almadesign\Backend\App\Kernel
 
-[ES] Cambios en infraestructura no deben romper capas superiores.
+Location:
+/app/App/Kernel.php
 
----
+The Kernel is the owner of:
+- Application lifecycle
+- HTTP flow orchestration
+- Controlled execution order
 
-## 5. Plugin Architecture
-
-The system supports a modular plugin architecture.
-
-Each plugin:
-- Is isolated from others
-- Has its own database schema (when required)
-- Exposes services to the application layer
-- Does not bypass security controls
-
-Defined plugins:
-- Page Builder
-- Visit Tracker
-- Heatmap
-- Backup Manager
-- Inbox
-
-[ES] Los plugins no acceden directamente a la presentación.
+[ES]
+El Kernel es el núcleo del sistema.
+No es un controlador ni un helper global.
 
 ---
 
-## 6. Database Architecture
+## 5. Bootstrap Validation Status
 
-- Central MySQL 8.x database
-- Strict use of foreign keys and constraints
-- Indexes for performance-critical queries
-- No direct SQL queries in the presentation layer
+The following have been validated in runtime:
 
-[ES] Toda interacción con la base de datos pasa por el ORM.
+- Apache VirtualHost resolution
+- PHP execution
+- Composer autoload
+- Kernel instantiation
+- HTTP execution via curl
 
----
+Evidence:
+curl http://almadesign.local
 
-## 7. Security Architecture
+Observed output:
+Kernel booted successfully
 
-Security is enforced at multiple levels:
-
-- Authentication and authorization middleware
-- Role-based access control
-- CSRF protection
-- Input validation and output escaping
-- Prepared statements via ORM
-- Basic anti-scraping mechanisms
-
-[ES] La seguridad es transversal, no una capa aislada.
+[ES]
+Esto cierra definitivamente los problemas de infraestructura.
+Desde aquí en adelante, los errores son de código.
 
 ---
 
-## 8. Performance Considerations
+## 6. Architectural Freeze
 
-- Efficient database queries
-- Lazy loading where appropriate
-- Asynchronous dashboards for analytics
-- Optimized asset delivery
+From this version onward:
+- The bootstrap is frozen
+- The Kernel existence is mandatory
+- No task may redefine entry points
 
-[ES] El rendimiento se evalúa desde arquitectura, no al final.
-
----
-
-## 9. SEO Considerations
-
-- Clean URL routing
-- Server-side rendering
-- Metadata support at backend level
-- Semantic HTML output
-
-[ES] SEO es una responsabilidad compartida entre backend y frontend.
+[ES]
+Este punto no se vuelve a discutir.
+Cualquier cambio requiere versionado formal.
 
 ---
 
-## 10. Error Handling and Logging
+## 7. Next Architectural Phase
 
-- Centralized logging system
-- Error levels classification
-- No sensitive information exposed to users
+Phase 2:
+- HTTP Request object
+- HTTP Response object
+- Kernel-mediated execution
 
-[ES] Los errores se registran, no se ocultan.
+Excluded:
+- Database
+- ORM
+- Plugins
+- Authentication
 
----
-
-## 11. Deployment Assumptions
-
-- Standard LAMP-compatible environment
-- PHP 8.x enabled
-- MySQL 8.x available
-- Environment variables for sensitive configuration
-
-[ES] El despliegue debe ser reproducible.
+[ES]
+No se salta de fase.
+La complejidad se introduce de forma incremental.
 
 ---
-
-## 12. Architectural Constraints
-
-- No direct database access from views
-- No business logic in controllers
-- No undocumented architectural changes
-- All changes must be approved and documented
-
-[ES] Las violaciones arquitectónicas son errores críticos.
-
----
-
-## Document Status
-
-- Version: 1.0
-- Status: Approved Architecture Baseline
-- File: /docs/01_architecture.md
-
-[ES] Este documento habilita el inicio del desarrollo técnico.
