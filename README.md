@@ -433,5 +433,3 @@ GOVERNANCE MATRIX
 - YES = autoridad exclusiva
 - NO = sin autoridad
 - No existen autoridades compartidas
-#   a l m a d e s i g n  
- 
