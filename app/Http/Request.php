@@ -4,163 +4,88 @@ declare(strict_types=1);
 namespace App\Http;
 
 /**
- * Request (Minimal)
+ * Class Request
  *
- * Represents a normalized HTTP request built from PHP globals.
- *
- * [ES] Esta clase encapsula la petición HTTP.
- * [ES] Objetivo: NO tocar $_GET/$_POST/$_SERVER en el resto del sistema.
- * [ES] Soporta input JSON y formularios.
+ * [ES] Representa una solicitud HTTP entrante.
+ * Centraliza el acceso a variables globales.
  */
 final class Request
 {
     private string $method;
     private string $path;
-    private array $headers;
     private array $query;
     private array $body;
-    private array $server;
 
     private function __construct(
         string $method,
         string $path,
-        array $headers,
         array $query,
-        array $body,
-        array $server
+        array $body
     ) {
-        $this->method  = strtoupper($method);
-        $this->path    = $path;
-        $this->headers = $headers;
-        $this->query   = $query;
-        $this->body    = $body;
-        $this->server  = $server;
+        $this->method = $method;
+        $this->path   = $path;
+        $this->query  = $query;
+        $this->body   = $body;
     }
 
     /**
-     * Build a Request from PHP globals.
+     * Build request from PHP globals.
      *
-     * [ES] Convierte el entorno PHP en una estructura estable e inmutable.
+     * [ES] Fábrica de Request a partir de $_SERVER, $_GET y php://input.
      */
     public static function fromGlobals(): self
     {
         $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 
-        // [ES] REQUEST_URI incluye querystring; nosotros queremos solo la ruta.
-        $uri  = $_SERVER['REQUEST_URI'] ?? '/';
-        $path = parse_url($uri, PHP_URL_PATH) ?: '/';
+        $uri = $_SERVER['REQUEST_URI'] ?? '/';
+        $parsed = parse_url($uri);
 
-        $headers = self::readHeaders();
-        $query   = $_GET ?? [];
+        $path = '/' . trim($parsed['path'] ?? '/', '/');
 
-        // [ES] Soporte JSON: si el Content-Type indica JSON, intentamos decodificar.
-        $body = self::readBody($headers);
+        parse_str($parsed['query'] ?? '', $query);
 
-        return new self($method, $path, $headers, $query, $body, $_SERVER);
+        $rawBody = file_get_contents('php://input');
+        $decoded = json_decode($rawBody, true);
+
+        $body = is_array($decoded) ? $decoded : [];
+
+        return new self(
+            strtoupper($method),
+            $path,
+            $query,
+            $body
+        );
     }
 
     /**
-     * [ES] Lee headers de manera compatible con Apache/Windows.
+     * [ES] Retorna método HTTP.
      */
-    private static function readHeaders(): array
-    {
-        if (function_exists('getallheaders')) {
-            $h = getallheaders();
-            return is_array($h) ? $h : [];
-        }
-
-        // [ES] Fallback para entornos donde getallheaders no existe.
-        $headers = [];
-        foreach ($_SERVER as $key => $value) {
-            if (str_starts_with($key, 'HTTP_')) {
-                $name = str_replace('_', '-', substr($key, 5));
-                $headers[$name] = $value;
-            }
-        }
-        return $headers;
-    }
-
-    /**
-     * [ES] Lee el body desde php://input (JSON) o $_POST (form).
-     */
-    private static function readBody(array $headers): array
-    {
-        $contentType = '';
-        foreach ($headers as $k => $v) {
-            if (strtolower((string)$k) === 'content-type') {
-                $contentType = strtolower((string)$v);
-                break;
-            }
-        }
-
-        $raw = file_get_contents('php://input') ?: '';
-
-        if ($raw !== '' && str_contains($contentType, 'application/json')) {
-            $decoded = json_decode($raw, true);
-            return is_array($decoded) ? $decoded : [];
-        }
-
-        // [ES] Si no es JSON, usamos POST tradicional.
-        return $_POST ?? [];
-    }
-
-    // ---------------- Public API ----------------
-
-    public function method(): string
+    public function getMethod(): string
     {
         return $this->method;
     }
 
-    public function path(): string
+    /**
+     * [ES] Retorna path sin query string.
+     */
+    public function getPath(): string
     {
         return $this->path;
     }
 
-    public function headers(): array
-    {
-        return $this->headers;
-    }
-
-    public function query(): array
+    /**
+     * [ES] Retorna parámetros GET.
+     */
+    public function getQuery(): array
     {
         return $this->query;
     }
 
-    public function body(): array
+    /**
+     * [ES] Retorna body JSON.
+     */
+    public function getBody(): array
     {
         return $this->body;
-    }
-
-    public function server(): array
-    {
-        return $this->server;
-    }
-
-    /**
-     * Retrieve an input value.
-     * Looks first in body, then in query.
-     *
-     * [ES] Entrada unificada: primero body, luego query.
-     */
-    public function input(string $key, mixed $default = null): mixed
-    {
-        if (array_key_exists($key, $this->body)) {
-            return $this->body[$key];
-        }
-        if (array_key_exists($key, $this->query)) {
-            return $this->query[$key];
-        }
-        return $default;
-    }
-
-    /**
-     * Retrieve a header value (case-sensitive for now).
-     *
-     * [ES] En esta fase no normalizamos mayúsculas/minúsculas para headers.
-     * [ES] Se puede mejorar en fases posteriores si hace falta.
-     */
-    public function header(string $name, mixed $default = null): mixed
-    {
-        return $this->headers[$name] ?? $default;
     }
 }

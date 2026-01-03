@@ -4,89 +4,49 @@ declare(strict_types=1);
 namespace App\Http;
 
 /**
- * Response (Minimal)
+ * Class Response
  *
- * Encapsulates HTTP response status, headers, and body.
- *
- * [ES] Esta clase define una salida HTTP estable.
- * [ES] Objetivo: evitar echo/header dispersos por el sistema.
+ * [ES] Representa una respuesta HTTP.
+ * Centraliza headers, status code y output.
  */
 final class Response
 {
-    private int $statusCode;
+    private int $status;
     private array $headers;
     private string $body;
 
-    public function __construct(string $body = '', int $statusCode = 200, array $headers = [])
+    private function __construct(string $body, int $status = 200, array $headers = [])
     {
-        $this->body       = $body;
-        $this->statusCode = $statusCode;
-        $this->headers    = $headers;
+        $this->body = $body;
+        $this->status = $status;
+        $this->headers = $headers;
     }
 
     /**
-     * Build a JSON response.
+     * Create a JSON response.
      *
-     * [ES] Crea respuesta JSON sin asumir frameworks.
+     * [ES] Crea una respuesta JSON estándar.
      */
-    public static function json(array $data, int $statusCode = 200): self
+    public static function json(array $data, int $status = 200): self
     {
-        $json = json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-
         return new self(
-            $json === false ? '{}' : $json,
-            $statusCode,
-            ['Content-Type' => 'application/json; charset=utf-8']
+            json_encode($data, JSON_UNESCAPED_UNICODE),
+            $status,
+            ['Content-Type' => 'application/json; charset=UTF-8']
         );
     }
 
     /**
-     * Build an HTML response.
+     * Send response to client.
      *
-     * [ES] HTML básico para páginas.
-     */
-    public static function html(string $html, int $statusCode = 200): self
-    {
-        return new self(
-            $html,
-            $statusCode,
-            ['Content-Type' => 'text/html; charset=utf-8']
-        );
-    }
-
-    public function withHeader(string $name, string $value): self
-    {
-        $clone = clone $this;
-        $clone->headers[$name] = $value;
-        return $clone;
-    }
-
-    public function statusCode(): int
-    {
-        return $this->statusCode;
-    }
-
-    public function headers(): array
-    {
-        return $this->headers;
-    }
-
-    public function body(): string
-    {
-        return $this->body;
-    }
-
-    /**
-     * Emit the response to the client.
-     *
-     * [ES] Centraliza emisión HTTP; el Kernel lo usa como salida final.
+     * [ES] Emite headers y cuerpo al cliente.
      */
     public function send(): void
     {
-        http_response_code($this->statusCode);
+        http_response_code($this->status);
 
         foreach ($this->headers as $name => $value) {
-            header($name . ': ' . $value);
+            header("$name: $value");
         }
 
         echo $this->body;

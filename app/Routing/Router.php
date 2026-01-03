@@ -3,87 +3,100 @@ declare(strict_types=1);
 
 namespace App\Routing;
 
-use Almadesign\Backend\Http\Request;
-use Almadesign\Backend\Http\Response;
+use App\Http\Request;
+use App\Http\Response;
 
 /**
- * Router (Minimal)
+ * Router
  *
- * Maps HTTP method + path to a callable handler.
+ * Minimal HTTP router.
  *
- * [ES] Router mínimo, explícito y determinista.
- * [ES] No hay expresiones regulares, no hay middlewares,
- * [ES] no hay resolución automática de dependencias.
+ * Responsibilities:
+ * - Register routes (method + path + handler)
+ * - Dispatch incoming requests
+ * - Return a Response or 404
+ *
+ * [ES]
+ * - Este router es intencionalmente simple.
+ * - No hay expresiones regulares.
+ * - No hay middlewares todavía.
+ * - No hay parámetros dinámicos.
+ * - Primero estabilidad, luego complejidad.
  */
 final class Router
 {
     /**
-     * @var array<string, array<string, callable>>
-     *
-     * Example:
-     * [
-     *   'GET' => [
-     *     '/' => callable,
-     *     '/health' => callable
-     *   ]
-     * ]
-     *
-     * [ES] Primera clave = método HTTP
-     * [ES] Segunda clave = path exacto
+     * @var array<int, array{method:string, path:string, handler:callable}>
      */
     private array $routes = [];
 
     /**
      * Register a route.
      *
-     * [ES] Registra una ruta exacta para un método concreto.
+     * @param string   $method  HTTP method (GET, POST, etc.)
+     * @param string   $path    Exact path (e.g. /health)
+     * @param callable $handler Function(Request): Response
      */
     public function add(string $method, string $path, callable $handler): void
     {
-        $method = strtoupper($method);
-
-        if (!isset($this->routes[$method])) {
-            $this->routes[$method] = [];
-        }
-
-        $this->routes[$method][$path] = $handler;
+        $this->routes[] = [
+            'method'  => strtoupper($method),
+            'path'    => $this->normalizePath($path),
+            'handler' => $handler,
+        ];
     }
 
     /**
-     * Dispatch the request to the correct handler.
+     * Dispatch the request to the matching route.
      *
-     * [ES] Resuelve la ruta o devuelve 404.
+     * @param Request $request
+     * @return Response
      */
     public function dispatch(Request $request): Response
     {
-        $method = $request->method();
-        $path   = $request->path();
+        $method = strtoupper($request->getMethod());
+        $path   = $this->normalizePath($request->getPath());
 
-        if (!isset($this->routes[$method])) {
-            return Response::json(
-                ['error' => 'Method not allowed'],
-                405
-            );
+        foreach ($this->routes as $route) {
+            if ($route['method'] === $method && $route['path'] === $path) {
+                return ($route['handler'])($request);
+            }
         }
 
-        if (!isset($this->routes[$method][$path])) {
-            return Response::json(
-                ['error' => 'Route not found'],
-                404
-            );
+        return Response::json(
+            ['error' => 'Not Found'],
+            404
+        );
+    }
+
+    /**
+     * Normalize paths to avoid false 404s.
+     *
+     * Rules:
+     * - Remove query string
+     * - Ensure leading slash
+     * - Remove trailing slash (except root)
+     *
+     * [ES]
+     * - Esto evita errores clásicos como:
+     *   /health vs /health/
+     *   /health?x=1
+     */
+    private function normalizePath(string $path): string
+    {
+        // Remove query string
+        $path = parse_url($path, PHP_URL_PATH) ?? '/';
+
+        // Ensure leading slash
+        if ($path === '') {
+            $path = '/';
         }
 
-        $handler = $this->routes[$method][$path];
-
-        $response = $handler($request);
-
-        if (!$response instanceof Response) {
-            return Response::json(
-                ['error' => 'Invalid handler response'],
-                500
-            );
+        // Remove trailing slash except root
+        if ($path !== '/' && str_ends_with($path, '/')) {
+            $path = rtrim($path, '/');
         }
 
-        return $response;
+        return $path;
     }
 }
