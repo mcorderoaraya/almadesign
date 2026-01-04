@@ -1,82 +1,39 @@
 <?php
+
 declare(strict_types=1);
 
-/**
- * [ES] Entry point único del sistema.
- * Orquesta:
- * - middlewares globales
- * - rutas (con middlewares por ruta)
- * - dispatch
- * - manejo de errores
- */
-
-require dirname(__DIR__) . '/vendor/autoload.php';
-
 use App\Http\Request;
+use App\Http\Response;
+use App\Routing\RouteCollection;
 use App\Routing\Router;
 
-// Controllers
-use App\Controllers\HomeController;
-use App\Controllers\HealthController;
-use App\Controllers\ErrorController;
+require_once __DIR__ . '/../vendor/autoload.php';
 
-// Middlewares
-use App\Middleware\RateLimitMiddleware;
-use App\Middleware\AuthMiddleware;
-use App\Middleware\CsrfMiddleware;
-
-// --------------------------------------------------
-// Request & Router
-// --------------------------------------------------
 $request = Request::fromGlobals();
-$router  = new Router();
+$routes  = new RouteCollection();
 
-// --------------------------------------------------
-// Controllers
-// --------------------------------------------------
-$home   = new HomeController();
-$health = new HealthController();
-$error  = new ErrorController();
+/* =========================
+   RUTAS CON CONSTRAINTS
+   ========================= */
 
-// --------------------------------------------------
-// Global middlewares (se ejecutan primero)
-// --------------------------------------------------
-$globalMiddlewares = [
-    new RateLimitMiddleware(),
-];
+// Solo números
+$routes->get('/users/{id:\d+}', function (Request $request): Response {
+    return Response::json([
+        'userId' => (int)$request->getParam('id')
+    ]);
+});
 
-foreach ($globalMiddlewares as $middleware) {
-    $response = $middleware->handle($request);
-    if ($response !== null) {
-        $response->send();
-        exit;
-    }
-}
+// Slug alfanumérico con guiones
+$routes->get('/articles/{slug:[a-z\-]+}', function (Request $request): Response {
+    return Response::json([
+        'slug' => $request->getParam('slug')
+    ]);
+});
 
-// --------------------------------------------------
-// Routes (con middlewares por ruta)
-// --------------------------------------------------
-$router->get('/', [$home, 'index']);
+/* =========================
+   DISPATCH
+   ========================= */
 
-$router->get('/health', [$health, 'check']);
-
-// Ruta protegida de ejemplo
-$router->post(
-    '/admin/action',
-    fn ($req) => \App\Http\Response::json(['ok' => true]),
-    [
-        new AuthMiddleware(),
-        new CsrfMiddleware(),
-    ]
-);
-
-// --------------------------------------------------
-// Dispatch con manejo de excepciones
-// --------------------------------------------------
-try {
-    $response = $router->dispatch($request);
-} catch (Throwable $e) {
-    $response = $error->exception($e);
-}
-
+$router = new Router($routes);
+$response = $router->dispatch($request);
 $response->send();

@@ -1,57 +1,51 @@
 <?php
-declare(strict_types=1);
 
 namespace App\App;
 
-use App\Routing\RouteCollection;
+use App\Routing\Router;
 use App\Http\Request;
 use App\Http\Response;
+use App\Controllers\ErrorController;
 
+/**
+ * Kernel
+ *
+ * ÚNICO lugar donde:
+ * - existe try/catch
+ * - se transforma error → HTTP
+ */
 final class Kernel
 {
-    private RouteCollection $routes;
+    private Router $router;
+    private ErrorController $errorController;
 
-    public function __construct(RouteCollection $routes)
-    {
-        $this->routes = $routes;
-
-        // Root
-        $this->routes->get('/', function () {
-            return [
-                'ok' => true,
-                'service' => 'almadesign-backend'
-            ];
-        });
-
-        // Health check
-        $this->routes->get('/health', function () {
-            return [
-                'status' => 'healthy'
-            ];
-        });
+    public function __construct(
+        Router $router,
+        ErrorController $errorController
+    ) {
+        $this->router = $router;
+        $this->errorController = $errorController;
     }
 
     /**
-     * Handle an incoming HTTP request.
-     *
-     * [ES] Punto de entrada del backend. Orquesta request → router → response.
+     * Maneja el ciclo completo de la aplicación
      */
     public function handle(Request $request): Response
     {
-        $handler = $this->routes->match(
-            $request->getMethod(),
-            $request->getPath()
-        );
+        try {
+            return $this->router->dispatch($request);
 
-        if (!$handler) {
-            return Response::json(
-                ['error' => 'Not Found'],
-                404
-            );
+        } catch (\RuntimeException $e) {
+            // Errores esperables del dominio (404, etc)
+            if ($e->getCode() === 404) {
+                return $this->errorController->notFound($request);
+            }
+
+            return $this->errorController->exception($request, $e);
+
+        } catch (\Throwable $e) {
+            // CUALQUIER otro error
+            return $this->errorController->exception($request, $e);
         }
-
-        $result = $handler($request);
-
-        return Response::json($result);
     }
 }

@@ -1,107 +1,181 @@
-# Documentation Snapshot – v1.2
-## Governed Corporate Website Platform
+# PROJECT DOCUMENTATION – VERSION 1.2
 
-[ES] Este archivo representa el estado certificado del sistema en su versión 1.2.  
-[ES] Incorpora formalmente el modelo de gobernanza como parte del alcance aprobado.
+Status: STABLE  
+Scope: Backend Core – Routing, Kernel, Middleware  
+Validated up to: TASK-090.9  
 
-================================================================================
-1. SNAPSHOT PURPOSE
-================================================================================
+---
 
-This snapshot freezes the system state including architecture, data model,
-backend, frontend, QA rules, and governance documents.
+## 1. SYSTEM OVERVIEW
 
-[ES] Desde este punto, la gobernanza deja de ser implícita y pasa a ser **parte del contrato del sistema**.
+The project implements a minimal, explicit backend architecture focused on:
 
-================================================================================
-2. INCLUDED DOCUMENTATION
-================================================================================
+- Deterministic routing
+- Explicit controllers
+- Centralized error handling
+- Middleware by route
+- Zero magic / zero implicit DI
 
-This snapshot includes and validates the following documents:
+This system intentionally avoids frameworks.
 
-- /docs/00_requirements.md
-- /docs/01_architecture.md
-- /docs/02_data_model.md
-- /docs/03_ux_ui.md
-- /docs/04_backend_spec.md
+---
 
-[ES] Estos documentos definen qué hace el sistema y cómo está construido.
+## 2. REQUEST FLOW (HIGH LEVEL)
 
-================================================================================
-3. GOVERNANCE DOCUMENTS (FORMALLY INCORPORATED)
-================================================================================
+1. public/index.php bootstraps the system
+2. Request object is created
+3. Kernel orchestrates execution
+4. Router resolves route + params
+5. Middleware executes (if any)
+6. Controller returns Response
+7. Response is sent
+8. Errors are centralized
 
-The following governance documents are formally incorporated into the system:
+---
 
-- /docs/governance/backend_governance.md
-- /docs/governance/frontend_governance.md
-- /docs/governance/governance_boundary.md
+## 3. CORE COMPONENTS
 
-[ES] A partir de esta versión, estos documentos tienen **igual jerarquía** que los documentos técnicos.
-[ES] No son guías, son reglas de poder.
+### 3.1 public/index.php
 
-================================================================================
-4. GOVERNANCE MODEL SUMMARY
-================================================================================
+Responsibilities:
+- Bootstrap
+- Register routes
+- Register middleware
+- Delegate execution to Kernel
 
-The system governance model is based on:
+Must remain thin.
+No business logic allowed.
 
-- Clear authority separation
-- Non-overlapping responsibilities
-- QA veto power
-- Documentation-driven decisions
+---
 
-[ES] La gobernanza evita:
-- decisiones improvisadas
-- conflictos entre roles
-- dependencia de personas específicas
+### 3.2 Kernel
 
-================================================================================
-5. AUTHORITY DISTRIBUTION
-================================================================================
+Responsibilities:
+- Coordinate request lifecycle
+- Call Router
+- Catch unhandled exceptions
+- Delegate errors to ErrorController
 
-- Backend: owns system behavior and data
-- Frontend: owns presentation only
-- QA: owns validation and veto
-- Project Management: owns scope and final approval
+Kernel does NOT:
+- Define routes
+- Parse parameters
+- Handle HTTP output
 
-[ES] Nadie gobierna fuera de su dominio.
+---
 
-================================================================================
-6. CHANGE MANAGEMENT RULE
-================================================================================
+### 3.3 Router
 
-Any change affecting:
+Responsibilities:
+- Match method + path
+- Execute middleware stack
+- Dispatch controller handler
 
-- architecture
-- security
-- data model
-- governance boundaries
+Router does NOT:
+- Terminate execution
+- Handle errors directly
 
-requires:
+---
 
-- documentation update
-- QA validation
-- new snapshot version
+### 3.4 RouteCollection
 
-[ES] Cambios sin snapshot no existen oficialmente.
+Responsibilities:
+- Register routes
+- Compile dynamic paths
+- Extract route parameters
+- Apply route constraints
 
-================================================================================
-7. SNAPSHOT STATUS
-================================================================================
+Supports:
+- /users/{id}
+- /users/{id:\d+}
 
-- Snapshot version: v1.2
-- Includes governance: YES
-- QA validated: REQUIRED
-- Project Manager approval: REQUIRED
+---
 
-[ES] Este snapshot es el punto de referencia obligatorio para cualquier evolución futura.
+### 3.5 Controllers
 
-================================================================================
-8. FINAL STATEMENT
-================================================================================
+Responsibilities:
+- Execute domain logic
+- Use already-resolved parameters
+- Return Response objects
 
-From this version onward, the system is not only technically defined,
-but institutionally governed.
+Controllers NEVER:
+- Read $_GET / $_POST
+- Parse URLs
+- Handle headers directly
 
-[ES] A partir de aquí, el sistema tiene reglas, fronteras y consecuencias.
+---
+
+### 3.6 ErrorController
+
+Responsibilities:
+- Centralize error responses
+- Produce consistent JSON output
+
+Defined methods:
+- notFound(Request $request)
+- exception(Request $request, Throwable $e)
+
+---
+
+### 3.7 Middleware
+
+Responsibilities:
+- Intercept request
+- Apply cross-cutting rules
+
+Examples:
+- AuthMiddleware
+- CsrfMiddleware
+- RateLimitMiddleware
+
+Middleware is explicit and route-bound.
+
+---
+
+## 4. ROUTING FEATURES STATUS
+
+| Feature              | Status            |
+|----------------------|-------------------|
+| Static routes        | DONE              |
+| Route parameters     | DONE (TASK-090.8) |
+| Route constraints    | DONE (TASK-090.9) |
+| Middleware per route | DONE (TASK-090.6) |
+| Centralized errors   | DONE              |
+
+---
+
+## 5. ERROR HANDLING POLICY
+
+All errors result in structured JSON.
+
+No HTML error pages.
+No PHP fatal leakage.
+
+---
+
+## 6. TESTING STATUS
+
+Validated via:
+- curl
+- PHP CLI
+- Browser
+
+Endpoints validated:
+- /
+- /health
+- /users/{id}
+- invalid routes
+
+---
+
+## 7. OPEN ITEMS
+
+None blocking core routing.
+Next tasks may include:
+
+- Controller grouping
+- Request validation layer
+- Response transformers
+
+---
+
+END OF DOCUMENTATION v1.2

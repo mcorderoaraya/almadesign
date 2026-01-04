@@ -8,27 +8,20 @@ use App\Http\Request;
 use App\Http\Response;
 
 /**
- * CONTRATO OBLIGATORIO PARA TODOS LOS MIDDLEWARES
+ * Contrato único para middlewares explícitos.
  *
- * REGLA:
- * - handle() SIEMPRE recibe Request
- * - handle() SOLO puede devolver:
- *   - Response  → corta el flujo
- *   - null      → permite continuar
+ * [ES] Regla:
+ * - handle() retorna:
+ *   - Response  → corta el flujo (ej: 401/403/429)
+ *   - null      → continuar con el siguiente middleware o handler
  *
- * PROHIBIDO:
- * - echo
- * - die / exit
+ * [ES] Prohibido en middleware:
+ * - echo / print / var_dump
+ * - exit / die
+ * - header()
  * - send()
- * - return bool / array / string
  */
 interface MiddlewareInterface
 {
-    /**
-     * Ejecuta la lógica del middleware.
-     *
-     * @param Request $request
-     * @return Response|null
-     */
     public function handle(Request $request): ?Response;
 }

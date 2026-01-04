@@ -1,49 +1,119 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Routing;
 
+use App\Http\Request;
+
 /**
- * [ES] RouteCollection NO es estrictamente necesaria, pero si quieres mantenerla:
- * - Actúa como “fachada” para registrar rutas sobre Router
- * - Evita que index.php conozca detalles internos del Router
+ * RouteCollection con soporte para:
+ * - rutas estáticas
+ * - parámetros dinámicos {id}
+ * - parámetros con constraint {id:\d+}
  *
- * [ES] Importante:
- * - No implementa dispatch
- * - No implementa matching
- * - No “inventa” métodos (get/register/etc) que no existan en Router
+ * [ES] Regla:
+ * - El constraint se evalúa por segmento.
+ * - Si NO cumple → no hay match.
  */
 final class RouteCollection
 {
-    private Router $router;
+    private array $routes = [];
 
-    public function __construct(Router $router)
+    public function get(string $path, callable $handler, array $middlewares = []): void
     {
-        $this->router = $router;
+        $this->add('GET', $path, $handler, $middlewares);
     }
 
-    public function get(string $path, callable $handler): void
+    private function add(string $method, string $path, callable $handler, array $middlewares): void
     {
-        $this->router->get($path, $handler);
+        if ($path === '') {
+            $path = '/';
+        }
+        if ($path[0] !== '/') {
+            $path = '/' . $path;
+        }
+
+        $this->routes[] = [
+            'method'      => strtoupper($method),
+            'path'        => rtrim($path, '/') ?: '/',
+            'handler'     => $handler,
+            'middlewares' => $middlewares,
+        ];
     }
 
-    public function post(string $path, callable $handler): void
+    /**
+     * Match principal con soporte de constraints.
+     */
+    public function match(Request $request): ?array
     {
-        $this->router->post($path, $handler);
+        $reqMethod = $request->getMethod();
+        $reqPath   = $request->getPath();
+
+        foreach ($this->routes as $route) {
+            if ($route['method'] !== $reqMethod) {
+                continue;
+            }
+
+            $params = $this->matchPath($route['path'], $reqPath);
+            if ($params !== null) {
+                return [
+                    ...$route,
+                    'params' => $params
+                ];
+            }
+        }
+
+        return null;
     }
 
-    public function map(string $method, string $path, callable $handler): void
+    /**
+     * Compara path de ruta vs path de request.
+     *
+     * Soporta:
+     * - /users/{id}
+     * - /users/{id:\d+}
+     */
+    private function matchPath(string $routePath, string $requestPath): ?array
     {
-        $this->router->map($method, $path, $handler);
-    }
+        $routeParts   = explode('/', trim($routePath, '/'));
+        $requestParts = explode('/', trim($requestPath, '/'));
 
-    public function setNotFoundHandler(callable $handler): void
-    {
-        $this->router->setNotFoundHandler($handler);
-    }
+        if (count($routeParts) !== count($requestParts)) {
+            return null;
+        }
 
-    public function setErrorHandler(callable $handler): void
-    {
-        $this->router->setErrorHandler($handler);
+        $params = [];
+
+        foreach ($routeParts as $i => $routePart) {
+            $requestPart = $requestParts[$i];
+
+            // Caso 1: parámetro simple {id}
+            if (preg_match('/^\{(\w+)\}$/', $routePart, $m)) {
+                $params[$m[1]] = $requestPart;
+                continue;
+            }
+
+            // Caso 2: parámetro con constraint {id:\d+}
+            if (preg_match('/^\{(\w+):(.+)\}$/', $routePart, $m)) {
+                $paramName = $m[1];
+                $pattern   = $m[2];
+
+                // Aplica regex al segmento
+                if (!preg_match('/^' . $pattern . '$/', $requestPart)) {
+                    return null;
+                }
+
+                $params[$paramName] = $requestPart;
+                continue;
+            }
+
+            // Caso 3: segmento estático
+            if ($routePart !== $requestPart) {
+                return null;
+            }
+        }
+
+        return $params;
     }
 }

@@ -8,81 +8,75 @@ use App\Http\Request;
 use App\Http\Response;
 
 /**
- * Middleware de Rate Limiting (limitación de peticiones)
+ * RateLimitMiddleware (simple, sin Redis, sin DB).
  *
- * OBJETIVO:
- * - Prevenir abuso por IP
- * - NO emitir output
- * - NO enviar la respuesta
- * - SOLO devolver Response o null
+ * [ES] Diseño:
+ * - Usa $_SESSION como storage de ventana por IP.
+ * - Es suficiente para entorno local/dev.
+ * - En producción real: mover a Redis/memcached y reglas por endpoint.
+ *
+ * [ES] Contrato:
+ * - Si excede límite → Response::json(..., 429)
+ * - Si no → null (continúa)
  */
 final class RateLimitMiddleware implements MiddlewareInterface
 {
-    /**
-     * Número máximo de requests permitidos
-     */
-    private int $maxRequests = 100;
+    private int $maxRequests;
+    private int $windowSeconds;
+    private string $keyPrefix;
 
-    /**
-     * Ventana de tiempo en segundos
-     */
-    private int $windowSeconds = 60;
-
-    /**
-     * Punto de entrada del middleware
-     */
-    public function handle(Request $request): ?Response
+    public function __construct(int $maxRequests = 100, int $windowSeconds = 60, string $keyPrefix = 'rate_limit_')
     {
-        $ip = $request->getClientIp();
-
-        if ($this->isRateLimited($ip)) {
-            // ⚠️ IMPORTANTE:
-            // Se DEVUELVE Response, NO se envía
-            return Response::json(
-                [
-                    'error' => 'Too Many Requests',
-                    'message' => 'Rate limit exceeded'
-                ],
-                429
-            );
-        }
-
-        // null = continuar con el siguiente middleware o el handler
-        return null;
+        $this->maxRequests = $maxRequests;
+        $this->windowSeconds = $windowSeconds;
+        $this->keyPrefix = $keyPrefix;
     }
 
-    /**
-     * Verifica si una IP excedió el límite
-     */
-    private function isRateLimited(string $ip): bool
+    public function handle(Request $request): ?Response
     {
-        $key = $this->getStorageKey($ip);
+        // [ES] Sin sesión no hay rate limit básico con este storage.
+        // Asegúrate de llamar session_start() en public/index.php.
+        if (session_status() !== PHP_SESSION_ACTIVE) {
+            return Response::json([
+                'error' => 'rate_limit_storage_unavailable',
+                'message' => 'Session is not active. Call session_start() in public/index.php.'
+            ], 500);
+        }
+
+        $ip = $request->getClientIp();
+        $key = $this->keyPrefix . md5($ip);
+
+        $now = time();
 
         $data = $_SESSION[$key] ?? [
             'count' => 0,
-            'start' => time(),
+            'start' => $now
         ];
 
-        // Si la ventana expiró, se reinicia
-        if (time() - $data['start'] > $this->windowSeconds) {
+        // [ES] Reinicia ventana si expiró
+        if (($now - (int)$data['start']) > $this->windowSeconds) {
             $data = [
                 'count' => 0,
-                'start' => time(),
+                'start' => $now
             ];
         }
 
-        $data['count']++;
-
+        $data['count'] = (int)$data['count'] + 1;
         $_SESSION[$key] = $data;
 
-        return $data['count'] > $this->maxRequests;
-    }
+        if ($data['count'] > $this->maxRequests) {
+            $retryAfter = max(1, $this->windowSeconds - ($now - (int)$data['start']));
 
-    /**
-     * Genera la clave de almacenamiento por IP
-     */
-    private function getStorageKey(string $ip): string
-    {
-        return 'rate_limit_' . md5($ip);
+            return Response::json([
+                'error' => 'Too Many Requests',
+                'message' => 'Rate limit exceeded',
+                'retry_after_seconds' => $retryAfter
+            ], 429, [
+                // [ES] Header estándar para rate limit
+                'Retry-After' => (string)$retryAfter
+            ]);
+        }
+
+        return null;
     }
 }

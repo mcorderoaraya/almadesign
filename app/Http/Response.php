@@ -1,14 +1,16 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http;
 
 /**
- * [ES] Response mínimo:
- * - status
- * - headers
- * - body
- * - send(): emite la respuesta HTTP
+ * Response mínima del sistema.
+ *
+ * [ES] Objetivo:
+ * - Contener status, headers y body.
+ * - Permitir Response::json(...) para API/debug.
+ * - send() como única salida HTTP (no usar echo en otros lugares).
  */
 final class Response
 {
@@ -24,43 +26,48 @@ final class Response
     }
 
     /**
-     * [ES] Response JSON estándar.
-     * - Encodes con JSON_THROW_ON_ERROR para no esconder bugs
-     * - Fuerza Content-Type application/json
+     * [ES] Factory JSON estándar.
+     * - Siempre retorna Response.
+     * - Content-Type fijo a application/json; charset=utf-8.
      */
-    public static function json(array $data, int $status = 200): self
+    public static function json(array $data, int $status = 200, array $headers = []): self
     {
-        $json = json_encode(
-            $data,
-            JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR
-        );
+        $payload = json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 
-        return new self(
-            $json,
-            $status,
-            ['Content-Type' => 'application/json; charset=utf-8']
-        );
+        if ($payload === false) {
+            // [ES] Si JSON falla, respondemos de forma controlada.
+            $payload = json_encode([
+                'error' => 'json_encode_failed'
+            ]);
+            $status = 500;
+        }
+
+        $baseHeaders = [
+            'Content-Type' => 'application/json; charset=utf-8',
+            // [ES] Evita cache en respuestas de diagnóstico
+            'Cache-Control' => 'no-store, no-cache, must-revalidate',
+            'Pragma' => 'no-cache',
+        ];
+
+        return new self($payload, $status, array_merge($baseHeaders, $headers));
     }
 
     public function withHeader(string $name, string $value): self
     {
-        // [ES] Inmutabilidad simple: devuelve clon con header agregado.
         $clone = clone $this;
         $clone->headers[$name] = $value;
         return $clone;
     }
 
+    /**
+     * [ES] Envía headers y body. Esta es la única capa autorizada a emitir output.
+     */
     public function send(): void
     {
-        /**
-         * [ES] En CLI no existen headers; evitamos warnings.
-         * En Apache sí se emite normalmente.
-         */
-        if (php_sapi_name() !== 'cli') {
-            http_response_code($this->status);
-            foreach ($this->headers as $name => $value) {
-                header($name . ': ' . $value);
-            }
+        http_response_code($this->status);
+
+        foreach ($this->headers as $name => $value) {
+            header($name . ': ' . $value);
         }
 
         echo $this->body;

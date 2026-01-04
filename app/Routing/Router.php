@@ -6,52 +6,49 @@ use App\Http\Request;
 use App\Http\Response;
 
 /**
- * [ES] Router del sistema.
- * Responsabilidad única:
- * - registrar rutas
- * - resolver método + path
- * - delegar a Route
+ * Router
+ *
+ * ÚNICA responsabilidad:
+ * - Recibir Request
+ * - Encontrar un handler válido
+ * - Ejecutarlo
+ * - Retornar Response
+ *
+ * NO captura excepciones
+ * NO envía headers
  */
 final class Router
 {
-    /**
-     * @var Route[]
-     */
-    private array $routes = [];
+    private RouteCollection $routes;
 
-    /**
-     * [ES] Registra una ruta GET con middlewares opcionales.
-     */
-    public function get(
-        string $path,
-        callable $handler,
-        array $middlewares = []
-    ): void {
-        $this->routes[] = new Route('GET', $path, $handler, $middlewares);
+    public function __construct(RouteCollection $routes)
+    {
+        $this->routes = $routes;
     }
 
     /**
-     * [ES] Registra una ruta POST con middlewares opcionales.
-     */
-    public function post(
-        string $path,
-        callable $handler,
-        array $middlewares = []
-    ): void {
-        $this->routes[] = new Route('POST', $path, $handler, $middlewares);
-    }
-
-    /**
-     * [ES] Resuelve el Request y devuelve Response.
+     * Despacha una request al handler correspondiente
+     *
+     * @throws \Throwable (propaga al Kernel)
      */
     public function dispatch(Request $request): Response
     {
-        foreach ($this->routes as $route) {
-            if ($route->matches($request)) {
-                return $route->handle($request);
-            }
+        $method = $request->getMethod();
+        $path   = $request->getPath();
+
+        $route = $this->routes->match($method, $path);
+
+        if ($route === null) {
+            // IMPORTANTE:
+            // Router NO decide qué hacer con un 404
+            // Solo informa la condición
+            throw new \RuntimeException('ROUTE_NOT_FOUND', 404);
         }
 
-        return Response::json(['error' => 'Not Found'], 404);
+        $handler = $route['handler'];
+        $params  = $route['params'];
+
+        // Ejecuta el handler (controller explícito)
+        return $handler($request, $params);
     }
 }
