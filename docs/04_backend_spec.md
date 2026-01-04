@@ -1,94 +1,120 @@
-# Backend Specification – Almadesign
+# Backend Specification
+[ES] Especificación técnica del backend del sistema AlmaDesign.
 
 ---
 
-## 1. Scope
+## 1. Purpose
+This document defines the backend architecture, execution flow, and security mechanisms.
 
-This document specifies the **backend behavior and constraints**.
-It defines what the backend is allowed to do at this stage.
-
-[ES]
-Este documento evita que el backend se convierta en un “todo vale”.
+[ES] Este documento describe cómo funciona realmente el backend, no cómo “debería” funcionar.
 
 ---
 
-## 2. Backend Responsibilities
+## 2. Entry Point
 
-The backend is responsible for:
-- Application lifecycle control
-- HTTP request processing
-- Response generation
-- Security enforcement (future phases)
+### public/index.php
+The system uses a single entry point located at `/public/index.php`.
 
-The backend is NOT responsible for:
-- Frontend design
-- Asset compilation
-- Presentation logic decisions
+Responsibilities:
+- Bootstrap Composer autoload
+- Create Request from globals
+- Execute global middlewares
+- Register routes
+- Dispatch request to Router
+- Send Response
 
-[ES]
-Backend y frontend no se mezclan.
-
----
-
-## 3. Kernel Responsibilities (Phase 1)
-
-Current Kernel responsibilities:
-- Own execution flow
-- Confirm bootstrap correctness
-- Execute run()
-
-Explicitly excluded:
-- Routing
-- Controllers
-- Database access
-- Plugins
-- Middleware
-
-[ES]
-El Kernel todavía es mínimo a propósito.
+[ES] No existe lógica de negocio en este archivo. Solo orquestación.
 
 ---
 
-## 4. Dependency Rules
+## 3. Routing Layer
 
-- No service may be instantiated before Kernel execution
-- No global state is allowed
-- No static service locators
+### Router
+- Matches HTTP method + path
+- Delegates execution to a controller handler
+- Returns a Response object
 
-[ES]
-Esto evita arquitecturas frágiles e imposibles de testear.
-
----
-
-## 5. Configuration Handling
-
-- Configuration is loaded via .env
-- No config values are hardcoded
-- Missing config must fail explicitly
-
-[ES]
-La configuración implícita es una fuente de errores.
+[ES] El Router no conoce seguridad ni middlewares.
 
 ---
 
-## 6. Logging (Deferred)
+## 4. Controller Layer
 
-Logging exists as a concept but is not active in Phase 1.
+Controllers are explicit and single-responsibility:
+- HomeController
+- HealthController
+- ErrorController
 
-[ES]
-No se logea antes de tener flujo estable.
-Primero corre, después se observa.
+[ES] No existen closures en rutas. Todo pasa por controllers.
+
+---
+
+## 5. Middleware Layer (TASK-090.5)
+
+The backend includes an explicit middleware pipeline executed before routing.
+
+### 5.1 Middleware Interface
+All middlewares implement a common interface:
+- Input: Request
+- Output: Response or null
+
+[ES] Si un middleware retorna Response, el flujo se detiene.
 
 ---
 
-## 7. Backend Evolution Rules
+### 5.2 RateLimitMiddleware
+- Executed first
+- Limits requests per IP per time window
+- Returns HTTP 429 on abuse
 
-Any new backend feature must:
-- Be introduced via the Kernel
-- Respect existing validated layers
-- Be documented before implementation
-
-[ES]
-No se escribe código sin contexto documental.
+[ES] Protege el sistema a bajo costo computacional.
 
 ---
+
+### 5.3 AuthMiddleware
+- Verifies presence of Authorization header
+- Returns HTTP 401 if missing or invalid
+
+[ES] La validación real de tokens se implementará posteriormente.
+
+---
+
+### 5.4 CsrfMiddleware
+- Applied only to POST, PUT, DELETE
+- Requires X-CSRF-TOKEN header
+- Returns HTTP 403 if missing
+
+[ES] Previene ataques CSRF en operaciones mutables.
+
+---
+
+## 6. Error Handling
+
+All uncaught exceptions are handled by ErrorController:
+- notFound() → 404 JSON
+- exception() → 500 JSON
+
+[ES] Nunca se exponen errores PHP crudos.
+
+---
+
+## 7. Response Format
+
+All responses are JSON-based:
+- Content-Type: application/json
+- HTTP status codes are semantically correct
+
+[ES] No se “maquillan” errores con HTTP 200.
+
+---
+
+## Route-Scoped Middleware (TASK-090.6)
+Routes may define their own middleware stack.
+Execution order:
+1. Global middlewares
+2. Route-specific middlewares
+3. Controller handler
+
+[ES] Permite aplicar seguridad selectiva sin contaminar el Router.
+
+End of document.

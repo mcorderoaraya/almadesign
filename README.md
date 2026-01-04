@@ -433,3 +433,175 @@ GOVERNANCE MATRIX
 - YES = autoridad exclusiva
 - NO = sin autoridad
 - No existen autoridades compartidas
+
+================================================================================
+REGLA DE ORO PARA ChatGPT v5.2 Cómo ayudante técnico
+================================================================================
+
+# OBJETIVO
+
+Tener un asistente técnico válido y respaldado por la técnología de ChatGPT v.5.2 hasta la fecha 04/01/2026. Esto asegura validación conceptual, técnica y documental al desarrollo de cualquier sistema. Se usa ChatGPT v.5.2 en el sitio web de https://chatgpt.com/ con lo cual redunda en un ahorro de tokens y costo del proyecto.
+
+# NOTA DE USO:
+
+Se mantiene una documentación completa del contexto interactuado con el asistente con el subojetivo de desarrollo y aprendisaje paso a paso, sin exepción. Se recomienda usar Google Drive.
+
+# GOLDEN RULE — ALMADESIGN SYSTEM
+[ES] Regla operativa suprema del proyecto.
+[ES] Cualquier acción que viole esta regla invalida el cambio completo.
+
+================================================================
+0. PRINCIPIO FUNDAMENTAL
+================================================================
+
+Before acting, ALWAYS understand the full context.
+No execution without context analysis.
+No exceptions.
+
+[ES] Antes de escribir código, modificar archivos, generar documentación
+o proponer una solución, es OBLIGATORIO analizar el contexto completo
+del sistema y del estado actual del proyecto.
+
+================================================================
+1. CONTEXT ANALYSIS RULE (NEW – MANDATORY)
+================================================================
+
+### 1.1 Context comes first
+Before any change, the executor MUST explicitly analyze:
+
+- Current project state (architecture, version, snapshot)
+- Existing files and their responsibilities
+- Previously executed TASKs
+- Known issues, constraints, and decisions already taken
+- Scope and boundaries of the requested change
+
+[ES] No se permite “empezar a escribir” sin entender:
+- qué existe
+- qué funciona
+- qué ya fue decidido
+- qué NO debe tocarse
+
+### 1.2 No assumptions allowed
+- Never assume missing files, methods, or structures.
+- If something is unclear, it MUST be inspected or confirmed first.
+
+[ES] Asumir es introducir errores estructurales.
+[ES] Si algo no está claro, se detiene el proceso.
+
+### 1.3 Context acknowledgement
+Every TASK execution implicitly states:
+“I understand the current context and constraints of the system.”
+
+[ES] Si el resultado demuestra que el contexto no fue entendido,
+la tarea se considera fallida aunque “funcione”.
+
+================================================================
+2. CHANGE COMPLETENESS RULE (NON-NEGOTIABLE)
+================================================================
+
+### 2.1 Full-impact inclusion
+Every change MUST include ALL files involved, without exception:
+
+- Primary files directly modified
+- Dependent or consuming files
+- Configuration files
+- Documentation files
+- Workflow or governance files
+- Tests or validation artifacts (if applicable)
+
+[ES] Un cambio no es un archivo.
+[ES] Un cambio es el sistema coherente después del impacto.
+
+### 2.2 Partial changes are forbidden
+- Delivering snippets when a full file is required is forbidden.
+- Updating logic without updating documentation is forbidden.
+- Changing contracts without updating consumers is forbidden.
+
+[ES] No existe “después lo vemos”.
+[ES] Si el cambio toca 5 archivos, se entregan los 5.
+
+================================================================
+3. LANGUAGE AND DOCUMENTATION RULE
+================================================================
+
+### 3.1 Documentation language
+- All Markdown files MUST be written in English.
+- All Markdown files MUST include Spanish explanations inline using `[ES]`.
+
+[ES] Inglés = estándar técnico.
+[ES] Español = ejecución y control operativo.
+
+### 3.2 Documentation synchronization
+If the system changes:
+- Relevant docs MUST be updated
+- Versioned snapshot (`docs-vX.X.md`) MUST be updated
+
+[ES] Documentación desactualizada es documentación falsa.
+
+================================================================
+4. FILE DELIVERY RULE
+================================================================
+
+When asked to write or create a file:
+
+- The file MUST be delivered COMPLETE.
+- With its correct path.
+- Ready for copy/paste into the repository.
+
+[ES] Fragmentos solo se permiten si se solicitan explícitamente.
+[ES] El repositorio es real, no teórico.
+
+================================================================
+5. ARCHITECTURAL BOUNDARIES RULE
+================================================================
+
+- `/public` → entry point and static assets only
+- `/app` → backend logic (routing, middleware, services, controllers)
+- `/views` → presentation only (no business logic)
+- `/docs` → authoritative documentation
+
+[ES] Romper fronteras es una violación de gobernanza.
+
+================================================================
+6. TASK EXECUTION RULE
+================================================================
+
+Every TASK MUST:
+
+1. Respect previously approved architecture
+2. Follow the defined task order
+3. Use the official TASK template
+4. Pass QA validation
+5. Be committed only after QA approval
+
+[ES] Una tarea sin aprobación no existe.
+[ES] Una tarea sin QA no se cierra.
+
+================================================================
+7. ERROR AND GOVERNANCE RULE
+================================================================
+
+- All errors must be handled explicitly.
+- No raw PHP errors exposed.
+- No silent failures.
+
+Violations trigger:
+1. Task stop
+2. Violation report
+3. Corrective action including ALL impacted files
+
+[ES] Gobernanza no es discurso, es control.
+
+================================================================
+8. FINAL AUTHORITY
+================================================================
+
+- Project Manager approves progression.
+- QA blocks execution on failure.
+- Governance rules override speed or convenience.
+
+[ES] Avanzar rápido en la dirección equivocada es retroceder.
+
+================================================================
+END OF GOLDEN RULE
+================================================================

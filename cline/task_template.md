@@ -1,184 +1,101 @@
-# TASK-XXX – <Short descriptive title>
+# cline/task_template.md
 
-[ES] Esta plantilla es obligatoria para la creación y ejecución de cualquier TASK.
-[ES] Una TASK que no siga esta estructura es inválida y debe ser rechazada.
+# TASK Template (Mandatory)
+[ES] Plantilla obligatoria para cualquier tarea. Si falta una sección, la tarea está incompleta.
 
-================================================================================
-1. TASK IDENTIFICATION
-================================================================================
+---
 
-TASK ID:
-- TASK-XXX
+## TASK-ID
+- TASK-XXX — <Title in English>
+[ES] Ejemplo: TASK-090.5 — Explicit Middleware (Auth / CSRF / RateLimit)
 
-Task Title:
-- <Clear and unambiguous title>
+---
 
-Task Type:
-- ☐ Implementation
-- ☐ Validation (QA)
-- ☐ Documentation
-- ☐ Governance
-- ☐ Approval
+## Owner Role
+- <Project Manager | PHP Developer | SQL Developer | UX/UI Developer | QA>
+[ES] Un dueño claro: una tarea sin dueño no se ejecuta.
 
-[ES] El tipo define quién tiene autoridad primaria sobre la TASK.
+---
 
-================================================================================
-2. ROLE AND AUTHORITY
-================================================================================
+## Objective
+- <One paragraph, English>
+[ES] Qué se busca lograr. Sin marketing. Sin ambigüedad.
 
-Executing Role:
-- Backend
-- Frontend
-- QA
-- Project Manager
+---
 
-Approving Role:
-- QA
-- Project Manager
+## Scope
+### In scope
+- <Bullet list>
+### Out of scope
+- <Bullet list>
+[ES] Esto previene creep. Si algo no está en scope, no se toca.
 
-Authority Scope:
-- Describe explicitly what this TASK is allowed to touch.
+---
 
-[ES] Si no se define el alcance, la TASK no puede ejecutarse.
+## Change Completeness (GOLDEN RULE CHECK)
+**List ALL files involved (create/update/delete).**
+[ES] Obligatorio: si el cambio toca 5 archivos, aquí deben aparecer los 5.
 
-================================================================================
-3. DOCUMENTATION REFERENCE (MANDATORY)
-================================================================================
+### Files to CREATE
+- `<path>`
+- `<path>`
 
-Active Documentation Snapshot:
-- docs-v1.2.md
+### Files to UPDATE
+- `<path>`
+- `<path>`
 
-Additional Referenced Documents:
-- <List any additional .md files, or state NONE>
+### Files to DELETE (if any)
+- `<path>`
 
-Snapshot Compliance Rule:
-- If this TASK conflicts with docs-v1.2.md, it MUST be rejected.
+[ES] Nota: si cambias contratos (Request/Response/Router), debes incluir también consumidores (controllers/index.php/docs/tests).
 
-[ES] Esta sección es bloqueante. Sin snapshot, no hay TASK.
+---
 
-================================================================================
-4. OBJECTIVE
-================================================================================
+## Implementation Plan
+1. <Step 1 in English>
+2. <Step 2 in English>
+3. <Step 3 in English>
+[ES] Paso a paso ejecutable. No “implementar X” sin detallar.
 
-Objective:
-- Describe in one paragraph what this TASK aims to achieve.
+---
 
-Non-Objectives:
-- Explicitly list what this TASK will NOT do.
+## Acceptance Criteria
+- [ ] Criterion 1 (English)
+- [ ] Criterion 2 (English)
+- [ ] Criterion 3 (English)
+[ES] Criterios medibles. Si no se puede verificar, no sirve.
 
-[ES] Esto evita creep de alcance y “ya que estamos”.
+---
 
-================================================================================
-5. SCOPE AND BOUNDARIES
-================================================================================
+## Verification Commands (Manual)
+- `php -l <file>`
+- `composer dump-autoload -o`
+- `curl http://almadesign.local/ -UseBasicParsing`
+- `curl http://almadesign.local/health -UseBasicParsing`
+[ES] Ajustar comandos según la tarea. Si no hay verificación, no hay cierre.
 
-In Scope:
-- <Explicit list>
+---
 
-Out of Scope:
-- <Explicit list>
+## QA Checklist
+- [ ] All files listed in “Files to CREATE/UPDATE/DELETE” are actually included
+- [ ] No partial changes; no missing dependencies
+- [ ] No regression in `/` or `/health`
+- [ ] Unknown routes return 404 JSON
+[ES] QA no “confía”: valida.
 
-Governance Boundaries Affected:
-- Backend Governance
-- Frontend Governance
-- Governance Boundary
-- None
+---
 
-[ES] Si cruza frontera, debe declararse aquí.
+## Rollback Plan
+- <How to revert safely, English>
+[ES] Debe ser ejecutable. Ejemplo: `git revert <commit>` y comandos de sanity check.
 
-================================================================================
-6. EXECUTION RULES
-================================================================================
+---
 
-Execution Constraints:
-- Do NOT modify undocumented behavior.
-- Do NOT bypass QA.
-- Do NOT introduce new scope.
-- Follow governance rules strictly.
+## Documentation Updates
+- `docs/` files impacted: <list>
+- `docs-vX.X.md` snapshot update required: yes/no
+- README update required: yes/no
+[ES] Si cambias arquitectura o flujo, docs se actualizan sí o sí.
 
-Allowed Actions:
-- <Explicit list>
-
-Forbidden Actions:
-- <Explicit list>
-
-[ES] Aquí se define qué está permitido y qué no, sin interpretación.
-
-================================================================================
-7. DELIVERABLES
-================================================================================
-
-Expected Deliverables:
-- <Code files>
-- <Documentation files>
-- <Reports>
-
-File Locations:
-- <Exact paths>
-
-[ES] Si no se puede verificar un entregable, no cuenta.
-
-================================================================================
-8. QA VALIDATION REQUIREMENTS
-================================================================================
-
-QA Validation Type:
-- ☐ Functional
-- ☐ Security
-- ☐ Documentation
-- ☐ Governance
-- ☐ Regression
-
-Validation Criteria:
-- List explicit pass/fail criteria.
-
-Blocking Conditions:
-- List conditions that automatically reject the TASK.
-
-[ES] QA valida contra criterios, no contra intención.
-
-================================================================================
-9. SNAPSHOT IMPACT
-================================================================================
-
-Does this TASK require a new documentation snapshot?
-- ☐ YES
-- ☐ NO
-
-If YES:
-- New snapshot version: docs-vX.X.md
-- GOVERNANCE_CHANGELOG.md entry required: YES
-
-[ES] Cambios sin snapshot son inválidos.
-
-================================================================================
-10. APPROVAL AND STATUS
-================================================================================
-
-TASK Status:
-- ☐ Draft
-- ☐ In Progress
-- ☐ Blocked
-- ☐ Rejected
-- ☐ Approved
-
-QA Decision:
-- ☐ APPROVED
-- ☐ REJECTED
-
-Project Manager Decision (if applicable):
-- ☐ APPROVED
-- ☐ REJECTED
-
-Final Notes:
-- <Only factual notes, no opinions>
-
-================================================================================
-11. NON-NEGOTIABLE RULE
-================================================================================
-
-If any section of this template is incomplete or ambiguous:
-
-The TASK is invalid and must not be executed.
-
-[ES] Esta regla protege al sistema de improvisación.
+---
+End of template.

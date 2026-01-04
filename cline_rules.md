@@ -1,152 +1,142 @@
-# Cline Rules
-## Mandatory Workflow Rules
+# cline_rules.md
 
-[ES] Este archivo define las reglas de comportamiento del sistema y de los roles cuando se utiliza Cline.  
-[ES] Estas reglas son obligatorias y no negociables.
-
----
-
-## Rule 1 – Role Authority
-
-Each role operates strictly within its defined responsibilities.
-
-- Project Manager: governance and approval
-- PHP Developer: backend logic and plugins
-- SQL Developer: database design and integrity
-- UX/UI Developer: frontend implementation
-- Testing QA: validation and blocking authority
-
-[ES] Ningún rol puede invadir responsabilidades de otro.
+# Cline Rules — AlmaDesign Corporate Site
+[ES] Este documento define reglas operativas obligatorias para ejecutar el proyecto con Cline (y también para humanos).
+[ES] Si una regla se viola, el cambio se considera inválido y debe revertirse o rehacerse.
 
 ---
 
-## Rule 2 – Approval Gates
-
-No task may:
-- Start
-- Continue
-- Be integrated
-
-without explicit approval from the Project Manager.
-
-[ES] El JP actúa como gatekeeper absoluto.
+## 0. Project Context
+- Stack: PHP 8.x + Apache 2.x + MySQL 8.x
+- Frontend build: TailwindCSS + PostCSS + Autoprefixer
+- Structure: `/public` is the web root; `/app` contains backend code; `/views` contains templates.
+[ES] Este contexto no es decorativo: cualquier cambio debe respetar esta frontera.
 
 ---
 
-## Rule 3 – QA Validation
+## 1. GOLDEN RULE (Non-Negotiable)
+### 1.1 Documentation language rule
+- Every Markdown file MUST be written in English.
+- Every Markdown file MUST include Spanish annotations inline using the prefix `[ES]`.
+[ES] Esto evita documentación “a medias” y mantiene consistencia: inglés para estándar, español para ejecución.
 
-- Every task must be validated by Testing QA.
-- QA may reject tasks with documented evidence.
-- Maximum of 3 correction iterations per task.
-- Persistent failure escalates to the Project Manager.
+### 1.2 Change completeness rule (NEW — STRICT)
+**Every change MUST include ALL files involved. No exceptions.**
+That means: whenever you implement, modify, or fix something, you MUST update and provide:
+1) The primary code file(s) changed  
+2) All dependent/related code file(s) impacted  
+3) Any configuration file(s) impacted  
+4) Any documentation file(s) impacted  
+5) Any tests/checklists impacted (if present)  
+6) Any scaffolding or templates impacted (if the change alters workflow expectations)
 
-[ES] QA no negocia, valida o rechaza.
+[ES] En palabras simples: “cambio” no significa editar un archivo. Significa entregar el sistema coherente.
+[ES] Si cambias Router, también cambias Request/Response si el contrato cambió.
+[ES] Si cambias rutas, también actualizas docs y pruebas.
+[ES] Si cambias estructura, también actualizas README y docs-vX.X.
 
----
-
-## Rule 4 – Documentation First
-
-- Every task must produce or update documentation.
-- Documentation must be written in English.
-- Spanish annotations are mandatory.
-
-[ES] Código sin documentación se considera incompleto.
-
----
-
-## Rule 5 – Version Control Discipline
-
-- A Git commit is allowed only after QA approval.
-- Each commit must reference the approved task.
-- No “work in progress” commits are allowed.
-
-[ES] Cada commit representa un estado válido del sistema.
+### 1.3 Output rule (deliverables)
+- When asked to “create” or “write” a file, you MUST output the full file content.
+- Partial snippets are forbidden unless explicitly requested.
+[ES] Nada de fragmentos: el usuario está construyendo un repositorio real, no una conversación.
 
 ---
 
-## Rule 6 – Security as Baseline
+## 2. Roles and Authority
+### 2.1 Project Manager (JP) is the gatekeeper
+- JP approves requirements, architecture, task sequencing, and documentation snapshots.
+- No task proceeds without JP approval.
+[ES] Si no hay aprobación, no hay avance.
 
-Security is not optional and must be applied by default:
-
-- SQL Injection protection
-- XSS protection
-- Authentication and authorization controls
-- Session security
-- Basic anti-scraping measures
-
-[ES] Seguridad mínima obligatoria, no “nice to have”.
-
----
-
-## Rule 7 – SEO Orientation
-
-All frontend and backend decisions must consider SEO impact:
-
-- URL structure
-- Performance
-- Metadata availability
-- Content accessibility
-
-[ES] SEO no es una fase, es un criterio constante.
+### 2.2 QA is the blocking validator
+- QA validates each task output against acceptance criteria.
+- On failure, iterate up to 3 times; then produce a report for JP.
+[ES] QA corta el flujo si falla. No hay “más o menos”.
 
 ---
 
-## Rule 8 – No Silent Changes
-
-Any change in:
-- Scope
-- Architecture
-- Data model
-- Workflow
-
-must be documented and approved.
-
-[ES] Cambios silenciosos están prohibidos.
+## 3. Governance of Boundaries
+- `/public` contains only entry points and static assets.
+- `/app` contains business logic, routing, middleware, services, repositories, entities.
+- `/views` contains templates; it does not implement backend logic.
+[ES] Si ves lógica de negocio en `/views`, es una violación.
 
 ---
 
-## Rule 9 – Single Source of Truth
+## 4. Task Execution Protocol
+### 4.1 Every TASK MUST include
+- A unique ID: `TASK-XXX`
+- Objective
+- Scope (what is in / out)
+- Files to create/update (explicit list with paths)
+- Implementation steps
+- Acceptance criteria
+- Manual verification commands (curl/php/Apache checks)
+- Rollback plan
+[ES] Esto evita cambios incompletos y “parches” sin trazabilidad.
 
-- This repository is the only valid source of truth.
-- External decisions are invalid unless documented here.
-
-[ES] Lo que no está en el repo, no existe.
+### 4.2 Commit rule
+- After QA approval, commit with message: `TASK-XXX: <short description>`
+- The commit MUST include all involved files (see Golden Rule 1.2).
+[ES] No existe “hice commit solo del archivo X”. Si el cambio afectaba 4, van los 4.
 
 ---
 
-## Rule 10 – Final Approval
-
-The project is considered complete only when:
-
-- QA validates the system at 100%
-- Project Manager issues final written approval
-
-[ES] Sin doble aprobación, no hay cierre de proyecto.
+## 5. Versioned Documentation Snapshots
+- Maintain `docs-vX.X.md` snapshots reflecting the current frozen state.
+- Each snapshot must list:
+  - Architecture
+  - Tree structure (high-level)
+  - Completed tasks
+  - Pending tasks
+  - Governance updates
+[ES] Si el sistema cambió, el snapshot cambia. Si no, estás mintiendo en el repositorio.
 
 ---
 
-## Documentation Snapshot Enforcement
+## 6. Quality Gates (Mandatory)
+### 6.1 Backend boot gate
+- `GET /` returns 200 JSON
+- `GET /health` returns 200 JSON
+- Unknown routes return 404 JSON
+[ES] Si esto falla, no se continúa.
 
-The active and authoritative documentation snapshot for this project is:
+### 6.2 Middleware gate
+- RateLimit blocks abusive patterns (429)
+- Auth blocks missing/invalid auth (401) where applicable
+- CSRF blocks missing token on mutable methods (403)
+[ES] No se “simula” seguridad: se implementa y se prueba.
 
-- docs-v1.2.md
+---
 
-Rules:
-- All tasks MUST comply with docs-v1.2.md.
-- Any task that conflicts with docs-v1.2.md must be rejected.
-- No task may modify system behavior without updating documentation and issuing a new snapshot.
-- QA must validate tasks against docs-v1.2.md explicitly.
+## 7. Required Conventions
+### 7.1 Namespaces and Autoload
+- Namespaces must match Composer autoload mapping.
+- No duplicated class names in different files.
+- After namespace changes: run `composer dump-autoload -o`.
+[ES] Si el autoload no resuelve clases, el sistema se rompe. Punto.
 
-This rule is non-negotiable and applies to all roles.
+### 7.2 Error handling
+- All unhandled exceptions must map to a controlled JSON response (500) via ErrorController.
+[ES] Nada de pantallazos PHP en producción.
 
-[ES] Con esto, Cline no puede “olvidarse” del snapshot.
+---
 
-## Bootstrap Status (MANDATORY CONTEXT)
+## 8. Deliverable Format for Cline Outputs
+When producing files in chat:
+- Provide each file in full.
+- Precede each file with its exact target path.
+- Include Spanish annotations inside the file using `[ES]`.
+[ES] Esto es para copy/paste directo al repo sin adivinar nada.
 
-- Apache + VirtualHost: VERIFIED
-- PHP runtime: VERIFIED
-- Composer autoload: VERIFIED
-- Kernel minimal: VERIFIED
-- public/index.php: VERIFIED
+---
 
-No task may redefine or bypass these layers.
+## 9. Violation Protocol
+If any rule is violated:
+1) Stop the task
+2) Produce a violation report (what rule, where, impact)
+3) Propose a corrective patch including ALL involved files
+[ES] Esto es gobernanza real, no “buenas intenciones”.
+
+---
+End of rules.

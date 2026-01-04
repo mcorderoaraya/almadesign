@@ -1,64 +1,58 @@
-# docs-v1.3.md  
-## Bootstrap Validation & Kernel Initialization Milestone
+# Documentation Snapshot v1.3
+[ES] Estado congelado del sistema tras cierre de TASK-090.5.
 
 ---
 
-## 1. Document Purpose
+## 1. System Status
+- Backend entry point stabilized
+- Explicit routing and controllers
+- Global middleware pipeline implemented
+- Error handling centralized
 
-This document records a **validated technical milestone** in the Almadesign backend system:  
-the successful bootstrap of the application runtime and the existence of a minimal, executable Kernel.
-
-[ES]  
-Este documento **no planifica**, **no especula** ni **propone**.  
-Registra un **hecho técnico comprobado en runtime**: el sistema arranca correctamente y ejecuta código propio.
-
----
-
-## 2. Scope of This Version
-
-This version explicitly covers:
-
-- Apache VirtualHost resolution
-- PHP runtime execution
-- Composer autoload (PSR-4)
-- Minimal Kernel instantiation
-- HTTP execution validation via curl
-
-Anything outside this scope is intentionally excluded.
-
-[ES]  
-Esta versión **no incluye**:
-- routing
-- base de datos
-- ORM
-- plugins
-- lógica de negocio
-- frontend rendering
-
-Esto es deliberado. El objetivo es **aislar el bootstrap**.
+[ES] El sistema ya es ejecutable y defendible.
 
 ---
 
-## 3. Validated Runtime Environment
-
-The following components have been validated in execution:
-
-- Web Server: Apache (Windows)
-- VirtualHost: `almadesign.local`
-- DocumentRoot: `/public`
-- PHP execution enabled
-- Composer autoload enabled
-- `.env` successfully loaded
-- HTTP access validated via `curl`
-
-[ES]  
-Esto significa que:
-- el error ya **no es infraestructura**
-- cualquier fallo futuro será **código de aplicación**
+## 2. Completed Tasks
+- TASK-090.1 Request/Response mínimos
+- TASK-090.2 Request/Response diseño
+- TASK-090.3 Router mínimo
+- TASK-090.4 Controllers explícitos
+- TASK-090.5 Global middleware (Auth / CSRF / RateLimit)
 
 ---
 
-## 4. Entry Point Definition
+## 3. Architecture Highlights
+- No framework dependency
+- No automatic DI
+- Deterministic routing
+- Explicit security layers
 
-The application entry point is:
+[ES] Cada capa tiene una sola responsabilidad.
 
+---
+
+## 4. Validation Summary
+- / and /health validated via curl
+- Middleware behavior validated manually
+- Error responses standardized
+
+[ES] PowerShell 404 exceptions are client-side behavior.
+
+---
+
+## 5. Governance Status
+- REGLA DE ORO applied
+- Change completeness enforced
+- Context analysis respected
+
+---
+
+## 6. Pending Tasks
+- TASK-090.6 Middleware scoping per route
+- TASK-091 Domain controllers (Admin, Content)
+- TASK-100 Database integration hardening
+
+---
+
+Snapshot frozen.
