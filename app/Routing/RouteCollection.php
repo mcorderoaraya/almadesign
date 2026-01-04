@@ -3,37 +3,47 @@ declare(strict_types=1);
 
 namespace App\Routing;
 
+/**
+ * [ES] RouteCollection NO es estrictamente necesaria, pero si quieres mantenerla:
+ * - Actúa como “fachada” para registrar rutas sobre Router
+ * - Evita que index.php conozca detalles internos del Router
+ *
+ * [ES] Importante:
+ * - No implementa dispatch
+ * - No implementa matching
+ * - No “inventa” métodos (get/register/etc) que no existan en Router
+ */
 final class RouteCollection
 {
-    private array $routes = [];
+    private Router $router;
 
-    /**
-     * Register a GET route.
-     *
-     * [ES] Registra una ruta GET.
-     */
+    public function __construct(Router $router)
+    {
+        $this->router = $router;
+    }
+
     public function get(string $path, callable $handler): void
     {
-        $this->routes['GET'][$path] = $handler;
+        $this->router->get($path, $handler);
     }
 
-    /**
-     * Register a POST route.
-     *
-     * [ES] Registra una ruta POST.
-     */
     public function post(string $path, callable $handler): void
     {
-        $this->routes['POST'][$path] = $handler;
+        $this->router->post($path, $handler);
     }
 
-    /**
-     * Match a route by HTTP method and path.
-     *
-     * [ES] Busca una ruta según método HTTP y path.
-     */
-    public function match(string $method, string $path): ?callable
+    public function map(string $method, string $path, callable $handler): void
     {
-        return $this->routes[$method][$path] ?? null;
+        $this->router->map($method, $path, $handler);
+    }
+
+    public function setNotFoundHandler(callable $handler): void
+    {
+        $this->router->setNotFoundHandler($handler);
+    }
+
+    public function setErrorHandler(callable $handler): void
+    {
+        $this->router->setErrorHandler($handler);
     }
 }

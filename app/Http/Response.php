@@ -4,10 +4,11 @@ declare(strict_types=1);
 namespace App\Http;
 
 /**
- * Class Response
- *
- * [ES] Representa una respuesta HTTP.
- * Centraliza headers, status code y output.
+ * [ES] Response mínimo:
+ * - status
+ * - headers
+ * - body
+ * - send(): emite la respuesta HTTP
  */
 final class Response
 {
@@ -15,7 +16,7 @@ final class Response
     private array $headers;
     private string $body;
 
-    private function __construct(string $body, int $status = 200, array $headers = [])
+    public function __construct(string $body = '', int $status = 200, array $headers = [])
     {
         $this->body = $body;
         $this->status = $status;
@@ -23,30 +24,43 @@ final class Response
     }
 
     /**
-     * Create a JSON response.
-     *
-     * [ES] Crea una respuesta JSON estándar.
+     * [ES] Response JSON estándar.
+     * - Encodes con JSON_THROW_ON_ERROR para no esconder bugs
+     * - Fuerza Content-Type application/json
      */
     public static function json(array $data, int $status = 200): self
     {
+        $json = json_encode(
+            $data,
+            JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR
+        );
+
         return new self(
-            json_encode($data, JSON_UNESCAPED_UNICODE),
+            $json,
             $status,
-            ['Content-Type' => 'application/json; charset=UTF-8']
+            ['Content-Type' => 'application/json; charset=utf-8']
         );
     }
 
-    /**
-     * Send response to client.
-     *
-     * [ES] Emite headers y cuerpo al cliente.
-     */
+    public function withHeader(string $name, string $value): self
+    {
+        // [ES] Inmutabilidad simple: devuelve clon con header agregado.
+        $clone = clone $this;
+        $clone->headers[$name] = $value;
+        return $clone;
+    }
+
     public function send(): void
     {
-        http_response_code($this->status);
-
-        foreach ($this->headers as $name => $value) {
-            header("$name: $value");
+        /**
+         * [ES] En CLI no existen headers; evitamos warnings.
+         * En Apache sí se emite normalmente.
+         */
+        if (php_sapi_name() !== 'cli') {
+            http_response_code($this->status);
+            foreach ($this->headers as $name => $value) {
+                header($name . ': ' . $value);
+            }
         }
 
         echo $this->body;

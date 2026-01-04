@@ -1,25 +1,28 @@
 <?php
-/**
- * Middleware para verificar sesión autenticada.
- * Bloquea acceso si el usuario no está autenticado.
- * No realiza redirecciones, solo retorna estado o lanza excepción.
- */
 
 namespace App\Middleware;
 
-class AuthMiddleware
+use App\Http\Request;
+use App\Http\Response;
+
+/**
+ * [ES] Middleware de autenticación básica.
+ * Verifica presencia de header Authorization.
+ */
+final class AuthMiddleware implements MiddlewareInterface
 {
-    /**
-     * Verifica si la sesión está autenticada.
-     * 
-     * @return void
-     * @throws \Exception Si no está autenticado.
-     */
-    public function handle(): void
+    public function handle(Request $request): ?Response
     {
-        session_start();
-        if (empty($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
-            throw new \Exception('Acceso denegado: usuario no autenticado.');
+        $auth = $request->getHeader('Authorization');
+
+        if ($auth === null) {
+            return Response::json(
+                ['error' => 'Unauthorized'],
+                401
+            );
         }
+
+        // [ES] Aquí luego puedes validar token real
+        return null;
     }
 }

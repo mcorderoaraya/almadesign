@@ -1,70 +1,40 @@
 <?php
-/**
- * Middleware para limitación básica de tasa (rate limiting).
- * Identifica cliente por IP y limita solicitudes por ventana de tiempo.
- * Al exceder límite, retorna código 429 o lanza excepción.
- * Configurable por grupo de endpoints (placeholder).
- */
 
 namespace App\Middleware;
 
-class RateLimitMiddleware
+use App\Http\Request;
+use App\Http\Response;
+
+/**
+ * [ES] Middleware de rate limiting básico.
+ * Usa IP como clave (ejemplo simple).
+ */
+final class RateLimitMiddleware implements MiddlewareInterface
 {
-    protected int $maxRequests;
-    protected int $windowSeconds;
-    protected bool $enabled;
+    private static array $requests = [];
 
-    protected string $clientIp;
-    protected string $storageKey;
-
-    /**
-     * Constructor que recibe configuración de limitación.
-     * 
-     * @param int $maxRequests
-     * @param int $windowSeconds
-     * @param bool $enabled
-     */
-    public function __construct(int $maxRequests, int $windowSeconds, bool $enabled)
+    public function handle(Request $request): ?Response
     {
-        $this->maxRequests = $maxRequests;
-        $this->windowSeconds = $windowSeconds;
-        $this->enabled = $enabled;
-
-        $this->clientIp = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
-        $this->storageKey = 'rate_limit_' . $this->clientIp;
-
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-    }
-
-    /**
-     * Maneja la limitación de tasa.
-     * 
-     * @return void
-     * @throws \Exception Si se excede el límite de solicitudes.
-     */
-    public function handle(): void
-    {
-        if (!$this->enabled) {
-            return;
-        }
-
+        $ip = $request->getClientIp();
         $now = time();
-        $rateData = $_SESSION[$this->storageKey] ?? ['count' => 0, 'start' => $now];
 
-        if ($now - $rateData['start'] > $this->windowSeconds) {
-            // Reiniciar ventana
-            $rateData = ['count' => 1, 'start' => $now];
-        } else {
-            $rateData['count']++;
+        self::$requests[$ip] = self::$requests[$ip] ?? [];
+
+        // [ES] Limpia requests viejas (>60s)
+        self::$requests[$ip] = array_filter(
+            self::$requests[$ip],
+            fn ($t) => ($now - $t) < 60
+        );
+
+        if (count(self::$requests[$ip]) >= 60) {
+            return Response::json(
+                ['error' => 'Too many requests'],
+                429
+            );
         }
 
-        $_SESSION[$this->storageKey] = $rateData;
+        self::$requests[$ip][] = $now;
 
-        if ($rateData['count'] > $this->maxRequests) {
-            http_response_code(429);
-            throw new \Exception('Demasiadas solicitudes. Por favor intente más tarde.', 429);
-        }
+        return null;
     }
 }

@@ -4,61 +4,72 @@ declare(strict_types=1);
 namespace App\Http;
 
 /**
- * Class Request
- *
- * [ES] Representa una solicitud HTTP entrante.
- * Centraliza el acceso a variables globales.
+ * [ES] Request mínimo:
+ * - Encapsula method + path + query + headers + body raw
+ * - NO hace validación de negocio
+ * - NO depende de frameworks
  */
 final class Request
 {
     private string $method;
     private string $path;
     private array $query;
-    private array $body;
+    private array $headers;
+    private string $rawBody;
 
     private function __construct(
         string $method,
         string $path,
-        array $query,
-        array $body
+        array $query = [],
+        array $headers = [],
+        string $rawBody = ''
     ) {
-        $this->method = $method;
-        $this->path   = $path;
-        $this->query  = $query;
-        $this->body   = $body;
+        $this->method  = strtoupper(trim($method));
+        $this->path    = $path;
+        $this->query   = $query;
+        $this->headers = $headers;
+        $this->rawBody = $rawBody;
     }
 
     /**
-     * Build request from PHP globals.
-     *
-     * [ES] Fábrica de Request a partir de $_SERVER, $_GET y php://input.
+     * [ES] Construye Request desde superglobales.
+     * Esto define un contrato único y evita que el resto del sistema lea $_SERVER directamente.
      */
     public static function fromGlobals(): self
     {
         $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+        $uri    = $_SERVER['REQUEST_URI'] ?? '/';
 
-        $uri = $_SERVER['REQUEST_URI'] ?? '/';
-        $parsed = parse_url($uri);
+        // [ES] Separa path y query de REQUEST_URI
+        $path = $uri;
+        $qPos = strpos($uri, '?');
+        if ($qPos !== false) {
+            $path = substr($uri, 0, $qPos);
+        }
 
-        $path = '/' . trim($parsed['path'] ?? '/', '/');
+        $query = $_GET ?? [];
 
-        parse_str($parsed['query'] ?? '', $query);
+        // [ES] Headers. getallheaders() existe en Apache, pero no siempre en CLI.
+        $headers = [];
+        if (function_exists('getallheaders')) {
+            $headers = getallheaders() ?: [];
+        } else {
+            // [ES] Fallback básico desde $_SERVER
+            foreach ($_SERVER as $key => $value) {
+                if (str_starts_with($key, 'HTTP_')) {
+                    $hName = str_replace('_', '-', strtolower(substr($key, 5)));
+                    $headers[$hName] = $value;
+                }
+            }
+        }
 
-        $rawBody = file_get_contents('php://input');
-        $decoded = json_decode($rawBody, true);
+        $rawBody = file_get_contents('php://input') ?: '';
 
-        $body = is_array($decoded) ? $decoded : [];
-
-        return new self(
-            strtoupper($method),
-            $path,
-            $query,
-            $body
-        );
+        return new self($method, $path, $query, $headers, $rawBody);
     }
 
     /**
-     * [ES] Retorna método HTTP.
+     * [ES] getMethod(): usado por Router para elegir tabla de rutas.
      */
     public function getMethod(): string
     {
@@ -66,7 +77,7 @@ final class Request
     }
 
     /**
-     * [ES] Retorna path sin query string.
+     * [ES] getPath(): debe devolver SOLO la ruta, sin query string.
      */
     public function getPath(): string
     {
@@ -74,7 +85,7 @@ final class Request
     }
 
     /**
-     * [ES] Retorna parámetros GET.
+     * [ES] Query params (GET).
      */
     public function getQuery(): array
     {
@@ -82,10 +93,18 @@ final class Request
     }
 
     /**
-     * [ES] Retorna body JSON.
+     * [ES] Headers normalizados como array. Útil para auth, content-type, etc.
      */
-    public function getBody(): array
+    public function getHeaders(): array
     {
-        return $this->body;
+        return $this->headers;
+    }
+
+    /**
+     * [ES] Body raw (JSON, form data, etc). En router mínimo no lo parseamos automáticamente.
+     */
+    public function getRawBody(): string
+    {
+        return $this->rawBody;
     }
 }

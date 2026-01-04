@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 namespace App\Controllers;
 
@@ -7,13 +6,7 @@ use App\Http\Request;
 use App\Http\Response;
 
 /**
- * HealthController
- *
- * System health check endpoint.
- *
- * [ES]
- * - Endpoint técnico.
- * - No depende de DB ni servicios.
+ * [ES] Healthcheck del sistema.
  */
 final class HealthController
 {
@@ -21,7 +14,6 @@ final class HealthController
     {
         return Response::json([
             'status' => 'healthy',
-            'timestamp' => date('c')
         ]);
     }
 }

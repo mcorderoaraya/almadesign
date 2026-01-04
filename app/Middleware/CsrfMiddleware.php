@@ -1,40 +1,32 @@
 <?php
-/**
- * Middleware para protección CSRF.
- * Aplica a métodos POST, PUT, PATCH y DELETE.
- * Bloquea la solicitud si el token CSRF es inválido o está ausente.
- * No realiza redirecciones.
- */
 
 namespace App\Middleware;
 
-use App\Services\CsrfService;
+use App\Http\Request;
+use App\Http\Response;
 
-class CsrfMiddleware
+/**
+ * [ES] Middleware CSRF.
+ * Solo se aplica a métodos mutables (POST, PUT, DELETE).
+ */
+final class CsrfMiddleware implements MiddlewareInterface
 {
-    protected CsrfService $csrfService;
-
-    public function __construct(CsrfService $csrfService)
+    public function handle(Request $request): ?Response
     {
-        $this->csrfService = $csrfService;
-    }
-
-    /**
-     * Maneja la validación del token CSRF en la solicitud.
-     * 
-     * @return void
-     * @throws \Exception Si el token CSRF es inválido o ausente.
-     */
-    public function handle(): void
-    {
-        $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
-        $methodsToCheck = ['POST', 'PUT', 'PATCH', 'DELETE'];
-
-        if (in_array($method, $methodsToCheck, true)) {
-            $token = $_POST['_csrf_token'] ?? null;
-            if (!$this->csrfService->validateToken($token)) {
-                throw new \Exception('Token CSRF inválido o ausente.', 403);
-            }
+        if (!in_array($request->getMethod(), ['POST', 'PUT', 'DELETE'], true)) {
+            return null;
         }
+
+        $token = $request->getHeader('X-CSRF-TOKEN');
+
+        if ($token === null) {
+            return Response::json(
+                ['error' => 'CSRF token missing'],
+                403
+            );
+        }
+
+        // [ES] Validación real vendrá después
+        return null;
     }
 }

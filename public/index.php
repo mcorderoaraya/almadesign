@@ -2,102 +2,127 @@
 declare(strict_types=1);
 
 /**
- * ------------------------------------------------------------
- * AlmaDesign Backend Bootstrap
- * ------------------------------------------------------------
- * Punto único de entrada HTTP.
- * - Carga autoload de Composer
- * - Inicializa entorno
- * - Construye Request
- * - Ejecuta Kernel
- * - Emite Response
- * ------------------------------------------------------------
+ * ============================================================
+ * public/index.php
+ * ============================================================
+ *
+ * [ES] Punto de entrada único del sistema.
+ * [ES] Este archivo:
+ *   - NO contiene lógica de negocio
+ *   - NO implementa seguridad
+ *   - NO decide flujos complejos
+ *
+ * [ES] Su única responsabilidad es:
+ *   1. Bootstrapping mínimo
+ *   2. Crear Request
+ *   3. Ejecutar Middlewares explícitos
+ *   4. Registrar rutas
+ *   5. Delegar al Router
+ *   6. Enviar la Response
+ *
+ * ============================================================
  */
 
 // ------------------------------------------------------------
-// 1. Autoload Composer
+// Autoload de Composer
 // ------------------------------------------------------------
-$autoloadPath = dirname(__DIR__) . '/vendor/autoload.php';
-
-if (!file_exists($autoloadPath)) {
-    http_response_code(500);
-    echo 'Composer autoload not found. Run composer install.';
-    exit;
-}
-
-require $autoloadPath;
+// [ES] Carga automática de todas las clases del proyecto.
+// [ES] Si esto falla, TODO el sistema falla.
+require dirname(__DIR__) . '/vendor/autoload.php';
 
 // ------------------------------------------------------------
-// 2. Cargar variables de entorno (.env)
+// Imports explícitos (sin magia)
 // ------------------------------------------------------------
-$envPath = dirname(__DIR__);
 
-if (file_exists($envPath . '/.env')) {
-    $dotenv = Dotenv\Dotenv::createImmutable($envPath);
-    $dotenv->safeLoad();
-}
-
-// ------------------------------------------------------------
-// 3. Imports explícitos (sin magia)
-// ------------------------------------------------------------
 use App\Http\Request;
-use App\Http\Response;
 use App\Routing\Router;
-use App\Routing\RouteCollection;
-use App\App\Kernel;
+
+// Controllers
+use App\Controllers\HomeController;
+use App\Controllers\HealthController;
+use App\Controllers\ErrorController;
+
+// Middlewares
+use App\Middleware\AuthMiddleware;
+use App\Middleware\CsrfMiddleware;
+use App\Middleware\RateLimitMiddleware;
 
 // ------------------------------------------------------------
-// 4. Crear Request desde PHP globals
+// Creación del Request
 // ------------------------------------------------------------
+// [ES] Se construye el Request a partir de las variables globales PHP.
+// [ES] Aquí se normalizan método, path, headers, IP, etc.
 $request = Request::fromGlobals();
 
 // ------------------------------------------------------------
-// 5. Definir rutas explícitas (router mínimo)
+// Inicialización del Router
 // ------------------------------------------------------------
-$routes = new RouteCollection();
-
-/**
- * Health check
- */
-$routes->get('/health', function () {
-    return Response::json([
-        'status' => 'ok',
-        'service' => 'almadesign-backend',
-        'timestamp' => time()
-    ]);
-});
-
-/**
- * Root endpoint (debug / bootstrap validation)
- */
-$routes->get('/', function (Request $request) {
-    return Response::json([
-        'ok'     => true,
-        'method'=> $request->getMethod(),
-        'path'  => $request->getPath(),
-        'query' => $request->getQueryParams()
-    ]);
-});
+// [ES] El Router SOLO resuelve method + path → handler.
+$router = new Router();
 
 // ------------------------------------------------------------
-// 6. Inicializar Kernel
+// Instanciación de Controllers (explícito)
 // ------------------------------------------------------------
-$kernel = new Kernel($routes);
+// [ES] No hay contenedor de dependencias.
+// [ES] Cada controller se instancia de forma clara.
+$homeController   = new HomeController();
+$healthController = new HealthController();
+$errorController  = new ErrorController();
 
 // ------------------------------------------------------------
-// 7. Ejecutar aplicación
+// Registro explícito de rutas
 // ------------------------------------------------------------
-try {
-    $response = $kernel->handle($request);
-} catch (Throwable $e) {
-    $response = Response::json([
-        'error'   => 'Application error',
-        'message' => $e->getMessage(),
-    ], 500);
+// [ES] Aquí se define QUÉ rutas existen.
+// [ES] No hay lógica, solo mapeo.
+
+$router->get('/', [$homeController, 'index']);
+$router->get('/health', [$healthController, 'check']);
+
+// ------------------------------------------------------------
+// Registro de Middlewares globales
+// ------------------------------------------------------------
+// [ES] Se ejecutan ANTES del router.
+// [ES] Si alguno devuelve Response → el flujo se corta.
+
+$middlewares = [
+    // [ES] Rate limit primero: es barato y protege el sistema.
+    new RateLimitMiddleware(),
+
+    // [ES] Autenticación después.
+    new AuthMiddleware(),
+
+    // [ES] CSRF solo afecta métodos mutables (POST, PUT, DELETE).
+    new CsrfMiddleware(),
+];
+
+// ------------------------------------------------------------
+// Ejecución de Middlewares
+// ------------------------------------------------------------
+
+foreach ($middlewares as $middleware) {
+    $middlewareResponse = $middleware->handle($request);
+
+    // [ES] Si el middleware bloquea, se envía la respuesta y se termina.
+    if ($middlewareResponse !== null) {
+        $middlewareResponse->send();
+        exit;
+    }
 }
 
 // ------------------------------------------------------------
-// 8. Emitir respuesta HTTP
+// Ejecución del Router con manejo de errores
 // ------------------------------------------------------------
-$response = $kernel->handle($request);
+
+try {
+    // [ES] El Router devuelve SIEMPRE una Response.
+    $response = $router->dispatch($request);
+} catch (Throwable $e) {
+    // [ES] Cualquier excepción no controlada se delega al ErrorController.
+    $response = $errorController->exception($e);
+}
+
+// ------------------------------------------------------------
+// Envío de la respuesta final
+// ------------------------------------------------------------
+// [ES] Punto final del request HTTP.
 $response->send();
