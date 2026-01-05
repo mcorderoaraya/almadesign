@@ -1,54 +1,103 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Routing;
 
+use App\Controllers\ErrorController;
 use App\Http\Request;
 use App\Http\Response;
+use App\Middleware\MiddlewareInterface;
+use Throwable;
 
 /**
  * Router
  *
- * ÚNICA responsabilidad:
- * - Recibir Request
- * - Encontrar un handler válido
- * - Ejecutarlo
- * - Retornar Response
- *
- * NO captura excepciones
- * NO envía headers
+ * [ES] Router explícito, usando RouteCollection::match(Request).
+ * [ES] Este archivo es donde antes se rompió el contrato pasando string a match().
+ * [ES] Regla: match() SIEMPRE recibe Request.
  */
 final class Router
 {
-    private RouteCollection $routes;
+    public function __construct(
+        private RouteCollection $routes,
+        private ErrorController $errors
+    ) {}
 
-    public function __construct(RouteCollection $routes)
+    /**
+     * @param list<class-string> $middlewares
+     */
+    public function get(string $pattern, callable $handler, array $middlewares = []): void
     {
-        $this->routes = $routes;
+        $this->routes->add('GET', $pattern, $handler, $middlewares);
     }
 
     /**
-     * Despacha una request al handler correspondiente
-     *
-     * @throws \Throwable (propaga al Kernel)
+     * @param list<class-string> $middlewares
      */
+    public function post(string $pattern, callable $handler, array $middlewares = []): void
+    {
+        $this->routes->add('POST', $pattern, $handler, $middlewares);
+    }
+
     public function dispatch(Request $request): Response
     {
-        $method = $request->getMethod();
-        $path   = $request->getPath();
+        try {
+            $matched = $this->routes->match($request); // [ES] AQUÍ es donde NO se debe pasar string.
+            if ($matched === null) {
+                return $this->errors->notFound($request);
+            }
 
-        $route = $this->routes->match($method, $path);
+            $requestWithParams = $request->withRouteParams($matched->params);
 
-        if ($route === null) {
-            // IMPORTANTE:
-            // Router NO decide qué hacer con un 404
-            // Solo informa la condición
-            throw new \RuntimeException('ROUTE_NOT_FOUND', 404);
+            // Handler base.
+            $handler = function (Request $req) use ($matched): Response {
+                // [ES] Permitimos handler(Request) o handler(Request, array $params)
+                // sin Reflection pesada: probamos con 2 args y fallback a 1.
+                try {
+                    $res = ($matched->handler)($req, $req->getRouteParams());
+                } catch (Throwable $e) {
+                    // [ES] Si falló por argumentos, intentamos con 1.
+                    $res = ($matched->handler)($req);
+                }
+
+                return ($res instanceof Response)
+                    ? $res
+                    : Response::json(['success' => false, 'error' => 'Invalid handler response'], 500);
+            };
+
+            // Middleware por ruta (clases), se ejecutan en orden.
+            $pipeline = $handler;
+
+            // [ES] Creamos el pipeline al revés.
+            foreach (array_reverse($matched->middlewares) as $mwClass) {
+                $next = $pipeline;
+
+                $pipeline = function (Request $req) use ($mwClass, $next): Response {
+                    if (!class_exists($mwClass)) {
+                        return Response::json([
+                            'success' => false,
+                            'error'   => 'Middleware class not found',
+                            'meta'    => ['middleware' => $mwClass],
+                        ], 500);
+                    }
+
+                    $mw = new $mwClass();
+
+                    if (!$mw instanceof MiddlewareInterface) {
+                        return Response::json([
+                            'success' => false,
+                            'error'   => 'Invalid middleware (must implement MiddlewareInterface)',
+                            'meta'    => ['middleware' => $mwClass],
+                        ], 500);
+                    }
+
+                    return $mw->handle($req, $next);
+                };
+            }
+
+            return $pipeline($requestWithParams);
+        } catch (Throwable $e) {
+            return $this->errors->exception($e, $request);
         }
-
-        $handler = $route['handler'];
-        $params  = $route['params'];
-
-        // Ejecuta el handler (controller explícito)
-        return $handler($request, $params);
     }
 }

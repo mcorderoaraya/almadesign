@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Routing;
@@ -7,113 +6,136 @@ namespace App\Routing;
 use App\Http\Request;
 
 /**
- * RouteCollection con soporte para:
- * - rutas estáticas
- * - parámetros dinámicos {id}
- * - parámetros con constraint {id:\d+}
+ * RouteCollection
  *
- * [ES] Regla:
- * - El constraint se evalúa por segmento.
- * - Si NO cumple → no hay match.
+ * [ES] Guarda rutas y resuelve match(Request) -> MatchedRoute|null
+ * [ES] Soporta:
+ *  - /users/{id}
+ *  - /users/{id:\d+}
  */
 final class RouteCollection
 {
+    /** @var array<int, array<string, mixed>> */
     private array $routes = [];
 
-    public function get(string $path, callable $handler, array $middlewares = []): void
+    /**
+     * @param list<class-string> $middlewares
+     */
+    public function add(string $method, string $pattern, callable $handler, array $middlewares = []): void
     {
-        $this->add('GET', $path, $handler, $middlewares);
-    }
+        $method  = strtoupper($method);
+        $pattern = $this->normalizePath($pattern);
 
-    private function add(string $method, string $path, callable $handler, array $middlewares): void
-    {
-        if ($path === '') {
-            $path = '/';
-        }
-        if ($path[0] !== '/') {
-            $path = '/' . $path;
-        }
+        [$regex, $paramNames] = $this->compilePattern($pattern);
 
         $this->routes[] = [
-            'method'      => strtoupper($method),
-            'path'        => rtrim($path, '/') ?: '/',
+            'method'      => $method,
+            'pattern'     => $pattern,
+            'regex'       => $regex,
+            'paramNames'  => $paramNames,
             'handler'     => $handler,
             'middlewares' => $middlewares,
         ];
     }
 
-    /**
-     * Match principal con soporte de constraints.
-     */
-    public function match(Request $request): ?array
+    public function match(Request $request): ?MatchedRoute
     {
-        $reqMethod = $request->getMethod();
-        $reqPath   = $request->getPath();
+        $method = $request->getMethod();
+        $path   = $this->normalizePath($request->getPath());
 
-        foreach ($this->routes as $route) {
-            if ($route['method'] !== $reqMethod) {
+        foreach ($this->routes as $r) {
+            if ($r['method'] !== $method) {
                 continue;
             }
 
-            $params = $this->matchPath($route['path'], $reqPath);
-            if ($params !== null) {
-                return [
-                    ...$route,
-                    'params' => $params
-                ];
+            if (preg_match($r['regex'], $path, $m) !== 1) {
+                continue;
             }
+
+            // Extrae params por nombre.
+            $params = [];
+            foreach ($r['paramNames'] as $name) {
+                if (isset($m[$name])) {
+                    $params[$name] = (string)$m[$name];
+                }
+            }
+
+            return new MatchedRoute(
+                method: $method,
+                pattern: $r['pattern'],
+                handler: $r['handler'],
+                params: $params,
+                middlewares: $r['middlewares']
+            );
         }
 
         return null;
     }
 
-    /**
-     * Compara path de ruta vs path de request.
-     *
-     * Soporta:
-     * - /users/{id}
-     * - /users/{id:\d+}
-     */
-    private function matchPath(string $routePath, string $requestPath): ?array
+    // -------------------------
+    // Helpers internos
+    // -------------------------
+
+    private function normalizePath(string $path): string
     {
-        $routeParts   = explode('/', trim($routePath, '/'));
-        $requestParts = explode('/', trim($requestPath, '/'));
-
-        if (count($routeParts) !== count($requestParts)) {
-            return null;
-        }
-
-        $params = [];
-
-        foreach ($routeParts as $i => $routePart) {
-            $requestPart = $requestParts[$i];
-
-            // Caso 1: parámetro simple {id}
-            if (preg_match('/^\{(\w+)\}$/', $routePart, $m)) {
-                $params[$m[1]] = $requestPart;
-                continue;
-            }
-
-            // Caso 2: parámetro con constraint {id:\d+}
-            if (preg_match('/^\{(\w+):(.+)\}$/', $routePart, $m)) {
-                $paramName = $m[1];
-                $pattern   = $m[2];
-
-                // Aplica regex al segmento
-                if (!preg_match('/^' . $pattern . '$/', $requestPart)) {
-                    return null;
-                }
-
-                $params[$paramName] = $requestPart;
-                continue;
-            }
-
-            // Caso 3: segmento estático
-            if ($routePart !== $requestPart) {
-                return null;
-            }
-        }
-
-        return $params;
+        $path = trim($path);
+        if ($path === '') return '/';
+        if ($path[0] !== '/') $path = '/' . $path;
+        if (strlen($path) > 1) $path = rtrim($path, '/');
+        return $path;
     }
+
+    /**
+     * [ES] Compila /users/{id:\d+} en regex con named groups.
+     *
+     * @return array{0:string,1:list<string>} regex, paramNames
+     */
+    private function compilePattern(string $pattern): array
+    {
+        $paramNames = [];
+
+        // Escapa slashes para regex, pero dejamos los { } para procesarlos.
+        $regex = preg_replace_callback('/\{([a-zA-Z_][a-zA-Z0-9_]*)(:([^}]+))?\}/', function ($matches) use (&$paramNames) {
+            $name = $matches[1];
+            $constraint = $matches[3] ?? '[^/]+';
+
+            $paramNames[] = $name;
+
+            // Named group: (?P<id>\d+)
+            return '(?P<' . $name . '>' . $constraint . ')';
+        }, $pattern);
+
+        if (!is_string($regex)) {
+            // Fallback ultra defensivo.
+            $regex = preg_quote($pattern, '/');
+        } else {
+            // Escapa puntos u otros caracteres fuera de params:
+            // Para mantenerlo simple, asumimos que el patrón es estilo URL.
+            // (Si empiezas a meter caracteres raros, tú mismo te lo buscas.)
+        }
+
+        $final = '/^' . str_replace('/', '\/', $regex) . '$/';
+
+        return [$final, $paramNames];
+    }
+}
+
+/**
+ * MatchedRoute
+ *
+ * [ES] Resultado del match: handler + params + middlewares por ruta.
+ */
+final class MatchedRoute
+{
+    /**
+     * @param array<string, string> $params
+     * @param list<class-string> $middlewares
+     */
+    public function __construct(
+        public string $method,
+        public string $pattern,
+        public $handler,
+        public array $params = [],
+        public array $middlewares = [],
+    ) {}
 }

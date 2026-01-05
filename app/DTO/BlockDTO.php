@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DTOs;
+namespace App\DTO;
 
 /**
  * Data Transfer Object que define la estructura de un bloque para el frontend.

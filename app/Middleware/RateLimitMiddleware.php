@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Middleware;
@@ -8,75 +7,53 @@ use App\Http\Request;
 use App\Http\Response;
 
 /**
- * RateLimitMiddleware (simple, sin Redis, sin DB).
+ * RateLimitMiddleware
  *
- * [ES] Diseño:
- * - Usa $_SESSION como storage de ventana por IP.
- * - Es suficiente para entorno local/dev.
- * - En producción real: mover a Redis/memcached y reglas por endpoint.
- *
- * [ES] Contrato:
- * - Si excede límite → Response::json(..., 429)
- * - Si no → null (continúa)
+ * [ES] Rate limit mínimo (por IP + ruta). Sin Redis, sin magia.
+ * [ES] Si quieres algo serio, usa almacenamiento externo.
  */
 final class RateLimitMiddleware implements MiddlewareInterface
 {
-    private int $maxRequests;
-    private int $windowSeconds;
-    private string $keyPrefix;
+    private int $maxRequests = 60;   // [ES] 60 requests...
+    private int $windowSec   = 60;   // [ES] ...por 60 segundos.
 
-    public function __construct(int $maxRequests = 100, int $windowSeconds = 60, string $keyPrefix = 'rate_limit_')
+    public function handle(Request $request, callable $next): Response
     {
-        $this->maxRequests = $maxRequests;
-        $this->windowSeconds = $windowSeconds;
-        $this->keyPrefix = $keyPrefix;
-    }
-
-    public function handle(Request $request): ?Response
-    {
-        // [ES] Sin sesión no hay rate limit básico con este storage.
-        // Asegúrate de llamar session_start() en public/index.php.
-        if (session_status() !== PHP_SESSION_ACTIVE) {
-            return Response::json([
-                'error' => 'rate_limit_storage_unavailable',
-                'message' => 'Session is not active. Call session_start() in public/index.php.'
-            ], 500);
-        }
-
-        $ip = $request->getClientIp();
-        $key = $this->keyPrefix . md5($ip);
+        $ip   = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
+        $key  = sha1($ip . '|' . $request->getPath());
+        $file = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'rl_' . $key . '.json';
 
         $now = time();
+        $state = ['reset' => $now + $this->windowSec, 'count' => 0];
 
-        $data = $_SESSION[$key] ?? [
-            'count' => 0,
-            'start' => $now
-        ];
-
-        // [ES] Reinicia ventana si expiró
-        if (($now - (int)$data['start']) > $this->windowSeconds) {
-            $data = [
-                'count' => 0,
-                'start' => $now
-            ];
+        if (is_file($file)) {
+            $raw = file_get_contents($file);
+            $decoded = $raw ? json_decode($raw, true) : null;
+            if (is_array($decoded) && isset($decoded['reset'], $decoded['count'])) {
+                $state = $decoded;
+            }
         }
 
-        $data['count'] = (int)$data['count'] + 1;
-        $_SESSION[$key] = $data;
+        // [ES] Resetea ventana si expiró.
+        if ($now >= (int)$state['reset']) {
+            $state = ['reset' => $now + $this->windowSec, 'count' => 0];
+        }
 
-        if ($data['count'] > $this->maxRequests) {
-            $retryAfter = max(1, $this->windowSeconds - ($now - (int)$data['start']));
+        $state['count'] = (int)$state['count'] + 1;
+        file_put_contents($file, json_encode($state));
 
+        if ($state['count'] > $this->maxRequests) {
             return Response::json([
-                'error' => 'Too Many Requests',
-                'message' => 'Rate limit exceeded',
-                'retry_after_seconds' => $retryAfter
-            ], 429, [
-                // [ES] Header estándar para rate limit
-                'Retry-After' => (string)$retryAfter
-            ]);
+                'success' => false,
+                'error'   => 'Rate limit exceeded',
+                'meta'    => [
+                    'reset' => (int)$state['reset'],
+                    'limit' => $this->maxRequests,
+                    'windowSec' => $this->windowSec,
+                ],
+            ], 429);
         }
 
-        return null;
+        return $next($request);
     }
 }

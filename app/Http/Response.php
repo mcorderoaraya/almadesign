@@ -1,20 +1,16 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Http;
 
 /**
- * Response mínima del sistema.
- *
- * [ES] Objetivo:
- * - Contener status, headers y body.
- * - Permitir Response::json(...) para API/debug.
- * - send() como única salida HTTP (no usar echo en otros lugares).
+ * [ES] Representa una respuesta HTTP mínima y controlada.
+ * [ES] Regla: toda salida se emite vía Response->send(), no con echo suelto.
  */
 final class Response
 {
     private int $status;
+    /** @var array<string,string> */
     private array $headers;
     private string $body;
 
@@ -22,54 +18,64 @@ final class Response
     {
         $this->body = $body;
         $this->status = $status;
-        $this->headers = $headers;
-    }
 
-    /**
-     * [ES] Factory JSON estándar.
-     * - Siempre retorna Response.
-     * - Content-Type fijo a application/json; charset=utf-8.
-     */
-    public static function json(array $data, int $status = 200, array $headers = []): self
-    {
-        $payload = json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-
-        if ($payload === false) {
-            // [ES] Si JSON falla, respondemos de forma controlada.
-            $payload = json_encode([
-                'error' => 'json_encode_failed'
-            ]);
-            $status = 500;
+        // [ES] Normaliza headers en formato key => value
+        $this->headers = [];
+        foreach ($headers as $k => $v) {
+            $this->headers[(string)$k] = (string)$v;
         }
-
-        $baseHeaders = [
-            'Content-Type' => 'application/json; charset=utf-8',
-            // [ES] Evita cache en respuestas de diagnóstico
-            'Cache-Control' => 'no-store, no-cache, must-revalidate',
-            'Pragma' => 'no-cache',
-        ];
-
-        return new self($payload, $status, array_merge($baseHeaders, $headers));
     }
 
-    public function withHeader(string $name, string $value): self
+    public function withStatus(int $status): self
     {
         $clone = clone $this;
-        $clone->headers[$name] = $value;
+        $clone->status = $status;
+        return $clone;
+    }
+
+    public function withHeader(string $key, string $value): self
+    {
+        $clone = clone $this;
+        $clone->headers[$key] = $value;
         return $clone;
     }
 
     /**
-     * [ES] Envía headers y body. Esta es la única capa autorizada a emitir output.
+     * [ES] Creador estándar de JSON. No inventar headers en otros lados.
+     */
+    public static function json(array $data, int $status = 200, array $headers = []): self
+    {
+        $baseHeaders = [
+            'Content-Type' => 'application/json; charset=utf-8',
+            // [ES] Evita caché durante desarrollo/validación.
+            'Cache-Control' => 'no-store, no-cache, must-revalidate',
+            'Pragma' => 'no-cache',
+        ];
+
+        // [ES] Permite override explícito.
+        foreach ($headers as $k => $v) {
+            $baseHeaders[(string)$k] = (string)$v;
+        }
+
+        return new self(json_encode($data, JSON_UNESCAPED_UNICODE), $status, $baseHeaders);
+    }
+
+    /**
+     * [ES] Emite la respuesta al cliente. Este es el único final válido.
      */
     public function send(): void
     {
         http_response_code($this->status);
 
-        foreach ($this->headers as $name => $value) {
-            header($name . ': ' . $value);
+        foreach ($this->headers as $k => $v) {
+            header($k . ': ' . $v);
         }
 
         echo $this->body;
     }
+
+    // [ES] Helpers de introspección útiles para tests/manual debugging.
+    public function getStatus(): int { return $this->status; }
+    public function getBody(): string { return $this->body; }
+    public function getHeaders(): array { return $this->headers; }
 }

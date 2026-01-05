@@ -1,8 +1,8 @@
 <?php
 
-namespace App\DTOs;
+namespace App\DTO;
 
-use App\DTOs\BlockDTO;
+use App\DTO\BlockDTO;
 
 /**
  * Data Transfer Object que define la estructura de una página para el frontend.
