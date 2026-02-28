@@ -1,0 +1,19 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "tailwind-dev",
+      "runtimeExecutable": "npm.cmd",
+      "runtimeArgs": ["run", "dev"],
+      "port": 80,
+      "autoPort": true
+    },
+    {
+      "name": "tailwind-build",
+      "runtimeExecutable": "npm.cmd",
+      "runtimeArgs": ["run", "build"],
+      "port": 80,
+      "autoPort": true
+    }
+  ]
+}

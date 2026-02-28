@@ -344,9 +344,9 @@ El sistema es **RECHAZADO** si:
 
 ---
 
-**QA Engineer:** _______________
-**Fecha de ejecución:** _______________
-**Decisión final:** ⬜ APROBADO / ⬜ RECHAZADO
+**QA Engineer:** Mauricio Cordero Araya
+**Fecha de ejecución:** 2026/02/28
+**Decisión final:** ⬜ APROBADO
 
 ---
 *End of QA Test Plan — TASK-QA-100*

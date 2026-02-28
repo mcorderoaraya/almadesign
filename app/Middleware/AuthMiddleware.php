@@ -1,7 +1,9 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Middleware;
 
+use App\Errors\ErrorCatalog;
 use App\Http\Request;
 use App\Http\Response;
 
@@ -11,18 +13,24 @@ use App\Http\Response;
  */
 final class AuthMiddleware implements MiddlewareInterface
 {
-    public function handle(Request $request): ?Response
+    public function handle(Request $request, callable $next): Response
     {
         $auth = $request->getHeader('Authorization');
 
         if ($auth === null) {
+            $code = ErrorCatalog::UNAUTHORIZED;
+
             return Response::json(
-                ['error' => 'Unauthorized'],
-                401
+                ErrorCatalog::payload($code, [
+                    'method' => $request->getMethod(),
+                    'path'   => $request->getPath(),
+                ]),
+                ErrorCatalog::status($code)
             );
         }
 
-        // [ES] Aquí luego puedes validar token real
-        return null;
+        // [ES] Header presente — continúa el pipeline.
+        // Aquí puedes validar el token real en el futuro.
+        return $next($request);
     }
 }

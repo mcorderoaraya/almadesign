@@ -75,9 +75,11 @@ use App\Controllers\UserController;
 use App\Http\Request;
 use App\Http\Response;
 use App\Routing\Router;
+use App\Routing\RouteCollection;
 use App\Validation\Validator;
 use App\Middleware\ValidationMiddleware;
 use App\Middleware\RateLimitMiddleware;
+use App\Application\GetUserUseCase;
 
 // ======================================================
 // 4. CREACIÓN DEL REQUEST
@@ -100,9 +102,10 @@ $request = Request::fromGlobals();
  * - Router enruta y ejecuta middleware
  * - Kernel orquesta y captura excepciones
  */
-$errorController = new ErrorController();
-$router = new Router($errorController);
-$kernel = new Kernel($router, $errorController);
+$errorController  = new ErrorController();
+$routeCollection  = new RouteCollection();
+$router           = new Router($routeCollection, $errorController);
+$kernel           = new Kernel($router, $errorController);
 
 // ======================================================
 // 6. REGISTRO DE RUTAS
@@ -155,10 +158,16 @@ $router->get(
  * - ValidationMiddleware valida parámetros
  * - UserController es delgado
  * - La lógica vive en el Use Case
+ *
+ * DI manual explícita (sin Service Container):
+ *   GetUserUseCase (demo, sin DB aún) → UserController
  */
+$getUserUseCase = new GetUserUseCase();
+$userController = new UserController($getUserUseCase);
+
 $router->get(
     '/users/{id:\d+}',
-    [UserController::class, 'show'],
+    [$userController, 'show'],
     [
         new RateLimitMiddleware(),
         new ValidationMiddleware(
