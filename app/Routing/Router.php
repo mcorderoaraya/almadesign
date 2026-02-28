@@ -24,7 +24,7 @@ final class Router
     ) {}
 
     /**
-     * @param list<class-string> $middlewares
+     * @param list<class-string|MiddlewareInterface> $middlewares
      */
     public function get(string $pattern, callable $handler, array $middlewares = []): void
     {
@@ -32,7 +32,7 @@ final class Router
     }
 
     /**
-     * @param list<class-string> $middlewares
+     * @param list<class-string|MiddlewareInterface> $middlewares
      */
     public function post(string $pattern, callable $handler, array $middlewares = []): void
     {
@@ -69,25 +69,32 @@ final class Router
             $pipeline = $handler;
 
             // [ES] Creamos el pipeline al revés.
-            foreach (array_reverse($matched->middlewares) as $mwClass) {
+            // [ES] Acepta instancias (MiddlewareInterface) o class-string.
+            foreach (array_reverse($matched->middlewares) as $mwEntry) {
                 $next = $pipeline;
 
-                $pipeline = function (Request $req) use ($mwClass, $next): Response {
-                    if (!class_exists($mwClass)) {
+                $pipeline = function (Request $req) use ($mwEntry, $next): Response {
+                    // [ES] Caso 1: ya es una instancia lista.
+                    if ($mwEntry instanceof MiddlewareInterface) {
+                        return $mwEntry->handle($req, $next);
+                    }
+
+                    // [ES] Caso 2: es un class-string — instanciamos sin args.
+                    if (!is_string($mwEntry) || !class_exists($mwEntry)) {
                         return Response::json([
                             'success' => false,
                             'error'   => 'Middleware class not found',
-                            'meta'    => ['middleware' => $mwClass],
+                            'meta'    => ['middleware' => is_string($mwEntry) ? $mwEntry : gettype($mwEntry)],
                         ], 500);
                     }
 
-                    $mw = new $mwClass();
+                    $mw = new $mwEntry();
 
                     if (!$mw instanceof MiddlewareInterface) {
                         return Response::json([
                             'success' => false,
                             'error'   => 'Invalid middleware (must implement MiddlewareInterface)',
-                            'meta'    => ['middleware' => $mwClass],
+                            'meta'    => ['middleware' => $mwEntry],
                         ], 500);
                     }
 
