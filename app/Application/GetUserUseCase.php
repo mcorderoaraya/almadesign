@@ -5,41 +5,42 @@ namespace App\Application;
 
 use App\DTO\GetUserRequestDTO;
 use App\Exceptions\DomainException;
+use App\Repositories\UserRepositoryInterface;
 
 /**
  * GetUserUseCase
  *
  * EN:
- * Application service for retrieving a user.
+ * Application service for retrieving a single user by ID.
  *
  * ES:
- * Caso de uso: obtener un usuario.
- * Aquí vive la lógica de negocio.
+ * - Recibe GetUserRequestDTO
+ * - Consulta el repositorio
+ * - Lanza DomainException si no existe
+ * - No conoce HTTP ni PDO directamente
  */
 final class GetUserUseCase implements UseCaseInterface
 {
+    public function __construct(
+        private UserRepositoryInterface $users
+    ) {}
+
     public function execute(object $input): UseCaseResult
     {
-        // Defensa mínima de tipo (no debería fallar si se usa bien)
         if (!$input instanceof GetUserRequestDTO) {
             throw new \InvalidArgumentException('Invalid input DTO');
         }
 
-        // ES:
-        // Aquí normalmente llamarías a un repositorio:
-        // $user = $this->userRepository->findById($input->userId);
+        $user = $this->users->findById($input->userId);
 
-        // Simulación simple
-        $userId = $input->userId;
-
-        // Ejemplo: usuario no encontrado
-        if ($userId <= 0) {
+        if ($user === null) {
             throw new DomainException('User not found');
         }
 
         return UseCaseResult::success([
-            'id' => $userId,
-            'name' => 'Demo User'
+            'id'    => $user->id(),
+            'email' => $user->email(),
+            'name'  => $user->name(),
         ]);
     }
 }

@@ -72,8 +72,10 @@ if (file_exists($envFile) && class_exists(\Dotenv\Dotenv::class)) {
 use App\App\Kernel;
 use App\Controllers\ErrorController;
 use App\Controllers\UserController;
+use App\Database\PDOFactory;
 use App\Http\Request;
 use App\Http\Response;
+use App\Repositories\MySQL\MySQLUserRepository;
 use App\Routing\Router;
 use App\Routing\RouteCollection;
 use App\Validation\Validator;
@@ -159,15 +161,20 @@ $router->get(
  * - UserController es delgado
  * - La lógica vive en el Use Case
  *
- * DI manual explícita (sin Service Container):
- *   GetUserUseCase (demo, sin DB aún) → UserController
+ * DI lazy (sin Service Container):
+ *   PDOFactory → MySQLUserRepository → GetUserUseCase → UserController
+ * El PDO se instancia SOLO cuando la ruta es alcanzada,
+ * para que GET / y GET /health no fallen sin DB.
  */
-$getUserUseCase = new GetUserUseCase();
-$userController = new UserController($getUserUseCase);
-
 $router->get(
     '/users/{id:\d+}',
-    [$userController, 'show'],
+    function (Request $req, array $params = []): Response {
+        $pdo            = PDOFactory::create();
+        $userRepository = new MySQLUserRepository($pdo);
+        $getUserUseCase = new GetUserUseCase($userRepository);
+        $userController = new UserController($getUserUseCase);
+        return $userController->show($req, $params);
+    },
     [
         new RateLimitMiddleware(),
         new ValidationMiddleware(
