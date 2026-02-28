@@ -1,15 +1,16 @@
 <?php
 declare(strict_types=1);
 
-use App\Repositories\MySQL\MySQLUserRepository;
+namespace App\Repositories;
+
 use App\Entities\User;
 
 /**
  * UserRepositoryInterface
  *
  * ES:
- * - Define operaciones de lectura y escritura
- * - El dominio depende de esta interface, no de la DB
+ * - Define operaciones de lectura y escritura para User
+ * - El dominio depende de esta interface, no de la implementación concreta
  */
 interface UserRepositoryInterface
 {
