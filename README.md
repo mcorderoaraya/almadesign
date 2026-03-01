@@ -5,9 +5,9 @@
 [ES] No existe documentación fuera de este README que sea necesaria para entender el sistema.
 [ES] Todo lo aquí descrito está aprobado y congelado.
 
-================================================================================
-1. PROJECT OVERVIEW
-================================================================================
+---
+### **1. PROJECT OVERVIEW**
+---
 
 This project is a corporate website platform designed and built under a strict
 governance model. It prioritizes:
@@ -22,9 +22,9 @@ governance model. It prioritizes:
 [ES] El proyecto evita deliberadamente la improvisación y la deuda técnica.
 [ES] Cada decisión técnica está documentada, validada y aprobada.
 
-================================================================================
-2. TECHNOLOGY STACK
-================================================================================
+---
+### **2. TECHNOLOGY STACK**
+---
 
 Backend:
 - PHP 8.x
@@ -49,9 +49,9 @@ Tooling:
 
 [ES] Ninguna tecnología puede ser cambiada sin aprobación formal del Jefe de Proyecto.
 
-================================================================================
-3. ARCHITECTURAL PRINCIPLES
-================================================================================
+---
+### **3. ARCHITECTURAL PRINCIPLES**
+---
 
 The system follows a strict layered architecture inspired by MVC.
 
@@ -66,9 +66,9 @@ Principles:
 [ES] Las capas no se cruzan.
 [ES] Las violaciones arquitectónicas son errores bloqueantes.
 
-================================================================================
-4. HIGH-LEVEL ARCHITECTURE
-================================================================================
+---
+### **4. HIGH-LEVEL ARCHITECTURE**
+---
 
 Layers:
 
@@ -95,9 +95,9 @@ Layers:
 
 [ES] La arquitectura prioriza control sobre velocidad.
 
-================================================================================
-5. COMPLETE PROJECT STRUCTURE
-================================================================================
+---
+### **5. COMPLETE PROJECT STRUCTURE**
+---
 
 ROOT
 │
@@ -283,9 +283,9 @@ ROOT
 │   │   ├── header.php
 │   │   └── navigation.php
 
-================================================================================
-6. PLUGIN ARCHITECTURE
-================================================================================
+---
+### **6. PLUGIN ARCHITECTURE**
+---
 
 Implemented backend plugins:
 
@@ -303,9 +303,9 @@ Rules:
 
 [ES] Los plugins amplían el sistema sin romper el núcleo.
 
-================================================================================
-7. SECURITY MODEL
-================================================================================
+---
+### **7. SECURITY MODEL**
+---
 
 Security is enforced at multiple levels:
 
@@ -318,9 +318,9 @@ Security is enforced at multiple levels:
 
 [ES] La seguridad es transversal, no opcional.
 
-================================================================================
-8. FRONTEND ARCHITECTURE
-================================================================================
+---
+### **8. FRONTEND ARCHITECTURE**
+---
 
 Public Frontend:
 - Semantic HTML5
@@ -335,9 +335,9 @@ Admin UI:
 
 [ES] El frontend renderiza, el backend decide.
 
-================================================================================
-9. GOVERNANCE AND WORKFLOW
-================================================================================
+---
+### **9. GOVERNANCE AND WORKFLOW**
+---
 
 The project follows a strict task-driven workflow.
 
@@ -349,9 +349,9 @@ Rules:
 
 [ES] Si una acción no está documentada, no existe.
 
-================================================================================
-10. DOCUMENTATION AND SNAPSHOTS
-================================================================================
+---
+### **10. DOCUMENTATION AND SNAPSHOTS**
+---
 
 Documentation:
 - /docs/00_requirements.md
@@ -366,9 +366,9 @@ Snapshots:
 
 [ES] Los snapshots son estados certificados, no borradores.
 
-================================================================================
-11. QA AND PROJECT STATUS
-================================================================================
+---
+### **11. QA AND PROJECT STATUS**
+---
 
 QA Tasks:
 - TASK-050: Documentation consistency
@@ -390,9 +390,9 @@ Final Status:
 - QA: APPROVED
 - Project: CLOSED
 
-================================================================================
-12. FINAL STATEMENT
-================================================================================
+---
+### **12. FINAL STATEMENT**
+---
 
 This system was designed to be:
 
@@ -405,16 +405,14 @@ This system was designed to be:
 [ES] Este proyecto no depende de personas, depende de reglas.
 [ES] Por eso es escalable, defendible y profesional.
 
-================================================================================
-GOVERNANCE MATRIX
-================================================================================
+---
+### **GOVERNANCE MATRIX**
+---
 
 [ES] Esta matriz define explícitamente quién tiene autoridad sobre cada dimensión
 [ES] del sistema. No es orientativa. Es ejecutiva.
 
---------------------------------------------------------------------------------
 | Domain / Área              | Backend | Frontend | QA | Project Manager |
---------------------------------------------------------------------------------
 | Business Logic             |   YES   |    NO    | NO |       NO        |
 | Data Model & Integrity     |   YES   |    NO    | NO |       NO        |
 | Security Rules             |   YES   |    NO    | NO |       NO        |
@@ -427,32 +425,32 @@ GOVERNANCE MATRIX
 | Scope Definition           |   NO    |    NO    | NO |       YES       |
 | Priority & Planning        |   NO    |    NO    | NO |       YES       |
 | Final Acceptance           |   NO    |    NO    | NO |       YES       |
---------------------------------------------------------------------------------
+
 
 [ES] Reglas de interpretación:
 - YES = autoridad exclusiva
 - NO = sin autoridad
 - No existen autoridades compartidas
 
-================================================================================
-REGLA DE ORO PARA ChatGPT v5.2 Cómo ayudante técnico
-================================================================================
+---
+### **REGLA DE ORO PARA ChatGPT v5.2 Cómo ayudante técnico**
+---
 
-# OBJETIVO
+## **OBJETIVO**
 
 Tener un asistente técnico válido y respaldado por la técnología de ChatGPT v.5.2 hasta la fecha 04/01/2026. Esto asegura validación conceptual, técnica y documental al desarrollo de cualquier sistema. Se usa ChatGPT v.5.2 en el sitio web de https://chatgpt.com/ con lo cual redunda en un ahorro de tokens y costo del proyecto.
 
-# NOTA DE USO:
+### **NOTA DE USO:**
 
 Se mantiene una documentación completa del contexto interactuado con el asistente con el subojetivo de desarrollo y aprendisaje paso a paso, sin exepción. Se recomienda usar Google Drive.
 
-# GOLDEN RULE — ALMADESIGN SYSTEM
+### **GOLDEN RULE — ALMADESIGN SYSTEM**
 [ES] Regla operativa suprema del proyecto.
 [ES] Cualquier acción que viole esta regla invalida el cambio completo.
 
-================================================================
-0. PRINCIPIO FUNDAMENTAL
-================================================================
+---
+### **0. PRINCIPIO FUNDAMENTAL**
+---
 
 Before acting, ALWAYS understand the full context.
 No execution without context analysis.
@@ -462,9 +460,9 @@ No exceptions.
 o proponer una solución, es OBLIGATORIO analizar el contexto completo
 del sistema y del estado actual del proyecto.
 
-================================================================
-1. CONTEXT ANALYSIS RULE (NEW – MANDATORY)
-================================================================
+---
+### **1. CONTEXT ANALYSIS RULE (NEW – MANDATORY)**
+---
 
 ### 1.1 Context comes first
 Before any change, the executor MUST explicitly analyze:
@@ -495,9 +493,9 @@ Every TASK execution implicitly states:
 [ES] Si el resultado demuestra que el contexto no fue entendido,
 la tarea se considera fallida aunque “funcione”.
 
-================================================================
-2. CHANGE COMPLETENESS RULE (NON-NEGOTIABLE)
-================================================================
+---
+### **2. CHANGE COMPLETENESS RULE (NON-NEGOTIABLE)**
+---
 
 ### 2.1 Full-impact inclusion
 Every change MUST include ALL files involved, without exception:
@@ -520,9 +518,9 @@ Every change MUST include ALL files involved, without exception:
 [ES] No existe “después lo vemos”.
 [ES] Si el cambio toca 5 archivos, se entregan los 5.
 
-================================================================
-3. LANGUAGE AND DOCUMENTATION RULE
-================================================================
+---
+### **3. LANGUAGE AND DOCUMENTATION RULE**
+---
 
 ### 3.1 Documentation language
 - All Markdown files MUST be written in English.
@@ -538,9 +536,9 @@ If the system changes:
 
 [ES] Documentación desactualizada es documentación falsa.
 
-================================================================
-4. FILE DELIVERY RULE
-================================================================
+---
+### **4. FILE DELIVERY RULE**
+---
 
 When asked to write or create a file:
 
@@ -551,9 +549,9 @@ When asked to write or create a file:
 [ES] Fragmentos solo se permiten si se solicitan explícitamente.
 [ES] El repositorio es real, no teórico.
 
-================================================================
-5. ARCHITECTURAL BOUNDARIES RULE
-================================================================
+---
+### **5. ARCHITECTURAL BOUNDARIES RULE**
+---
 
 - `/public` → entry point and static assets only
 - `/app` → backend logic (routing, middleware, services, controllers)
@@ -562,9 +560,9 @@ When asked to write or create a file:
 
 [ES] Romper fronteras es una violación de gobernanza.
 
-================================================================
-6. TASK EXECUTION RULE
-================================================================
+---
+### **6. TASK EXECUTION RULE**
+---
 
 Every TASK MUST:
 
@@ -577,9 +575,9 @@ Every TASK MUST:
 [ES] Una tarea sin aprobación no existe.
 [ES] Una tarea sin QA no se cierra.
 
-================================================================
-7. ERROR AND GOVERNANCE RULE
-================================================================
+---
+### **7. ERROR AND GOVERNANCE RULE**
+---
 
 - All errors must be handled explicitly.
 - No raw PHP errors exposed.
@@ -592,9 +590,9 @@ Violations trigger:
 
 [ES] Gobernanza no es discurso, es control.
 
-================================================================
-8. FINAL AUTHORITY
-================================================================
+---
+### **8. FINAL AUTHORITY**
+---
 
 - Project Manager approves progression.
 - QA blocks execution on failure.
@@ -602,6 +600,114 @@ Violations trigger:
 
 [ES] Avanzar rápido en la dirección equivocada es retroceder.
 
-================================================================
-END OF GOLDEN RULE
-================================================================
+---
+### **END OF GOLDEN RULE**
+
+---
+---
+## 📋 QA REPORT & SPRINT HISTORY
+### Última actualización: 2026-02-28
+---
+
+### SPRINTS COMPLETADOS
+
+| Sprint | Descripción | Commit | Fecha | Estado |
+|--------|-------------|--------|-------|--------|
+| Bootstrap | Apache VirtualHost, Composer, PSR-4 | `a4b0e2d` | anterior | ✅ |
+| Routing base | Method + path + handler + middlewares[] | `ad98851` | anterior | ✅ |
+| Middleware | Interfaz y pipeline | `b357760` | anterior | ✅ |
+| ValidationMiddleware | Validación como middleware | `707efc2` | anterior | ✅ |
+| Tarea 98 | Repository write methods | `869e7e1` | anterior | ✅ |
+| TASK-QA-100 | QA Test Plan + Project Report | `1568dc3` | 2026-02-28 | ✅ |
+| **DT-01/02/03** | Fix críticos: AuthMiddleware + Router + UserController DI | `936ee5e` | 2026-02-28 | ✅ |
+| **Sprint MySQL** | PDOFactory + lazy DI + migrations + interface fix | `62096b4` | 2026-02-28 | ✅ |
+| **HTTPS Local** | mkcert + Apache mod_ssl + Virtual Hosts | config local | 2026-02-28 | ✅ |
+
+---
+
+### EJECUCIONES QA — 2026-02-28
+
+#### Sprint DT-01/02/03
+
+| Test | Resultado |
+|------|-----------|
+| `GET /` → `{"success":true,"data":{"service":"almadesign-backend","status":"running"}}` | ✅ PASS |
+| `GET /health` → `{"success":true,"data":{"status":"healthy"}}` | ✅ PASS |
+| `GET /notfound` → `{"success":false}` (404) | ✅ PASS |
+| `GET /users/5` → respuesta de controller | ✅ PASS |
+| `GET /users/abc` → 404 (constraint `\d+`) | ✅ PASS |
+| `GET /` con `RateLimitMiddleware` como instancia | ✅ PASS |
+| `php -l` en archivos modificados | ✅ SIN ERRORES |
+| `composer dump-autoload -o` | ✅ 0 warnings |
+
+#### Sprint MySQL
+
+| Test | Resultado |
+|------|-----------|
+| `GET /` sin DB → HTTP 200 (PDO lazy, no se ejecuta) | ✅ PASS |
+| `GET /health` sin DB → HTTP 200 | ✅ PASS |
+| `GET /notfound` → 404 JSON | ✅ PASS |
+| `GET /users/abc` → 404 (constraint) | ✅ PASS |
+| `php -l PDOFactory.php` | ✅ SIN ERRORES |
+| `php -l UserRepositoryInterface.php` | ✅ SIN ERRORES |
+| `php -l GetUserUseCase.php` | ✅ SIN ERRORES |
+| `php -l SaveUserUseCase.php` | ✅ SIN ERRORES |
+| `composer dump-autoload -o` | ✅ 132 clases, 0 warnings PSR-4 |
+
+#### Sprint HTTPS
+
+| Test | Resultado |
+|------|-----------|
+| Puerto 80 LISTENING | ✅ PASS |
+| Puerto 443 LISTENING | ✅ PASS |
+| `https://almadesign.local/` en Chrome | ✅ Candado verde |
+| `https://almadesign.local/` en Edge | ✅ Candado verde |
+| `https://almadesign.local/` en Comet | ✅ Candado verde |
+| Certificado SAN: `DNS:almadesign.local` | ✅ PASS |
+| CA raíz mkcert en Windows Trust Store | ✅ PASS |
+
+---
+
+### DEUDAS TÉCNICAS — ESTADO ACTUAL
+
+| ID | Descripción | Estado |
+|----|-------------|--------|
+| DT-01 | AuthMiddleware firma incorrecta | ✅ RESUELTO |
+| DT-02 | Router sin RouteCollection | ✅ RESUELTO |
+| DT-03 | UserController sin DI | ✅ RESUELTO |
+| DT-04 | Repositorios sin DB real | ✅ RESUELTO (PDOFactory) |
+| DT-05 | database.php no cargado | ✅ RESUELTO (lazy load) |
+| DT-06 | Logging no integrado en Kernel | ⚠️ Pendiente |
+| DT-07 | Views sin render centralizado | ⚠️ Pendiente |
+| DT-08 | ContentController sin render | ⚠️ Pendiente |
+| DT-09 | Sin sistema de sesiones | ⚠️ Pendiente |
+
+---
+
+### ENTORNO LOCAL ACTIVO
+
+```
+http://almadesign.local/    → Apache puerto 80
+https://almadesign.local/   → Apache puerto 443 (mkcert, válido hasta 2028-05-28)
+```
+
+**Para activar MySQL real:**
+```bash
+cp .env.example .env
+# Editar .env con credenciales MySQL
+
+mysql -u root -p almadesign < database/migrations/001_create_users_table.sql
+```
+
+---
+
+### PRÓXIMOS SPRINTS
+
+1. **Auth Flow** — login/logout con sesiones PHP
+2. **View Renderer** — sistema de render de vistas explícito
+3. **Page Builder** — CRUD pages/blocks en admin
+4. **PHPUnit** — tests unitarios automatizados
+
+---
+*QA Engineer: Mauricio Cordero Araya — 2026-02-28*
+---
