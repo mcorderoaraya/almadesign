@@ -99,61 +99,109 @@ Layers:
 ### **5. COMPLETE PROJECT STRUCTURE**
 ---
 
-ROOT
+[ES] Árbol actualizado al 2026-02-28. Refleja el estado real del repositorio tras los sprints DT-01/02/03, MySQL y HTTPS.
+[ES] Leyenda: ✅ implementado · ⚠️ estructura presente, lógica pendiente · ❌ pendiente
+
+```
+almadesign/
 │
-├── .env
+├── .env.example                         ← template credenciales DB (✅ nuevo)
+├── .env                                 ← credenciales reales (gitignored, crear desde .env.example)
 ├── CLIENT_REQUIREMENTS_BRIEF.md
+├── README.md                            ← este archivo
 ├── cline_rules.md
-├── docs-v1.0.md
-├── docs-v1.1.md
-├── docs-v1.2.md
-├── gobernanza.md
-├── package-lock.json
+├── composer.json
+├── composer.lock
 ├── package.json
 ├── postcss.config.js
-├── README.md
-├── tailwind.config.js
-├── app
-│   ├── Config
+├── tailwind.config.js                   ← content paths corregidos (✅ actualizado)
+│
+├── app/                                 ← backend PSR-4 (namespace App\)
+│   │
+│   ├── App/
+│   │   └── Kernel.php                   ← orquestador principal (✅)
+│   │
+│   ├── Config/
 │   │   ├── app.php
-│   │   ├── database.php
+│   │   ├── database.php                 ← leído por PDOFactory (✅)
 │   │   ├── logging.php
 │   │   ├── orm.php
 │   │   └── security.php
-│   ├── Controllers
-│   │   ├── AuthController.php
-│   │   └── ContentController.php
-│   ├── DTOs
+│   │
+│   ├── Controllers/
+│   │   ├── AuthController.php           ← (⚠️ estructura, lógica pendiente)
+│   │   ├── ContentController.php        ← (⚠️ estructura, lógica pendiente)
+│   │   ├── ErrorController.php          ← centraliza errores HTTP (✅)
+│   │   ├── HealthController.php         ← (✅)
+│   │   ├── HomeController.php           ← (⚠️ render pendiente)
+│   │   └── UserController.php           ← inyecta GetUserUseCase (✅)
+│   │
+│   ├── Database/                        ← capa de acceso a DB (✅ nuevo)
+│   │   └── PDOFactory.php               ← factory estática PDO (✅)
+│   │
+│   ├── DTO/
+│   │   ├── BaseRequestDTO.php
 │   │   ├── BlockDTO.php
-│   │   └── PageDTO.php
-│   ├── Entities
-│   │   └── BaseEntity.php
-│   ├── Logging
+│   │   ├── GetUserRequestDTO.php        ← (✅)
+│   │   ├── PageDTO.php
+│   │   ├── RequestDTOInterface.php
+│   │   └── SaveUserRequestDTO.php       ← (✅)
+│   │
+│   ├── Entities/
+│   │   ├── BaseEntity.php               ← (✅)
+│   │   └── User.php                     ← entidad pura sin HTTP ni DB (✅)
+│   │
+│   ├── Errors/
+│   │   └── ErrorCatalog.php             ← mapa códigos → HTTP status (✅)
+│   │
+│   ├── Exceptions/
+│   │   ├── AuthException.php
+│   │   ├── DomainException.php          ← (✅)
+│   │   └── ValidationException.php      ← (✅)
+│   │
+│   ├── Http/
+│   │   ├── JsonResponseTransformer.php
+│   │   ├── Request.php                  ← inmutable, fromGlobals() (✅)
+│   │   ├── Response.php                 ← único punto de salida (✅)
+│   │   └── ResponseTransformerInterface.php
+│   │
+│   ├── Application/                     ← Use Cases
+│   │   ├── GetUserUseCase.php           ← implementación real con repositorio (✅)
+│   │   ├── SaveUserUseCase.php          ← implementa UseCaseInterface (✅)
+│   │   ├── UseCaseInterface.php         ← (✅)
+│   │   └── UseCaseResult.php            ← (✅)
+│   │
+│   ├── Logging/
 │   │   ├── Logger.php
+│   │   ├── LoggerFactory.php
 │   │   └── LogLevel.php
-│   ├── Middleware
-│   │   ├── AuthMiddleware.php
+│   │
+│   ├── Middleware/
+│   │   ├── AuthMiddleware.php           ← firma corregida handle(Request, callable) (✅)
 │   │   ├── CsrfMiddleware.php
-│   │   ├── RateLimitMiddleware.php
-│   │   └── RoleMiddleware.php
-│   ├── Plugins
-│   │   ├── Backup
+│   │   ├── MiddlewareInterface.php      ← contrato del pipeline (✅)
+│   │   ├── RateLimitMiddleware.php      ← (✅)
+│   │   ├── RoleMiddleware.php
+│   │   └── ValidationMiddleware.php     ← source: params|body|query (✅)
+│   │
+│   ├── Plugins/
+│   │   ├── Backup/
 │   │   │   ├── BackupEntity.php
 │   │   │   ├── BackupPluginService.php
 │   │   │   ├── BackupRepository.php
 │   │   │   ├── BackupSchedulerService.php
 │   │   │   └── BackupService.php
-│   │   ├── Heatmap
+│   │   ├── Heatmap/
 │   │   │   ├── HeatmapEventEntity.php
 │   │   │   ├── HeatmapPluginService.php
 │   │   │   ├── HeatmapRepository.php
 │   │   │   └── HeatmapService.php
-│   │   ├── Inbox
+│   │   ├── Inbox/
 │   │   │   ├── InboxMessageEntity.php
 │   │   │   ├── InboxPluginService.php
 │   │   │   ├── InboxRepository.php
 │   │   │   └── InboxService.php
-│   │   ├── PageBuilder
+│   │   ├── PageBuilder/
 │   │   │   ├── BlockEntity.php
 │   │   │   ├── BlockRepository.php
 │   │   │   ├── BlockService.php
@@ -161,25 +209,45 @@ ROOT
 │   │   │   ├── PageEntity.php
 │   │   │   ├── PageRepository.php
 │   │   │   └── PageService.php
-│   │   └── VisitTracking
+│   │   └── VisitTracking/
 │   │       ├── VisitEntity.php
 │   │       ├── VisitRepository.php
 │   │       ├── VisitService.php
 │   │       └── VisitTrackingService.php
-│   ├── Repositories
-│   │   └── BaseRepository.php
-│   └── Services
-│       ├── AuthService.php
-│       ├── ContentService.php
-│       ├── CsrfService.php
-│       ├── EmailService.php
-│       └── SecurityService.php
-├── cline
+│   │
+│   ├── Repositories/
+│   │   ├── BaseRepository.php
+│   │   ├── UserRepositoryInterface.php  ← namespace corregido App\Repositories (✅)
+│   │   └── MySQL/
+│   │       └── MySQLUserRepository.php  ← conectado via PDO (✅)
+│   │
+│   ├── Routing/
+│   │   ├── RouteCollection.php          ← (✅)
+│   │   └── Router.php                   ← pipeline: instancias Y class-strings (✅)
+│   │
+│   ├── Services/
+│   │   ├── AuthService.php
+│   │   ├── ContentService.php
+│   │   ├── CsrfService.php
+│   │   ├── EmailService.php             ← (⚠️ sin SMTP)
+│   │   └── SecurityService.php
+│   │
+│   └── Validation/
+│       ├── Validator.php                ← (✅)
+│       └── ValidatorInterface.php
+│
+├── cline/                               ← artefactos QA y gobernanza Cline
+│   ├── golden_path_test.php             ← tests CLI sin servidor (4/4 PASS ✅)
+│   ├── project_report.md                ← reporte técnico completo (✅ actualizado)
+│   ├── qa_test_plan.md                  ← plan QA + ejecuciones (✅ actualizado)
 │   └── task_template.md
-├── database
-│   ├── migrations
-│   └── seeds
-├── docs
+│
+├── database/
+│   ├── migrations/
+│   │   └── 001_create_users_table.sql   ← tabla users, InnoDB, utf8mb4 (✅ nuevo)
+│   └── seeds/
+│
+├── docs/
 │   ├── 00_requirements.md
 │   ├── 01_architecture.md
 │   ├── 02_data_model.md
@@ -203,7 +271,8 @@ ROOT
 │   ├── 19_prompt_execution_plan.md
 │   ├── Diagrama-Flujo-Gobernanza-de-prompts.md
 │   └── workflow-flowchart.md
-├── governance
+│
+├── governance/
 │   ├── GOVERNANCE_AUDIT_SIMULATION.md
 │   ├── GOVERNANCE_CHANGELOG.md
 │   ├── GOVERNANCE_ONBOARDING.md
@@ -213,75 +282,82 @@ ROOT
 │   ├── backend_governance.md
 │   ├── frontend_governance.md
 │   └── governance_boundary.md
-├── public
-│   ├── index.php
-│   ├── assets
-│   │   ├── css
-│   │   │   ├── almadesign.css
-│   │   │   ├── app.css
-│   │   │   └── base.css
-│   │   ├── fonts
-│   │   │   ├── Constantia-Bold-Italic.woff2
-│   │   │   ├── Inter-Bold.woff2
-│   │   │   ├── Inter-Medium.woff2
-│   │   │   ├── Inter_SemiBold.woff2
-│   │   │   ├── Playfair-Display-Italic.woff2
-│   │   │   └── SourceSans-Regular.woff2
-│   │   ├── icons
-│   │   │   ├── apple-touch-icon.png
-│   │   │   ├── favicon-96x96.png
-│   │   │   ├── favicon.ico
-│   │   │   ├── favicon.svg
-│   │   │   ├── web-app-manifest-192x192.png
-│   │   │   └── web-app-manifest-512x512.png
-│   │   ├── images
-│   │   ├── js
-│   │   │   └── app.js
-│   │   └── videos
-├── src
-│   └── css
-│       └── tailwind.css
-├── storage
-│   └── logs
-├── translation
+│
+├── public/                              ← DocumentRoot Apache (único entry point)
+│   ├── index.php                        ← bootstrap + rutas + lazy DI (✅)
+│   ├── .htaccess                        ← rewrite rules Apache
+│   └── assets/
+│       ├── css/
+│       │   ├── almadesign.css
+│       │   ├── app.css                  ← generado por Tailwind watch/build
+│       │   └── base.css
+│       ├── fonts/
+│       │   ├── Constantia-Bold-Italic.woff2
+│       │   ├── Inter-Bold.woff2
+│       │   ├── Inter-Medium.woff2
+│       │   ├── Inter_SemiBold.woff2
+│       │   ├── Playfair-Display-Italic.woff2
+│       │   └── SourceSans-Regular.woff2
+│       ├── icons/
+│       │   ├── apple-touch-icon.png
+│       │   ├── favicon-96x96.png
+│       │   ├── favicon.ico
+│       │   ├── favicon.svg
+│       │   ├── web-app-manifest-192x192.png
+│       │   └── web-app-manifest-512x512.png
+│       ├── images/
+│       ├── js/
+│       │   └── app.js
+│       └── videos/
+│
+├── src/
+│   └── css/
+│       └── tailwind.css                 ← fuente Tailwind (input)
+│
+├── storage/
+│   └── logs/
+│
+├── translation/
 │   └── JP_TO_UXUI_TRANSLATION.md
-├── views
-│   ├── admin
-│   │   ├── blocks.php
-│   │   ├── dashboard.php
-│   │   ├── media.php
-│   │   ├── pages.php
-│   │   └── settings.php
-│   ├── blocks
-│   │   ├── form.block.php
-│   │   ├── image.block.php
-│   │   ├── mixed.block.php
-│   │   └── text.block.php
-│   ├── components
-│   │   └── block-renderer.php
-│   ├── errors
-│   │   ├── 404.php
-│   │   └── 500.php
-│   ├── layouts
-│   │   ├── admin.layout.php
-│   │   ├── base.layout.php
-│   ├── pages
-│   │   ├── about.php
-│   │   ├── cases.php
-│   │   ├── contact.php
-│   │   ├── home.php
-│   │   └── services.php
-│   ├── partials
-│   │   ├── admin-footer.php
-│   │   ├── admin-head.php
-│   │   ├── admin-header.php
-│   │   ├── admin-sidebar.php
-│   │   ├── alerts.php
-│   │   ├── cta-primary.php
-│   │   ├── footer.php
-│   │   ├── head.php
-│   │   ├── header.php
-│   │   └── navigation.php
+│
+└── views/                               ← presentación pura (sin lógica de negocio)
+    ├── admin/
+    │   ├── blocks.php
+    │   ├── dashboard.php
+    │   ├── media.php
+    │   ├── pages.php
+    │   └── settings.php
+    ├── blocks/
+    │   ├── form.block.php
+    │   ├── image.block.php
+    │   ├── mixed.block.php
+    │   └── text.block.php
+    ├── components/
+    │   └── block-renderer.php
+    ├── errors/
+    │   ├── 404.php
+    │   └── 500.php
+    ├── layouts/
+    │   ├── admin.layout.php
+    │   └── base.layout.php
+    ├── pages/
+    │   ├── about.php
+    │   ├── cases.php
+    │   ├── contact.php
+    │   ├── home.php
+    │   └── services.php
+    └── partials/
+        ├── admin-footer.php
+        ├── admin-head.php
+        ├── admin-header.php
+        ├── admin-sidebar.php
+        ├── alerts.php
+        ├── cta-primary.php
+        ├── footer.php
+        ├── head.php
+        ├── header.php
+        └── navigation.php
+```
 
 ---
 ### **6. PLUGIN ARCHITECTURE**
@@ -409,29 +485,45 @@ This system was designed to be:
 ### **GOVERNANCE MATRIX**
 ---
 
-[ES] Esta matriz define explícitamente quién tiene autoridad sobre cada dimensión
-[ES] del sistema. No es orientativa. Es ejecutiva.
+[ES] Esta matriz define explícitamente quién tiene autoridad sobre cada dimensión del sistema.
+[ES] No es orientativa. Es ejecutiva. Última revisión: 2026-02-28.
 
-| Domain / Área              | Backend | Frontend | QA | Project Manager |
-| Business Logic             |   YES   |    NO    | NO |       NO        |
-| Data Model & Integrity     |   YES   |    NO    | NO |       NO        |
-| Security Rules             |   YES   |    NO    | NO |       NO        |
-| Data Exposure (DTOs)       |   YES   |    NO    | NO |       NO        |
-| Rendering & Presentation   |   NO    |   YES    | NO |       NO        |
-| Styling & Branding         |   NO    |   YES    | NO |       NO        |
-| UX/UI Decisions            |   NO    |   YES    | NO |       NO        |
-| Validation & Testing       |   NO    |    NO    | YES|       NO        |
-| Task Approval              |   NO    |    NO    | YES|       NO        |
-| Scope Definition           |   NO    |    NO    | NO |       YES       |
-| Priority & Planning        |   NO    |    NO    | NO |       YES       |
-| Final Acceptance           |   NO    |    NO    | NO |       YES       |
+[ES] Leyenda de autoridad:
+- `✅ AUTH` = autoridad exclusiva sobre esta dimensión
+- `🔍 AUDIT` = puede auditar/verificar pero no decidir
+- `❌` = sin autoridad — no debe intervenir
 
-
+| # | Domain / Área               | Capa del Sistema         | Backend  | Frontend | QA       | Project Manager | Estado     |
+|---|-----------------------------|--------------------------|----------|----------|----------|-----------------|------------|
+| 01 | Business Logic             | Application / Domain     | ✅ AUTH  | ❌       | 🔍 AUDIT | ❌              | ✅ Activo  |
+| 02 | Data Model & Integrity     | Entities / Migrations    | ✅ AUTH  | ❌       | 🔍 AUDIT | ❌              | ✅ Activo  |
+| 03 | Security Rules             | Middleware / Services    | ✅ AUTH  | ❌       | 🔍 AUDIT | ❌              | ✅ Activo  |
+| 04 | Data Exposure (DTOs)       | DTO / Controllers        | ✅ AUTH  | ❌       | 🔍 AUDIT | ❌              | ✅ Activo  |
+| 05 | API Contract (Routes)      | Routing / index.php      | ✅ AUTH  | ❌       | 🔍 AUDIT | ❌              | ✅ Activo  |
+| 06 | DB Schema & Migrations     | Database / Repositories  | ✅ AUTH  | ❌       | 🔍 AUDIT | ❌              | ✅ Activo  |
+| 07 | Dependency Injection       | index.php / Kernel       | ✅ AUTH  | ❌       | 🔍 AUDIT | ❌              | ✅ Activo  |
+| 08 | Error Handling             | Kernel / ErrorCatalog    | ✅ AUTH  | ❌       | 🔍 AUDIT | ❌              | ✅ Activo  |
+| 09 | Rendering & Presentation   | Views / Layouts          | ❌       | ✅ AUTH  | 🔍 AUDIT | ❌              | ⚠️ Pendiente |
+| 10 | Styling & Branding         | Tailwind / CSS           | ❌       | ✅ AUTH  | 🔍 AUDIT | ❌              | ⚠️ Pendiente |
+| 11 | UX/UI Decisions            | Views / Components       | ❌       | ✅ AUTH  | 🔍 AUDIT | ❌              | ⚠️ Pendiente |
+| 12 | HTML5 Semantic Structure   | Views / Partials         | ❌       | ✅ AUTH  | 🔍 AUDIT | ❌              | ⚠️ Pendiente |
+| 13 | Validation Rules (Server)  | Validator / Middleware   | ✅ AUTH  | ❌       | 🔍 AUDIT | ❌              | ✅ Activo  |
+| 14 | QA Test Execution          | cline/qa_test_plan.md    | ❌       | ❌       | ✅ AUTH  | 🔍 AUDIT        | ✅ Activo  |
+| 15 | Golden Path Verification   | cline/golden_path_test   | ❌       | ❌       | ✅ AUTH  | 🔍 AUDIT        | ✅ Activo  |
+| 16 | Debt & Risk Assessment     | cline/project_report.md  | ❌       | ❌       | ✅ AUTH  | 🔍 AUDIT        | ✅ Activo  |
+| 17 | Sprint Approval (pre)      | Gobernanza               | ❌       | ❌       | ✅ AUTH  | ✅ AUTH         | ✅ Activo  |
+| 18 | Scope Definition           | Gobernanza               | ❌       | ❌       | ❌       | ✅ AUTH         | ✅ Activo  |
+| 19 | Priority & Planning        | Gobernanza               | ❌       | ❌       | ❌       | ✅ AUTH         | ✅ Activo  |
+| 20 | Final Acceptance           | Gobernanza               | ❌       | ❌       | 🔍 AUDIT | ✅ AUTH         | ✅ Activo  |
+| 21 | Infra / Dev Environment    | Apache / mkcert / hosts  | ✅ AUTH  | ❌       | 🔍 AUDIT | ❌              | ✅ Activo  |
+| 22 | CI/CD & Deployment         | Git / GitHub             | ✅ AUTH  | ❌       | 🔍 AUDIT | 🔍 AUDIT        | ⚠️ Manual  |
 
 [ES] Reglas de interpretación:
-- YES = autoridad exclusiva
-- NO = sin autoridad
-- No existen autoridades compartidas
+- `✅ AUTH` = autoridad exclusiva — solo este rol puede decidir y ejecutar
+- `🔍 AUDIT` = puede inspeccionar, verificar y reportar — no puede bloquear ni decidir
+- `❌` = sin autoridad — no debe intervenir ni proponer cambios en esta dimensión
+- Las filas con `⚠️ Pendiente` corresponden a dimensiones cuya implementación está en curso
+- No existen autoridades compartidas en la misma dimensión salvo `✅ AUTH` marcado en dos roles (coordinación explícita requerida)
 
 ---
 ### **REGLA DE ORO PARA ChatGPT v5.2 Cómo ayudante técnico**
