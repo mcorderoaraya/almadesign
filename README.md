@@ -525,14 +525,6 @@ This system was designed to be:
 - Las filas con `⚠️ Pendiente` corresponden a dimensiones cuya implementación está en curso
 - No existen autoridades compartidas en la misma dimensión salvo `✅ AUTH` marcado en dos roles (coordinación explícita requerida)
 
----
-### **REGLA DE ORO PARA ChatGPT v5.2 Cómo ayudante técnico**
----
-
-#### **OBJETIVO**
-
-Tener un asistente técnico válido y respaldado por la técnología de ChatGPT v.5.2 hasta la fecha 04/01/2026. Esto asegura validación conceptual, técnica y documental al desarrollo de cualquier sistema. Se usa ChatGPT v.5.2 en el sitio web de https://chatgpt.com/ con lo cual redunda en un ahorro de tokens y costo del proyecto.
-
 #### **NOTA DE USO:**
 
 Se mantiene una documentación completa del contexto interactuado con el asistente con el subojetivo de desarrollo y aprendisaje paso a paso, sin exepción. Se recomienda usar Google Drive.
@@ -694,7 +686,6 @@ Violations trigger:
 [ES] Avanzar rápido en la dirección equivocada es retroceder.
 
 ---
-### **END OF GOLDEN RULE**
 
 ## 📋 QA REPORT & SPRINT HISTORY
 ### Última actualización: 2026-02-28
