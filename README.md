@@ -436,20 +436,20 @@ This system was designed to be:
 ### **REGLA DE ORO PARA ChatGPT v5.2 Cómo ayudante técnico**
 ---
 
-## **OBJETIVO**
+#### **OBJETIVO**
 
 Tener un asistente técnico válido y respaldado por la técnología de ChatGPT v.5.2 hasta la fecha 04/01/2026. Esto asegura validación conceptual, técnica y documental al desarrollo de cualquier sistema. Se usa ChatGPT v.5.2 en el sitio web de https://chatgpt.com/ con lo cual redunda en un ahorro de tokens y costo del proyecto.
 
-### **NOTA DE USO:**
+#### **NOTA DE USO:**
 
 Se mantiene una documentación completa del contexto interactuado con el asistente con el subojetivo de desarrollo y aprendisaje paso a paso, sin exepción. Se recomienda usar Google Drive.
 
-### **GOLDEN RULE — ALMADESIGN SYSTEM**
+#### **GOLDEN RULE — ALMADESIGN SYSTEM**
 [ES] Regla operativa suprema del proyecto.
 [ES] Cualquier acción que viole esta regla invalida el cambio completo.
 
 ---
-### **0. PRINCIPIO FUNDAMENTAL**
+#### **0. PRINCIPIO FUNDAMENTAL**
 ---
 
 Before acting, ALWAYS understand the full context.
@@ -709,5 +709,5 @@ mysql -u root -p almadesign < database/migrations/001_create_users_table.sql
 4. **PHPUnit** — tests unitarios automatizados
 
 ---
-*QA Engineer: Mauricio Cordero Araya — 2026-02-28*
+#### *QA Engineer: Mauricio Cordero Araya — 2026-02-28*
 ---
