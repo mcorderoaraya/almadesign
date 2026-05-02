@@ -46,7 +46,7 @@
 - Retención local: 14 días.
 - Healthcheck manual ejecutado correctamente en VPS.
 - Backup manual ejecutado correctamente en VPS.
-- Próximo frente recomendado: RECREAR_PROMPT_FORMULARIO_CONTACTO_ALMADESIGN y luego CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
+- Próximo frente recomendado: VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN y luego PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN.
 
 ## Estado formulario
 

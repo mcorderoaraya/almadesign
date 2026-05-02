@@ -75,7 +75,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Backups destinados a `/var/backups/almadesign`.
 - Healthcheck manual ejecutado correctamente en VPS.
 - Backup manual ejecutado correctamente en VPS.
-- Siguiente frente recomendado: RECREAR_PROMPT_FORMULARIO_CONTACTO_ALMADESIGN y luego CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
+- Siguiente frente recomendado: VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN y luego PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN.
 
 ## Estado local MVC
 
@@ -83,7 +83,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - PHP MVC liviano creado sin framework y sin Composer.
 - Rutas disponibles: `/` y `/apogeo-lux`.
 - Sin conexión de base de datos por ahora.
-- Sin formulario por ahora.
+- Formulario de contacto configurado localmente, no desplegado todavía y con SMTP Zoho real pendiente de validar.
 - Deploy controlado a VPS ejecutado correctamente.
 
 ## Estado local landing Apogeo Lux
@@ -92,7 +92,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Landing `/apogeo-lux` corregida localmente con claims gobernados.
 - Incluye metadata específica, Open Graph básico y FAQ JSON-LD.
 - Sin conexión de base de datos por ahora.
-- Sin formulario por ahora.
+- Formulario de contacto configurado localmente, no desplegado todavía y con SMTP Zoho real pendiente de validar.
 - Deploy controlado a VPS ejecutado correctamente.
 
 ## Estado formulario

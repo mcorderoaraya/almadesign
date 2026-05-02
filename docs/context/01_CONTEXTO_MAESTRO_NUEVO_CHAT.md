@@ -61,14 +61,18 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend técnico 
 
 ## Formulario
 
-- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: NO_IMPLEMENTADO.
-- El prompt inicial para formulario perdió estructura al copiarse desde chat.
-- No implementar formulario hasta recrear y validar el prompt estructurado.
-- Siguiente frente recomendado: RECREAR_PROMPT_FORMULARIO_CONTACTO_ALMADESIGN.
-- Frente posterior: CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
+- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
+- Formulario de contacto configurado localmente, no desplegado todavía y con SMTP Zoho real pendiente de validar.
+- Rutas locales agregadas: `/contacto`, `/contacto/enviar` y `/contacto/gracias`.
+- PHPMailer instalado vía Composer.
+- `.env.example` creado sin secretos reales.
+- `.env` real no versionado.
+- No hay base de datos.
+- Siguiente frente recomendado: VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN.
+- Frente posterior: PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN.
 
 ## Restricciones de traspaso
 
 - No tocar `~/workspace/apogeo-lux/backend`.
-- No tocar VPS, Cloudflare, Zoho, DNS, SSL, Nginx, `.env`, llaves SSH, base de datos, formulario, Composer, WordPress, Docker ni cPanel.
+- No tocar VPS, Cloudflare, Zoho, DNS, SSL, Nginx, `.env`, llaves SSH, base de datos, Composer, WordPress, Docker ni cPanel.
 - No tratar GraphRAG del backend Apogeo Lux como alcance de AlmaDesign Web.

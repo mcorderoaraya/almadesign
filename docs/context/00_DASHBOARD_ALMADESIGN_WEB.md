@@ -42,8 +42,9 @@ AlmaDesign Web está explícitamente separado del backend técnico Apogeo Lux.
 - MVC PHP local: creado.
 - Landing `/apogeo-lux`: corregida localmente y desplegada.
 - No hay base de datos.
-- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: NO_IMPLEMENTADO.
-- No hay Composer en uso productivo todavía.
+- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
+- Formulario de contacto configurado localmente, no desplegado todavía y con SMTP Zoho real pendiente de validar.
+- PHPMailer instalado vía Composer.
 
 ## Backups y operación
 
@@ -58,8 +59,8 @@ AlmaDesign Web está explícitamente separado del backend técnico Apogeo Lux.
 
 ## Pendientes vigentes
 
-- RECREAR_PROMPT_FORMULARIO_CONTACTO_ALMADESIGN.
-- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN, solo después de prompt estructurado recreado y validado.
+- VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN.
+- PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN.
 
 ## Fuera de alcance
 

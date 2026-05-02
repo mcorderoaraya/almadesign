@@ -73,7 +73,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Front controller creado en `public/index.php`.
 - Rutas locales creadas para `/` y `/apogeo-lux`.
 - No hay base de datos conectada todavía.
-- No hay formulario todavía.
+- Formulario de contacto configurado localmente, no desplegado todavía y con SMTP Zoho real pendiente de validar.
 - Deploy controlado a VPS ejecutado correctamente.
 
 ## Observaciones landing Apogeo Lux
@@ -83,9 +83,9 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Usa claims gobernados sobre MVP GraphRAG local funcional para demo, normas públicas BCN / LeyChile, respuestas extractivas citadas, `source_ref`, trazabilidad, auditoría y gobernanza.
 - Declara explícitamente límites: no producción, no asesoría legal, no reemplazo de abogados, no LLM generativo usado en esta demo, no jurisprudencia integrada, no SaaS listo, no GraphRAG enterprise y no `ready_for_production_anchor=true`.
 - No hay base de datos todavía.
-- No hay formulario todavía.
+- Formulario de contacto configurado localmente, no desplegado todavía y con SMTP Zoho real pendiente de validar.
 - Deploy controlado a VPS ejecutado correctamente.
-- Siguiente frente recomendado: CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN o PREPARAR_BACKUPS_Y_OPERACION_ALMADESIGN_WEB, según estado.
+- Siguiente frente recomendado: VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN y luego PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN.
 
 ## Observaciones deploy VPS
 
@@ -107,7 +107,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Healthcheck manual ejecutado correctamente en VPS.
 - Backup manual ejecutado correctamente en VPS.
 - No se tocaron Cloudflare, Zoho, DNS, SSL, `.env`, llaves SSH, base de datos, formulario, Composer, WordPress, Docker ni cPanel.
-- Siguiente frente recomendado: RECREAR_PROMPT_FORMULARIO_CONTACTO_ALMADESIGN y luego CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
+- Siguiente frente recomendado: VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN y luego PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN.
 
 ## Estado formulario
 

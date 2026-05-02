@@ -16,7 +16,8 @@ AlmaDesign Web no debe tratar el backend técnico Apogeo Lux como parte modifica
 - ALMADESIGN_WEB_PUBLICO: OPERATIVO.
 - DEPLOY_CONTROLADO_ALMADESIGN_WEB_A_VPS: EJECUTADO_OK.
 - EJECUTAR_BACKUP_Y_HEALTHCHECK_ALMADESIGN_EN_VPS: EJECUTADO_OK.
-- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: NO_IMPLEMENTADO.
+- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
+- Formulario de contacto configurado localmente, no desplegado todavía y con SMTP Zoho real pendiente de validar.
 
 ## Restricciones
 
@@ -37,17 +38,16 @@ No modificar desde este frente documental:
 - `.ssh`.
 - llaves privadas.
 - base de datos.
-- formulario.
-- Composer.
 - WordPress.
 - Docker.
 - cPanel.
 
 ## Reglas para próximos frentes
 
-- No implementar formulario hasta recrear/validar el prompt estructurado.
-- Siguiente frente recomendado: RECREAR_PROMPT_FORMULARIO_CONTACTO_ALMADESIGN.
-- Frente posterior: CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
+- No afirmar publicación productiva del formulario hasta ejecutar un deploy controlado.
+- No afirmar validación real de Zoho SMTP hasta probar con `.env` real no versionado.
+- Siguiente frente recomendado: VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN.
+- Frente posterior: PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN.
 - No ejecutar deploy salvo frente explícito de deploy controlado.
 - No imprimir secretos.
 - No versionar `.env`.

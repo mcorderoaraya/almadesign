@@ -23,7 +23,8 @@
 - EJECUTAR_BACKUP_Y_HEALTHCHECK_ALMADESIGN_EN_VPS: EJECUTADO_OK.
 - Backup manual ejecutado correctamente en VPS.
 - Healthcheck manual ejecutado correctamente en VPS.
-- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: NO_IMPLEMENTADO.
+- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
+- Formulario de contacto configurado localmente, no desplegado todavía y con SMTP Zoho real pendiente de validar.
 
 ## Acceso SSH
 
@@ -150,4 +151,5 @@ sudo bash /var/www/almadesign/ops/almadesign_healthcheck.sh
 
 ## Próximo frente recomendado
 
-- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
+- VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN.
+- PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN.

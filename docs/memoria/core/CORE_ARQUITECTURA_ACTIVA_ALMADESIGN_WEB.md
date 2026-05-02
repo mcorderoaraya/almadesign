@@ -14,8 +14,9 @@
 - Nginx local en puerto `8088`.
 - PHP 8.3-FPM.
 - No existe conexión de base de datos.
-- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: NO_IMPLEMENTADO.
-- No hay Composer en uso productivo todavía.
+- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
+- Formulario de contacto configurado localmente, no desplegado todavía y con SMTP Zoho real pendiente de validar.
+- PHPMailer instalado vía Composer.
 
 ## Producción validada
 

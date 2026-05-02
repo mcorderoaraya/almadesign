@@ -35,7 +35,7 @@ La operación mínima se apoya en backups locales bajo `/var/backups/almadesign`
 
 ## Decisión 8
 
-CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: NO_IMPLEMENTADO. No se debe implementar formulario hasta recrear/validar el prompt estructurado.
+CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES. El formulario existe localmente, no está desplegado todavía y SMTP Zoho real queda pendiente de validar.
 
 ## Límites
 

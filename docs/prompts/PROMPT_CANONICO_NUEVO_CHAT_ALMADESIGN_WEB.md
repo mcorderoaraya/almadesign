@@ -61,7 +61,7 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend Apogeo Lu
 - No hay base de datos.
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
 - Composer incorporado localmente para PHPMailer.
-- No hay deploy de formulario todavía.
+- Formulario de contacto configurado localmente, no desplegado aún y con SMTP Zoho real pendiente de validar.
 
 ## Pendientes
 
