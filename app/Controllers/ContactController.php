@@ -10,6 +10,9 @@ use Throwable;
 
 final class ContactController extends BaseController
 {
+    // Nombre específico para evitar autofill accidental del honeypot.
+    private const HONEYPOT_FIELD = 'almadesign_hp_field';
+
     public function index(): void
     {
         $this->renderForm();
@@ -27,7 +30,7 @@ final class ContactController extends BaseController
             $this->logContact('csrf_failed', $ip, $input['email'] ?? '', 'csrf');
         }
 
-        if (($input['website'] ?? '') !== '') {
+        if (($input[self::HONEYPOT_FIELD] ?? '') !== '') {
             $this->logContact('honeypot_blocked', $ip, $input['email'] ?? '', 'bot');
             $this->redirect('/contacto/gracias');
         }
@@ -99,7 +102,7 @@ final class ContactController extends BaseController
             'telefono' => trim((string) ($input['telefono'] ?? '')),
             'asunto' => trim((string) ($input['asunto'] ?? '')),
             'mensaje' => trim((string) ($input['mensaje'] ?? '')),
-            'website' => trim((string) ($input['website'] ?? '')),
+            self::HONEYPOT_FIELD => trim((string) ($input[self::HONEYPOT_FIELD] ?? '')),
             'csrf_token' => trim((string) ($input['csrf_token'] ?? '')),
         ];
     }

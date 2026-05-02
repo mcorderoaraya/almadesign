@@ -28,8 +28,8 @@ $field = static fn (string $name): string => (string) ($old[$name] ?? '');
         <input type="hidden" name="csrf_token" value="<?= e($csrfToken) ?>">
 
         <div class="honeypot" aria-hidden="true">
-            <label for="website">Website</label>
-            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+            <!-- Nombre intencionalmente específico para evitar autofill accidental. -->
+            <input id="almadesign_hp_field" name="almadesign_hp_field" type="text" value="" tabindex="-1" autocomplete="off">
         </div>
 
         <label>

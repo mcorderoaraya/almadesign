@@ -52,9 +52,12 @@
 ## Estado formulario
 
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
+- CORREGIR_HONEYPOT_FORMULARIO_ALMADESIGN: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
 - Rutas locales agregadas: `/contacto`, `/contacto/enviar` y `/contacto/gracias`.
 - PHPMailer instalado vía Composer.
 - `.env.example` creado sin secretos reales.
+- Falso positivo de honeypot corregido localmente usando un campo menos propenso a autofill accidental.
+- SMTP Zoho real sigue pendiente de validación por envío de formulario.
 - No hay base de datos.
 - No hay deploy de este frente todavía.
 

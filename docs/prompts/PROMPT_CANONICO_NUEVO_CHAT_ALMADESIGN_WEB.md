@@ -73,11 +73,14 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend Apogeo Lu
 ## Estado formulario
 
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
+- CORREGIR_HONEYPOT_FORMULARIO_ALMADESIGN: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
 - Rutas locales: `/contacto`, `/contacto/enviar` y `/contacto/gracias`.
 - PHPMailer instalado vía Composer.
 - SMTP Zoho parametrizado por `.env` no versionado.
 - `.env.example` sin secretos reales.
 - CSRF token, honeypot, validación server-side, sanitización, rate limit simple y log mínimo.
+- Falso positivo de honeypot corregido localmente usando un campo menos propenso a autofill accidental.
+- SMTP Zoho real sigue pendiente de validación por envío de formulario.
 - No hay base de datos.
 - No hay deploy de este frente todavía.
 
