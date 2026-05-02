@@ -13,6 +13,10 @@ $field = static fn (string $name): string => (string) ($old[$name] ?? '');
         <h1>Conversemos con calma.</h1>
         <p class="lead">Cuéntanos qué necesitas revisar con AlmaDesign. Respondemos por correo, sin automatismos invasivos ni base de datos de contactos.</p>
     </div>
+    <aside class="contact-note" aria-label="Estado del formulario">
+        <p>Formulario configurado localmente.</p>
+        <span>SMTP Zoho real pendiente de validar antes de deploy.</span>
+    </aside>
 </section>
 
 <section class="contact-section">

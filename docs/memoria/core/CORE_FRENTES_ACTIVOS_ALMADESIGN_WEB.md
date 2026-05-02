@@ -23,6 +23,7 @@
 - PREPARAR_BACKUPS_Y_OPERACION_ALMADESIGN_WEB: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
 - EJECUTAR_BACKUP_Y_HEALTHCHECK_ALMADESIGN_EN_VPS: EJECUTADO_OK.
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
+- APLICAR_FRONTEND_DESIGN_ALMADESIGN_WEB: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
 
 ## Deploy validado
 
@@ -56,6 +57,15 @@
 - `.env.example` creado sin secretos reales.
 - No hay base de datos.
 - No hay deploy de este frente todavía.
+
+## Estado frontend
+
+- APLICAR_FRONTEND_DESIGN_ALMADESIGN_WEB: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
+- Mejora visual aplicada localmente.
+- No hay deploy de esta mejora todavía.
+- El formulario sigue sin deploy.
+- SMTP Zoho real sigue pendiente de validar.
+- Siguiente frente recomendado: VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN.
 
 ## Separación obligatoria
 

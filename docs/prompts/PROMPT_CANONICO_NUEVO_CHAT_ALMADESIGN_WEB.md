@@ -62,6 +62,8 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend Apogeo Lu
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
 - Composer incorporado localmente para PHPMailer.
 - Formulario de contacto configurado localmente, no desplegado aún y con SMTP Zoho real pendiente de validar.
+- APLICAR_FRONTEND_DESIGN_ALMADESIGN_WEB: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
+- Mejora visual aplicada localmente a Home, `/apogeo-lux` y contacto.
 
 ## Pendientes
 
@@ -78,6 +80,14 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend Apogeo Lu
 - CSRF token, honeypot, validación server-side, sanitización, rate limit simple y log mínimo.
 - No hay base de datos.
 - No hay deploy de este frente todavía.
+
+## Estado frontend
+
+- APLICAR_FRONTEND_DESIGN_ALMADESIGN_WEB: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
+- Dirección visual: humano, sobrio, premium, tecnológico e institucional.
+- No hay deploy de esta mejora todavía.
+- El formulario sigue sin deploy.
+- SMTP Zoho real sigue pendiente de validar.
 
 ## Fuera de alcance
 

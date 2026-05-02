@@ -54,6 +54,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - CORREGIR_LANDING_APOGEO_LUX_ALMADESIGN: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
 - PREPARAR_BACKUPS_Y_OPERACION_ALMADESIGN_WEB: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
+- APLICAR_FRONTEND_DESIGN_ALMADESIGN_WEB: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
 
 ## Frentes ejecutados en VPS
 
@@ -121,6 +122,16 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - No hay base de datos.
 - No hay deploy de este frente todavía.
 - Siguiente frente recomendado: VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN y luego PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN.
+
+## Estado frontend
+
+- APLICAR_FRONTEND_DESIGN_ALMADESIGN_WEB: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
+- Mejora visual aplicada localmente sobre Home, `/apogeo-lux`, `/contacto` y `/contacto/gracias`.
+- Se reforzó dirección visual humana, sobria, premium, tecnológica e institucional.
+- No hay deploy de esta mejora todavía.
+- El formulario sigue sin deploy.
+- SMTP Zoho real sigue pendiente de validar.
+- Siguiente frente recomendado: VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN.
 
 ## Fuera de alcance
 
