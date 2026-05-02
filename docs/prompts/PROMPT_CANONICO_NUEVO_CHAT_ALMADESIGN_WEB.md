@@ -47,11 +47,15 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend Apogeo Lu
 - ROLLBACK_DISPONIBLE: TRUE.
 - CREAR_ESTRUCTURA_PHP_MVC_ALMADESIGN: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
 - CORREGIR_LANDING_APOGEO_LUX_ALMADESIGN: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
+- PREPARAR_BACKUPS_Y_OPERACION_ALMADESIGN_WEB: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
+- Script de backup: `ops/almadesign_backup.sh`.
+- Script de healthcheck: `ops/almadesign_healthcheck.sh`.
+- Runbook de operación: `docs/gestion/RUNBOOK_OPERACION_ALMADESIGN_WEB.md`.
+- Retención local de backups: 14 días.
 
 ## Pendientes
 
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
-- PREPARAR_BACKUPS_Y_OPERACION_ALMADESIGN_WEB.
 
 ## Fuera de alcance
 

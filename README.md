@@ -42,7 +42,6 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 ## Pendientes
 
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
-- PREPARAR_BACKUPS_Y_OPERACION_ALMADESIGN_WEB.
 
 ## Estado deploy
 
@@ -54,6 +53,17 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - ROLLBACK_DISPONIBLE: TRUE.
 - GitHub repo: `https://github.com/mcorderoaraya/almadesign`.
 - Branch deploy: `main`.
+
+## Estado operación y backups
+
+- PREPARAR_BACKUPS_Y_OPERACION_ALMADESIGN_WEB: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
+- Script de backup versionado: `ops/almadesign_backup.sh`.
+- Script de healthcheck versionado: `ops/almadesign_healthcheck.sh`.
+- Runbook de operación versionado: `docs/gestion/RUNBOOK_OPERACION_ALMADESIGN_WEB.md`.
+- Retención local definida: 14 días.
+- Backups destinados a `/var/backups/almadesign`.
+- Scripts preparados para ejecutarse en VPS; no ejecutados desde Codex en este frente.
+- Siguiente frente recomendado: CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
 
 ## Estado local MVC
 

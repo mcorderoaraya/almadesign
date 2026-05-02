@@ -42,12 +42,12 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 ## Pendientes
 
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
-- PREPARAR_BACKUPS_Y_OPERACION_ALMADESIGN_WEB.
 
 ## Frentes implementados localmente
 
 - CREAR_ESTRUCTURA_PHP_MVC_ALMADESIGN: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
 - CORREGIR_LANDING_APOGEO_LUX_ALMADESIGN: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
+- PREPARAR_BACKUPS_Y_OPERACION_ALMADESIGN_WEB: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
 
 ## Frentes ejecutados en VPS
 
@@ -88,6 +88,18 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Cloudflare proxy activo.
 - Headers de seguridad activos.
 - Rollback disponible por backup en `/var/backups/almadesign`.
+
+## Observaciones operación y backups
+
+- Script de backup versionado en `ops/almadesign_backup.sh`.
+- Script de healthcheck versionado en `ops/almadesign_healthcheck.sh`.
+- Runbook de operación versionado en `docs/gestion/RUNBOOK_OPERACION_ALMADESIGN_WEB.md`.
+- Backup root VPS definido: `/var/backups/almadesign`.
+- App root VPS definido: `/var/www/almadesign`.
+- Retención local definida: 14 días.
+- Scripts preparados para ejecución en VPS, sin ejecución desde Codex en este frente.
+- No se tocaron Cloudflare, Zoho, DNS, SSL, `.env`, llaves SSH, base de datos, formulario, Composer, WordPress, Docker ni cPanel.
+- Siguiente frente recomendado: CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
 
 ## Fuera de alcance
 

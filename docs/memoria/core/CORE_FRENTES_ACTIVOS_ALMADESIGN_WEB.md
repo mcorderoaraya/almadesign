@@ -8,7 +8,6 @@
 ## Pendientes vigentes
 
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
-- PREPARAR_BACKUPS_Y_OPERACION_ALMADESIGN_WEB.
 
 ## Frentes completados
 
@@ -20,6 +19,7 @@
 - CLOUDFLARE_PROXY: ACTIVO.
 - HTTPS_PUBLICO: OK.
 - ROLLBACK_DISPONIBLE: TRUE.
+- PREPARAR_BACKUPS_Y_OPERACION_ALMADESIGN_WEB: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
 
 ## Deploy validado
 
@@ -34,6 +34,15 @@
 - Cloudflare proxy activo.
 - Headers de seguridad activos.
 - Rollback disponible por backup en `/var/backups/almadesign`.
+
+## Operación y backups preparados
+
+- Script de backup: `ops/almadesign_backup.sh`.
+- Script de healthcheck: `ops/almadesign_healthcheck.sh`.
+- Runbook: `docs/gestion/RUNBOOK_OPERACION_ALMADESIGN_WEB.md`.
+- Retención local: 14 días.
+- Scripts preparados para ejecutar en VPS.
+- Próximo frente recomendado: CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
 
 ## Separación obligatoria
 
