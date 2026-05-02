@@ -1,0 +1,10 @@
+{
+    "name": "almadesign/web",
+    "description": "AlmaDesign Web PHP MVC site.",
+    "type": "project",
+    "license": "proprietary",
+    "require": {
+        "php": ">=8.3",
+        "phpmailer/phpmailer": "^7.0"
+    }
+}

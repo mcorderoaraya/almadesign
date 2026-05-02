@@ -7,8 +7,8 @@
 
 ## Pendientes vigentes
 
-- RECREAR_PROMPT_FORMULARIO_CONTACTO_ALMADESIGN.
-- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
+- VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN.
+- PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN.
 
 ## Frentes completados
 
@@ -22,6 +22,7 @@
 - ROLLBACK_DISPONIBLE: TRUE.
 - PREPARAR_BACKUPS_Y_OPERACION_ALMADESIGN_WEB: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
 - EJECUTAR_BACKUP_Y_HEALTHCHECK_ALMADESIGN_EN_VPS: EJECUTADO_OK.
+- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
 
 ## Deploy validado
 
@@ -49,9 +50,12 @@
 
 ## Estado formulario
 
-- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: NO_IMPLEMENTADO.
-- El prompt inicial para formulario perdió estructura al copiarse desde chat.
-- No implementar formulario hasta recrear/validar el prompt estructurado.
+- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
+- Rutas locales agregadas: `/contacto`, `/contacto/enviar` y `/contacto/gracias`.
+- PHPMailer instalado vía Composer.
+- `.env.example` creado sin secretos reales.
+- No hay base de datos.
+- No hay deploy de este frente todavía.
 
 ## Separación obligatoria
 

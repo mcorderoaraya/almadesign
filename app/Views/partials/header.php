@@ -12,5 +12,6 @@ declare(strict_types=1);
     <nav class="site-nav" aria-label="Navegación principal">
         <a href="<?= e(url('/')) ?>">Inicio</a>
         <a href="<?= e(url('/apogeo-lux')) ?>">Apogeo Lux</a>
+        <a href="<?= e(url('/contacto')) ?>">Contacto</a>
     </nav>
 </header>

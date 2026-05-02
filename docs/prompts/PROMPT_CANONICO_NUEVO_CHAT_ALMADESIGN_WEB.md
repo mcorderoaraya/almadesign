@@ -59,20 +59,25 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend Apogeo Lu
 - Healthcheck manual ejecutado correctamente en VPS.
 - Backup manual ejecutado correctamente en VPS.
 - No hay base de datos.
-- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: NO_IMPLEMENTADO.
-- No hay Composer en uso productivo todavía.
+- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
+- Composer incorporado localmente para PHPMailer.
+- No hay deploy de formulario todavía.
 
 ## Pendientes
 
-- RECREAR_PROMPT_FORMULARIO_CONTACTO_ALMADESIGN.
-- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
+- VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN.
+- PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN.
 
 ## Estado formulario
 
-- El prompt inicial para formulario perdió estructura al copiarse desde chat.
-- No se debe implementar formulario hasta recrear/validar el prompt estructurado.
-- Siguiente frente recomendado: RECREAR_PROMPT_FORMULARIO_CONTACTO_ALMADESIGN.
-- Frente posterior: CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
+- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
+- Rutas locales: `/contacto`, `/contacto/enviar` y `/contacto/gracias`.
+- PHPMailer instalado vía Composer.
+- SMTP Zoho parametrizado por `.env` no versionado.
+- `.env.example` sin secretos reales.
+- CSRF token, honeypot, validación server-side, sanitización, rate limit simple y log mínimo.
+- No hay base de datos.
+- No hay deploy de este frente todavía.
 
 ## Fuera de alcance
 

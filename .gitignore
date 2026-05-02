@@ -1,5 +1,7 @@
 .env
 .env.*
+!.env.example
+/vendor/
 /storage/*
 !/storage/.gitkeep
 /logs/*

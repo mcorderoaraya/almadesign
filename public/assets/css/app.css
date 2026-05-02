@@ -500,6 +500,113 @@ details p {
     max-width: 720px;
 }
 
+.contact-hero,
+.contact-section {
+    width: min(1160px, calc(100% - 32px));
+    margin: 0 auto;
+}
+
+.contact-hero {
+    padding: 58px 0 28px;
+}
+
+.contact-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 82px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+.contact-form label {
+    display: grid;
+    gap: 8px;
+}
+
+.contact-form span {
+    color: var(--cream);
+    font-weight: 850;
+}
+
+.contact-form em {
+    color: var(--cream-soft);
+    font-style: normal;
+    font-weight: 650;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(245, 239, 227, 0.06);
+    color: var(--cream);
+    font: inherit;
+}
+
+.contact-form input {
+    min-height: 46px;
+    padding: 0 12px;
+}
+
+.contact-form textarea {
+    min-height: 190px;
+    padding: 12px;
+    resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--orange-strong);
+    outline: 2px solid rgba(232, 121, 46, 0.18);
+}
+
+.contact-form small,
+.form-actions p {
+    color: var(--warn);
+}
+
+.full-span,
+.form-alert {
+    grid-column: 1 / -1;
+}
+
+.form-alert {
+    padding: 14px;
+    border: 1px solid rgba(242, 182, 109, 0.42);
+    border-radius: 8px;
+    background: rgba(242, 182, 109, 0.08);
+    color: #f9d6aa;
+    font-weight: 750;
+}
+
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+}
+
+.form-actions p {
+    margin: 0;
+}
+
+.honeypot {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.contact-thanks {
+    min-height: 62vh;
+}
+
 .site-footer {
     padding: 24px 0;
     border-top: 1px solid var(--line);
@@ -562,5 +669,15 @@ details p {
 
     .button {
         width: 100%;
+    }
+
+    .contact-form {
+        grid-template-columns: 1fr;
+        padding: 18px;
+    }
+
+    .form-actions {
+        align-items: stretch;
+        flex-direction: column;
     }
 }

@@ -45,14 +45,15 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 
 ## Pendientes
 
-- RECREAR_PROMPT_FORMULARIO_CONTACTO_ALMADESIGN.
-- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
+- VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN.
+- PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN.
 
 ## Frentes implementados localmente
 
 - CREAR_ESTRUCTURA_PHP_MVC_ALMADESIGN: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
 - CORREGIR_LANDING_APOGEO_LUX_ALMADESIGN: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
 - PREPARAR_BACKUPS_Y_OPERACION_ALMADESIGN_WEB: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
+- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
 
 ## Frentes ejecutados en VPS
 
@@ -110,12 +111,16 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 
 ## Estado formulario
 
-- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: NO_IMPLEMENTADO.
-- El prompt inicial para formulario perdió estructura al copiarse desde chat.
-- No se debe implementar formulario hasta recrear/validar el prompt estructurado.
+- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
+- Rutas locales agregadas: `/contacto`, `/contacto/enviar` y `/contacto/gracias`.
+- PHPMailer instalado vía Composer.
+- SMTP Zoho parametrizado por `.env` no versionado.
+- `.env.example` creado sin secretos reales.
+- Formulario con CSRF token, honeypot anti-bot, validación server-side, sanitización y rate limit simple por IP/sesión.
+- Log mínimo en `logs/contact.log`, sin guardar cuerpo completo del mensaje.
 - No hay base de datos.
-- No hay Composer en uso productivo todavía.
-- Siguiente frente recomendado: RECREAR_PROMPT_FORMULARIO_CONTACTO_ALMADESIGN y luego CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
+- No hay deploy de este frente todavía.
+- Siguiente frente recomendado: VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN y luego PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN.
 
 ## Fuera de alcance
 

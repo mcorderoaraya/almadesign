@@ -10,6 +10,7 @@ final class Router
      */
     private array $routes = [
         'GET' => [],
+        'POST' => [],
     ];
 
     /**
@@ -18,6 +19,14 @@ final class Router
     public function get(string $path, callable|array $handler): void
     {
         $this->routes['GET'][$this->normalizePath($path)] = $handler;
+    }
+
+    /**
+     * @param callable|array{0: class-string, 1: string} $handler
+     */
+    public function post(string $path, callable|array $handler): void
+    {
+        $this->routes['POST'][$this->normalizePath($path)] = $handler;
     }
 
     /**

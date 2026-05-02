@@ -24,8 +24,8 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - GitHub repo: `https://github.com/mcorderoaraya/almadesign`.
 - Branch deploy: `main`.
 - No hay base de datos.
-- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: NO_IMPLEMENTADO.
-- No hay Composer en uso productivo todavía.
+- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
+- Composer incorporado localmente para PHPMailer; no hay deploy de este frente todavía.
 
 ## VPS productivo validado
 
@@ -50,8 +50,8 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 
 ## Pendientes
 
-- RECREAR_PROMPT_FORMULARIO_CONTACTO_ALMADESIGN.
-- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
+- VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN.
+- PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN.
 
 ## Estado deploy
 
@@ -97,10 +97,16 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 
 ## Estado formulario
 
-- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: NO_IMPLEMENTADO.
-- El prompt inicial para formulario perdió estructura al copiarse desde chat.
-- No se debe implementar formulario hasta recrear/validar el prompt estructurado.
-- Siguiente frente recomendado: RECREAR_PROMPT_FORMULARIO_CONTACTO_ALMADESIGN y luego CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
+- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
+- Rutas locales agregadas: `/contacto`, `/contacto/enviar` y `/contacto/gracias`.
+- PHPMailer instalado vía Composer.
+- SMTP Zoho queda parametrizado por `.env` no versionado.
+- `.env.example` contiene placeholders sin secretos reales.
+- Formulario con CSRF token, honeypot, validación server-side, sanitización y rate limit por IP/sesión.
+- Log mínimo en `logs/contact.log` sin guardar el contenido completo del mensaje.
+- No hay base de datos.
+- No hay deploy de este frente todavía.
+- Siguiente frente recomendado: VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN y luego PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN.
 
 ## Fuera de alcance
 

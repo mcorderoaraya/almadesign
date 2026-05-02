@@ -15,6 +15,11 @@ final class App
     public function run(Router $router): void
     {
         $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+
+        if ($method !== 'HEAD' && session_status() !== PHP_SESSION_ACTIVE) {
+            session_start();
+        }
+
         $uri = $_SERVER['REQUEST_URI'] ?? '/';
 
         $router->dispatch($method, $uri, $this->config);
