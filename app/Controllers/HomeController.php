@@ -1,20 +1,14 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Http\Request;
-use App\Http\Response;
-
-/**
- * [ES] Controlador principal del sistema.
- */
-final class HomeController
+final class HomeController extends BaseController
 {
-    public function index(Request $request): Response
+    public function index(): void
     {
-        return Response::json([
-            'ok'      => true,
-            'service' => 'almadesign-backend',
+        $this->view('pages/home', [
+            'title' => 'AlmaDesign',
         ]);
     }
 }
