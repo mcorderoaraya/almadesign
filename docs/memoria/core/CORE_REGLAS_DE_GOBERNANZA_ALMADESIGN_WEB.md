@@ -20,12 +20,12 @@ AlmaDesign Web no debe tratar el backend técnico Apogeo Lux como parte modifica
 - CORREGIR_HONEYPOT_FORMULARIO_ALMADESIGN: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
 - SMTP_ZOHO_AUTH_DIRECTA: VALIDADA.
 - SMTP_CONNECT_AUTH_OK: CONFIRMADO.
-- ENVIO_FORMULARIO_END_TO_END: NO_VALIDADO.
-- BLOQUEO_ULTIMA_PRUEBA_FORMULARIO: `honeypot_blocked`.
-- BLOQUEO_ACTUAL_FORMULARIO: `honeypot_blocked` como último bloqueo observado antes del ajuste local; requiere revalidación end-to-end.
-- FORMULARIO_DEPLOY: NO_EJECUTADO.
-- Estado resumido: formulario no desplegado.
-- Formulario de contacto configurado localmente; SMTP Zoho autentica correctamente en prueba directa, pero el envío end-to-end del formulario NO está validado porque la última prueba previa al ajuste del honeypot fue bloqueada por falso positivo del honeypot (`honeypot_blocked`). El formulario no está desplegado en VPS.
+- ENVIO_FORMULARIO_END_TO_END: VALIDADO_PRODUCTIVAMENTE.
+- INCIDENTE_HONEYPOT_AUTOFILL: CERRADO_OK.
+- BLOQUEO_ACTUAL_FORMULARIO: NINGUNO.
+- DEPLOY_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
+- Estado resumido: formulario productivo validado.
+- Formulario de contacto productivo validado: SMTP Zoho operativo, POST productivo OK, redirección a `/contacto/gracias` OK y cuerpo visual por línea confirmado por Mauricio.
 
 ## Restricciones
 
@@ -52,11 +52,25 @@ No modificar desde este frente documental:
 
 ## Reglas para próximos frentes
 
-- No afirmar publicación productiva del formulario hasta ejecutar un deploy controlado.
-- No afirmar envío end-to-end validado hasta probar el formulario después del ajuste del honeypot.
-- No imprimir `.env` ni SMTP_PASSWORD.
-- Siguiente frente recomendado: VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN.
-- Frente posterior: PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN.
+- El formulario productivo ya fue desplegado y validado; no declarar nuevos cambios productivos sin su propio deploy controlado.
+- El envío end-to-end productivo fue validado por Mauricio; Reply-To productivo queda pendiente de confirmación secundaria.
+- No imprimir `.env` ni contraseñas SMTP.
+- Siguiente frente recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
+- Frente futuro recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
 - No ejecutar deploy salvo frente explícito de deploy controlado.
 - No imprimir secretos.
 - No versionar `.env`.
+
+## Estado vigente de seguridad aplicativa
+
+- FORMULARIO_CONTACTO_ALMADESIGN_PRODUCTIVO: VALIDADO.
+- SMTP_PRODUCTIVO_ZOHO: VALIDADO.
+- CUERPO_CORREO_PRODUCTIVO: VALIDADO.
+- CSS_PRODUCTIVO: CONFORME.
+- CACHE_BUSTING_ASSETS: ACTIVO.
+- SQL_SURFACE: NONE.
+- SQLI_RISK: NOT_APPLICABLE.
+- XSS mitigado con escape HTML y flags `JSON_HEX_*` en JSON-LD.
+- CSRF activo, honeypot activo, header injection rechazado, arrays inesperados rechazados y campos no escalares rechazados.
+- `public/` no expone archivos sensibles.
+- Bloqueo total scraping garantizado: NO.

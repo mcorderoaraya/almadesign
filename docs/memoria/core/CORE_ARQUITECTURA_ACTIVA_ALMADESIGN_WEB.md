@@ -18,12 +18,12 @@
 - CORREGIR_HONEYPOT_FORMULARIO_ALMADESIGN: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
 - SMTP_ZOHO_AUTH_DIRECTA: VALIDADA.
 - SMTP_CONNECT_AUTH_OK: CONFIRMADO.
-- ENVIO_FORMULARIO_END_TO_END: NO_VALIDADO.
-- BLOQUEO_ULTIMA_PRUEBA_FORMULARIO: `honeypot_blocked`.
-- BLOQUEO_ACTUAL_FORMULARIO: `honeypot_blocked` como último bloqueo observado antes del ajuste local; requiere revalidación end-to-end.
-- FORMULARIO_DEPLOY: NO_EJECUTADO.
-- Estado resumido: formulario no desplegado.
-- Formulario de contacto configurado localmente; SMTP Zoho autentica correctamente en prueba directa, pero el envío end-to-end del formulario NO está validado porque la última prueba previa al ajuste del honeypot fue bloqueada por falso positivo del honeypot (`honeypot_blocked`). El formulario no está desplegado en VPS.
+- ENVIO_FORMULARIO_END_TO_END: VALIDADO_PRODUCTIVAMENTE.
+- INCIDENTE_HONEYPOT_AUTOFILL: CERRADO_OK.
+- BLOQUEO_ACTUAL_FORMULARIO: NINGUNO.
+- DEPLOY_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
+- Estado resumido: formulario productivo validado.
+- Formulario de contacto productivo validado: SMTP Zoho operativo, POST productivo OK, redirección a `/contacto/gracias` OK y cuerpo visual por línea confirmado por Mauricio.
 - El problema observado no fue red, puerto, permisos ni autenticación SMTP.
 - PHPMailer instalado vía Composer.
 
@@ -65,3 +65,28 @@
 ## Separación
 
 AlmaDesign Web es proyecto separado del backend técnico Apogeo Lux. No modifica `~/workspace/apogeo-lux/backend` ni evidencia técnica Apogeo Lux.
+
+## Formulario productivo
+
+- FORMULARIO_CONTACTO_ALMADESIGN_PRODUCTIVO: VALIDADO.
+- DEPLOY_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
+- SMTP_PRODUCTIVO_ZOHO: VALIDADO.
+- CUERPO_CORREO_PRODUCTIVO: VALIDADO.
+- Rutas: `/contacto`, `/contacto/enviar`, `/contacto/gracias`.
+- Subject real: `Desde web almadesign`.
+- From real controlado por servidor / `.env`.
+- To controlado por `CONTACT_TO`.
+- Reply-To configurado con email validado del usuario.
+- REPLY_TO_PRODUCTIVO: PENDIENTE_CONFIRMACION_SECUNDARIA.
+- Inputs inválidos no envían y no consumen rate limit.
+- CSRF, honeypot, validación server-side, sanitización, rate limit y log mínimo activos.
+- `vendor/PHPMailer` desplegado como dependencia runtime porque el VPS no tiene Composer.
+
+## Assets públicos
+
+- CACHE_BUSTING_ASSETS: ACTIVO.
+- `asset()` usa `filemtime()` de archivos bajo `public/assets`.
+- CSS productivo: `/assets/css/app.css?v=[filemtime]`.
+- JS productivo: `/assets/js/app.js?v=[filemtime]`.
+- HOTFIX_CACHE_BUSTING_ASSETS_ALMADESIGN: CERRADO_OK.
+- CSS_PRODUCTIVO: CONFORME.

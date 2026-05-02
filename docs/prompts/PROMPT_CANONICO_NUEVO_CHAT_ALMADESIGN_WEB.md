@@ -61,14 +61,14 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend Apogeo Lu
 - No hay base de datos.
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
 - Composer incorporado localmente para PHPMailer.
-- Formulario de contacto configurado localmente, no desplegado aún y con SMTP Zoho real pendiente de validar.
+- Formulario de contacto desplegado y validado productivamente con SMTP Zoho.
 - APLICAR_FRONTEND_DESIGN_ALMADESIGN_WEB: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
 - Mejora visual aplicada localmente a Home, `/apogeo-lux` y contacto.
 
 ## Pendientes
 
-- VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN.
-- PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN.
+- HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
+- PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
 
 ## Estado formulario
 
@@ -76,22 +76,22 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend Apogeo Lu
 - CORREGIR_HONEYPOT_FORMULARIO_ALMADESIGN: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
 - SMTP_ZOHO_AUTH_DIRECTA: VALIDADA.
 - SMTP_CONNECT_AUTH_OK: CONFIRMADO.
-- ENVIO_FORMULARIO_END_TO_END: NO_VALIDADO.
-- BLOQUEO_ULTIMA_PRUEBA_FORMULARIO: `honeypot_blocked`.
-- BLOQUEO_ACTUAL_FORMULARIO: `honeypot_blocked` como último bloqueo observado antes del ajuste local; requiere revalidación end-to-end.
-- FORMULARIO_DEPLOY: NO_EJECUTADO.
-- Estado resumido: formulario no desplegado.
+- ENVIO_FORMULARIO_END_TO_END: VALIDADO_PRODUCTIVAMENTE.
+- INCIDENTE_HONEYPOT_AUTOFILL: CERRADO_OK.
+- BLOQUEO_ACTUAL_FORMULARIO: NINGUNO.
+- DEPLOY_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
+- Estado resumido: formulario productivo validado.
 - Rutas locales: `/contacto`, `/contacto/enviar` y `/contacto/gracias`.
 - PHPMailer instalado vía Composer.
 - SMTP Zoho parametrizado por `.env` no versionado.
 - `.env.example` sin secretos reales.
 - CSRF token, honeypot, validación server-side, sanitización, rate limit simple y log mínimo.
-- Formulario de contacto configurado localmente; SMTP Zoho autentica correctamente en prueba directa, pero el envío end-to-end del formulario NO está validado porque la última prueba previa al ajuste del honeypot fue bloqueada por falso positivo del honeypot (`honeypot_blocked`). El formulario no está desplegado en VPS.
+- Formulario de contacto productivo validado: SMTP Zoho operativo, POST productivo OK, redirección a `/contacto/gracias` OK y cuerpo visual por línea confirmado por Mauricio.
 - El problema observado no fue red, puerto, permisos ni autenticación SMTP.
 - Campo honeypot ajustado localmente para reducir falsos positivos por autofill accidental.
-- SMTP Zoho real sigue pendiente de validación por envío de formulario.
+- SMTP_PRODUCTIVO_ZOHO: VALIDADO.
 - No hay base de datos.
-- No hay deploy de este frente todavía.
+- DEPLOY_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
 
 ## Estado frontend
 
@@ -99,9 +99,9 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend Apogeo Lu
 - CORREGIR_HALLAZGOS_WEB_DESIGN_GUIDELINES_ALMADESIGN: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
 - Dirección visual: humano, sobrio, premium, tecnológico e institucional.
 - Hallazgos de accesibilidad, foco visible, anclas sticky, motion safety y autocomplete corregidos localmente.
-- No hay deploy de esta mejora todavía.
-- El formulario sigue sin deploy.
-- SMTP Zoho real sigue pendiente de validar.
+- Frontend desplegado y validado productivamente.
+- FORMULARIO_CONTACTO_ALMADESIGN_PRODUCTIVO: VALIDADO.
+- SMTP_PRODUCTIVO_ZOHO: VALIDADO.
 
 ## Fuera de alcance
 
@@ -110,3 +110,25 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend Apogeo Lu
 - Neo4j.
 - PostgreSQL Apogeo Lux.
 - evidencia técnica Apogeo Lux.
+
+## Estado vigente post deploy formulario
+
+- FORMULARIO_CONTACTO_ALMADESIGN_PRODUCTIVO: VALIDADO.
+- DEPLOY_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
+- SMTP_PRODUCTIVO_ZOHO: VALIDADO.
+- CUERPO_CORREO_PRODUCTIVO: VALIDADO.
+- HOME_ALMADESIGN_PRODUCTIVO: VALIDADO.
+- FORMULARIO_VISUAL_PRODUCTIVO: VALIDADO.
+- HOTFIX_CACHE_BUSTING_ASSETS_ALMADESIGN: CERRADO_OK.
+- CORREGIR_REGRESION_CSS_POST_DEPLOY_ALMADESIGN: CERRADO_OK.
+- CSS_PRODUCTIVO: CONFORME.
+- CACHE_BUSTING_ASSETS: ACTIVO.
+- `asset()` usa `filemtime()` para versionar CSS/JS.
+- Commit deploy formulario/hardening: `a3fef94`.
+- Commit hotfix cache busting: `bb1dfa4`.
+- Backup manual validado: `/var/backups/almadesign/almadesign_backup_20260502_220213.tar.gz`.
+- Rollback disponible: SI.
+- Reply-To configurado en app: SI.
+- Reply-To validado localmente: SI.
+- REPLY_TO_PRODUCTIVO: PENDIENTE_CONFIRMACION_SECUNDARIA.
+- Siguiente frente recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.

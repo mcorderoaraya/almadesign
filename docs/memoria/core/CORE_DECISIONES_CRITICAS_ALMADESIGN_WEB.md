@@ -39,13 +39,25 @@ CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIO
 
 ## Decisión 9
 
-SMTP_ZOHO_AUTH_DIRECTA: VALIDADA. SMTP_CONNECT_AUTH_OK: CONFIRMADO. ENVIO_FORMULARIO_END_TO_END: NO_VALIDADO.
+SMTP_ZOHO_AUTH_DIRECTA: VALIDADA. SMTP_CONNECT_AUTH_OK: CONFIRMADO. SMTP_PRODUCTIVO_ZOHO: VALIDADO. ENVIO_FORMULARIO_END_TO_END: VALIDADO_PRODUCTIVAMENTE.
 
-Formulario de contacto configurado localmente; SMTP Zoho autentica correctamente en prueba directa, pero el envío end-to-end del formulario NO está validado porque la última prueba previa al ajuste del honeypot fue bloqueada por falso positivo del honeypot (`honeypot_blocked`). El formulario no está desplegado en VPS.
+Formulario de contacto productivo validado: SMTP Zoho operativo, POST productivo OK, redirección a `/contacto/gracias` OK y cuerpo visual por línea confirmado por Mauricio.
 
 ## Decisión 10
 
-CORREGIR_HONEYPOT_FORMULARIO_ALMADESIGN: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES. VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN queda como siguiente frente recomendado y PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN queda PENDIENTE_POST_SMTP_END_TO_END.
+CORREGIR_HONEYPOT_FORMULARIO_ALMADESIGN: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES. VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN y PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN quedaron cerrados OK.
+
+## Decisión 11
+
+FORMULARIO_CONTACTO_ALMADESIGN_PRODUCTIVO: VALIDADO. El formulario productivo usa PHPMailer, SMTP Zoho validado, subject real `Desde web almadesign`, From controlado por servidor / `.env`, To controlado por `CONTACT_TO`, Reply-To configurado con email validado del usuario y cuerpo visual por línea validado. REPLY_TO_PRODUCTIVO queda PENDIENTE_CONFIRMACION_SECUNDARIA.
+
+## Decisión 12
+
+HOTFIX_CACHE_BUSTING_ASSETS_ALMADESIGN: CERRADO_OK. El helper `asset()` versiona CSS/JS con `filemtime()` para evitar cache stale de Cloudflare. CSS_PRODUCTIVO: CONFORME. CACHE_BUSTING_ASSETS: ACTIVO.
+
+## Decisión 13
+
+No hay base de datos, login ni uploads. SQL_SURFACE: NONE. SQLI_RISK: NOT_APPLICABLE. `public/` no expone archivos sensibles. `.env` y `logs/contact.log` quedan fuera de Git.
 
 ## Límites
 

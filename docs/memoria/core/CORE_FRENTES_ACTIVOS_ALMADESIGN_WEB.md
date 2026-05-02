@@ -7,8 +7,8 @@
 
 ## Pendientes vigentes
 
-- VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN.
-- PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN.
+- HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
+- PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
 
 ## Frentes completados
 
@@ -47,7 +47,7 @@
 - Retención local: 14 días.
 - Healthcheck manual ejecutado correctamente en VPS.
 - Backup manual ejecutado correctamente en VPS.
-- Próximo frente recomendado: VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN y luego PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN.
+- Próximo frente recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
 
 ## Estado formulario
 
@@ -55,20 +55,20 @@
 - CORREGIR_HONEYPOT_FORMULARIO_ALMADESIGN: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
 - SMTP_ZOHO_AUTH_DIRECTA: VALIDADA.
 - SMTP_CONNECT_AUTH_OK: CONFIRMADO.
-- ENVIO_FORMULARIO_END_TO_END: NO_VALIDADO.
-- BLOQUEO_ULTIMA_PRUEBA_FORMULARIO: `honeypot_blocked`.
-- BLOQUEO_ACTUAL_FORMULARIO: `honeypot_blocked` como último bloqueo observado antes del ajuste local; requiere revalidación end-to-end.
-- FORMULARIO_DEPLOY: NO_EJECUTADO.
-- Estado resumido: formulario no desplegado.
+- ENVIO_FORMULARIO_END_TO_END: VALIDADO_PRODUCTIVAMENTE.
+- INCIDENTE_HONEYPOT_AUTOFILL: CERRADO_OK.
+- BLOQUEO_ACTUAL_FORMULARIO: NINGUNO.
+- DEPLOY_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
+- Estado resumido: formulario productivo validado.
 - Rutas locales agregadas: `/contacto`, `/contacto/enviar` y `/contacto/gracias`.
 - PHPMailer instalado vía Composer.
 - `.env.example` creado sin secretos reales.
-- Formulario de contacto configurado localmente; SMTP Zoho autentica correctamente en prueba directa, pero el envío end-to-end del formulario NO está validado porque la última prueba previa al ajuste del honeypot fue bloqueada por falso positivo del honeypot (`honeypot_blocked`). El formulario no está desplegado en VPS.
+- Formulario de contacto productivo validado: SMTP Zoho operativo, POST productivo OK, redirección a `/contacto/gracias` OK y cuerpo visual por línea confirmado por Mauricio.
 - El problema observado no fue red, puerto, permisos ni autenticación SMTP.
 - Campo honeypot ajustado localmente para reducir falsos positivos por autofill accidental.
-- SMTP Zoho real sigue pendiente de validación por envío de formulario.
+- SMTP_PRODUCTIVO_ZOHO: VALIDADO.
 - No hay base de datos.
-- No hay deploy de este frente todavía.
+- DEPLOY_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
 
 ## Estado frontend
 
@@ -76,11 +76,11 @@
 - CORREGIR_HALLAZGOS_WEB_DESIGN_GUIDELINES_ALMADESIGN: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
 - Mejora visual aplicada localmente.
 - Hallazgos de accesibilidad, foco visible, anclas sticky, motion safety y autocomplete corregidos localmente.
-- No hay deploy de esta mejora todavía.
-- El formulario sigue sin deploy.
-- SMTP Zoho real sigue pendiente de validar.
-- Siguiente frente recomendado: VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN.
-- PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN: PENDIENTE_POST_SMTP_END_TO_END.
+- Frontend desplegado y validado productivamente.
+- FORMULARIO_CONTACTO_ALMADESIGN_PRODUCTIVO: VALIDADO.
+- SMTP_PRODUCTIVO_ZOHO: VALIDADO.
+- Siguiente frente recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
+- PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
 
 ## Separación obligatoria
 
@@ -93,3 +93,30 @@ AlmaDesign Web vive en `~/workspace/almadesign-web`. Apogeo Lux Gobernanza vive 
 - Neo4j.
 - PostgreSQL Apogeo Lux.
 - evidencia técnica Apogeo Lux.
+
+## Frentes cerrados post formulario productivo
+
+- VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
+- CORREGIR_VALIDACION_CAMPOS_Y_ASUNTO_INTERNO_FORMULARIO_ALMADESIGN: CERRADO_OK.
+- CORREGIR_FORMATO_CORREO_Y_VALIDACION_INPUTS_FORMULARIO_ALMADESIGN: CERRADO_OK.
+- CORREGIR_RENDERIZADO_FORMATO_CORREO_ALMADESIGN: CERRADO_OK.
+- CORREGIR_RATE_LIMIT_Y_VALIDACION_PREVIA_ENVIO_FORMULARIO_ALMADESIGN: CERRADO_OK.
+- AJUSTAR_REPLY_TO_USUARIO_FORMULARIO_ALMADESIGN: CERRADO_OK.
+- HARDENING_APLICATIVO_FORMULARIO_Y_SUPERFICIE_PUBLICA_ALMADESIGN: CERRADO_OK.
+- PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
+- REANUDAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN_DESDE_COMMIT_a3fef94: CERRADO_OK_CON_HOTFIX_POSTERIOR.
+- CORREGIR_REGRESION_CSS_POST_DEPLOY_ALMADESIGN: CERRADO_OK.
+- HOTFIX_CACHE_BUSTING_ASSETS_ALMADESIGN: CERRADO_OK.
+
+## Estado vigente para próximos frentes
+
+- FORMULARIO_CONTACTO_ALMADESIGN_PRODUCTIVO: VALIDADO.
+- SMTP_PRODUCTIVO_ZOHO: VALIDADO.
+- CUERPO_CORREO_PRODUCTIVO: VALIDADO.
+- HOME_ALMADESIGN_PRODUCTIVO: VALIDADO.
+- FORMULARIO_VISUAL_PRODUCTIVO: VALIDADO.
+- CSS_PRODUCTIVO: CONFORME.
+- CACHE_BUSTING_ASSETS: ACTIVO.
+- REPLY_TO_PRODUCTIVO: PENDIENTE_CONFIRMACION_SECUNDARIA.
+- ROLLBACK_DISPONIBLE: SI.
+- Siguiente frente recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.

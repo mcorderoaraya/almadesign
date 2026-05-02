@@ -27,12 +27,12 @@
 - CORREGIR_HONEYPOT_FORMULARIO_ALMADESIGN: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
 - SMTP_ZOHO_AUTH_DIRECTA: VALIDADA.
 - SMTP_CONNECT_AUTH_OK: CONFIRMADO.
-- ENVIO_FORMULARIO_END_TO_END: NO_VALIDADO.
-- BLOQUEO_ULTIMA_PRUEBA_FORMULARIO: `honeypot_blocked`.
-- BLOQUEO_ACTUAL_FORMULARIO: `honeypot_blocked` como último bloqueo observado antes del ajuste local; requiere revalidación end-to-end.
-- FORMULARIO_DEPLOY: NO_EJECUTADO.
-- Estado resumido: formulario no desplegado.
-- Formulario de contacto configurado localmente; SMTP Zoho autentica correctamente en prueba directa, pero el envío end-to-end del formulario NO está validado porque la última prueba previa al ajuste del honeypot fue bloqueada por falso positivo del honeypot (`honeypot_blocked`). El formulario no está desplegado en VPS.
+- ENVIO_FORMULARIO_END_TO_END: VALIDADO_PRODUCTIVAMENTE.
+- INCIDENTE_HONEYPOT_AUTOFILL: CERRADO_OK.
+- BLOQUEO_ACTUAL_FORMULARIO: NINGUNO.
+- DEPLOY_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
+- Estado resumido: formulario productivo validado.
+- Formulario de contacto productivo validado: SMTP Zoho operativo, POST productivo OK, redirección a `/contacto/gracias` OK y cuerpo visual por línea confirmado por Mauricio.
 - El problema observado no fue red, puerto, permisos ni autenticación SMTP.
 
 ## Acceso SSH
@@ -160,5 +160,25 @@ sudo bash /var/www/almadesign/ops/almadesign_healthcheck.sh
 
 ## Próximo frente recomendado
 
-- VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN.
-- PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN: PENDIENTE_POST_SMTP_END_TO_END.
+- HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
+
+## Estado post deploy formulario
+
+- FORMULARIO_CONTACTO_ALMADESIGN_PRODUCTIVO: VALIDADO.
+- DEPLOY_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
+- SMTP_PRODUCTIVO_ZOHO: VALIDADO.
+- CUERPO_CORREO_PRODUCTIVO: VALIDADO.
+- HOME_ALMADESIGN_PRODUCTIVO: VALIDADO.
+- FORMULARIO_VISUAL_PRODUCTIVO: VALIDADO.
+- HOTFIX_CACHE_BUSTING_ASSETS_ALMADESIGN: CERRADO_OK.
+- CORREGIR_REGRESION_CSS_POST_DEPLOY_ALMADESIGN: CERRADO_OK.
+- CSS_PRODUCTIVO: CONFORME.
+- CACHE_BUSTING_ASSETS: ACTIVO.
+- Commit deploy formulario/hardening: `a3fef94`.
+- Commit hotfix cache busting: `bb1dfa4`.
+- Backup manual validado: `/var/backups/almadesign/almadesign_backup_20260502_220213.tar.gz`.
+- Checksum backup: OK.
+- Rollback disponible: SI.
+- `vendor/PHPMailer` desplegado como dependencia runtime porque el VPS no tiene Composer.
+- Healthcheck productivo ejecutado con observación operacional: `certbot certificates` requiere permisos elevados cuando se ejecuta sin `sudo`.
+- Nginx, Cloudflare, Zoho DNS y SSL no fueron modificados durante el hotfix.
