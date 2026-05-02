@@ -61,7 +61,9 @@
 ## Estado frontend
 
 - APLICAR_FRONTEND_DESIGN_ALMADESIGN_WEB: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
+- CORREGIR_HALLAZGOS_WEB_DESIGN_GUIDELINES_ALMADESIGN: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
 - Mejora visual aplicada localmente.
+- Hallazgos de accesibilidad, foco visible, anclas sticky, motion safety y autocomplete corregidos localmente.
 - No hay deploy de esta mejora todavía.
 - El formulario sigue sin deploy.
 - SMTP Zoho real sigue pendiente de validar.

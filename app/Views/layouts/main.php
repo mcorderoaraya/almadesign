@@ -5,9 +5,10 @@ declare(strict_types=1);
 <html lang="es">
 <?php require BASE_PATH . '/app/Views/partials/head.php'; ?>
 <body>
+    <a class="skip-link" href="#main">Saltar al contenido principal</a>
     <?php require BASE_PATH . '/app/Views/partials/header.php'; ?>
 
-    <main class="site-main">
+    <main class="site-main" id="main">
         <?= $content ?>
     </main>
 

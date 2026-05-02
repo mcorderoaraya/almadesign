@@ -126,7 +126,9 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 ## Estado frontend
 
 - APLICAR_FRONTEND_DESIGN_ALMADESIGN_WEB: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
+- CORREGIR_HALLAZGOS_WEB_DESIGN_GUIDELINES_ALMADESIGN: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
 - Mejora visual aplicada localmente sobre Home, `/apogeo-lux`, `/contacto` y `/contacto/gracias`.
+- Hallazgos de accesibilidad, foco visible, anclas sticky, motion safety y autocomplete corregidos localmente.
 - Se reforzó dirección visual humana, sobria, premium, tecnológica e institucional.
 - No hay deploy de esta mejora todavía.
 - El formulario sigue sin deploy.

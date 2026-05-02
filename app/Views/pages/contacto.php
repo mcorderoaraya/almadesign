@@ -34,31 +34,31 @@ $field = static fn (string $name): string => (string) ($old[$name] ?? '');
 
         <label>
             <span>Nombre</span>
-            <input name="nombre" type="text" value="<?= e($field('nombre')) ?>" maxlength="120" required>
+            <input name="nombre" type="text" value="<?= e($field('nombre')) ?>" maxlength="120" autocomplete="name" required>
             <?php if (!empty($errors['nombre'])): ?><small><?= e($errors['nombre']) ?></small><?php endif; ?>
         </label>
 
         <label>
             <span>Email</span>
-            <input name="email" type="email" value="<?= e($field('email')) ?>" maxlength="180" required>
+            <input name="email" type="email" value="<?= e($field('email')) ?>" maxlength="180" autocomplete="email" spellcheck="false" required>
             <?php if (!empty($errors['email'])): ?><small><?= e($errors['email']) ?></small><?php endif; ?>
         </label>
 
         <label>
             <span>Teléfono <em>opcional</em></span>
-            <input name="telefono" type="tel" value="<?= e($field('telefono')) ?>" maxlength="40">
+            <input name="telefono" type="tel" value="<?= e($field('telefono')) ?>" maxlength="40" autocomplete="tel" inputmode="tel">
             <?php if (!empty($errors['telefono'])): ?><small><?= e($errors['telefono']) ?></small><?php endif; ?>
         </label>
 
         <label>
             <span>Asunto</span>
-            <input name="asunto" type="text" value="<?= e($field('asunto')) ?>" maxlength="160" required>
+            <input name="asunto" type="text" value="<?= e($field('asunto')) ?>" maxlength="160" autocomplete="off" required>
             <?php if (!empty($errors['asunto'])): ?><small><?= e($errors['asunto']) ?></small><?php endif; ?>
         </label>
 
         <label class="full-span">
             <span>Mensaje</span>
-            <textarea name="mensaje" rows="8" maxlength="3000" required><?= e($field('mensaje')) ?></textarea>
+            <textarea name="mensaje" rows="8" maxlength="3000" autocomplete="off" required><?= e($field('mensaje')) ?></textarea>
             <?php if (!empty($errors['mensaje'])): ?><small><?= e($errors['mensaje']) ?></small><?php endif; ?>
         </label>
 

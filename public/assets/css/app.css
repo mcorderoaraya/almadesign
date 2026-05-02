@@ -28,6 +28,27 @@ html {
     scroll-behavior: smooth;
 }
 
+.skip-link {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 50;
+    padding: 10px 14px;
+    border: 1px solid var(--orange-strong);
+    border-radius: 8px;
+    background: var(--cream);
+    color: var(--graphite);
+    font-weight: 900;
+    text-decoration: none;
+    transform: translateY(-160%);
+}
+
+.skip-link:focus-visible {
+    outline: 3px solid rgba(232, 121, 46, 0.42);
+    outline-offset: 3px;
+    transform: translateY(0);
+}
+
 body {
     position: relative;
     margin: 0;
@@ -110,6 +131,12 @@ h3 {
     letter-spacing: 0;
 }
 
+h1,
+h2,
+h3 {
+    text-wrap: balance;
+}
+
 .site-header,
 .site-footer,
 .hero,
@@ -184,6 +211,14 @@ h3 {
 
 .site-nav a:hover {
     color: var(--orange-strong);
+}
+
+.site-nav a:focus-visible,
+.button:focus-visible,
+summary:focus-visible {
+    border-radius: 6px;
+    outline: 3px solid rgba(232, 121, 46, 0.45);
+    outline-offset: 4px;
 }
 
 .site-nav a::after {
@@ -286,11 +321,8 @@ h3 {
     border-radius: 8px;
     font-weight: 850;
     text-decoration: none;
+    touch-action: manipulation;
     transition: border-color 180ms ease, background 180ms ease, color 180ms ease, transform 180ms ease;
-}
-
-.button:hover {
-    transform: translateY(-2px);
 }
 
 .button-primary {
@@ -483,7 +515,6 @@ details {
 details:hover {
     border-color: rgba(232, 121, 46, 0.38);
     background: rgba(31, 48, 59, 0.88);
-    transform: translateY(-2px);
 }
 
 .info-card,
@@ -750,10 +781,11 @@ details p {
     resize: vertical;
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible {
     border-color: var(--orange-strong);
     outline: 2px solid rgba(232, 121, 46, 0.18);
+    outline-offset: 2px;
 }
 
 .contact-form small,
@@ -836,6 +868,11 @@ details p {
 
 .site-footer p {
     margin: 0;
+}
+
+#enfoque-tec,
+#cta-final {
+    scroll-margin-top: 96px;
 }
 
 @media (max-width: 980px) {
@@ -932,6 +969,15 @@ details p {
 }
 
 @media (prefers-reduced-motion: no-preference) {
+    .button:hover,
+    .info-card:hover,
+    .demo-group:hover,
+    .scope-card:hover,
+    .audience-grid span:hover,
+    details:hover {
+        transform: translateY(-2px);
+    }
+
     .reveal-ready {
         opacity: 0;
         transform: translateY(14px);
@@ -941,5 +987,11 @@ details p {
     .reveal-ready.is-visible {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
     }
 }
