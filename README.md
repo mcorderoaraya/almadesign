@@ -25,7 +25,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Branch deploy: `main`.
 - No hay base de datos.
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
-- Composer incorporado localmente para PHPMailer; no hay deploy de este frente todavía.
+- PHPMailer desplegado como dependencia runtime; formulario productivo validado con SMTP Zoho.
 
 ## VPS productivo validado
 
@@ -51,7 +51,6 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 ## Pendientes
 
 - HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
-- PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
 
 ## Estado deploy
 
@@ -119,7 +118,6 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - No hay base de datos.
 - DEPLOY_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
 - Siguiente frente recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
-- PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
 
 ## Estado frontend
 

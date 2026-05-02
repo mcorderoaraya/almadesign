@@ -60,7 +60,7 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend Apogeo Lu
 - Backup manual ejecutado correctamente en VPS.
 - No hay base de datos.
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
-- Composer incorporado localmente para PHPMailer.
+- PHPMailer desplegado como dependencia runtime; formulario productivo validado con SMTP Zoho.
 - Formulario de contacto desplegado y validado productivamente con SMTP Zoho.
 - APLICAR_FRONTEND_DESIGN_ALMADESIGN_WEB: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
 - Mejora visual aplicada localmente a Home, `/apogeo-lux` y contacto.
@@ -68,7 +68,6 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend Apogeo Lu
 ## Pendientes
 
 - HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
-- PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
 
 ## Estado formulario
 

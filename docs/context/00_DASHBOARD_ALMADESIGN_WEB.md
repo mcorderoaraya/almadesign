@@ -69,7 +69,6 @@ AlmaDesign Web está explícitamente separado del backend técnico Apogeo Lux.
 ## Pendientes vigentes
 
 - HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
-- PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
 
 ## Fuera de alcance
 

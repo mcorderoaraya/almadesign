@@ -46,7 +46,6 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 ## Pendientes
 
 - HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
-- PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
 
 ## Frentes implementados localmente
 
@@ -134,7 +133,6 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - No hay base de datos.
 - DEPLOY_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
 - Siguiente frente recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
-- PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
 
 ## Estado frontend
 
