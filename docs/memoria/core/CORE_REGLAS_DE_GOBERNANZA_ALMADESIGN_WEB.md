@@ -17,7 +17,15 @@ AlmaDesign Web no debe tratar el backend técnico Apogeo Lux como parte modifica
 - DEPLOY_CONTROLADO_ALMADESIGN_WEB_A_VPS: EJECUTADO_OK.
 - EJECUTAR_BACKUP_Y_HEALTHCHECK_ALMADESIGN_EN_VPS: EJECUTADO_OK.
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
-- Formulario de contacto configurado localmente, no desplegado todavía y con SMTP Zoho real pendiente de validar.
+- CORREGIR_HONEYPOT_FORMULARIO_ALMADESIGN: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
+- SMTP_ZOHO_AUTH_DIRECTA: VALIDADA.
+- SMTP_CONNECT_AUTH_OK: CONFIRMADO.
+- ENVIO_FORMULARIO_END_TO_END: NO_VALIDADO.
+- BLOQUEO_ULTIMA_PRUEBA_FORMULARIO: `honeypot_blocked`.
+- BLOQUEO_ACTUAL_FORMULARIO: `honeypot_blocked` como último bloqueo observado antes del ajuste local; requiere revalidación end-to-end.
+- FORMULARIO_DEPLOY: NO_EJECUTADO.
+- Estado resumido: formulario no desplegado.
+- Formulario de contacto configurado localmente; SMTP Zoho autentica correctamente en prueba directa, pero el envío end-to-end del formulario NO está validado porque la última prueba previa al ajuste del honeypot fue bloqueada por falso positivo del honeypot (`honeypot_blocked`). El formulario no está desplegado en VPS.
 
 ## Restricciones
 
@@ -45,7 +53,8 @@ No modificar desde este frente documental:
 ## Reglas para próximos frentes
 
 - No afirmar publicación productiva del formulario hasta ejecutar un deploy controlado.
-- No afirmar validación real de Zoho SMTP hasta probar con `.env` real no versionado.
+- No afirmar envío end-to-end validado hasta probar el formulario después del ajuste del honeypot.
+- No imprimir `.env` ni SMTP_PASSWORD.
 - Siguiente frente recomendado: VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN.
 - Frente posterior: PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN.
 - No ejecutar deploy salvo frente explícito de deploy controlado.

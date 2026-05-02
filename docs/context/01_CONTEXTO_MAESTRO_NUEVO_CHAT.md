@@ -62,7 +62,16 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend técnico 
 ## Formulario
 
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
-- Formulario de contacto configurado localmente, no desplegado todavía y con SMTP Zoho real pendiente de validar.
+- CORREGIR_HONEYPOT_FORMULARIO_ALMADESIGN: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
+- SMTP_ZOHO_AUTH_DIRECTA: VALIDADA.
+- SMTP_CONNECT_AUTH_OK: CONFIRMADO.
+- ENVIO_FORMULARIO_END_TO_END: NO_VALIDADO.
+- BLOQUEO_ULTIMA_PRUEBA_FORMULARIO: `honeypot_blocked`.
+- BLOQUEO_ACTUAL_FORMULARIO: `honeypot_blocked` como último bloqueo observado antes del ajuste local; requiere revalidación end-to-end.
+- FORMULARIO_DEPLOY: NO_EJECUTADO.
+- Estado resumido: formulario no desplegado.
+- Formulario de contacto configurado localmente; SMTP Zoho autentica correctamente en prueba directa, pero el envío end-to-end del formulario NO está validado porque la última prueba previa al ajuste del honeypot fue bloqueada por falso positivo del honeypot (`honeypot_blocked`). El formulario no está desplegado en VPS.
+- El problema observado no fue red, puerto, permisos ni autenticación SMTP.
 - Rutas locales agregadas: `/contacto`, `/contacto/enviar` y `/contacto/gracias`.
 - PHPMailer instalado vía Composer.
 - `.env.example` creado sin secretos reales.

@@ -35,7 +35,17 @@ La operación mínima se apoya en backups locales bajo `/var/backups/almadesign`
 
 ## Decisión 8
 
-CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES. El formulario existe localmente, no está desplegado todavía y SMTP Zoho real queda pendiente de validar.
+CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
+
+## Decisión 9
+
+SMTP_ZOHO_AUTH_DIRECTA: VALIDADA. SMTP_CONNECT_AUTH_OK: CONFIRMADO. ENVIO_FORMULARIO_END_TO_END: NO_VALIDADO.
+
+Formulario de contacto configurado localmente; SMTP Zoho autentica correctamente en prueba directa, pero el envío end-to-end del formulario NO está validado porque la última prueba previa al ajuste del honeypot fue bloqueada por falso positivo del honeypot (`honeypot_blocked`). El formulario no está desplegado en VPS.
+
+## Decisión 10
+
+CORREGIR_HONEYPOT_FORMULARIO_ALMADESIGN: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES. VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN queda como siguiente frente recomendado y PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN queda PENDIENTE_POST_SMTP_END_TO_END.
 
 ## Límites
 

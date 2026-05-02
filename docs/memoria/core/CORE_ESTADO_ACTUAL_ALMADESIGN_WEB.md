@@ -114,17 +114,27 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
 - CORREGIR_HONEYPOT_FORMULARIO_ALMADESIGN: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
+- SMTP_ZOHO_AUTH_DIRECTA: VALIDADA.
+- SMTP_CONNECT_AUTH_OK: CONFIRMADO.
+- ENVIO_FORMULARIO_END_TO_END: NO_VALIDADO.
+- BLOQUEO_ULTIMA_PRUEBA_FORMULARIO: `honeypot_blocked`.
+- BLOQUEO_ACTUAL_FORMULARIO: `honeypot_blocked` como último bloqueo observado antes del ajuste local; requiere revalidación end-to-end.
+- FORMULARIO_DEPLOY: NO_EJECUTADO.
+- Estado resumido: formulario no desplegado.
 - Rutas locales agregadas: `/contacto`, `/contacto/enviar` y `/contacto/gracias`.
 - PHPMailer instalado vía Composer.
 - SMTP Zoho parametrizado por `.env` no versionado.
 - `.env.example` creado sin secretos reales.
+- Formulario de contacto configurado localmente; SMTP Zoho autentica correctamente en prueba directa, pero el envío end-to-end del formulario NO está validado porque la última prueba previa al ajuste del honeypot fue bloqueada por falso positivo del honeypot (`honeypot_blocked`). El formulario no está desplegado en VPS.
+- El problema observado no fue red, puerto, permisos ni autenticación SMTP.
 - Formulario con CSRF token, honeypot anti-bot, validación server-side, sanitización y rate limit simple por IP/sesión.
-- Falso positivo de honeypot corregido localmente usando un campo menos propenso a autofill accidental.
+- Campo honeypot ajustado localmente para reducir falsos positivos por autofill accidental.
 - SMTP Zoho real sigue pendiente de validación por envío de formulario.
 - Log mínimo en `logs/contact.log`, sin guardar cuerpo completo del mensaje.
 - No hay base de datos.
 - No hay deploy de este frente todavía.
-- Siguiente frente recomendado: VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN y luego PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN.
+- Siguiente frente recomendado: VALIDAR_SMTP_ZOHO_FORMULARIO_CONTACTO_ALMADESIGN.
+- PREPARAR_DEPLOY_CONTROLADO_FORMULARIO_CONTACTO_ALMADESIGN: PENDIENTE_POST_SMTP_END_TO_END.
 
 ## Estado frontend
 
