@@ -30,10 +30,30 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - SSH con usuario mauricio.
 - root SSH bloqueado.
 - UFW activo.
+- App root VPS: `/var/www/almadesign`.
+- Backup root VPS: `/var/backups/almadesign`.
+- Release temporal usado: `/tmp/almadesign_release_20260502_160657`.
+- HTTPS `https://almadesign.cl`: HTTP/2 200.
+- HTTPS `https://www.almadesign.cl`: HTTP/2 200.
+- HTTPS `https://almadesign.cl/apogeo-lux`: HTTP/2 200.
+- Headers de seguridad activos.
+- Rollback disponible por backup en `/var/backups/almadesign`.
 
 ## Pendientes
 
-- CONFIGURAR_BASE_SEGURIDAD_POST_SSL_ALMADESIGN.
+- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
+- PREPARAR_BACKUPS_Y_OPERACION_ALMADESIGN_WEB.
+
+## Estado deploy
+
+- DEPLOY_CONTROLADO_ALMADESIGN_WEB_A_VPS: EJECUTADO_OK.
+- BASE_SEGURIDAD_POST_SSL_ALMADESIGN: CONFIGURADA.
+- HEADERS_SEGURIDAD: ACTIVOS.
+- CLOUDFLARE_PROXY: ACTIVO.
+- HTTPS_PUBLICO: OK.
+- ROLLBACK_DISPONIBLE: TRUE.
+- GitHub repo: `https://github.com/mcorderoaraya/almadesign`.
+- Branch deploy: `main`.
 
 ## Estado local MVC
 
@@ -42,7 +62,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Rutas disponibles: `/` y `/apogeo-lux`.
 - Sin conexión de base de datos por ahora.
 - Sin formulario por ahora.
-- Sin deploy por ahora.
+- Deploy controlado a VPS ejecutado correctamente.
 
 ## Estado local landing Apogeo Lux
 
@@ -51,7 +71,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Incluye metadata específica, Open Graph básico y FAQ JSON-LD.
 - Sin conexión de base de datos por ahora.
 - Sin formulario por ahora.
-- Sin deploy por ahora.
+- Deploy controlado a VPS ejecutado correctamente.
 
 ## Fuera de alcance
 

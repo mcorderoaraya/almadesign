@@ -30,15 +30,35 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - SSH con usuario mauricio.
 - root SSH bloqueado.
 - UFW activo.
+- App root VPS: `/var/www/almadesign`.
+- Backup root VPS: `/var/backups/almadesign`.
+- Release temporal usado: `/tmp/almadesign_release_20260502_160657`.
+- HTTPS `https://almadesign.cl`: HTTP/2 200.
+- HTTPS `https://www.almadesign.cl`: HTTP/2 200.
+- HTTPS `https://almadesign.cl/apogeo-lux`: HTTP/2 200.
+- Headers de seguridad activos.
+- Rollback disponible por backup en `/var/backups/almadesign`.
 
 ## Pendientes
 
-- CONFIGURAR_BASE_SEGURIDAD_POST_SSL_ALMADESIGN.
+- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
+- PREPARAR_BACKUPS_Y_OPERACION_ALMADESIGN_WEB.
 
 ## Frentes implementados localmente
 
 - CREAR_ESTRUCTURA_PHP_MVC_ALMADESIGN: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
 - CORREGIR_LANDING_APOGEO_LUX_ALMADESIGN: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
+
+## Frentes ejecutados en VPS
+
+- DEPLOY_CONTROLADO_ALMADESIGN_WEB_A_VPS: EJECUTADO_OK.
+- BASE_SEGURIDAD_POST_SSL_ALMADESIGN: CONFIGURADA.
+- HEADERS_SEGURIDAD: ACTIVOS.
+- CLOUDFLARE_PROXY: ACTIVO.
+- HTTPS_PUBLICO: OK.
+- ROLLBACK_DISPONIBLE: TRUE.
+- GitHub repo: `https://github.com/mcorderoaraya/almadesign`.
+- Branch deploy: `main`.
 
 ## Observaciones MVC local
 
@@ -47,7 +67,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Rutas locales creadas para `/` y `/apogeo-lux`.
 - No hay base de datos conectada todavía.
 - No hay formulario todavía.
-- No hay deploy todavía.
+- Deploy controlado a VPS ejecutado correctamente.
 
 ## Observaciones landing Apogeo Lux
 
@@ -57,8 +77,17 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Declara explícitamente límites: no producción, no asesoría legal, no reemplazo de abogados, no LLM generativo usado en esta demo, no jurisprudencia integrada, no SaaS listo, no GraphRAG enterprise y no `ready_for_production_anchor=true`.
 - No hay base de datos todavía.
 - No hay formulario todavía.
-- No hay deploy todavía.
-- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_ALMADESIGN_WEB o CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN, según estado.
+- Deploy controlado a VPS ejecutado correctamente.
+- Siguiente frente recomendado: CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN o PREPARAR_BACKUPS_Y_OPERACION_ALMADESIGN_WEB, según estado.
+
+## Observaciones deploy VPS
+
+- Deploy controlado ejecutado desde GitHub `main` hacia `/var/www/almadesign`.
+- Release temporal usado: `/tmp/almadesign_release_20260502_160657`.
+- HTTPS público validado en dominio raíz, `www` y `/apogeo-lux`.
+- Cloudflare proxy activo.
+- Headers de seguridad activos.
+- Rollback disponible por backup en `/var/backups/almadesign`.
 
 ## Fuera de alcance
 
