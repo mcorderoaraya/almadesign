@@ -12,6 +12,8 @@ final class ContactController extends BaseController
 {
     // Nombre específico para evitar autofill accidental del honeypot.
     private const HONEYPOT_FIELD = 'almadesign_hp_field';
+    private const BUSINESS_FIELDS = ['nombre', 'email', 'telefono', 'asunto', 'mensaje'];
+    private const TECHNICAL_FIELDS = ['csrf_token', self::HONEYPOT_FIELD];
 
     public function index(): void
     {
@@ -21,13 +23,20 @@ final class ContactController extends BaseController
     public function send(): void
     {
         $input = $this->sanitize($_POST);
-        $errors = [];
         $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
         $rateKey = hash('sha256', 'contact|' . $ip . '|' . session_id());
 
+        if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
+            http_response_code(405);
+            return;
+        }
+
         if (!Csrf::validate($input['csrf_token'] ?? '')) {
-            $errors['general'] = 'No pudimos validar la solicitud. Intenta nuevamente.';
             $this->logContact('csrf_failed', $ip, $input['email'] ?? '', 'csrf');
+            $this->renderForm($input, [
+                'general' => 'No pudimos validar la solicitud. Intenta nuevamente.',
+            ], 422);
+            return;
         }
 
         if (($input[self::HONEYPOT_FIELD] ?? '') !== '') {
@@ -35,15 +44,23 @@ final class ContactController extends BaseController
             $this->redirect('/contacto/gracias');
         }
 
-        if (!RateLimiter::allow($rateKey, 3, 600)) {
-            $errors['general'] = 'Recibimos varias solicitudes en poco tiempo. Intenta nuevamente más tarde.';
-            $this->logContact('rate_limited', $ip, $input['email'] ?? '', 'rate_limit');
+        $errors = $this->validateFieldTypes($_POST);
+
+        foreach ($this->validate($input) as $field => $message) {
+            $errors[$field] ??= $message;
         }
 
-        $errors = array_merge($errors, $this->validate($input));
-
         if ($errors !== []) {
-            $this->renderForm($input, $errors);
+            $this->logContact('validation_failed', $ip, $input['email'] ?? '', 'validation');
+            $this->renderForm($input, $errors, 422);
+            return;
+        }
+
+        if (!RateLimiter::allow($rateKey, 3, 600)) {
+            $this->logContact('rate_limited', $ip, $input['email'] ?? '', 'rate_limit');
+            $this->renderForm($input, [
+                'general' => 'Recibimos varias solicitudes en poco tiempo. Intenta nuevamente más tarde.',
+            ], 429);
             return;
         }
 
@@ -79,8 +96,10 @@ final class ContactController extends BaseController
      * @param array<string, mixed> $old
      * @param array<string, string> $errors
      */
-    private function renderForm(array $old = [], array $errors = []): void
+    private function renderForm(array $old = [], array $errors = [], int $statusCode = 200): void
     {
+        http_response_code($statusCode);
+
         $this->view('pages/contacto', [
             'title' => 'Contacto | AlmaDesign',
             'metaDescription' => 'Contacto de AlmaDesign para conversaciones sobre diseño, tecnología e IA gobernada.',
@@ -97,13 +116,13 @@ final class ContactController extends BaseController
     private function sanitize(array $input): array
     {
         return [
-            'nombre' => trim((string) ($input['nombre'] ?? '')),
-            'email' => mb_strtolower(trim((string) ($input['email'] ?? ''))),
-            'telefono' => trim((string) ($input['telefono'] ?? '')),
-            'asunto' => trim((string) ($input['asunto'] ?? '')),
-            'mensaje' => trim((string) ($input['mensaje'] ?? '')),
-            self::HONEYPOT_FIELD => trim((string) ($input[self::HONEYPOT_FIELD] ?? '')),
-            'csrf_token' => trim((string) ($input['csrf_token'] ?? '')),
+            'nombre' => $this->cleanSingleLine($this->scalarField($input, 'nombre')),
+            'email' => mb_strtolower($this->cleanSingleLine($this->scalarField($input, 'email'))),
+            'telefono' => $this->cleanSingleLine($this->scalarField($input, 'telefono')),
+            'asunto' => $this->cleanSingleLine($this->scalarField($input, 'asunto')),
+            'mensaje' => $this->cleanMessage($this->scalarField($input, 'mensaje')),
+            self::HONEYPOT_FIELD => $this->cleanSingleLine($this->scalarField($input, self::HONEYPOT_FIELD)),
+            'csrf_token' => $this->cleanSingleLine($this->scalarField($input, 'csrf_token')),
         ];
     }
 
@@ -115,27 +134,93 @@ final class ContactController extends BaseController
     {
         $errors = [];
 
-        if (mb_strlen($input['nombre']) < 2 || mb_strlen($input['nombre']) > 120) {
+        if (mb_strlen($input['nombre']) < 2 || mb_strlen($input['nombre']) > 120 || $this->hasLineBreak($input['nombre']) || $this->hasUnsafeControlChars($input['nombre'])) {
             $errors['nombre'] = 'Ingresa un nombre de 2 a 120 caracteres.';
         }
 
-        if (!filter_var($input['email'], FILTER_VALIDATE_EMAIL) || mb_strlen($input['email']) > 180) {
+        if (!filter_var($input['email'], FILTER_VALIDATE_EMAIL) || mb_strlen($input['email']) > 180 || $this->hasLineBreak($input['email']) || $this->hasUnsafeControlChars($input['email'])) {
             $errors['email'] = 'Ingresa un email válido de máximo 180 caracteres.';
         }
 
-        if (mb_strlen($input['telefono']) > 40) {
-            $errors['telefono'] = 'El teléfono debe tener máximo 40 caracteres.';
+        if ($input['telefono'] !== '' && (!preg_match('/^[0-9+() .-]{6,40}$/', $input['telefono']) || $this->hasLineBreak($input['telefono']) || $this->hasUnsafeControlChars($input['telefono']))) {
+            $errors['telefono'] = 'El teléfono debe tener entre 6 y 40 caracteres válidos.';
         }
 
-        if (mb_strlen($input['asunto']) < 3 || mb_strlen($input['asunto']) > 160) {
+        if (mb_strlen($input['asunto']) < 3 || mb_strlen($input['asunto']) > 160 || $this->hasLineBreak($input['asunto']) || $this->hasUnsafeControlChars($input['asunto'])) {
             $errors['asunto'] = 'Ingresa un asunto de 3 a 160 caracteres.';
         }
 
-        if (mb_strlen($input['mensaje']) < 10 || mb_strlen($input['mensaje']) > 3000) {
+        if (mb_strlen($input['mensaje']) < 10 || mb_strlen($input['mensaje']) > 3000 || $this->hasUnsafeControlChars($input['mensaje'])) {
             $errors['mensaje'] = 'Ingresa un mensaje de 10 a 3000 caracteres.';
         }
 
         return $errors;
+    }
+
+    /**
+     * @param array<string, mixed> $input
+     * @return array<string, string>
+     */
+    private function validateFieldTypes(array $input): array
+    {
+        $errors = [];
+        $knownFields = array_merge(self::BUSINESS_FIELDS, self::TECHNICAL_FIELDS);
+
+        foreach (self::BUSINESS_FIELDS as $field) {
+            if (isset($input[$field]) && !is_scalar($input[$field])) {
+                $errors[$field] = 'El campo enviado no tiene un formato válido.';
+            }
+        }
+
+        foreach (self::TECHNICAL_FIELDS as $field) {
+            if (isset($input[$field]) && !is_scalar($input[$field])) {
+                $errors['general'] = 'No pudimos procesar la solicitud. Intenta nuevamente.';
+            }
+        }
+
+        foreach ($input as $field => $value) {
+            if (!in_array((string) $field, $knownFields, true) && !is_scalar($value)) {
+                $errors['general'] = 'No pudimos procesar la solicitud. Intenta nuevamente.';
+            }
+        }
+
+        return $errors;
+    }
+
+    /**
+     * @param array<string, mixed> $input
+     */
+    private function scalarField(array $input, string $field): string
+    {
+        $value = $input[$field] ?? '';
+
+        if (!is_scalar($value)) {
+            return '';
+        }
+
+        return (string) $value;
+    }
+
+    private function cleanSingleLine(string $value): string
+    {
+        return trim($value);
+    }
+
+    private function cleanMessage(string $value): string
+    {
+        $value = str_replace(["\r\n", "\r"], "\n", $value);
+
+        return trim($value);
+    }
+
+    private function hasLineBreak(string $value): bool
+    {
+        return str_contains($value, "\r") || str_contains($value, "\n");
+    }
+
+    private function hasUnsafeControlChars(string $value): bool
+    {
+        return preg_match('/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/', $value) === 1;
     }
 
     private function redirect(string $path): never

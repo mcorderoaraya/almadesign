@@ -6,7 +6,7 @@ declare(strict_types=1);
         <p class="eyebrow">Mensaje recibido</p>
         <h1>Gracias por contactar a AlmaDesign.</h1>
         <p>Si el mensaje requiere respuesta, lo revisaremos por correo. Esta confirmación no implica asesoría legal ni alta en una base de datos.</p>
-        <p class="notice">Formulario local: SMTP Zoho real pendiente de validar antes de deploy.</p>
+        <p class="notice">Tu mensaje fue procesado con controles de validación y sin alta en base de datos.</p>
     </div>
     <div class="hero-actions">
         <a class="button button-primary" href="<?= e(url('/')) ?>">Volver al inicio</a>

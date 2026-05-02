@@ -1,0 +1,25 @@
+User-agent: *
+Allow: /
+Disallow: /contacto/enviar
+Disallow: /vendor/
+Disallow: /logs/
+Disallow: /storage/
+Disallow: /docs/
+Disallow: /ops/
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+Sitemap: https://almadesign.cl/sitemap.xml

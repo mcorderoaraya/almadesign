@@ -14,8 +14,8 @@ $field = static fn (string $name): string => (string) ($old[$name] ?? '');
         <p class="lead">Cuéntanos qué necesitas revisar con AlmaDesign. Respondemos por correo, sin automatismos invasivos ni base de datos de contactos.</p>
     </div>
     <aside class="contact-note" aria-label="Estado del formulario">
-        <p>Formulario configurado localmente.</p>
-        <span>SMTP Zoho real pendiente de validar antes de deploy.</span>
+        <p>Contacto directo con AlmaDesign.</p>
+        <span>Usamos tus datos solo para responder esta conversación.</span>
     </aside>
 </section>
 
@@ -34,7 +34,7 @@ $field = static fn (string $name): string => (string) ($old[$name] ?? '');
 
         <label>
             <span>Nombre</span>
-            <input name="nombre" type="text" value="<?= e($field('nombre')) ?>" maxlength="120" autocomplete="name" required>
+            <input name="nombre" type="text" value="<?= e($field('nombre')) ?>" minlength="2" maxlength="120" autocomplete="name" required>
             <?php if (!empty($errors['nombre'])): ?><small><?= e($errors['nombre']) ?></small><?php endif; ?>
         </label>
 
@@ -46,19 +46,19 @@ $field = static fn (string $name): string => (string) ($old[$name] ?? '');
 
         <label>
             <span>Teléfono <em>opcional</em></span>
-            <input name="telefono" type="tel" value="<?= e($field('telefono')) ?>" maxlength="40" autocomplete="tel" inputmode="tel">
+            <input name="telefono" type="tel" value="<?= e($field('telefono')) ?>" maxlength="40" pattern="[0-9+() .-]{6,40}" autocomplete="tel" inputmode="tel">
             <?php if (!empty($errors['telefono'])): ?><small><?= e($errors['telefono']) ?></small><?php endif; ?>
         </label>
 
         <label>
             <span>Asunto</span>
-            <input name="asunto" type="text" value="<?= e($field('asunto')) ?>" maxlength="160" autocomplete="off" required>
+            <input name="asunto" type="text" value="<?= e($field('asunto')) ?>" minlength="3" maxlength="160" autocomplete="off" required>
             <?php if (!empty($errors['asunto'])): ?><small><?= e($errors['asunto']) ?></small><?php endif; ?>
         </label>
 
         <label class="full-span">
             <span>Mensaje</span>
-            <textarea name="mensaje" rows="8" maxlength="3000" autocomplete="off" required><?= e($field('mensaje')) ?></textarea>
+            <textarea name="mensaje" rows="8" minlength="10" maxlength="3000" autocomplete="off" required><?= e($field('mensaje')) ?></textarea>
             <?php if (!empty($errors['mensaje'])): ?><small><?= e($errors['mensaje']) ?></small><?php endif; ?>
         </label>
 

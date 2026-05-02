@@ -9,6 +9,8 @@ use RuntimeException;
 
 final class Mailer
 {
+    private const INTERNAL_SUBJECT = 'Desde web almadesign';
+
     /**
      * @param array<string, string> $data
      */
@@ -40,12 +42,13 @@ final class Mailer
 
         $mail->setFrom($from, Env::get('SMTP_FROM_NAME', 'AlmaDesign Web') ?? 'AlmaDesign Web');
         $mail->addAddress($to);
+        $mail->clearReplyTos();
         $mail->addReplyTo($data['email'], $data['nombre']);
 
-        $prefix = Env::get('CONTACT_SUBJECT_PREFIX', '[AlmaDesign]') ?? '[AlmaDesign]';
-        $mail->Subject = trim($prefix . ' ' . $data['asunto']);
-        $mail->Body = $this->buildBody($data);
-        $mail->AltBody = $mail->Body;
+        $mail->Subject = self::INTERNAL_SUBJECT;
+        $mail->isHTML(true);
+        $mail->Body = $this->buildHtmlBody($data);
+        $mail->AltBody = $this->buildTextBody($data);
 
         $mail->send();
     }
@@ -53,18 +56,46 @@ final class Mailer
     /**
      * @param array<string, string> $data
      */
-    private function buildBody(array $data): string
+    private function buildHtmlBody(array $data): string
     {
-        return implode("\n", [
-            'Nuevo mensaje desde AlmaDesign Web',
-            '',
-            'Nombre: ' . $data['nombre'],
-            'Email: ' . $data['email'],
-            'Teléfono: ' . ($data['telefono'] !== '' ? $data['telefono'] : 'No informado'),
-            'Asunto: ' . $data['asunto'],
-            '',
-            'Mensaje:',
-            $data['mensaje'],
-        ]);
+        $lines = $this->messageLines($data);
+
+        return '<div style="font-family: Arial, sans-serif; font-size: 15px; line-height: 1.5;">'
+            . implode('<br>', array_map(
+                static fn (string $line): string => htmlspecialchars($line, ENT_QUOTES, 'UTF-8'),
+                $lines
+            ))
+            . '</div>';
+    }
+
+    /**
+     * @param array<string, string> $data
+     */
+    private function buildTextBody(array $data): string
+    {
+        return implode("\r\n", $this->messageLines($data));
+    }
+
+    /**
+     * @param array<string, string> $data
+     * @return list<string>
+     */
+    private function messageLines(array $data): array
+    {
+        return [
+            'origen: formulario web AlmaDesign',
+            'nombre: ' . $data['nombre'],
+            'email: ' . $data['email'],
+            'telefono: ' . ($data['telefono'] !== '' ? $data['telefono'] : 'No informado'),
+            'asunto_usuario: ' . $data['asunto'],
+            'mensaje: ' . $this->formatMessageValue($data['mensaje']),
+        ];
+    }
+
+    private function formatMessageValue(string $value): string
+    {
+        $value = str_replace(["\r\n", "\r", "\n"], ' | ', $value);
+
+        return trim(preg_replace('/[ \t]+/', ' ', $value) ?? $value);
     }
 }
