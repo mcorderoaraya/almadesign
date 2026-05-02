@@ -15,5 +15,12 @@ function url(string $path = '/'): string
 
 function asset(string $path): string
 {
-    return '/assets/' . ltrim($path, '/');
+    $assetPath = '/assets/' . ltrim($path, '/');
+    $filePath = BASE_PATH . '/public' . $assetPath;
+
+    if (!is_file($filePath)) {
+        return $assetPath;
+    }
+
+    return $assetPath . '?v=' . filemtime($filePath);
 }
