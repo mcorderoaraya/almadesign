@@ -9,6 +9,8 @@
 
 AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 
+- ALMADESIGN_WEB_PUBLICO: OPERATIVO.
+
 ## Rutas
 
 - AlmaDesign Web vive en: `~/workspace/almadesign-web`.
@@ -17,17 +19,19 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 ## Dominio productivo
 
 - `almadesign.cl`.
+- GitHub repo: `https://github.com/mcorderoaraya/almadesign`.
+- Branch deploy: `main`.
 
 ## VPS productivo validado
 
 - Hostinger KVM 2.
 - Ubuntu 24.04 LTS.
-- Nginx.
-- PHP 8.3.
-- Certbot SSL.
+- Nginx: operativo.
+- PHP: 8.3.
+- Certbot SSL: operativo.
 - Cloudflare proxy activo.
 - Zoho Mail funcionando.
-- SSH con usuario mauricio.
+- SSH: usuario mauricio con clave.
 - root SSH bloqueado.
 - UFW activo.
 - App root VPS: `/var/www/almadesign`.
@@ -41,6 +45,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 
 ## Pendientes
 
+- RECREAR_PROMPT_FORMULARIO_CONTACTO_ALMADESIGN.
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
 
 ## Frentes implementados localmente
@@ -52,6 +57,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 ## Frentes ejecutados en VPS
 
 - DEPLOY_CONTROLADO_ALMADESIGN_WEB_A_VPS: EJECUTADO_OK.
+- EJECUTAR_BACKUP_Y_HEALTHCHECK_ALMADESIGN_EN_VPS: EJECUTADO_OK.
 - BASE_SEGURIDAD_POST_SSL_ALMADESIGN: CONFIGURADA.
 - HEADERS_SEGURIDAD: ACTIVOS.
 - CLOUDFLARE_PROXY: ACTIVO.
@@ -97,9 +103,19 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Backup root VPS definido: `/var/backups/almadesign`.
 - App root VPS definido: `/var/www/almadesign`.
 - Retención local definida: 14 días.
-- Scripts preparados para ejecución en VPS, sin ejecución desde Codex en este frente.
+- Healthcheck manual ejecutado correctamente en VPS.
+- Backup manual ejecutado correctamente en VPS.
 - No se tocaron Cloudflare, Zoho, DNS, SSL, `.env`, llaves SSH, base de datos, formulario, Composer, WordPress, Docker ni cPanel.
-- Siguiente frente recomendado: CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
+- Siguiente frente recomendado: RECREAR_PROMPT_FORMULARIO_CONTACTO_ALMADESIGN y luego CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
+
+## Estado formulario
+
+- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: NO_IMPLEMENTADO.
+- El prompt inicial para formulario perdió estructura al copiarse desde chat.
+- No se debe implementar formulario hasta recrear/validar el prompt estructurado.
+- No hay base de datos.
+- No hay Composer en uso productivo todavía.
+- Siguiente frente recomendado: RECREAR_PROMPT_FORMULARIO_CONTACTO_ALMADESIGN y luego CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
 
 ## Fuera de alcance
 

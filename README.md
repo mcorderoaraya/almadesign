@@ -18,16 +18,25 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 
 - `almadesign.cl`.
 
+## Estado público vigente
+
+- ALMADESIGN_WEB_PUBLICO: OPERATIVO.
+- GitHub repo: `https://github.com/mcorderoaraya/almadesign`.
+- Branch deploy: `main`.
+- No hay base de datos.
+- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: NO_IMPLEMENTADO.
+- No hay Composer en uso productivo todavía.
+
 ## VPS productivo validado
 
 - Hostinger KVM 2.
 - Ubuntu 24.04 LTS.
-- Nginx.
-- PHP 8.3.
-- Certbot SSL.
+- Nginx: operativo.
+- PHP: 8.3.
+- Certbot SSL: operativo.
 - Cloudflare proxy activo.
 - Zoho Mail funcionando.
-- SSH con usuario mauricio.
+- SSH: usuario mauricio con clave.
 - root SSH bloqueado.
 - UFW activo.
 - App root VPS: `/var/www/almadesign`.
@@ -41,6 +50,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 
 ## Pendientes
 
+- RECREAR_PROMPT_FORMULARIO_CONTACTO_ALMADESIGN.
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
 
 ## Estado deploy
@@ -57,13 +67,15 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 ## Estado operación y backups
 
 - PREPARAR_BACKUPS_Y_OPERACION_ALMADESIGN_WEB: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
+- EJECUTAR_BACKUP_Y_HEALTHCHECK_ALMADESIGN_EN_VPS: EJECUTADO_OK.
 - Script de backup versionado: `ops/almadesign_backup.sh`.
 - Script de healthcheck versionado: `ops/almadesign_healthcheck.sh`.
 - Runbook de operación versionado: `docs/gestion/RUNBOOK_OPERACION_ALMADESIGN_WEB.md`.
 - Retención local definida: 14 días.
 - Backups destinados a `/var/backups/almadesign`.
-- Scripts preparados para ejecutarse en VPS; no ejecutados desde Codex en este frente.
-- Siguiente frente recomendado: CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
+- Healthcheck manual ejecutado correctamente en VPS.
+- Backup manual ejecutado correctamente en VPS.
+- Siguiente frente recomendado: RECREAR_PROMPT_FORMULARIO_CONTACTO_ALMADESIGN y luego CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
 
 ## Estado local MVC
 
@@ -82,6 +94,13 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Sin conexión de base de datos por ahora.
 - Sin formulario por ahora.
 - Deploy controlado a VPS ejecutado correctamente.
+
+## Estado formulario
+
+- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: NO_IMPLEMENTADO.
+- El prompt inicial para formulario perdió estructura al copiarse desde chat.
+- No se debe implementar formulario hasta recrear/validar el prompt estructurado.
+- Siguiente frente recomendado: RECREAR_PROMPT_FORMULARIO_CONTACTO_ALMADESIGN y luego CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
 
 ## Fuera de alcance
 

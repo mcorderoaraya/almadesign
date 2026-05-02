@@ -7,6 +7,7 @@
 
 ## Pendientes vigentes
 
+- RECREAR_PROMPT_FORMULARIO_CONTACTO_ALMADESIGN.
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
 
 ## Frentes completados
@@ -20,6 +21,7 @@
 - HTTPS_PUBLICO: OK.
 - ROLLBACK_DISPONIBLE: TRUE.
 - PREPARAR_BACKUPS_Y_OPERACION_ALMADESIGN_WEB: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
+- EJECUTAR_BACKUP_Y_HEALTHCHECK_ALMADESIGN_EN_VPS: EJECUTADO_OK.
 
 ## Deploy validado
 
@@ -41,8 +43,15 @@
 - Script de healthcheck: `ops/almadesign_healthcheck.sh`.
 - Runbook: `docs/gestion/RUNBOOK_OPERACION_ALMADESIGN_WEB.md`.
 - Retención local: 14 días.
-- Scripts preparados para ejecutar en VPS.
-- Próximo frente recomendado: CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
+- Healthcheck manual ejecutado correctamente en VPS.
+- Backup manual ejecutado correctamente en VPS.
+- Próximo frente recomendado: RECREAR_PROMPT_FORMULARIO_CONTACTO_ALMADESIGN y luego CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
+
+## Estado formulario
+
+- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: NO_IMPLEMENTADO.
+- El prompt inicial para formulario perdió estructura al copiarse desde chat.
+- No implementar formulario hasta recrear/validar el prompt estructurado.
 
 ## Separación obligatoria
 

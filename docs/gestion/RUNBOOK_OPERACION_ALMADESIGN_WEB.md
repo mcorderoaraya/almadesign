@@ -19,6 +19,11 @@
 - App root VPS: `/var/www/almadesign`.
 - Backup root VPS: `/var/backups/almadesign`.
 - Rollback disponible por backups locales.
+- PREPARAR_BACKUPS_Y_OPERACION_ALMADESIGN_WEB: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
+- EJECUTAR_BACKUP_Y_HEALTHCHECK_ALMADESIGN_EN_VPS: EJECUTADO_OK.
+- Backup manual ejecutado correctamente en VPS.
+- Healthcheck manual ejecutado correctamente en VPS.
+- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: NO_IMPLEMENTADO.
 
 ## Acceso SSH
 

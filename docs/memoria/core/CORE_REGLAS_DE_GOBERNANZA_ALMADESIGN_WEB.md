@@ -1,35 +1,53 @@
 # Nombre del archivo: CORE_REGLAS_DE_GOBERNANZA_ALMADESIGN_WEB.md
 # Ruta del archivo: ~/workspace/almadesign-web/docs/memoria/core/CORE_REGLAS_DE_GOBERNANZA_ALMADESIGN_WEB.md
-# Fecha de creacion: 2026-05-02
-# Explicacion tecnica breve: reglas de gobernanza operativa para AlmaDesign Web.
+# Fecha de creación: 2026-05-02
+# Explicación técnica breve: reglas de gobernanza operativa para AlmaDesign Web.
 
 # Reglas de Gobernanza AlmaDesign Web
 
-## Separacion obligatoria
+## Separación obligatoria
 
 AlmaDesign Web vive en `~/workspace/almadesign-web`. Apogeo Lux Gobernanza vive en `~/workspace/apogeo-lux/backend`.
 
+AlmaDesign Web no debe tratar el backend técnico Apogeo Lux como parte modificable del proyecto.
+
+## Estado público
+
+- ALMADESIGN_WEB_PUBLICO: OPERATIVO.
+- DEPLOY_CONTROLADO_ALMADESIGN_WEB_A_VPS: EJECUTADO_OK.
+- EJECUTAR_BACKUP_Y_HEALTHCHECK_ALMADESIGN_EN_VPS: EJECUTADO_OK.
+- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: NO_IMPLEMENTADO.
+
 ## Restricciones
 
-No modificar desde este proyecto:
+No modificar desde este frente documental:
 
 - Apogeo Lux backend.
-- GraphRAG.
+- GraphRAG del backend Apogeo Lux.
 - Neo4j.
 - PostgreSQL Apogeo Lux.
-- evidencia tecnica Apogeo Lux.
-- configuracion del VPS.
+- evidencia técnica Apogeo Lux.
+- configuración del VPS.
 - Cloudflare.
 - Zoho.
+- DNS.
+- SSL.
+- Nginx.
+- `.env`.
 - `.ssh`.
 - llaves privadas.
+- base de datos.
+- formulario.
+- Composer.
+- WordPress.
+- Docker.
+- cPanel.
 
-## Acciones fuera de alcance
+## Reglas para próximos frentes
 
-- No ejecutar deploy.
-- No hacer git commit.
-- No hacer git push.
-- No instalar WordPress.
-- No instalar Docker.
-- No instalar cPanel.
-- No usar Composer todavia.
+- No implementar formulario hasta recrear/validar el prompt estructurado.
+- Siguiente frente recomendado: RECREAR_PROMPT_FORMULARIO_CONTACTO_ALMADESIGN.
+- Frente posterior: CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
+- No ejecutar deploy salvo frente explícito de deploy controlado.
+- No imprimir secretos.
+- No versionar `.env`.

@@ -12,17 +12,20 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend Apogeo Lu
 - AlmaDesign Web vive en: `~/workspace/almadesign-web`.
 - Apogeo Lux Gobernanza vive en: `~/workspace/apogeo-lux/backend`.
 - Dominio productivo: `almadesign.cl`.
+- GitHub repo: `https://github.com/mcorderoaraya/almadesign`.
+- Branch deploy: `main`.
 
 ## VPS productivo validado
 
+- ALMADESIGN_WEB_PUBLICO: OPERATIVO.
 - Hostinger KVM 2.
 - Ubuntu 24.04 LTS.
-- Nginx.
-- PHP 8.3.
-- Certbot SSL.
+- Nginx: operativo.
+- PHP: 8.3.
+- Certbot SSL: operativo.
 - Cloudflare proxy activo.
 - Zoho Mail funcionando.
-- SSH con usuario mauricio.
+- SSH: usuario mauricio con clave.
 - root SSH bloqueado.
 - UFW activo.
 - App root VPS: `/var/www/almadesign`.
@@ -48,14 +51,28 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend Apogeo Lu
 - CREAR_ESTRUCTURA_PHP_MVC_ALMADESIGN: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
 - CORREGIR_LANDING_APOGEO_LUX_ALMADESIGN: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
 - PREPARAR_BACKUPS_Y_OPERACION_ALMADESIGN_WEB: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
+- EJECUTAR_BACKUP_Y_HEALTHCHECK_ALMADESIGN_EN_VPS: EJECUTADO_OK.
 - Script de backup: `ops/almadesign_backup.sh`.
 - Script de healthcheck: `ops/almadesign_healthcheck.sh`.
 - Runbook de operación: `docs/gestion/RUNBOOK_OPERACION_ALMADESIGN_WEB.md`.
 - Retención local de backups: 14 días.
+- Healthcheck manual ejecutado correctamente en VPS.
+- Backup manual ejecutado correctamente en VPS.
+- No hay base de datos.
+- CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: NO_IMPLEMENTADO.
+- No hay Composer en uso productivo todavía.
 
 ## Pendientes
 
+- RECREAR_PROMPT_FORMULARIO_CONTACTO_ALMADESIGN.
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
+
+## Estado formulario
+
+- El prompt inicial para formulario perdió estructura al copiarse desde chat.
+- No se debe implementar formulario hasta recrear/validar el prompt estructurado.
+- Siguiente frente recomendado: RECREAR_PROMPT_FORMULARIO_CONTACTO_ALMADESIGN.
+- Frente posterior: CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN.
 
 ## Fuera de alcance
 
