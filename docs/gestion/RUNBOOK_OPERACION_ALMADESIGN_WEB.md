@@ -68,6 +68,115 @@ El script:
 - Aplica retención local de 14 días.
 - Termina con `BACKUP_ALMADESIGN_OK` si todo está correcto.
 
+## Backup externo/offline
+
+### Estado actual
+
+- Backup local: `/var/backups/almadesign`.
+- Script actual: `ops/almadesign_backup.sh`.
+- Retención local: 14 días.
+- Checksum `.sha256`: SI.
+- Rollback local documentado: SI.
+- Backup externo: NO IMPLEMENTADO.
+- Backup offline: NO IMPLEMENTADO.
+
+### Principio
+
+El backup local sirve para rollback rápido, pero no protege contra pérdida total del VPS, ransomware, borrado accidental del proveedor o compromiso completo del servidor.
+
+Obsidian NO es backup productivo del servidor. Obsidian es navegación documental y mirror de lectura.
+
+El repo Git NO debe contener secretos ni backups productivos.
+
+### Estrategia de tres capas
+
+Capa A — Local VPS:
+
+- Mantener `/var/backups/almadesign`.
+- Mantener generación de `sha256`.
+- Mantener retención de 14 días.
+- Usar para rollback rápido.
+
+Capa B — Externo cifrado:
+
+- Mantener una copia cifrada fuera del VPS.
+- Proveedor pendiente de decisión.
+- Opciones futuras: object storage, cloud compatible con `rclone`/`restic` o servidor externo controlado.
+- No guardar secretos en texto plano.
+- No subir backups externos hasta definir proveedor, herramienta, cifrado y retención.
+
+Capa C — Offline:
+
+- Mantener una copia mensual o por hito estable en disco externo cifrado.
+- El disco debe permanecer desconectado cuando no se use.
+- No reemplaza el backup externo automatizable.
+
+### Política de secretos
+
+- `.env` no debe entrar al backup normal en texto plano.
+- `SMTP_PASSWORD` no debe guardarse en repo, Obsidian ni logs.
+- La recuperación de secretos debe hacerse mediante password manager, archivo cifrado fuera del VPS o procedimiento manual seguro.
+- No documentar valores reales.
+- No guardar llaves privadas en repo ni en Obsidian.
+
+### Política de retención propuesta
+
+- Local VPS: 14 días.
+- Externo cifrado: 4 copias semanales + 3 mensuales.
+- Offline: 1 mensual o 1 por hito estable.
+
+### Prueba de restauración no destructiva
+
+1. Descargar o disponer del backup externo en un entorno temporal.
+2. Verificar checksum:
+
+```bash
+sha256sum -c almadesign_backup_YYYYMMDD_HHMMSS.tar.gz.sha256
+```
+
+3. Extraer en `/tmp/almadesign_restore_test` o entorno local:
+
+```bash
+mkdir -p /tmp/almadesign_restore_test
+tar -xzf almadesign_backup_YYYYMMDD_HHMMSS.tar.gz -C /tmp/almadesign_restore_test
+```
+
+4. Confirmar presencia de:
+
+- `public/index.php`.
+- `app/`.
+- `ops/`.
+- `docs/`.
+- `composer.json`.
+- `composer.lock`.
+
+5. Confirmar política sobre `vendor`/PHPMailer:
+
+- `vendor` actualmente puede reconstruirse desde repo/deploy o debe definirse como dependencia incluida según decisión futura.
+
+6. No restaurar sobre producción durante la prueba.
+7. No probar secretos reales.
+
+### Brechas abiertas
+
+- Backup externo cifrado pendiente.
+- Backup offline pendiente.
+- Procedimiento formal de recuperación de `.env` pendiente.
+- Prueba de restore externo pendiente.
+- Política final Composer/vendor pendiente.
+
+### Próximo frente recomendado
+
+`IMPLEMENTAR_BACKUP_EXTERNO_CIFRADO_ALMADESIGN`.
+
+Ejecutar solo después de que Mauricio decida:
+
+- Proveedor/destino externo.
+- Herramienta: `restic`, `rclone` o manual.
+- Política de cifrado.
+- Política de secretos.
+- Frecuencia y retención.
+
 ## Healthcheck
 
 Ejecutar:
