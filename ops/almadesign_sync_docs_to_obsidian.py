@@ -18,8 +18,11 @@ import tempfile
 VAULT_ENV = "ALMADESIGN_OBSIDIAN_VAULT_ROOT"
 FALLBACK_VAULT_ROOT = Path("/mnt/c/Vaults/agendaProfesional")
 SITIOWEB_RELATIVE = Path("04_almadesign") / "productos" / "SitioWeb"
+ROOT_DASHBOARD_RELATIVE = Path("04_almadesign") / "DASHBOARD.md"
 MIRROR_RELATIVE = SITIOWEB_RELATIVE / "docs"
-DASHBOARD_RELATIVE = SITIOWEB_RELATIVE / "DASHBOARD_ALMADESIGN_WEB_DOCS.md"
+SITIOWEB_DASHBOARD_RELATIVE = SITIOWEB_RELATIVE / "DASHBOARD.md"
+LEGACY_SITIOWEB_DASHBOARD_RELATIVE = SITIOWEB_RELATIVE / "DASHBOARD_ALMADESIGN_WEB_DOCS.md"
+APOGEOLUX_DASHBOARD_RELATIVE = Path("04_almadesign") / "productos" / "ApogeoLux" / "DASHBOARD.md"
 SOURCE_DISPLAY = "~/workspace/almadesign-web/docs"
 ALLOWED_SUFFIXES = {".md", ".txt", ".json", ".yml", ".yaml"}
 EXCLUDED_DIRS = {"logs", "storage", "node_modules", "vendor", ".git"}
@@ -274,6 +277,41 @@ def build_dashboard(staging_docs: Path, commit_hash: str, sync_time: str) -> str
     return "\n".join(lines).rstrip() + "\n"
 
 
+def build_root_dashboard(vault_root: Path, commit_hash: str, sync_time: str) -> str:
+    apogeo_dashboard = vault_root / APOGEOLUX_DASHBOARD_RELATIVE
+    apogeo_link = (
+        "[[productos/ApogeoLux/DASHBOARD|Abrir]]"
+        if apogeo_dashboard.is_file()
+        else "Dashboard interno pendiente."
+    )
+
+    lines = [
+        "# Dashboard AlmaDesign",
+        "",
+        "> Generado automaticamente. No editar manualmente.",
+        "> Obsidian es dashboard/mirror navegable; no es fuente de verdad tecnica.",
+        f"> Ultimo commit SitioWeb sincronizado: {commit_hash}",
+        f"> Ultima sincronizacion: {sync_time}",
+        "",
+        "## Productos en desarrollo",
+        "",
+        "| Producto | Estado | Dashboard | Ruta documental | Descripcion |",
+        "|---|---|---|---|---|",
+        (
+            "| ApogeoLux | Activo documental | "
+            f"{apogeo_link} | `productos/ApogeoLux/docs` | "
+            "Documentacion del producto Apogeo Lux en el baul AlmaDesign. |"
+        ),
+        (
+            "| SitioWeb | Activo | [[productos/SitioWeb/DASHBOARD|Abrir]] | "
+            "`productos/SitioWeb/docs` | "
+            "Sitio web comercial de AlmaDesign y landing comercial de Apogeo Lux. |"
+        ),
+        "",
+    ]
+    return "\n".join(lines)
+
+
 def sync(args: argparse.Namespace) -> int:
     if not args.from_head:
         raise SyncError("usa --from-head para confirmar que la fuente es el commit HEAD.")
@@ -283,7 +321,9 @@ def sync(args: argparse.Namespace) -> int:
     vault_root = find_vault_root()
 
     mirror_target = vault_root / MIRROR_RELATIVE
-    dashboard_target = vault_root / DASHBOARD_RELATIVE
+    dashboard_target = vault_root / SITIOWEB_DASHBOARD_RELATIVE
+    legacy_dashboard_target = vault_root / LEGACY_SITIOWEB_DASHBOARD_RELATIVE
+    root_dashboard_target = vault_root / ROOT_DASHBOARD_RELATIVE
     if not is_guarded_mirror_target(mirror_target):
         raise SyncError(f"guard rail fallo: target no termina exactamente en {MIRROR_RELATIVE.as_posix()}")
 
@@ -298,6 +338,7 @@ def sync(args: argparse.Namespace) -> int:
             raise SyncError("git archive no genero docs/ en staging.")
 
         dashboard = build_dashboard(staging_docs, commit_hash, sync_time)
+        root_dashboard = build_root_dashboard(vault_root, commit_hash, sync_time)
 
         if args.dry_run:
             print("DRY_RUN_ALMADESIGN_OBSIDIAN_DOCS")
@@ -305,6 +346,8 @@ def sync(args: argparse.Namespace) -> int:
             print(f"Vault root: {vault_root}")
             print(f"Mirror target: {mirror_target}")
             print(f"Dashboard target: {dashboard_target}")
+            print(f"Legacy dashboard target: {legacy_dashboard_target}")
+            print(f"Root dashboard target: {root_dashboard_target}")
             print(f"Commit HEAD: {commit_hash}")
             print(f"Archivos a copiar: {len(copied)}")
             print(f"Entradas excluidas: {len(skipped)}")
@@ -312,16 +355,20 @@ def sync(args: argparse.Namespace) -> int:
 
         dashboard_target.parent.mkdir(parents=True, exist_ok=True)
         mirror_target.parent.mkdir(parents=True, exist_ok=True)
+        root_dashboard_target.parent.mkdir(parents=True, exist_ok=True)
 
         if mirror_target.exists():
             shutil.rmtree(mirror_target)
         shutil.copytree(staging_docs, mirror_target)
         dashboard_target.write_text(dashboard, encoding="utf-8")
+        legacy_dashboard_target.write_text(dashboard, encoding="utf-8")
+        root_dashboard_target.write_text(root_dashboard, encoding="utf-8")
 
     print("SYNC_ALMADESIGN_OBSIDIAN_DOCS_OK")
     print(f"Fuente HEAD: {repo_root / 'docs'}")
     print(f"Mirror: {mirror_target}")
     print(f"Dashboard: {dashboard_target}")
+    print(f"Dashboard raiz: {root_dashboard_target}")
     print(f"Commit: {commit_hash}")
     return 0
 

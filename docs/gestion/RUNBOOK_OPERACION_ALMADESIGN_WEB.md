@@ -94,9 +94,11 @@ No ejecuta `certbot renew --dry-run` en cada corrida.
 
 - Fuente: `~/workspace/almadesign-web/docs`.
 - Destino: `<VAULT_ROOT>/04_almadesign/productos/SitioWeb/docs`.
-- Dashboard: `<VAULT_ROOT>/04_almadesign/productos/SitioWeb/DASHBOARD_ALMADESIGN_WEB_DOCS.md`.
+- Dashboard SitioWeb: `<VAULT_ROOT>/04_almadesign/productos/SitioWeb/DASHBOARD.md`.
+- Dashboard raíz AlmaDesign: `<VAULT_ROOT>/04_almadesign/DASHBOARD.md`.
 - Dirección: repo `docs/` -> Obsidian.
 - Regla: Obsidian es mirror de lectura. Editar la fuente real en repo `docs/`.
+- El dashboard raíz AlmaDesign conecta las rutas documentales `<VAULT_ROOT>/04_almadesign/productos/ApogeoLux/docs` y `<VAULT_ROOT>/04_almadesign/productos/SitioWeb/docs`.
 
 Instalación:
 
