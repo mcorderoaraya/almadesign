@@ -5,8 +5,6 @@ $verticals = [
     [
         'title' => 'Consultoría IA y procesos',
         'href' => url('/consultoria-ia-procesos'),
-        'image' => asset('img/cards/consultoria-ia-procesos.webp'),
-        'alt' => 'Representación abstracta de procesos ordenados para consultoría de inteligencia artificial',
         'summary' => 'Ordenamos fricciones internas, procesos y criterios para implementar IA con claridad, control y adopción responsable.',
         'cta' => 'Solicitar diagnóstico',
         'keywords' => 'consultoría IA empresas',
@@ -14,8 +12,6 @@ $verticals = [
     [
         'title' => 'Apogeo',
         'href' => url('/apogeo'),
-        'image' => asset('img/cards/apogeo.webp'),
-        'alt' => 'Representación abstracta de conocimiento conectado, contexto y documentación verificable',
         'summary' => 'Sistemas de conocimiento aumentado para recuperar contexto, sostener trazabilidad y trabajar con documentación verificable entre partes.',
         'cta' => 'Conocer Apogeo',
         'keywords' => 'recuperación contextual',
@@ -23,8 +19,6 @@ $verticals = [
     [
         'title' => 'AI for Humans',
         'href' => url('/ai-for-humans'),
-        'image' => asset('img/cards/ai-for-humans.webp'),
-        'alt' => 'Representación abstracta de inteligencia artificial centrada en capacidades humanas',
         'summary' => 'IA gobernada para proteger, potenciar y no reemplazar al humano en sus decisiones, procesos y capacidades.',
         'cta' => 'Explorar AI for Humans',
         'keywords' => 'decisiones humanas complejas',
@@ -53,7 +47,7 @@ $methodSteps = [
                 </div>
             </div>
             <aside class="alma-hero__signal" aria-label="Principios AlmaDesign">
-                <img src="<?= e(asset('img/logo_horizontal_naranja.svg')) ?>" alt="AlmaDesign" width="258" height="58">
+                <img src="<?= e(asset('img/logo_horizontal_naranja.svg')) ?>" alt="AlmaDesign" width="258" height="118">
                 <dl>
                     <div>
                         <dt>Claridad</dt>
@@ -70,9 +64,10 @@ $methodSteps = [
                 </dl>
             </aside>
         </div>
-        <a class="scroll-down" href="#verticales" aria-label="Bajar a la sección de verticales">
-            <span aria-hidden="true"></span>
-            <small>Scroll</small>
+        <a class="scroll-down" href="#verticales" aria-label="Ir a verticales de AlmaDesign">
+            <span class="scroll-down__label">Deslizar</span>
+            <span class="scroll-down__line" aria-hidden="true"></span>
+            <span class="scroll-down__arrow" aria-hidden="true"></span>
         </a>
     </section>
 
@@ -98,13 +93,15 @@ $methodSteps = [
                     <?php foreach ($verticals as $vertical): ?>
                         <article class="vertical-card">
                             <a class="vertical-card__link" href="<?= e($vertical['href']) ?>" aria-label="<?= e($vertical['title'] . ': ' . $vertical['cta']) ?>">
-                                <div class="vertical-card__media">
-                                    <img src="<?= e($vertical['image']) ?>" alt="<?= e($vertical['alt']) ?>" width="1254" height="1254" loading="lazy">
+                                <div class="vertical-card__visual" aria-hidden="true">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
                                 </div>
                                 <div class="vertical-card__body">
                                     <span class="vertical-card__keyword"><?= e($vertical['keywords']) ?></span>
                                     <h3><?= e($vertical['title']) ?></h3>
-                                    <span class="vertical-card__summary"><?= e($vertical['summary']) ?></span>
+                                    <p class="vertical-card__summary"><?= e($vertical['summary']) ?></p>
                                     <span class="vertical-card__cta"><?= e($vertical['cta']) ?></span>
                                 </div>
                             </a>

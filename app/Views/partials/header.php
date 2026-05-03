@@ -3,7 +3,7 @@ declare(strict_types=1);
 ?>
 <header class="site-header">
     <a class="brand" href="<?= e(url('/')) ?>" aria-label="Ir al inicio">
-        <img class="brand-logo" src="<?= e(asset('img/logo_horizontal_naranja.svg')) ?>" alt="AlmaDesign" width="196" height="44">
+        <img class="brand-logo" src="<?= e(asset('img/logo_horizontal_naranja.svg')) ?>" alt="AlmaDesign" width="196" height="90">
     </a>
     <nav class="site-nav" aria-label="Navegación principal">
         <a href="<?= e(url('/')) ?>">Inicio</a>
