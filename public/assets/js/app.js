@@ -2,7 +2,7 @@
     document.documentElement.classList.add('js-ready');
 
     const revealItems = document.querySelectorAll(
-        '.info-card, .demo-group, .scope-card, .audience-grid span, .contact-form, .studio-panel, .hero-facts'
+        '.info-card, .demo-group, .scope-card, .audience-grid span, .contact-form, .studio-panel, .hero-facts, .vertical-card, .method-list li, .trust-pillar-grid span, .alma-hero__signal'
     );
 
     if (!('IntersectionObserver' in window)) {

@@ -1,68 +1,147 @@
 <?php
 declare(strict_types=1);
+
+$verticals = [
+    [
+        'title' => 'Consultoría IA y procesos',
+        'href' => url('/consultoria-ia-procesos'),
+        'image' => asset('img/cards/consultoria-ia-procesos.webp'),
+        'alt' => 'Representación abstracta de procesos ordenados para consultoría de inteligencia artificial',
+        'summary' => 'Ordenamos fricciones internas, procesos y criterios para implementar IA con claridad, control y adopción responsable.',
+        'cta' => 'Solicitar diagnóstico',
+        'keywords' => 'consultoría IA empresas',
+    ],
+    [
+        'title' => 'Apogeo',
+        'href' => url('/apogeo'),
+        'image' => asset('img/cards/apogeo.webp'),
+        'alt' => 'Representación abstracta de conocimiento conectado, contexto y documentación verificable',
+        'summary' => 'Sistemas de conocimiento aumentado para recuperar contexto, sostener trazabilidad y trabajar con documentación verificable entre partes.',
+        'cta' => 'Conocer Apogeo',
+        'keywords' => 'recuperación contextual',
+    ],
+    [
+        'title' => 'AI for Humans',
+        'href' => url('/ai-for-humans'),
+        'image' => asset('img/cards/ai-for-humans.webp'),
+        'alt' => 'Representación abstracta de inteligencia artificial centrada en capacidades humanas',
+        'summary' => 'IA gobernada para proteger, potenciar y no reemplazar al humano en sus decisiones, procesos y capacidades.',
+        'cta' => 'Explorar AI for Humans',
+        'keywords' => 'decisiones humanas complejas',
+    ],
+];
+
+$methodSteps = [
+    ['step' => 'Diagnosticar', 'text' => 'Identificar fricciones internas, responsabilidades, documentos y decisiones críticas.'],
+    ['step' => 'Ordenar', 'text' => 'Separar ruido, fuentes, criterios y prioridades para convertir confusión en claridad operativa.'],
+    ['step' => 'Diseñar', 'text' => 'Transformar objetivos en flujos, interfaces, reglas y sistemas comprensibles.'],
+    ['step' => 'Gobernar', 'text' => 'Definir límites, trazabilidad, supervisión humana y criterios de uso.'],
+    ['step' => 'Acompañar', 'text' => 'Apoyar adopción, aprendizaje y mejora continua con dirección humana.'],
+];
 ?>
-<section class="home-hero">
-    <div class="home-hero__copy">
-        <p class="eyebrow">AI for humans</p>
-        <h1>AlmaDesign</h1>
-        <p class="lead">Desarrollo web, IA aplicada y soluciones digitales diseñadas con criterio humano.</p>
-        <p class="hero-text">Construimos experiencias sobrias, trazables y mantenibles para productos que necesitan confianza, claridad técnica y una presencia digital con carácter propio.</p>
-        <div class="hero-actions" aria-label="Acciones principales">
-            <a class="button button-primary" href="<?= e(url('/apogeo-lux')) ?>">Explorar Apogeo Lux</a>
-            <a class="button button-secondary" href="<?= e(url('/contacto')) ?>">Contactar a AlmaDesign</a>
+<div class="alma-home">
+    <section class="alma-hero" aria-labelledby="home-title">
+        <div class="alma-hero__content">
+            <p class="eyebrow">Inteligencia artificial gobernada</p>
+            <h1 id="home-title">Arquitectura de conocimiento e inteligencia artificial gobernada para decisiones humanas complejas.</h1>
+            <p class="lead">AlmaDesign diseña, ordena y gobierna sistemas de información, procesos e inteligencia aplicada para que las organizaciones decidan con más claridad, trazabilidad y criterio humano.</p>
+            <p class="hero-text">No vendemos IA como moda. Diseñamos tecnología útil para reducir fricción, ordenar conocimiento y proteger el control humano sobre decisiones críticas.</p>
+            <div class="hero-actions" aria-label="Acciones principales">
+                <a class="button button-primary" href="<?= e(url('/contacto')) ?>">Solicitar diagnóstico</a>
+                <a class="button button-secondary" href="#verticales">Explorar verticales</a>
+            </div>
         </div>
-    </div>
-    <aside class="studio-panel" aria-label="Enfoque AlmaDesign">
-        <div class="studio-panel__header">
-            <span>AD</span>
-            <p>Estudio digital</p>
+        <aside class="alma-hero__signal" aria-label="Principios AlmaDesign">
+            <img src="<?= e(asset('img/logo_horizontal_naranja.svg')) ?>" alt="AlmaDesign" width="258" height="58">
+            <dl>
+                <div>
+                    <dt>Claridad</dt>
+                    <dd>Información comprensible para equipos humanos.</dd>
+                </div>
+                <div>
+                    <dt>Trazabilidad</dt>
+                    <dd>Criterios, fuentes y decisiones con ruta verificable.</dd>
+                </div>
+                <div>
+                    <dt>Gobernanza</dt>
+                    <dd>IA con límites explícitos, supervisión y responsabilidad.</dd>
+                </div>
+            </dl>
+        </aside>
+    </section>
+
+    <section class="alma-purpose alma-section" aria-labelledby="purpose-title">
+        <div class="section-heading">
+            <p class="eyebrow">Propósito</p>
+            <h2 id="purpose-title">Tecnología al servicio de la comprensión humana.</h2>
         </div>
-        <dl>
-            <div>
-                <dt>Web</dt>
-                <dd>Arquitectura clara, interfaces rápidas y contenido gobernado.</dd>
-            </div>
-            <div>
-                <dt>IA aplicada</dt>
-                <dd>Flujos útiles, auditables y ajustados al contexto del negocio.</dd>
-            </div>
-            <div>
-                <dt>Producto</dt>
-                <dd>Diseño sobrio para sistemas que deben ser entendidos y usados.</dd>
-            </div>
-        </dl>
-    </aside>
-</section>
+        <div class="alma-purpose__text">
+            <p>AlmaDesign nace desde una convicción simple: el problema no es la falta de información, sino la dificultad de comprenderla, ordenarla y convertirla en decisiones útiles.</p>
+            <p>Por eso diseñamos arquitecturas de conocimiento: sistemas capaces de conectar datos, documentos, procesos, criterios y personas bajo una estructura clara, gobernada y trazable.</p>
+        </div>
+    </section>
 
-<section class="section-grid home-capabilities" aria-label="Capacidades AlmaDesign">
-    <div class="section-heading">
-        <p class="eyebrow">Qué hacemos</p>
-        <h2>Digital con dirección, no solo presencia.</h2>
-    </div>
-    <div class="cards-grid cards-grid--three">
-        <article class="info-card feature-card">
-            <span>01</span>
-            <h3>Sitios web gobernados</h3>
-            <p>Estructuras mantenibles, contenido claro y una base técnica preparada para evolucionar sin ruido.</p>
-        </article>
-        <article class="info-card feature-card">
-            <span>02</span>
-            <h3>IA aplicada</h3>
-            <p>Prototipos y productos que privilegian trazabilidad, límites explícitos y utilidad real.</p>
-        </article>
-        <article class="info-card feature-card">
-            <span>03</span>
-            <h3>Soluciones digitales</h3>
-            <p>Herramientas sobrias para operaciones, comunicación, automatización y validación de ideas.</p>
-        </article>
-    </div>
-</section>
+    <section class="alma-section verticals-section" id="verticales" aria-labelledby="verticales-title">
+        <div class="section-heading">
+            <p class="eyebrow">Verticales</p>
+            <h2 id="verticales-title">Tres caminos para convertir complejidad en claridad.</h2>
+            <p>AlmaDesign trabaja en tres verticales conectadas por un mismo principio: ordenar procesos, conectar conocimiento y aplicar IA gobernada para apoyar decisiones humanas complejas.</p>
+        </div>
+        <div class="vertical-card-grid">
+            <?php foreach ($verticals as $vertical): ?>
+                <article class="vertical-card">
+                    <a class="vertical-card__link" href="<?= e($vertical['href']) ?>" aria-label="<?= e($vertical['title'] . ': ' . $vertical['cta']) ?>">
+                        <div class="vertical-card__media">
+                            <img src="<?= e($vertical['image']) ?>" alt="<?= e($vertical['alt']) ?>" width="1254" height="1254" loading="lazy">
+                        </div>
+                        <div class="vertical-card__body">
+                            <span class="vertical-card__keyword"><?= e($vertical['keywords']) ?></span>
+                            <h3><?= e($vertical['title']) ?></h3>
+                            <span class="vertical-card__summary"><?= e($vertical['summary']) ?></span>
+                            <span class="vertical-card__cta"><?= e($vertical['cta']) ?></span>
+                        </div>
+                    </a>
+                </article>
+            <?php endforeach; ?>
+        </div>
+    </section>
 
-<section class="home-feature">
-    <div>
-        <p class="eyebrow">Producto destacado</p>
-        <h2>Apogeo Lux</h2>
-        <p>Landing comercial y demo gobernada para revisar IA jurídica trazable sobre normas públicas BCN / LeyChile.</p>
-    </div>
-    <a class="button button-primary" href="<?= e(url('/apogeo-lux')) ?>">Ver producto</a>
-</section>
+    <section class="alma-section method-section" aria-labelledby="method-title">
+        <div class="section-heading">
+            <p class="eyebrow">Método AlmaDesign</p>
+            <h2 id="method-title">De la fricción al sistema gobernado.</h2>
+        </div>
+        <ol class="method-list" aria-label="Método AlmaDesign">
+            <?php foreach ($methodSteps as $methodStep): ?>
+                <li>
+                    <strong><?= e($methodStep['step']) ?></strong>
+                    <span><?= e($methodStep['text']) ?></span>
+                </li>
+            <?php endforeach; ?>
+        </ol>
+    </section>
+
+    <section class="alma-section trust-section" aria-labelledby="trust-title">
+        <div class="trust-section__intro">
+            <p class="eyebrow">Confianza</p>
+            <h2 id="trust-title">IA gobernada, no automatización sin límites.</h2>
+            <blockquote>¿Esta tecnología mejora la capacidad humana de comprender, decidir y crear?</blockquote>
+            <p>Si la respuesta es no, no se construye. La eficiencia importa, pero nunca debe justificar deshumanización, pérdida de criterio, invasión de privacidad o automatización opaca.</p>
+        </div>
+        <div class="trust-pillar-grid" aria-label="Pilares de confianza">
+            <span>Claridad</span>
+            <span>Trazabilidad</span>
+            <span>Seguridad</span>
+            <span>Criterio humano</span>
+        </div>
+    </section>
+
+    <section class="alma-final-cta" aria-labelledby="final-cta-title">
+        <div>
+            <p class="eyebrow">Conversemos</p>
+            <h2 id="final-cta-title">Hablemos de tu proyecto.</h2>
+            <p>Si tu organización enfrenta información dispersa, procesos difíciles de explicar o decisiones que requieren mayor claridad, AlmaDesign puede ayudarte a diseñar una solución gobernada, trazable y sostenible.</p>
+        </div>
+        <a class="button button-primary" href="<?= e(url('/contacto')) ?>">Hablemos de tu proyecto</a>
+    </section>
+</div>
