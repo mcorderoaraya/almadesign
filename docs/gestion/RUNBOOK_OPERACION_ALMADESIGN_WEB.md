@@ -99,6 +99,7 @@ No ejecuta `certbot renew --dry-run` en cada corrida.
 - Dirección: repo `docs/` -> Obsidian.
 - Regla: Obsidian es mirror de lectura. Editar la fuente real en repo `docs/`.
 - El dashboard raíz AlmaDesign conecta las rutas documentales `<VAULT_ROOT>/04_almadesign/productos/ApogeoLux/docs` y `<VAULT_ROOT>/04_almadesign/productos/SitioWeb/docs`.
+- Los wikilinks generados en dashboards Obsidian usan rutas vault-relative completas, sin extensión `.md`.
 
 Instalación:
 

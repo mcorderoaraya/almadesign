@@ -23,6 +23,7 @@ MIRROR_RELATIVE = SITIOWEB_RELATIVE / "docs"
 SITIOWEB_DASHBOARD_RELATIVE = SITIOWEB_RELATIVE / "DASHBOARD.md"
 LEGACY_SITIOWEB_DASHBOARD_RELATIVE = SITIOWEB_RELATIVE / "DASHBOARD_ALMADESIGN_WEB_DOCS.md"
 APOGEOLUX_DASHBOARD_RELATIVE = Path("04_almadesign") / "productos" / "ApogeoLux" / "DASHBOARD.md"
+APOGEOLUX_DOCS_RELATIVE = Path("04_almadesign") / "productos" / "ApogeoLux" / "docs"
 SOURCE_DISPLAY = "~/workspace/almadesign-web/docs"
 ALLOWED_SUFFIXES = {".md", ".txt", ".json", ".yml", ".yaml"}
 EXCLUDED_DIRS = {"logs", "storage", "node_modules", "vendor", ".git"}
@@ -229,9 +230,9 @@ def normalize_description(value: str) -> str:
     return value[0].lower() + value[1:] if value else value
 
 
-def link_for_markdown(path_from_sitioweb: Path) -> str:
-    link_path = path_from_sitioweb.with_suffix("").as_posix()
-    label = path_from_sitioweb.stem
+def link_for_markdown(vault_relative_path: Path) -> str:
+    link_path = vault_relative_path.with_suffix("").as_posix()
+    label = vault_relative_path.stem
     return f"[[{link_path}|{label}]]"
 
 
@@ -248,9 +249,9 @@ def build_dashboard(staging_docs: Path, commit_hash: str, sync_time: str) -> str
     grouped: dict[str, list[Path]] = {}
     for path in files:
         rel_from_docs = path.relative_to(staging_docs)
-        rel_from_sitioweb = Path("docs") / rel_from_docs
-        folder = rel_from_sitioweb.parent.as_posix()
-        grouped.setdefault(folder, []).append(rel_from_sitioweb)
+        vault_relative = MIRROR_RELATIVE / rel_from_docs
+        folder = (Path("docs") / rel_from_docs).parent.as_posix()
+        grouped.setdefault(folder, []).append(vault_relative)
 
     lines = [
         "# Dashboard AlmaDesign Web Docs",
@@ -265,23 +266,75 @@ def build_dashboard(staging_docs: Path, commit_hash: str, sync_time: str) -> str
     for folder in sorted(grouped):
         lines.append(f"## {folder}")
         lines.append(f"Descripcion: {folder_description(folder)}")
-        for rel_from_sitioweb in sorted(grouped[folder], key=lambda item: item.as_posix()):
-            source_file = staging_docs / rel_from_sitioweb.relative_to("docs")
-            if rel_from_sitioweb.suffix.lower() == ".md":
+        for vault_relative in sorted(grouped[folder], key=lambda item: item.as_posix()):
+            source_file = staging_docs / vault_relative.relative_to(MIRROR_RELATIVE)
+            if vault_relative.suffix.lower() == ".md":
                 description = describe_markdown(source_file)
-                lines.append(f"- {link_for_markdown(rel_from_sitioweb)} - {description}.")
+                lines.append(f"- {link_for_markdown(vault_relative)} - {description}.")
             else:
-                lines.append(f"- `{rel_from_sitioweb.as_posix()}` - Archivo de soporte del proyecto.")
+                lines.append(f"- `{vault_relative.as_posix()}` - Archivo de soporte del proyecto.")
         lines.append("")
 
     return "\n".join(lines).rstrip() + "\n"
 
 
-def build_root_dashboard(vault_root: Path, commit_hash: str, sync_time: str) -> str:
-    apogeo_dashboard = vault_root / APOGEOLUX_DASHBOARD_RELATIVE
+def is_safe_support_file(rel_from_docs: Path) -> bool:
+    excluded, _ = should_exclude_path(Path("docs") / rel_from_docs)
+    return not excluded
+
+
+def build_product_dashboard(
+    docs_root: Path,
+    docs_vault_relative: Path,
+    title: str,
+    fallback_description: str,
+    sync_time: str,
+) -> str:
+    markdown_files = sorted(path for path in docs_root.rglob("*.md") if path.is_file())
+    support_files = sorted(
+        path
+        for path in docs_root.rglob("*")
+        if path.is_file()
+        and path.suffix.lower() != ".md"
+        and is_safe_support_file(path.relative_to(docs_root))
+    )
+
+    grouped: dict[str, list[Path]] = {}
+    for path in markdown_files + support_files:
+        rel_from_docs = path.relative_to(docs_root)
+        folder = (Path("docs") / rel_from_docs.parent).as_posix()
+        grouped.setdefault(folder, []).append(path)
+
+    lines = [
+        f"# {title}",
+        "",
+        "> Dashboard navegable en Obsidian. No reemplaza la fuente de verdad tecnica del proyecto.",
+        f"> Fecha de actualizacion: {sync_time}",
+        f"> Ruta documental: `{docs_vault_relative.as_posix()}`",
+        "",
+    ]
+
+    for folder in sorted(grouped):
+        lines.append(f"## {folder}")
+        for path in sorted(grouped[folder], key=lambda item: item.relative_to(docs_root).as_posix()):
+            rel_from_docs = path.relative_to(docs_root)
+            vault_relative = docs_vault_relative / rel_from_docs
+            if path.suffix.lower() == ".md":
+                description = describe_markdown(path)
+                if description == "Documento de soporte del proyecto":
+                    description = fallback_description
+                lines.append(f"- {link_for_markdown(vault_relative)} - {description}.")
+            else:
+                lines.append(f"- `{vault_relative.as_posix()}` - Archivo de soporte del producto.")
+        lines.append("")
+
+    return "\n".join(lines).rstrip() + "\n"
+
+
+def build_root_dashboard(apogeo_dashboard_exists: bool, commit_hash: str, sync_time: str) -> str:
     apogeo_link = (
-        "[[productos/ApogeoLux/DASHBOARD|Abrir]]"
-        if apogeo_dashboard.is_file()
+        "[[04_almadesign/productos/ApogeoLux/DASHBOARD|Abrir]]"
+        if apogeo_dashboard_exists
         else "Dashboard interno pendiente."
     )
 
@@ -303,7 +356,7 @@ def build_root_dashboard(vault_root: Path, commit_hash: str, sync_time: str) -> 
             "Documentacion del producto Apogeo Lux en el baul AlmaDesign. |"
         ),
         (
-            "| SitioWeb | Activo | [[productos/SitioWeb/DASHBOARD|Abrir]] | "
+            "| SitioWeb | Activo | [[04_almadesign/productos/SitioWeb/DASHBOARD|Abrir]] | "
             "`productos/SitioWeb/docs` | "
             "Sitio web comercial de AlmaDesign y landing comercial de Apogeo Lux. |"
         ),
@@ -324,6 +377,8 @@ def sync(args: argparse.Namespace) -> int:
     dashboard_target = vault_root / SITIOWEB_DASHBOARD_RELATIVE
     legacy_dashboard_target = vault_root / LEGACY_SITIOWEB_DASHBOARD_RELATIVE
     root_dashboard_target = vault_root / ROOT_DASHBOARD_RELATIVE
+    apogeo_docs_root = vault_root / APOGEOLUX_DOCS_RELATIVE
+    apogeo_dashboard_target = vault_root / APOGEOLUX_DASHBOARD_RELATIVE
     if not is_guarded_mirror_target(mirror_target):
         raise SyncError(f"guard rail fallo: target no termina exactamente en {MIRROR_RELATIVE.as_posix()}")
 
@@ -338,7 +393,16 @@ def sync(args: argparse.Namespace) -> int:
             raise SyncError("git archive no genero docs/ en staging.")
 
         dashboard = build_dashboard(staging_docs, commit_hash, sync_time)
-        root_dashboard = build_root_dashboard(vault_root, commit_hash, sync_time)
+        apogeo_dashboard = None
+        if apogeo_docs_root.is_dir():
+            apogeo_dashboard = build_product_dashboard(
+                apogeo_docs_root,
+                APOGEOLUX_DOCS_RELATIVE,
+                "Dashboard ApogeoLux",
+                "Documento de soporte del producto ApogeoLux",
+                sync_time,
+            )
+        root_dashboard = build_root_dashboard(apogeo_dashboard is not None, commit_hash, sync_time)
 
         if args.dry_run:
             print("DRY_RUN_ALMADESIGN_OBSIDIAN_DOCS")
@@ -348,6 +412,8 @@ def sync(args: argparse.Namespace) -> int:
             print(f"Dashboard target: {dashboard_target}")
             print(f"Legacy dashboard target: {legacy_dashboard_target}")
             print(f"Root dashboard target: {root_dashboard_target}")
+            print(f"ApogeoLux dashboard target: {apogeo_dashboard_target}")
+            print(f"ApogeoLux docs detectados: {'SI' if apogeo_dashboard is not None else 'NO'}")
             print(f"Commit HEAD: {commit_hash}")
             print(f"Archivos a copiar: {len(copied)}")
             print(f"Entradas excluidas: {len(skipped)}")
@@ -356,12 +422,15 @@ def sync(args: argparse.Namespace) -> int:
         dashboard_target.parent.mkdir(parents=True, exist_ok=True)
         mirror_target.parent.mkdir(parents=True, exist_ok=True)
         root_dashboard_target.parent.mkdir(parents=True, exist_ok=True)
+        apogeo_dashboard_target.parent.mkdir(parents=True, exist_ok=True)
 
         if mirror_target.exists():
             shutil.rmtree(mirror_target)
         shutil.copytree(staging_docs, mirror_target)
         dashboard_target.write_text(dashboard, encoding="utf-8")
         legacy_dashboard_target.write_text(dashboard, encoding="utf-8")
+        if apogeo_dashboard is not None:
+            apogeo_dashboard_target.write_text(apogeo_dashboard, encoding="utf-8")
         root_dashboard_target.write_text(root_dashboard, encoding="utf-8")
 
     print("SYNC_ALMADESIGN_OBSIDIAN_DOCS_OK")
@@ -369,6 +438,8 @@ def sync(args: argparse.Namespace) -> int:
     print(f"Mirror: {mirror_target}")
     print(f"Dashboard: {dashboard_target}")
     print(f"Dashboard raiz: {root_dashboard_target}")
+    if apogeo_docs_root.is_dir():
+        print(f"Dashboard ApogeoLux: {apogeo_dashboard_target}")
     print(f"Commit: {commit_hash}")
     return 0
 
