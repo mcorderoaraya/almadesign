@@ -40,7 +40,7 @@
 
 :root {
     color-scheme: dark;
-    --bg: #111827;
+    --bg: #111826;
     --bg-soft: #101922;
     --surface: #16212a;
     --surface-strong: #1f303b;
@@ -49,8 +49,9 @@
     --line: rgba(244, 234, 220, 0.15);
     --cream: #f4eadc;
     --cream-soft: #d8cdb9;
-    --orange: #e8792e;
+    --orange: #ed7220;
     --orange-strong: #ff944d;
+    --coral: #e84445;
     --blue: #123047;
     --graphite: #0f171d;
     --good: #78c6a3;
@@ -193,10 +194,14 @@ h3 {
     top: 0;
     z-index: 20;
     display: flex;
+    width: 100%;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    padding: 16px 0;
+    margin: 0;
+    padding: 16px max(16px, calc((100% - 1160px) / 2));
+    border-bottom: 1px solid rgba(156, 163, 175, 0.46);
+    background: rgba(17, 24, 38, 0.92);
     backdrop-filter: blur(18px);
 }
 
@@ -307,33 +312,62 @@ summary:focus-visible {
 .alma-home {
     position: relative;
     overflow: hidden;
-    background:
-        linear-gradient(90deg, rgba(244, 234, 220, 0.035) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(244, 234, 220, 0.025) 1px, transparent 1px),
-        #111827;
-    background-size: 76px 76px, 76px 76px, auto;
+    background: #111826;
     color: #f4eadc;
 }
 
 .alma-home::before {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-        linear-gradient(180deg, rgba(17, 24, 39, 0.16), #111827 95%),
-        repeating-linear-gradient(115deg, rgba(244, 234, 220, 0.022) 0 1px, transparent 1px 18px);
-    content: "";
+    display: none;
 }
 
 .alma-home > * {
     position: relative;
 }
 
-.alma-hero,
-.alma-section,
-.alma-final-cta {
+.home-third {
+    width: 100%;
+}
+
+.home-third__inner {
     width: min(1160px, calc(100% - 32px));
     margin: 0 auto;
+}
+
+.home-third--hero {
+    position: relative;
+    min-height: 80vh;
+    background:
+        linear-gradient(90deg, rgba(244, 234, 220, 0.035) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(244, 234, 220, 0.026) 1px, transparent 1px),
+        #111826;
+    background-size: 76px 76px, 76px 76px, auto;
+    color: #f4eadc;
+}
+
+.home-third--hero::before {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg, rgba(17, 24, 38, 0.18), #111826 96%),
+        repeating-linear-gradient(115deg, rgba(244, 234, 220, 0.022) 0 1px, transparent 1px 18px);
+    content: "";
+}
+
+.home-third--verticals {
+    background: #f4eadc;
+    color: #111827;
+    scroll-margin-top: 88px;
+}
+
+.home-third--human {
+    background: #111826;
+    color: #f4eadc;
+}
+
+.alma-section {
+    padding: 84px 0;
+    border-top: 1px solid rgba(244, 234, 220, 0.14);
 }
 
 .alma-hero {
@@ -341,8 +375,8 @@ summary:focus-visible {
     grid-template-columns: minmax(0, 1fr) minmax(310px, 0.42fr);
     gap: 44px;
     align-items: center;
-    min-height: 72vh;
-    padding: 76px 0 86px;
+    min-height: calc(80vh - 76px);
+    padding: 68px 0 98px;
 }
 
 .alma-hero__content {
@@ -384,9 +418,13 @@ summary:focus-visible {
 }
 
 .alma-home .hero-text,
-.alma-section p,
 .alma-final-cta p {
     color: #cfd3d8;
+}
+
+.home-third--verticals p,
+.home-third--verticals .section-heading p {
+    color: #374151;
 }
 
 .alma-hero__signal {
@@ -431,15 +469,11 @@ summary:focus-visible {
     color: #f4eadc;
 }
 
-.alma-section {
-    padding: 84px 0;
-    border-top: 1px solid rgba(244, 234, 220, 0.14);
-}
-
 .alma-purpose {
     display: grid;
     grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.08fr);
     gap: 42px;
+    padding: 82px 0 62px;
 }
 
 .alma-purpose__text {
@@ -452,6 +486,7 @@ summary:focus-visible {
 }
 
 .verticals-section {
+    padding: 0 0 96px;
     scroll-margin-top: 104px;
 }
 
@@ -471,10 +506,10 @@ summary:focus-visible {
     height: 100%;
     min-height: 100%;
     overflow: hidden;
-    border: 1px solid rgba(244, 234, 220, 0.24);
+    border: 1px solid rgba(17, 24, 39, 0.16);
     border-radius: 8px;
-    background: rgba(244, 234, 220, 0.055);
-    box-shadow: 0 18px 70px rgba(0, 0, 0, 0.24);
+    background: rgba(17, 24, 39, 0.05);
+    box-shadow: 0 18px 70px rgba(17, 24, 39, 0.14);
     text-decoration: none;
     backdrop-filter: blur(16px);
     transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
@@ -482,7 +517,7 @@ summary:focus-visible {
 
 .vertical-card__link:hover {
     border-color: rgba(232, 121, 46, 0.62);
-    background: rgba(244, 234, 220, 0.08);
+    background: rgba(17, 24, 39, 0.075);
 }
 
 .vertical-card__link:focus-visible {
@@ -494,7 +529,7 @@ summary:focus-visible {
     display: block;
     aspect-ratio: 1 / 1;
     overflow: hidden;
-    border-bottom: 1px solid rgba(244, 234, 220, 0.15);
+    border-bottom: 1px solid rgba(17, 24, 39, 0.14);
     background: #0f172a;
 }
 
@@ -524,7 +559,7 @@ summary:focus-visible {
 }
 
 .vertical-card__summary {
-    color: #cfd3d8;
+    color: #374151;
 }
 
 .vertical-card__cta {
@@ -535,8 +570,18 @@ summary:focus-visible {
     min-height: 38px;
     margin-top: 4px;
     border-bottom: 1px solid rgba(232, 121, 46, 0.62);
-    color: #f4eadc;
+    color: #111827;
     font-weight: 700;
+}
+
+.home-third--verticals h2,
+.home-third--verticals h3 {
+    color: #111827;
+}
+
+.home-third--verticals .eyebrow,
+.home-third--verticals .vertical-card__keyword {
+    color: #b54c0f;
 }
 
 .method-list {
@@ -547,6 +592,10 @@ summary:focus-visible {
     padding: 0;
     list-style: none;
     counter-reset: method;
+}
+
+.method-section {
+    padding: 88px 0 84px;
 }
 
 .method-list li {
@@ -587,12 +636,14 @@ summary:focus-visible {
     grid-template-columns: minmax(0, 0.92fr) minmax(280px, 0.54fr);
     gap: 36px;
     align-items: center;
+    padding: 86px 0;
+    border-top: 1px solid rgba(244, 234, 220, 0.14);
 }
 
 .trust-section blockquote {
     margin: 28px 0 18px;
     padding-left: 18px;
-    border-left: 3px solid var(--orange);
+    border-left: 3px solid var(--coral);
     color: #f4eadc;
     font-family: var(--serif);
     font-size: 2rem;
@@ -633,6 +684,50 @@ summary:focus-visible {
 
 .alma-final-cta .button {
     flex: 0 0 auto;
+}
+
+.scroll-down {
+    position: absolute;
+    right: max(16px, calc((100% - 1160px) / 2));
+    bottom: 28px;
+    display: grid;
+    gap: 8px;
+    place-items: center;
+    min-width: 54px;
+    color: #f4eadc;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.scroll-down span {
+    position: relative;
+    width: 1px;
+    height: 46px;
+    overflow: hidden;
+    background: rgba(156, 163, 175, 0.58);
+}
+
+.scroll-down span::after {
+    position: absolute;
+    top: -18px;
+    left: 0;
+    width: 1px;
+    height: 18px;
+    background: var(--orange);
+    content: "";
+}
+
+.scroll-down small {
+    color: #9ca3af;
+    font: inherit;
+}
+
+.scroll-down:focus-visible {
+    border-radius: 8px;
+    outline: 3px solid rgba(232, 121, 46, 0.45);
+    outline-offset: 8px;
 }
 
 .vertical-detail-hero,
@@ -1308,14 +1403,60 @@ details p {
 }
 
 .site-footer {
-    padding: 24px 0;
-    border-top: 1px solid var(--line);
-    color: var(--cream-soft);
+    width: 100%;
+    min-height: 150px;
+    margin: 0;
+    padding: 34px max(16px, calc((100% - 1160px) / 2));
+    border-top: 1px solid rgba(156, 163, 175, 0.36);
+    background: #111826;
+    color: #9ca3af;
     font-size: 0.9rem;
 }
 
+.site-footer__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(220px, 0.9fr) minmax(180px, 0.55fr);
+    gap: 28px;
+    align-items: start;
+}
+
+.site-footer strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #f4eadc;
+    font-size: 1rem;
+}
+
 .site-footer p {
+    max-width: 480px;
     margin: 0;
+}
+
+.site-footer__nav,
+.site-footer__contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+}
+
+.site-footer__contact {
+    flex-direction: column;
+}
+
+.site-footer a {
+    color: #f4eadc;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    color: var(--orange-strong);
+}
+
+.site-footer a:focus-visible {
+    border-radius: 6px;
+    outline: 3px solid rgba(232, 121, 46, 0.45);
+    outline-offset: 4px;
 }
 
 #enfoque-tec,
@@ -1357,6 +1498,10 @@ details p {
 
     .alma-home h2 {
         font-size: 2.45rem;
+    }
+
+    .site-footer__inner {
+        grid-template-columns: 1fr 1fr;
     }
 
     .final-cta {
@@ -1425,9 +1570,28 @@ details p {
         font-size: 1.12rem;
     }
 
+    .home-third--hero {
+        min-height: 80vh;
+    }
+
+    .scroll-down {
+        right: 50%;
+        bottom: 18px;
+        transform: translateX(50%);
+    }
+
+    .method-section,
+    .trust-section {
+        padding: 58px 0;
+    }
+
     .alma-final-cta {
         display: grid;
         padding: 58px 0 68px;
+    }
+
+    .site-footer__inner {
+        grid-template-columns: 1fr;
     }
 
     .trust-pillar-grid {
@@ -1469,6 +1633,10 @@ details p {
         transform: translateY(-2px);
     }
 
+    .scroll-down span::after {
+        animation: scroll-cue 1600ms ease-in-out infinite;
+    }
+
     .reveal-ready {
         opacity: 0;
         transform: translateY(14px);
@@ -1478,6 +1646,17 @@ details p {
     .reveal-ready.is-visible {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes scroll-cue {
+    0% {
+        transform: translateY(0);
+    }
+
+    70%,
+    100% {
+        transform: translateY(64px);
     }
 }
 
