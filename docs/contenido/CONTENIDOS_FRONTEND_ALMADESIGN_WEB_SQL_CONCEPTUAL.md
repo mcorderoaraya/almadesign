@@ -1,7 +1,7 @@
 # Nombre del archivo: CONTENIDOS_FRONTEND_ALMADESIGN_WEB_SQL_CONCEPTUAL.md
 # Ruta del archivo: ~/workspace/almadesign-web/docs/contenido/CONTENIDOS_FRONTEND_ALMADESIGN_WEB_SQL_CONCEPTUAL.md
 # Fecha de creación: 2026-05-03
-# Explicación técnica breve: contenidos editoriales validados para Home, verticales comerciales y modelo SQL conceptual futuro de AlmaDesign Web.
+# Explicación técnica breve: contenidos editoriales validados para Home, verticales comerciales, estrategia SEO / AI SEO y modelo SQL conceptual futuro de AlmaDesign Web.
 
 # Contenidos Frontend AlmaDesign Web y SQL Conceptual
 
@@ -14,7 +14,7 @@
 - SQL: CONCEPTUAL FUTURO, no instrucción de implementación.
 - Deploy: NO APLICA.
 
-Este documento sirve como fuente editorial para validar mensajes, jerarquía de contenido y rutas conceptuales antes de diseñar o implementar cambios visibles en el sitio.
+Este documento sirve como fuente editorial para validar mensajes, jerarquía de contenido, rutas conceptuales, arquitectura SEO y AI SEO antes de diseñar o implementar cambios visibles en el sitio.
 
 ## Principio editorial
 
@@ -26,199 +26,402 @@ La comunicación pública debe mantener tres reglas:
 - Confianza antes que promesa exagerada.
 - Gobierno humano antes que automatización ciega.
 
-Apogeo debe presentarse como una línea de producto y pensamiento aplicado, no como exposición técnica. RAGK debe comunicarse como una capacidad funcional de recuperación, contexto y conocimiento gobernado, sin convertir la página pública en una ficha de arquitectura.
+Apogeo debe presentarse como una línea de producto y pensamiento aplicado, no como exposición técnica. RAGK debe comunicarse como una capacidad funcional de recuperación, contexto, conocimiento gobernado, mensajería segura y documentación verificable, sin convertir la página pública en una ficha de arquitectura.
 
 AI for Humans debe sostener el principio: IA gobernada para proteger, potenciar y no reemplazar al humano.
 
 ## Arquitectura pública de contenido
 
-La experiencia pública futura puede organizarse en una Home con cards linkeables y tres páginas largas comerciales:
+La experiencia pública futura debe organizarse con una arquitectura dual:
 
-- Home AlmaDesign.
-- Página larga Consultoría IA y procesos.
-- Página larga Apogeo.
-- Página larga AI for Humans.
+1. Captura de demanda existente:
+   - consultoría IA;
+   - IA para empresas;
+   - IA para pymes;
+   - diagnóstico de procesos;
+   - automatización responsable.
 
-La Home debe actuar como puerta de entrada. Las páginas largas deben profundizar sin convertir el sitio en documentación técnica ni en promesa de producto cerrado.
+2. Construcción de categoría propia:
+   - arquitectura de conocimiento;
+   - IA gobernada;
+   - documentación verificable;
+   - recuperación contextual;
+   - trazabilidad documental;
+   - decisiones humanas complejas.
+
+La Home debe mantener las tres verticales comerciales validadas por Mauricio:
+
+| Vertical | Nombre público | Rol comercial | Página larga |
+|---|---|---|---|
+| 1 | Consultoría IA y procesos | Diagnóstico de fricciones, procesos y adopción responsable de IA | `/consultoria-ia-procesos` |
+| 2 | Apogeo | Línea de productos de conocimiento aumentado, trazabilidad y documentación verificable | `/apogeo` |
+| 3 | AI for Humans | Visión y sistemas de IA gobernada centrados en proteger y potenciar al humano | `/ai-for-humans` |
+
+Además, para SEO y AI SEO, deben proyectarse páginas pilar y páginas de apoyo:
+
+| Tipo | Página | Objetivo |
+|---|---|---|
+| Pilar SEO | `/arquitectura-de-conocimiento` | Crear categoría propia sobre conocimiento empresarial, contexto y trazabilidad. |
+| Pilar SEO | `/gobernanza-ia` | Capturar búsquedas sobre IA responsable, control, riesgo y supervisión humana. |
+| BOFU | `/diagnostico-fricciones-internas` | Convertir dolores operativos en oferta comercial concreta. |
+| BOFU | `/ia-para-pymes` | Capturar demanda local y regional de empresas pequeñas que buscan adoptar IA con orden. |
+| MOFU | `/automatizacion-responsable` | Reencuadrar automatización como proceso gobernado, no como reemplazo. |
+| MOFU | `/recuperacion-contextual` | Traducir RAG a lenguaje de negocio sin exponer tecnología interna. |
+| MOFU | `/documentacion-verificable` | Posicionar trazabilidad, evidencia y validación entre partes. |
+| Autoridad | `/glosario-ia-gobernada` | Construir definiciones canónicas para SEO y motores generativos. |
 
 ## Home
 
 Objetivo de la Home: explicar en pocos segundos qué hace AlmaDesign, para quién trabaja y por qué su enfoque es distinto.
 
-Mensaje principal:
+### Hero
 
-AlmaDesign diseña inteligencia artificial gobernada, procesos claros y productos digitales que ayudan a organizaciones a decidir mejor sin perder control humano.
+#### H1
 
-Soporte editorial:
+Arquitectura de conocimiento e inteligencia artificial gobernada para decisiones humanas complejas.
 
-- IA aplicada con criterio operativo.
-- Procesos diseñados para reducir fricción y riesgo.
-- Productos conceptuales y comerciales orientados a gobernanza, trazabilidad y adopción responsable.
-- Acompañamiento experto para pasar de intención a sistema usable.
+#### Bajada
 
-Estructura sugerida:
+AlmaDesign diseña, ordena y gobierna sistemas de información, procesos e inteligencia aplicada para que las organizaciones decidan con más claridad, trazabilidad y criterio humano.
 
-1. Hero sobrio con promesa central.
-2. Tres cards de verticales comerciales.
-3. Bloque de método AlmaDesign.
-4. Bloque de confianza: claridad, trazabilidad, seguridad, operación.
-5. Llamado a conversación comercial, sin presentarlo como servicio sin costo.
+No vendemos IA como moda. Diseñamos tecnología útil para reducir fricción, ordenar conocimiento y proteger el control humano sobre decisiones críticas.
+
+#### CTA principal
+
+Solicitar diagnóstico
+
+Destino: `/contacto`
+
+#### CTA secundario
+
+Explorar verticales
+
+Destino: `#verticales`
+
+#### Keywords objetivo
+
+- inteligencia artificial gobernada;
+- arquitectura de conocimiento;
+- consultoría IA empresas;
+- consultora IA Chile;
+- decisiones humanas complejas.
+
+### Declaración de propósito
+
+#### Título
+
+Tecnología al servicio de la comprensión humana.
+
+#### Texto
+
+AlmaDesign nace desde una convicción simple: el problema no es la falta de información, sino la dificultad de comprenderla, ordenarla y convertirla en decisiones útiles.
+
+Por eso diseñamos arquitecturas de conocimiento: sistemas capaces de conectar datos, documentos, procesos, criterios y personas bajo una estructura clara, gobernada y trazable.
+
+AlmaDesign transforma confusión en claridad operativa.
+
+### Sección de verticales
+
+#### Título
+
+Tres caminos para convertir complejidad en claridad.
+
+#### Bajada
+
+AlmaDesign trabaja en tres verticales conectadas por un mismo principio: ordenar procesos, conectar conocimiento y aplicar IA gobernada para apoyar decisiones humanas complejas.
 
 ## Cards Home
 
-Las cards deben ser linkeables y conducir a páginas largas. Cada card debe tener título, síntesis y señal de valor.
+Las cards visuales deben usar imágenes 1:1 sin texto incrustado. El título, resumen y CTA deben renderizarse como HTML real para SEO, accesibilidad y AI SEO.
 
-### Card 1: Consultoría IA y procesos
+### Card 1 — Consultoría IA y procesos
 
-Título:
+**Título:** Consultoría IA y procesos  
+**Slug:** `consultoria-ia-procesos`  
+**Ruta:** `/consultoria-ia-procesos`  
+**Resumen:** Ordenamos fricciones internas, procesos y criterios para implementar IA con claridad, control y adopción responsable.  
+**CTA:** Solicitar diagnóstico  
+**Destino CTA:** `/contacto`
 
-Consultoría IA y procesos
+**Keywords asociadas:** consultoría IA empresas, consultoría inteligencia artificial Chile, diagnóstico de fricciones internas, IA para ordenar procesos internos.
 
-Síntesis:
+### Card 2 — Apogeo
 
-Diseñamos flujos, criterios y automatizaciones gobernadas para que la inteligencia artificial mejore la operación sin romper el control humano.
+**Título:** Apogeo  
+**Slug:** `apogeo`  
+**Ruta:** `/apogeo`  
+**Resumen:** Sistemas de conocimiento aumentado para recuperar contexto, sostener trazabilidad y trabajar con documentación verificable entre partes.  
+**CTA:** Conocer Apogeo  
+**Destino CTA:** `/apogeo`
 
-Valor:
+**Keywords asociadas:** conocimiento aumentado, recuperación contextual, documentación verificable, trazabilidad documental, búsqueda inteligente empresarial.
 
-Diagnóstico, rediseño de procesos, priorización de casos de uso y acompañamiento para adoptar IA con responsabilidad.
+### Card 3 — AI for Humans
 
-Destino conceptual:
+**Título:** AI for Humans  
+**Slug:** `ai-for-humans`  
+**Ruta:** `/ai-for-humans`  
+**Resumen:** IA gobernada para proteger, potenciar y no reemplazar al humano en sus decisiones, procesos y capacidades.  
+**CTA:** Explorar AI for Humans  
+**Destino CTA:** `/ai-for-humans`
+
+**Keywords asociadas:** IA responsable para organizaciones, inteligencia artificial gobernada, decisiones humanas complejas, adopción responsable de IA.
+
+### Bloque de confianza
+
+#### Título
+
+IA gobernada, no automatización sin límites.
+
+#### Texto
+
+Cada solución de AlmaDesign debe responder una pregunta básica:
+
+> ¿Esta tecnología mejora la capacidad humana de comprender, decidir y crear?
+
+Si la respuesta es no, no se construye.
+
+La eficiencia importa, pero nunca debe justificar deshumanización, pérdida de criterio, invasión de privacidad o automatización opaca.
+
+### Cierre Home
+
+#### Título
+
+Construyamos tecnología con dirección humana.
+
+#### Texto
+
+Si tu organización enfrenta información dispersa, procesos difíciles de explicar o decisiones que requieren mayor claridad, AlmaDesign puede ayudarte a diseñar una solución gobernada, trazable y sostenible.
+
+#### CTA final
+
+Hablemos de tu proyecto
+
+Destino: `/contacto`
+
+## Página larga — Consultoría IA y procesos
+
+### Ruta
 
 `/consultoria-ia-procesos`
 
-### Card 2: Apogeo
+### Objetivo
 
-Título:
+Capturar demanda comercial de empresas que buscan consultoría IA, diagnóstico de procesos y adopción responsable, sin caer en la promesa genérica de automatización barata.
 
-Apogeo
+### H1
 
-Síntesis:
+Consultoría de inteligencia artificial y procesos para empresas.
 
-Una visión de producto para conocimiento gobernado, trazabilidad y apoyo a decisiones complejas.
+### Bajada
 
-Valor:
+Antes de automatizar, ordenamos procesos, fricciones, criterios y responsabilidades. AlmaDesign ayuda a organizaciones a identificar dónde la IA puede aportar valor real y cómo implementarla con trazabilidad, gobernanza y control humano.
 
-Ordenar información crítica, recuperar contexto relevante y sostener decisiones con evidencia usable por equipos humanos.
+### El problema
 
-Destino conceptual:
+Muchas organizaciones quieren usar IA, pero sus procesos, documentos, responsabilidades y criterios de decisión están dispersos. En ese contexto, automatizar puede aumentar el desorden en vez de resolverlo.
 
-`/apogeo`
-
-Nota editorial:
-
-No presentar Apogeo como plataforma cerrada ni como servicio listo en modalidad SaaS. No mencionar tecnologías internas ni arquitectura de backend.
-
-### Card 3: AI for Humans
-
-Título:
-
-AI for Humans
-
-Síntesis:
-
-IA gobernada para proteger, potenciar y no reemplazar al humano.
-
-Valor:
-
-Principios, diseños y prácticas para que la adopción de IA mejore capacidades humanas, reduzca daño y preserve responsabilidad.
-
-Destino conceptual:
-
-`/ai-for-humans`
-
-## Página larga Consultoría IA y procesos
-
-Objetivo:
-
-Convertir interés comercial en una conversación seria sobre diagnóstico, operación y adopción responsable.
-
-Mensaje principal:
-
-La IA útil no empieza con herramientas. Empieza con procesos claros, criterios explícitos y decisiones bien gobernadas.
-
-Bloques sugeridos:
-
-### Problema
-
-Muchas organizaciones quieren usar IA, pero no tienen claridad sobre procesos, datos, riesgos, responsabilidades ni casos de uso realmente valiosos.
+La IA útil no empieza con herramientas. Empieza con procesos claros, objetivos explícitos y decisiones bien gobernadas.
 
 ### Enfoque AlmaDesign
 
-- Levantar procesos reales.
-- Identificar puntos de fricción.
-- Priorizar casos de uso con impacto operativo.
-- Diseñar controles humanos.
-- Proponer automatizaciones graduales.
-- Documentar decisiones y criterios.
+AlmaDesign trabaja desde una secuencia simple:
+
+1. Diagnóstico de fricciones internas.
+2. Levantamiento de procesos reales.
+3. Priorización de casos de uso.
+4. Diseño de guardrails y criterios humanos.
+5. Roadmap de implementación.
+6. Acompañamiento en adopción responsable.
 
 ### Qué se entrega
 
-- Mapa de procesos.
-- Priorización de oportunidades.
-- Riesgos y guardrails.
+- Mapa de procesos y fricciones.
+- Priorización de oportunidades IA.
+- Riesgos, límites y guardrails.
 - Recomendaciones de implementación.
-- Roadmap de adopción.
+- Roadmap técnico-operativo.
+- Criterios de adopción y supervisión humana.
 
 ### Qué no se promete
 
 - No se promete automatización sin validación humana.
 - No se promete resolver problemas organizacionales solo con IA.
-- No se presenta la consultoría como gratuita.
+- No se presentan diagnósticos profundos como gratuitos.
+- No se promete reducción de costos sin evidencia ni evaluación.
 
-## Página larga Apogeo
+### Páginas de apoyo recomendadas
 
-Objetivo:
+- `/diagnostico-fricciones-internas`
+- `/ia-para-pymes`
+- `/automatizacion-responsable`
+- `/gobernanza-ia`
 
-Presentar Apogeo como concepto comercial y línea de producto orientada a conocimiento gobernado, sin revelar tecnologías internas ni prometer capacidades legales automáticas.
+### CTA
 
-Mensaje principal:
+Solicitar diagnóstico
 
-Apogeo organiza conocimiento crítico para que equipos humanos puedan encontrar contexto, entender trazabilidad y decidir con mayor claridad.
+Destino: `/contacto`
 
-Bloques sugeridos:
+### SEO
 
-### Problema
+**Title:** Consultoría de inteligencia artificial y procesos para empresas | AlmaDesign  
+**Meta description:** Consultoría IA para empresas que necesitan ordenar procesos, diagnosticar fricciones internas e implementar inteligencia artificial con gobernanza y trazabilidad.
 
-La información crítica suele estar dispersa, desactualizada o desconectada de las decisiones que debería apoyar.
+## Página larga — Apogeo
 
-### Concepto Apogeo
+### Ruta
 
-Apogeo propone una forma de trabajar con conocimiento gobernado: reunir fuentes relevantes, mantener contexto, ordenar evidencia y facilitar recuperación de información para apoyar decisiones humanas.
+`/apogeo`
+
+### Objetivo
+
+Presentar Apogeo como línea de producto y pensamiento aplicado en conocimiento aumentado, recuperación contextual, trazabilidad, documentación verificable y apoyo a decisiones complejas, sin exponer tecnologías internas ni prometer SaaS listo.
+
+### H1
+
+Apogeo para conocimiento aumentado y decisiones mejor informadas.
+
+### Bajada
+
+Apogeo organiza información crítica para que equipos humanos puedan recuperar contexto, entender trazabilidad y trabajar con documentación verificable bajo reglas de gobernanza.
+
+No se limita a buscar documentos. Su propósito es mantener contexto, evidencia, relaciones y control humano durante todo el ciclo de intercambio de información.
+
+### Qué es Apogeo
+
+Apogeo es la línea de productos de AlmaDesign orientada a sistemas de conocimiento aumentado.
+
+Está pensada para contextos donde la información es extensa, sensible, cambiante o compartida entre organizaciones relacionadas bajo un mismo propósito.
+
+### Qué resuelve
+
+Apogeo ayuda cuando la información crítica está dispersa, desactualizada, desconectada o difícil de verificar.
+
+Permite que la información pueda ser:
+
+- consultada con contexto;
+- conectada con otras fuentes;
+- trazada hasta su origen;
+- compartida con seguridad;
+- validada entre partes;
+- organizada bajo reglas de gobernanza.
+
+### Capacidades conceptuales
+
+#### Recuperación contextual
+
+Encuentra información relevante según la pregunta, el propósito y el contexto de uso.
+
+#### Conocimiento conectado
+
+Relaciona documentos, entidades, conceptos, eventos y fuentes para comprender cómo se vincula la información.
+
+#### Búsqueda inteligente empresarial
+
+Permite consultar información compleja mediante texto, filtros, criterios, relaciones y contexto, sin convertir la comunicación pública en una ficha técnica.
+
+#### Mensajería segura
+
+Permite intercambio protegido de información entre organizaciones, equipos o partes relacionadas bajo un mismo propósito.
+
+#### Orquestación de información
+
+Coordina flujos, estados, actualizaciones y traspasos de información entre partes.
+
+#### Documentación verificable
+
+Mantiene evidencia confiable, versionada, trazable y firmable o validable según el marco acordado entre las partes.
+
+#### Trazabilidad documental
+
+Permite conocer origen, relación, estado y contexto de la información utilizada para una decisión.
 
 ### RAGK como concepto funcional
 
-RAGK debe explicarse como una capacidad de recuperación y contexto gobernado: una manera de conectar preguntas, documentos, criterios y evidencia sin presentar arquitectura interna.
+RAGK debe comunicarse como una capacidad de recuperación, contexto, conocimiento gobernado y comunicación confiable.
 
-### Qué comunica
+Su función es conectar preguntas, documentos, criterios, evidencia y traspasos de información entre partes sin exponer arquitectura interna ni tecnologías específicas.
 
-- Conocimiento organizado.
-- Evidencia trazable.
-- Contexto recuperable.
-- Gobierno humano.
-- Apoyo a decisiones complejas.
+En comunicación pública se describen capacidades:
 
-### Qué no comunica
+- recuperación contextual;
+- conocimiento conectado;
+- búsqueda inteligente;
+- orquestación de información;
+- mensajería segura;
+- documentación verificable;
+- trazabilidad entre partes.
+
+### Qué no comunica Apogeo
 
 - No se presenta como entrega de decisiones profesionales automatizadas.
 - No se presenta como reemplazo de profesionales.
-- No se presenta como plataforma cerrada lista para venta masiva.
+- No se presenta como plataforma SaaS lista para venta masiva.
 - No se exponen tecnologías internas.
+- No se promete asesoría legal automática.
 
-## Página larga AI for Humans
+### Páginas de apoyo recomendadas
 
-Objetivo:
+- `/arquitectura-de-conocimiento`
+- `/recuperacion-contextual`
+- `/documentacion-verificable`
+- `/trazabilidad-documental`
 
-Posicionar la línea editorial y metodológica de AlmaDesign sobre adopción responsable de IA.
+### CTA
 
-Mensaje principal:
+Conversar sobre Apogeo
 
-AI for Humans es una visión de inteligencia artificial gobernada para proteger, potenciar y no reemplazar al humano.
+Destino: `/contacto`
 
-Bloques sugeridos:
+### SEO
+
+**Title:** Apogeo | Conocimiento aumentado y documentación verificable  
+**Meta description:** Apogeo desarrolla sistemas de conocimiento aumentado para recuperar contexto, conectar información crítica y sostener decisiones con trazabilidad documental.
+
+## Página larga — AI for Humans
+
+### Ruta
+
+`/ai-for-humans`
+
+### Objetivo
+
+Posicionar AI for Humans como marco propio de AlmaDesign para adopción responsable, inteligencia artificial gobernada y protección del criterio humano.
+
+### H1
+
+AI for Humans: IA gobernada para proteger y potenciar al humano.
+
+### Bajada
+
+AI for Humans es nuestra forma de diseñar inteligencia artificial: sistemas que protegen, potencian y no reemplazan al humano.
+
+La IA debe ayudar a pensar mejor, ordenar información, reducir sobrecarga y aumentar claridad, sin invadir espacios personales ni delegar decisiones críticas al modelo.
 
 ### Principio
 
-La IA debe ampliar capacidades humanas, reducir tareas de bajo valor, mejorar acceso a conocimiento y fortalecer decisiones responsables.
+> IA gobernada para proteger, potenciar y no reemplazar al humano.
+
+Cada palabra funciona como restricción de diseño.
+
+### Proteger
+
+Proteger significa resguardar privacidad, tiempo, criterio profesional, dignidad y límites humanos.
+
+Una IA útil no debe transformarse en vigilancia, presión invisible o automatización sin consentimiento.
+
+### Potenciar
+
+Potenciar significa aumentar la capacidad humana de comprender, crear, decidir y actuar con mayor claridad.
+
+La IA debe sugerir, explicar, ordenar y acompañar. No debe sustituir juicio ni responsabilidad.
+
+### No reemplazar
+
+Las decisiones críticas deben permanecer bajo control humano.
+
+La IA puede asistir procesos, organizar información y proponer alternativas, pero no debe convertirse en supervisor oculto ni reemplazo de criterio profesional.
 
 ### Riesgos que aborda
 
@@ -227,19 +430,35 @@ La IA debe ampliar capacidades humanas, reducir tareas de bajo valor, mejorar ac
 - Decisiones opacas.
 - Dependencia excesiva de modelos.
 - Uso de IA sin contexto ni gobernanza.
+- Promesas de productividad sin evidencia.
 
-### Enfoque
+### Aplicaciones posibles
 
-- Diseño centrado en personas.
-- Supervisión humana.
-- Criterios explícitos.
-- Trazabilidad.
-- Límites claros.
-- Evaluación continua.
+- Asistentes personales gobernados.
+- Sistemas de apoyo a decisiones.
+- Organización de conocimiento personal.
+- Productividad consciente.
+- Métricas de bienestar y carga operativa.
+- Separación entre espacio personal y corporativo.
+- Gobernanza previa a la automatización.
 
-### Promesa editorial
+### Páginas de apoyo recomendadas
 
-AlmaDesign no vende sustitución de personas. Diseña sistemas para que las personas trabajen mejor, con más claridad, menos ruido y mayor control.
+- `/gobernanza-ia`
+- `/ia-responsable-organizaciones`
+- `/automatizacion-responsable`
+- `/decisiones-humanas-complejas`
+
+### CTA
+
+Explorar AI for Humans
+
+Destino: `/contacto`
+
+### SEO
+
+**Title:** AI for Humans | IA gobernada para proteger y potenciar al humano  
+**Meta description:** AI for Humans es la visión de AlmaDesign para diseñar inteligencia artificial gobernada que protege, potencia y no reemplaza el criterio humano.
 
 ## Modelo SQL conceptual futuro
 
@@ -276,53 +495,121 @@ CREATE TABLE contenido_regla_comunicacion (
     tipo VARCHAR(80) NOT NULL
 );
 ```
-
 Uso conceptual posible:
 
-- `contenido_vertical`: Home y verticales comerciales.
-- `contenido_bloque`: secciones de páginas largas.
-- `contenido_regla_comunicacion`: límites editoriales, claims permitidos y claims prohibidos.
+contenido_vertical: Home y verticales comerciales.
+contenido_bloque: secciones de páginas largas.
+contenido_regla_comunicacion: límites editoriales, claims permitidos y claims prohibidos.
 
 Estado real vigente:
 
-- Base de datos abierta: NO.
-- Migraciones creadas: NO.
-- Implementación autorizada: NO.
+Base de datos abierta: NO.
+Migraciones creadas: NO.
+Implementación autorizada: NO.
+Mapa conceptual SQL del Home
+page: home
+section: hero
+heading: Arquitectura de conocimiento e inteligencia artificial gobernada para decisiones humanas complejas.
+CTA principal: /contacto
+CTA secundario: #verticales
+section: vertical_cards
 
-## Reglas de comunicación
+Cards:
 
-Reglas generales:
+Consultoría IA y procesos → /consultoria-ia-procesos
+Apogeo → /apogeo
+AI for Humans → /ai-for-humans
+section: trust_block
 
-- No comunicar tecnologías internas de Apogeo.
-- No afirmar que Apogeo está listo como SaaS.
-- No afirmar entrega de decisiones profesionales automatizadas.
-- No afirmar reemplazo humano.
-- No afirmar que existe base de datos abierta para el sitio.
-- No presentar consultorías como gratuitas.
-- No incluir secretos, credenciales, logs ni datos sensibles.
+Conceptos relacionados:
 
-Reglas para Apogeo:
+ai_for_humans
+gobernanza_ia
+claridad_operativa
+decisiones_humanas
+arquitectura_conocimiento
+documentacion_verificable
+trazabilidad_documental
+Reglas de comunicación
+No usar
+IA autónoma.
+Automatización total.
+Reemplazo de profesionales.
+SaaS legal listo.
+Asesoría legal automatizada.
+Decisiones sin intervención humana.
+Tecnologías específicas de Apogeo en contenido público.
+Reducciones de costo garantizadas.
+Resultados asegurados en porcentaje sin evidencia.
+La mejor consultora IA de Chile sin fuente externa verificable.
+Usar
+Arquitectura de conocimiento.
+IA gobernada.
+Consultoría IA y procesos.
+Diagnóstico de fricciones internas.
+Gobernanza IA.
+Automatización responsable.
+Recuperación contextual.
+Conocimiento conectado.
+Mensajería segura.
+Documentación verificable.
+Trazabilidad documental.
+Claridad operativa.
+Decisiones humanas complejas.
+Apoyo al criterio humano.
+Keywords prioritarias iniciales
+consultora IA Chile
+consultoría inteligencia artificial Chile
+consultoría IA empresas
+gobernanza IA empresas
+IA para pymes Chile
+arquitectura de conocimiento empresarial
+diagnóstico de fricciones internas
+documentación verificable
+trazabilidad documental
+recuperación contextual
+Definiciones canónicas requeridas
 
-- Hablar de conocimiento gobernado, contexto, trazabilidad y apoyo a decisiones.
-- Evitar detalles de infraestructura, colas, motores, bases, servicios internos o arquitectura.
-- Mantener a profesionales humanos como responsables finales.
+Cada definición debe tener una versión corta de 40 a 70 palabras, una explicación práctica y enlaces internos a páginas relacionadas.
 
-Reglas para AI for Humans:
+Qué es arquitectura de conocimiento empresarial.
+Qué significa inteligencia artificial gobernada.
+Qué es recuperación contextual.
+Qué significa documentación verificable.
+Qué es trazabilidad documental.
+Qué es AI for Humans.
+Cómo se diferencia automatización responsable de automatización ciega.
+Cómo una organización ordena procesos antes de implementar IA.
+FAQs prioritarias
+¿Qué hace una consultora de inteligencia artificial para empresas?
+¿Cómo empezar a implementar IA sin desordenar la operación?
+¿Qué diferencia hay entre automatización, IA generativa y agentes?
+¿Qué es gobernanza IA y por qué importa en empresas?
+¿Qué es arquitectura de conocimiento empresarial?
+¿Qué es recuperación contextual y cuándo conviene?
+¿Cómo evitar respuestas no verificables en asistentes internos?
+¿Cómo ordenar documentación y procesos antes de desplegar IA?
+¿La IA puede apoyar decisiones sin reemplazar a las personas?
+¿Qué tipo de empresas necesitan trazabilidad documental?
+¿Cómo evaluar si un caso de uso de IA justifica inversión?
+¿Qué cambia entre una pyme y una empresa grande al adoptar IA?
+Schema recomendado futuro
+Organization
+WebSite
+BreadcrumbList
+Service
+FAQPage
+Article
+DefinedTermSet
+DefinedTerm
+Person para autoría experta
+HowTo solo cuando existan guías realmente paso a paso y verificables
 
-- Repetir el principio de protección, potenciación y no reemplazo.
-- Usar lenguaje humano, claro y responsable.
-- Evitar promesas absolutas sobre productividad o automatización.
+No usar SoftwareApplication ni Product para Apogeo mientras no exista una oferta validada públicamente como producto listo para mercado.
 
-Reglas para Consultoría IA y procesos:
-
-- Enfatizar diagnóstico, procesos, criterios y adopción.
-- Evitar prometer resultados sin evaluación.
-- Presentar la conversación comercial como paso de calificación, no como servicio gratuito.
-
-## Estado de aprobación
-
-- Documento creado para validación editorial de Mauricio.
-- Contenido apto para discusión y refinamiento.
-- No aprobado todavía para implementación frontend.
-- No habilita cambios en PHP, CSS, rutas productivas ni base de datos.
-- Próximo paso sugerido: validar contenido editorial con Mauricio antes de abrir diseño frontend.
+Estado de aprobación
+Documento actualizado para validación editorial de Mauricio.
+Contenido apto para discusión y refinamiento.
+No aprobado todavía para implementación frontend.
+No habilita cambios en PHP, CSS, rutas productivas ni base de datos.
+Próximo paso sugerido: validar contenido editorial con Mauricio antes de abrir diseño frontend.
