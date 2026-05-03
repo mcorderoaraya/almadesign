@@ -90,6 +90,27 @@ El script valida:
 
 No ejecuta `certbot renew --dry-run` en cada corrida.
 
+## Sincronización docs hacia Obsidian
+
+- Fuente: `~/workspace/almadesign-web/docs`.
+- Destino: `<VAULT_ROOT>/04_almadesign/productos/SitioWeb/docs`.
+- Dashboard: `<VAULT_ROOT>/04_almadesign/productos/SitioWeb/DASHBOARD_ALMADESIGN_WEB_DOCS.md`.
+- Dirección: repo `docs/` -> Obsidian.
+- Regla: Obsidian es mirror de lectura. Editar la fuente real en repo `docs/`.
+
+Instalación:
+
+```bash
+export ALMADESIGN_OBSIDIAN_VAULT_ROOT="/mnt/c/Vaults/agendaProfesional"
+bash ops/almadesign_install_obsidian_docs_hook.sh
+```
+
+Ejecución manual:
+
+```bash
+python3 ops/almadesign_sync_docs_to_obsidian.py --from-head
+```
+
 ## Rollback
 
 1. Entrar al VPS:
