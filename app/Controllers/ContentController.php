@@ -116,6 +116,34 @@ final class ContentController extends BaseController
                 'Apogeo no busca reemplazar el criterio profesional. Busca entregar a la gerencia una base de conocimiento más clara, conectada y gobernada para decidir con mayor seguridad.',
             ],
             'sections' => [],
+            'architectureSection' => [
+                'eyebrow' => 'Arquitecturas Apogeo',
+                'title' => 'Tres formas de estructurar contexto y conocimiento.',
+                'body' => 'Apogeo aborda distintos niveles de madurez en recuperación, relación y gobernanza del conocimiento. Estas tres aproximaciones permiten avanzar desde la consulta contextual hasta sistemas de conocimiento más conectados, trazables y coordinados.',
+                'cards' => [
+                    [
+                        'title' => 'RAG',
+                        'body' => 'Recuperación contextual de información relevante a partir de documentos y fuentes disponibles, para responder mejor una consulta sin depender de búsqueda manual dispersa.',
+                        'micro' => 'Primer nivel de conocimiento aumentado.',
+                        'image' => 'img/apogeo/rag-architecture.svg',
+                        'alt' => 'Diagrama abstracto de búsqueda contextual conectando una pregunta con documentos recuperados.',
+                    ],
+                    [
+                        'title' => 'GraphRAG',
+                        'body' => 'Expande la recuperación incorporando relaciones entre conceptos, documentos, eventos y entidades, para construir respuestas con mayor profundidad de contexto y conexión entre antecedentes.',
+                        'micro' => 'Contexto enriquecido por relaciones.',
+                        'image' => 'img/apogeo/graphrag-architecture.svg',
+                        'alt' => 'Diagrama abstracto de nodos y relaciones entre piezas de información.',
+                    ],
+                    [
+                        'title' => 'RAGK',
+                        'body' => 'Integra recuperación, conocimiento conectado, trazabilidad y flujo gobernado de información para sostener respuestas compuestas, validables y útiles en decisiones humanas complejas.',
+                        'micro' => 'Conocimiento confiable para decisiones complejas.',
+                        'image' => 'img/apogeo/ragk-architecture.svg',
+                        'alt' => 'Diagrama abstracto de un flujo gobernado con recuperación, relaciones, validación y respuesta trazable.',
+                    ],
+                ],
+            ],
             'cardSections' => [
                 [
                     'eyebrow' => 'Capacidades gerenciales',

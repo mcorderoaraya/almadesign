@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 360" role="img" aria-hidden="true">
+  <defs>
+    <radialGradient id="graph-aura" cx="50%" cy="50%" r="55%">
+      <stop offset="0" stop-color="#5eead4" stop-opacity=".26"/>
+      <stop offset="1" stop-color="#f4eadc" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="graph-link" x1="80" y1="80" x2="440" y2="280" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f97316"/>
+      <stop offset=".55" stop-color="#111827"/>
+      <stop offset="1" stop-color="#5eead4"/>
+    </linearGradient>
+  </defs>
+  <rect width="520" height="360" rx="34" fill="#f4eadc"/>
+  <circle cx="260" cy="180" r="150" fill="url(#graph-aura)"/>
+  <g fill="none" stroke="url(#graph-link)" stroke-width="2.2" stroke-opacity=".72">
+    <path d="M132 182 214 104 320 130 390 222 282 268 180 232Z"/>
+    <path d="M214 104 282 268M320 130 180 232M132 182 390 222"/>
+    <path d="M214 104 390 222M320 130 282 268"/>
+  </g>
+  <g fill="#141d2f">
+    <circle cx="132" cy="182" r="22"/>
+    <circle cx="214" cy="104" r="18"/>
+    <circle cx="320" cy="130" r="26"/>
+    <circle cx="390" cy="222" r="20"/>
+    <circle cx="282" cy="268" r="24"/>
+    <circle cx="180" cy="232" r="17"/>
+  </g>
+  <g fill="#f97316">
+    <circle cx="132" cy="182" r="6"/>
+    <circle cx="320" cy="130" r="7"/>
+    <circle cx="282" cy="268" r="7"/>
+  </g>
+  <g fill="#5eead4">
+    <circle cx="214" cy="104" r="5"/>
+    <circle cx="390" cy="222" r="6"/>
+    <circle cx="180" cy="232" r="5"/>
+  </g>
+  <rect x="98" y="66" width="92" height="46" rx="14" fill="#fff" fill-opacity=".35" stroke="#111827" stroke-opacity=".1"/>
+  <rect x="328" y="250" width="96" height="46" rx="14" fill="#fff" fill-opacity=".32" stroke="#111827" stroke-opacity=".1"/>
+</svg>

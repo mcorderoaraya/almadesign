@@ -1269,6 +1269,123 @@ summary:focus-visible {
     border-top: 1px solid rgba(156, 163, 175, 0.24);
 }
 
+.apogeo-architectures-section {
+    margin: clamp(58px, 8vw, 104px) 0 0;
+    padding: clamp(72px, 9vw, 124px) max(16px, calc((100% - 1160px) / 2));
+    background: var(--beige);
+    color: var(--tinta);
+}
+
+.apogeo-architectures-inner {
+    display: grid;
+    gap: clamp(34px, 5vw, 58px);
+}
+
+.apogeo-architectures-header {
+    display: grid;
+    max-width: 880px;
+    gap: 14px;
+}
+
+.apogeo-architectures-header .eyebrow {
+    color: var(--naranja);
+}
+
+.apogeo-architectures-header h2 {
+    margin: 0;
+    color: var(--tinta);
+    font-size: clamp(2.25rem, 4vw, 4.25rem);
+    line-height: 1.03;
+}
+
+.apogeo-architectures-header p:not(.eyebrow) {
+    max-width: 74ch;
+    margin: 0;
+    color: rgba(20, 29, 47, 0.78);
+    font-size: clamp(1.02rem, 1.35vw, 1.2rem);
+    line-height: 1.62;
+}
+
+.apogeo-architecture-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(16px, 2vw, 24px);
+}
+
+.apogeo-architecture-card {
+    display: grid;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid rgba(17, 24, 39, 0.14);
+    border-radius: 24px;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.48), rgba(244, 234, 220, 0.32)),
+        rgba(255, 255, 255, 0.2);
+    box-shadow: 0 18px 48px rgba(17, 24, 39, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.42);
+    backdrop-filter: blur(14px);
+    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.apogeo-architecture-card__media {
+    display: grid;
+    aspect-ratio: 1.28 / 1;
+    place-items: center;
+    padding: clamp(14px, 2vw, 22px);
+    border-bottom: 1px solid rgba(17, 24, 39, 0.1);
+    background:
+        radial-gradient(circle at 72% 18%, rgba(94, 234, 212, 0.18), transparent 28%),
+        linear-gradient(135deg, rgba(244, 234, 220, 0.2), rgba(255, 255, 255, 0.34));
+}
+
+.apogeo-architecture-card__media img {
+    width: min(100%, 420px);
+    height: auto;
+    display: block;
+}
+
+.apogeo-architecture-card__body {
+    display: flex;
+    min-width: 0;
+    min-height: 260px;
+    flex-direction: column;
+    gap: 14px;
+    padding: clamp(24px, 3vw, 32px);
+}
+
+.apogeo-architecture-card__micro {
+    width: max-content;
+    max-width: 100%;
+    margin: 0;
+    padding: 6px 10px;
+    border: 1px solid rgba(249, 115, 22, 0.28);
+    border-radius: 999px;
+    color: var(--naranja);
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.apogeo-architecture-card h3 {
+    margin: 0;
+    color: var(--tinta);
+    font-size: clamp(2rem, 3vw, 3.25rem);
+    line-height: 0.98;
+}
+
+.apogeo-architecture-card__body > p:not(.apogeo-architecture-card__micro) {
+    margin: 0;
+    color: rgba(20, 29, 47, 0.78);
+    font-size: 1rem;
+    line-height: 1.58;
+}
+
+.apogeo-architecture-card:hover {
+    border-color: rgba(249, 115, 22, 0.32);
+    box-shadow: 0 22px 58px rgba(17, 24, 39, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.52);
+}
+
 .apogeo-infographic-section {
     width: min(1240px, calc(100% - 32px));
     margin: clamp(56px, 7vw, 92px) auto 0;
@@ -2158,6 +2275,7 @@ details p {
 
     .cards-grid--three,
     .alma-vertical-card-grid,
+    .apogeo-architecture-grid,
     .consulting-card-grid,
     .flow-list,
     .method-list,
@@ -2258,6 +2376,7 @@ details p {
 
     .cards-grid--three,
     .alma-vertical-card-grid,
+    .apogeo-architecture-grid,
     .consulting-card-grid,
     .flow-list,
     .method-list,

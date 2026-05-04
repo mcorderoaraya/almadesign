@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 360" role="img" aria-hidden="true">
+  <defs>
+    <linearGradient id="ragk-flow" x1="80" y1="180" x2="440" y2="180" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f97316"/>
+      <stop offset=".48" stop-color="#5eead4"/>
+      <stop offset="1" stop-color="#141d2f"/>
+    </linearGradient>
+    <linearGradient id="ragk-panel" x1="120" y1="68" x2="400" y2="292" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity=".72"/>
+      <stop offset="1" stop-color="#fff" stop-opacity=".18"/>
+    </linearGradient>
+  </defs>
+  <rect width="520" height="360" rx="34" fill="#f4eadc"/>
+  <path d="M94 91h332v178H94z" fill="none" stroke="#111827" stroke-opacity=".08"/>
+  <path d="M132 180h256" stroke="url(#ragk-flow)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M380 170l16 10-16 10" fill="none" stroke="#141d2f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <g>
+    <rect x="78" y="132" width="92" height="96" rx="22" fill="#141d2f"/>
+    <circle cx="124" cy="180" r="13" fill="#f97316"/>
+    <path d="M112 204h24" stroke="#f4eadc" stroke-opacity=".72" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <g>
+    <rect x="206" y="76" width="108" height="80" rx="22" fill="url(#ragk-panel)" stroke="#111827" stroke-opacity=".12"/>
+    <path d="M232 116h56M260 98v36" stroke="#111827" stroke-opacity=".42" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <g>
+    <rect x="206" y="204" width="108" height="80" rx="22" fill="url(#ragk-panel)" stroke="#111827" stroke-opacity=".12"/>
+    <circle cx="238" cy="244" r="10" fill="#5eead4"/>
+    <circle cx="282" cy="244" r="10" fill="#f97316"/>
+    <path d="M248 244h24" stroke="#111827" stroke-opacity=".34" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g>
+    <rect x="350" y="128" width="96" height="104" rx="24" fill="#141d2f"/>
+    <path d="M378 182l14 14 30-36" fill="none" stroke="#5eead4" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <path d="M260 156v48M314 116c42 8 66 28 74 60M314 244c42-8 66-28 74-60" fill="none" stroke="#111827" stroke-opacity=".16" stroke-width="2" stroke-linecap="round"/>
+</svg>

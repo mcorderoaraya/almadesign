@@ -7,6 +7,7 @@ declare(strict_types=1);
 /** @var list<string> $guardrails */
 $cardSections = $cardSections ?? [];
 $postSections = $postSections ?? [];
+$architectureSection = $architectureSection ?? null;
 $infographicSection = $infographicSection ?? null;
 $limitsSection = $limitsSection ?? null;
 $leadParagraphs = $leadParagraphs ?? [$lead];
@@ -53,6 +54,39 @@ $finalCta = $finalCta ?? [
                     <?php endif; ?>
                 </article>
             <?php endforeach; ?>
+        </section>
+    <?php endif; ?>
+
+    <?php if ($architectureSection !== null): ?>
+        <section class="apogeo-architectures-section" aria-labelledby="apogeo-architectures-title">
+            <div class="apogeo-architectures-inner">
+                <header class="apogeo-architectures-header">
+                    <p class="eyebrow"><?= e($architectureSection['eyebrow']) ?></p>
+                    <h2 id="apogeo-architectures-title"><?= e($architectureSection['title']) ?></h2>
+                    <p><?= e($architectureSection['body']) ?></p>
+                </header>
+
+                <div class="apogeo-architecture-grid">
+                    <?php foreach ($architectureSection['cards'] as $card): ?>
+                        <article class="apogeo-architecture-card">
+                            <div class="apogeo-architecture-card__media">
+                                <img
+                                    src="<?= e(asset($card['image'])) ?>"
+                                    alt="<?= e($card['alt']) ?>"
+                                    loading="lazy"
+                                    width="520"
+                                    height="360"
+                                >
+                            </div>
+                            <div class="apogeo-architecture-card__body">
+                                <p class="apogeo-architecture-card__micro"><?= e($card['micro']) ?></p>
+                                <h3><?= e($card['title']) ?></h3>
+                                <p><?= e($card['body']) ?></p>
+                            </div>
+                        </article>
+                    <?php endforeach; ?>
+                </div>
+            </div>
         </section>
     <?php endif; ?>
 
