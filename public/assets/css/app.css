@@ -201,6 +201,7 @@ h3 {
 h1,
 h2,
 h3 {
+    font-family: var(--serif);
     text-wrap: balance;
 }
 
@@ -438,7 +439,6 @@ summary:focus-visible {
     max-width: 970px;
     margin-bottom: 24px;
     color: var(--beige);
-    font-family: var(--sans);
     font-size: 4.9rem;
     font-weight: 700;
     line-height: 0.96;
@@ -446,7 +446,6 @@ summary:focus-visible {
 
 .alma-home h2 {
     color: var(--beige);
-    font-family: var(--sans);
     font-size: 3.05rem;
     font-weight: 700;
     line-height: 1.04;
@@ -896,60 +895,6 @@ summary:focus-visible {
     flex: 0 0 auto;
 }
 
-.scroll-down {
-    position: absolute;
-    bottom: 26px;
-    left: 50%;
-    display: grid;
-    gap: 6px;
-    place-items: center;
-    min-width: 68px;
-    padding: 8px 10px;
-    color: var(--beige);
-    font-size: 0.68rem;
-    font-weight: 500;
-    text-decoration: none;
-    text-transform: uppercase;
-    transform: translateX(-50%);
-}
-
-.scroll-down__line {
-    position: relative;
-    width: 1px;
-    height: 42px;
-    overflow: hidden;
-    background: rgba(156, 163, 175, 0.58);
-}
-
-.scroll-down__line::after {
-    position: absolute;
-    top: -18px;
-    left: 0;
-    width: 1px;
-    height: 18px;
-    background: var(--naranja);
-    content: "";
-}
-
-.scroll-down__arrow {
-    width: 9px;
-    height: 9px;
-    border-right: 1px solid var(--beige);
-    border-bottom: 1px solid var(--beige);
-    transform: rotate(45deg);
-}
-
-.scroll-down__label {
-    color: var(--gris-humo);
-    font: inherit;
-}
-
-.scroll-down:focus-visible {
-    border-radius: 8px;
-    outline: 3px solid rgba(249, 115, 22, 0.45);
-    outline-offset: 8px;
-}
-
 .vertical-detail-hero,
 .vertical-detail-content,
 .vertical-detail-guardrails {
@@ -963,7 +908,6 @@ summary:focus-visible {
 
 .vertical-detail-hero h1 {
     color: var(--beige);
-    font-family: var(--sans);
     font-size: 4rem;
     font-weight: 700;
     line-height: 1;
@@ -985,7 +929,6 @@ summary:focus-visible {
 
 .vertical-detail-block h2 {
     margin-bottom: 14px;
-    font-family: var(--sans);
     font-size: 1.65rem;
 }
 
@@ -1807,11 +1750,6 @@ details p {
         min-height: 80vh;
     }
 
-    .scroll-down {
-        bottom: 18px;
-        transform: translateX(-50%);
-    }
-
     .method-section,
     .trust-section {
         padding: 58px 0;
@@ -1876,10 +1814,6 @@ details p {
         transform: translateX(3px);
     }
 
-    .scroll-down__line::after {
-        animation: scroll-cue 1600ms ease-in-out infinite;
-    }
-
     .reveal-ready {
         opacity: 0;
         transform: translateY(14px);
@@ -1889,17 +1823,6 @@ details p {
     .reveal-ready.is-visible {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-@keyframes scroll-cue {
-    0% {
-        transform: translateY(0);
-    }
-
-    70%,
-    100% {
-        transform: translateY(64px);
     }
 }
 

@@ -58,7 +58,7 @@ $methodSteps = [
                     </div>
                 </div>
                 <aside class="alma-hero__signal" aria-label="Síntesis AlmaDesign">
-                    <img src="<?= e(asset('img/logo_horizontal_naranja.svg')) ?>" alt="AlmaDesign" width="258" height="118">
+                    <img src="<?= e(asset('img/logos/logo_crema_horizontal.svg')) ?>" alt="AlmaDesign" width="258" height="113">
                     <dl>
                         <div>
                             <dt>Disciplina</dt>
@@ -86,11 +86,6 @@ $methodSteps = [
                 <span>AI for Humans</span>
             </div>
         </div>
-        <a class="scroll-down" href="#verticales" aria-label="Ir a verticales de AlmaDesign">
-            <span class="scroll-down__label">Deslizar</span>
-            <span class="scroll-down__line" aria-hidden="true"></span>
-            <span class="scroll-down__arrow" aria-hidden="true"></span>
-        </a>
     </section>
 
     <section class="home-third home-third--verticals" id="verticales" aria-labelledby="verticales-title">
