@@ -1287,6 +1287,110 @@ summary:focus-visible {
     text-align: center;
 }
 
+.apogeo-limits-section {
+    width: min(1160px, calc(100% - 32px));
+    margin: clamp(64px, 8vw, 104px) auto 0;
+    padding: clamp(10px, 2vw, 18px) 0 clamp(20px, 3vw, 34px);
+    border-top: 1px solid rgba(156, 163, 175, 0.34);
+}
+
+.apogeo-limits-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    gap: clamp(34px, 6vw, 82px);
+    align-items: start;
+}
+
+.apogeo-limits-header {
+    position: relative;
+    padding-left: clamp(18px, 2.6vw, 28px);
+}
+
+.apogeo-limits-header::before {
+    position: absolute;
+    top: 4px;
+    bottom: 2px;
+    left: 0;
+    width: 1px;
+    background: linear-gradient(180deg, var(--naranja), rgba(249, 115, 22, 0.1));
+    content: "";
+}
+
+.apogeo-limits-header h2 {
+    margin: 10px 0 18px;
+    color: var(--beige);
+    font-size: clamp(2.35rem, 4vw, 4.35rem);
+    line-height: 1.02;
+}
+
+.apogeo-limits-header p:not(.eyebrow) {
+    margin: 0;
+    color: rgba(244, 234, 220, 0.82);
+    font-size: clamp(1.04rem, 1.45vw, 1.24rem);
+    line-height: 1.62;
+}
+
+.apogeo-limits-body {
+    display: grid;
+    gap: 22px;
+    color: var(--gris-humo);
+}
+
+.apogeo-limits-body > p {
+    margin: 0;
+    font-size: 1.02rem;
+    line-height: 1.7;
+}
+
+.apogeo-limits-list {
+    display: grid;
+    gap: 0;
+    margin-top: 8px;
+    border-top: 1px solid rgba(156, 163, 175, 0.28);
+}
+
+.apogeo-limits-item {
+    display: grid;
+    grid-template-columns: minmax(180px, 0.42fr) minmax(0, 1fr);
+    gap: clamp(18px, 3vw, 34px);
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(156, 163, 175, 0.24);
+}
+
+.apogeo-limits-item h3 {
+    margin: 0;
+    color: var(--beige);
+    font-size: clamp(1.2rem, 1.7vw, 1.48rem);
+    line-height: 1.18;
+}
+
+.apogeo-limits-item p {
+    margin: 0;
+    color: var(--gris-humo);
+    line-height: 1.62;
+}
+
+.apogeo-limits-closing {
+    position: relative;
+    margin-top: 8px !important;
+    padding-top: 24px;
+    color: var(--beige) !important;
+    font-family: var(--serif);
+    font-size: clamp(1.25rem, 2vw, 1.62rem) !important;
+    font-style: italic;
+    line-height: 1.36 !important;
+}
+
+.apogeo-limits-closing::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 72px;
+    height: 1px;
+    background: var(--naranja);
+    content: "";
+}
+
 .hero,
 .home-hero {
     display: grid;
@@ -2009,6 +2113,7 @@ details p {
     .lux-hero,
     .alma-hero,
     .alma-purpose,
+    .apogeo-limits-grid,
     .trust-section,
     .section-split,
     .contact-hero,
@@ -2157,6 +2262,12 @@ details p {
 
     .apogeo-infographic-card img {
         border-radius: 16px;
+    }
+
+    .apogeo-limits-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 22px 0;
     }
 
     .consulting-card {

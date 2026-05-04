@@ -8,6 +8,7 @@ declare(strict_types=1);
 $cardSections = $cardSections ?? [];
 $postSections = $postSections ?? [];
 $infographicSection = $infographicSection ?? null;
+$limitsSection = $limitsSection ?? null;
 $leadParagraphs = $leadParagraphs ?? [$lead];
 $guardrailsEyebrow = $guardrailsEyebrow ?? 'Gobernanza';
 $guardrailsTitle = $guardrailsTitle ?? 'Límites explícitos de comunicación.';
@@ -130,20 +131,49 @@ $finalCta = $finalCta ?? [
         </section>
     <?php endif; ?>
 
-    <section class="vertical-detail-guardrails alma-section" aria-labelledby="guardrails-title">
-        <div class="section-heading">
-            <p class="eyebrow"><?= e($guardrailsEyebrow) ?></p>
-            <h2 id="guardrails-title"><?= e($guardrailsTitle) ?></h2>
-            <?php if ($guardrailsIntro !== null): ?>
-                <p><?= e($guardrailsIntro) ?></p>
-            <?php endif; ?>
-        </div>
-        <ul>
-            <?php foreach ($guardrails as $guardrail): ?>
-                <li><?= e($guardrail) ?></li>
-            <?php endforeach; ?>
-        </ul>
-    </section>
+    <?php if ($limitsSection !== null): ?>
+        <section class="apogeo-limits-section" aria-labelledby="apogeo-limits-title">
+            <div class="apogeo-limits-grid">
+                <header class="apogeo-limits-header">
+                    <p class="eyebrow"><?= e($limitsSection['eyebrow']) ?></p>
+                    <h2 id="apogeo-limits-title"><?= e($limitsSection['title']) ?></h2>
+                    <p><?= e($limitsSection['lead']) ?></p>
+                </header>
+
+                <div class="apogeo-limits-body">
+                    <?php foreach ($limitsSection['body'] as $paragraph): ?>
+                        <p><?= e($paragraph) ?></p>
+                    <?php endforeach; ?>
+
+                    <div class="apogeo-limits-list">
+                        <?php foreach ($limitsSection['items'] as $item): ?>
+                            <section class="apogeo-limits-item">
+                                <h3><?= e($item['title']) ?></h3>
+                                <p><?= e($item['body']) ?></p>
+                            </section>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <p class="apogeo-limits-closing"><?= e($limitsSection['closing']) ?></p>
+                </div>
+            </div>
+        </section>
+    <?php else: ?>
+        <section class="vertical-detail-guardrails alma-section" aria-labelledby="guardrails-title">
+            <div class="section-heading">
+                <p class="eyebrow"><?= e($guardrailsEyebrow) ?></p>
+                <h2 id="guardrails-title"><?= e($guardrailsTitle) ?></h2>
+                <?php if ($guardrailsIntro !== null): ?>
+                    <p><?= e($guardrailsIntro) ?></p>
+                <?php endif; ?>
+            </div>
+            <ul>
+                <?php foreach ($guardrails as $guardrail): ?>
+                    <li><?= e($guardrail) ?></li>
+                <?php endforeach; ?>
+            </ul>
+        </section>
+    <?php endif; ?>
 
     <section class="alma-final-cta" aria-labelledby="vertical-final-cta">
         <div>

@@ -2,7 +2,7 @@
     document.documentElement.classList.add('js-ready');
 
     const revealItems = document.querySelectorAll(
-        '.info-card, .demo-group, .scope-card, .audience-grid span, .contact-form, .studio-panel, .hero-facts, .alma-vertical-card, .consulting-card, .executive-card, .apogeo-infographic-card, .method-list li, .trust-pillar-grid li, .alma-hero__signal'
+        '.info-card, .demo-group, .scope-card, .audience-grid span, .contact-form, .studio-panel, .hero-facts, .alma-vertical-card, .consulting-card, .executive-card, .apogeo-infographic-card, .apogeo-limits-item, .method-list li, .trust-pillar-grid li, .alma-hero__signal'
     );
 
     if (!('IntersectionObserver' in window)) {

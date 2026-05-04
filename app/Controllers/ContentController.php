@@ -288,16 +288,39 @@ final class ContentController extends BaseController
                     ],
                 ],
             ],
-            'guardrailsEyebrow' => 'Límites',
-            'guardrailsTitle' => 'Qué no hace Apogeo',
-            'guardrailsIntro' => 'Apogeo organiza, conecta y hace trazable el conocimiento para que las personas puedan decidir mejor.',
-            'guardrails' => [
-                'Apogeo no debe presentarse como una herramienta que decide por la organización.',
-                'No reemplaza a gerentes, abogados, analistas, equipos técnicos ni profesionales responsables.',
-                'No entrega asesoría legal automática.',
-                'No promete decisiones perfectas.',
-                'No convierte información incompleta en verdad.',
+            'limitsSection' => [
+                'eyebrow' => 'Límites y alcance',
+                'title' => 'Qué no hace Apogeo',
+                'lead' => 'Apogeo está diseñado para ordenar conocimiento, conectar evidencia y mejorar la trazabilidad de información crítica. Su valor está en apoyar decisiones humanas mejor informadas, no en sustituir el criterio profesional ni automatizar responsabilidades que deben permanecer bajo control humano.',
+                'body' => [
+                    'En contextos empresariales complejos, una respuesta rápida no siempre es una buena respuesta. Por eso Apogeo no debe entenderse como una herramienta que decide por la organización, sino como una arquitectura que ayuda a reunir contexto, relacionar antecedentes, identificar fuentes y hacer visible la evidencia disponible.',
+                    'La decisión final sigue perteneciendo a las personas responsables: gerencias, equipos técnicos, asesores, analistas, abogados, comités o cualquier rol humano encargado de evaluar el contexto y asumir responsabilidad sobre una acción.',
+                ],
+                'items' => [
+                    [
+                        'title' => 'Apogeo no reemplaza criterio profesional',
+                        'body' => 'Apogeo no reemplaza a gerentes, abogados, analistas, equipos técnicos ni profesionales responsables. Puede ayudar a ordenar información, recuperar antecedentes y mostrar relaciones relevantes, pero no sustituye experiencia, responsabilidad, juicio experto ni deliberación humana.',
+                    ],
+                    [
+                        'title' => 'Apogeo no entrega asesoría legal automática',
+                        'body' => 'Cuando Apogeo se aplica a información normativa, contractual o documental sensible, su función es apoyar búsqueda, trazabilidad y comprensión de fuentes. No debe presentarse como asesoría legal automática, dictamen jurídico ni reemplazo de revisión profesional especializada.',
+                    ],
+                    [
+                        'title' => 'Apogeo no promete decisiones perfectas',
+                        'body' => 'Ningún sistema de conocimiento elimina la incertidumbre por completo. Apogeo reduce desorden, mejora acceso a evidencia y permite revisar contexto con mayor claridad, pero no garantiza resultados perfectos ni transforma información incompleta en certeza absoluta.',
+                    ],
+                    [
+                        'title' => 'Apogeo no convierte información incompleta en verdad',
+                        'body' => 'Si una organización trabaja con documentos desactualizados, criterios ambiguos o fuentes incompletas, Apogeo puede ayudar a hacer visible esa brecha. Pero no debe ocultarla ni presentar como concluyente aquello que requiere validación, revisión o actualización humana.',
+                    ],
+                    [
+                        'title' => 'Apogeo no elimina la responsabilidad humana',
+                        'body' => 'La trazabilidad existe precisamente para que las decisiones puedan ser revisadas, explicadas y asumidas por personas. Apogeo ayuda a construir una base de conocimiento más clara, pero la responsabilidad sobre decisiones críticas debe permanecer en manos humanas.',
+                    ],
+                ],
+                'closing' => 'En síntesis, Apogeo organiza, conecta y hace trazable el conocimiento para que las personas puedan decidir mejor. Su propósito no es reemplazar el juicio humano, sino fortalecerlo con contexto, evidencia y gobernanza.',
             ],
+            'guardrails' => [],
             'cta' => 'Conversar sobre Apogeo',
             'finalCta' => [
                 'eyebrow' => 'Conversemos',
