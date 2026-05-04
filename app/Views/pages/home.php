@@ -5,6 +5,7 @@ $verticals = [
     [
         'title' => 'Consultoría IA y procesos',
         'href' => url('/contacto'),
+        'variant' => 'consulting',
         'summary' => 'Ordenamos fricciones internas, procesos y criterios para implementar IA con claridad, control y adopción responsable.',
         'cta' => 'Solicitar diagnóstico',
         'keywords' => 'CONSULTORÍA IA EMPRESAS',
@@ -12,6 +13,7 @@ $verticals = [
     [
         'title' => 'Apogeo',
         'href' => url('/apogeo'),
+        'variant' => 'apogeo',
         'summary' => 'Sistemas de conocimiento aumentado para recuperar contexto, sostener trazabilidad y trabajar con documentación verificable entre partes.',
         'cta' => 'Conocer Apogeo',
         'keywords' => 'RECUPERACIÓN CONTEXTUAL',
@@ -19,6 +21,7 @@ $verticals = [
     [
         'title' => 'AI for Humans',
         'href' => url('/ai-for-humans'),
+        'variant' => 'humans',
         'summary' => 'IA gobernada para proteger, potenciar y no reemplazar al humano en sus decisiones, procesos y capacidades.',
         'cta' => 'Explorar AI for Humans',
         'keywords' => 'DECISIONES HUMANAS COMPLEJAS',
@@ -91,7 +94,7 @@ $methodSteps = [
                 </div>
                 <div class="vertical-card-grid">
                     <?php foreach ($verticals as $vertical): ?>
-                        <article class="vertical-card">
+                        <article class="vertical-card vertical-card--<?= e($vertical['variant']) ?>">
                             <div class="vertical-card__shell">
                                 <div class="vertical-card__header">
                                     <span class="vertical-card__keyword"><?= e($vertical['keywords']) ?></span>
@@ -100,6 +103,8 @@ $methodSteps = [
                                     <span class="vertical-card__separator" aria-hidden="true"></span>
                                 </div>
                                 <div class="vertical-card__visual" aria-hidden="true">
+                                    <span></span>
+                                    <span></span>
                                     <span></span>
                                     <span></span>
                                     <span></span>

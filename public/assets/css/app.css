@@ -480,23 +480,24 @@ summary:focus-visible {
     grid-template-rows: auto auto auto;
     height: 100%;
     overflow: hidden;
-    border: 1px solid rgba(156, 163, 175, 0.54);
+    border: 1px solid rgba(156, 163, 175, 0.5);
     border-radius: 8px;
     background: #f4eadc;
-    box-shadow: 0 12px 30px rgba(17, 24, 38, 0.08);
+    box-shadow: 0 10px 26px rgba(17, 24, 38, 0.07);
     transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
 .vertical-card__shell:hover {
     border-color: rgba(237, 114, 32, 0.7);
-    box-shadow: 0 16px 40px rgba(17, 24, 38, 0.12);
+    box-shadow: 0 14px 34px rgba(17, 24, 38, 0.1);
 }
 
 .vertical-card__header {
     display: grid;
     align-content: start;
     gap: 13px;
-    padding: 26px 24px 20px;
+    min-height: 244px;
+    padding: 28px 26px 20px;
 }
 
 .vertical-card__keyword {
@@ -508,12 +509,17 @@ summary:focus-visible {
 }
 
 .vertical-card h3 {
+    margin-bottom: 0;
     color: #111826;
+    font-size: 1.48rem;
+    line-height: 1.1;
 }
 
 .vertical-card__summary {
     margin: 0;
     color: #111826;
+    font-size: 0.98rem;
+    line-height: 1.5;
 }
 
 .vertical-card__separator {
@@ -528,14 +534,14 @@ summary:focus-visible {
     position: relative;
     display: grid;
     aspect-ratio: 1 / 1;
-    margin: 0 24px 20px;
+    margin: 0 26px 22px;
     overflow: hidden;
-    border: 1px solid rgba(156, 163, 175, 0.48);
+    border: 1px solid rgba(156, 163, 175, 0.52);
     border-radius: 8px;
     background:
-        radial-gradient(circle at 26% 72%, rgba(237, 114, 32, 0.18), transparent 21%),
-        radial-gradient(circle at 74% 28%, rgba(17, 24, 38, 0.1), transparent 22%),
-        linear-gradient(135deg, #f7efe4, #eadfcf);
+        radial-gradient(circle at 22% 78%, rgba(237, 114, 32, 0.14), transparent 20%),
+        radial-gradient(circle at 78% 22%, rgba(17, 24, 38, 0.1), transparent 22%),
+        linear-gradient(135deg, #f8f0e4, #eadfce);
 }
 
 .vertical-card__visual::before,
@@ -545,17 +551,17 @@ summary:focus-visible {
 }
 
 .vertical-card__visual::before {
-    right: 14%;
+    right: 12%;
     bottom: 18%;
-    left: 14%;
+    left: 12%;
     height: 1px;
-    background: #9ca3af;
+    background: rgba(156, 163, 175, 0.9);
 }
 
 .vertical-card__visual::after {
-    right: 16%;
+    right: 14%;
     bottom: 18%;
-    width: 34%;
+    width: 33%;
     height: 1px;
     background: #ed7220;
 }
@@ -563,35 +569,81 @@ summary:focus-visible {
 .vertical-card__visual span {
     position: absolute;
     display: block;
-    border: 1px solid rgba(17, 24, 39, 0.24);
+    border: 1px solid rgba(17, 24, 38, 0.24);
     border-radius: 8px;
     background: rgba(244, 234, 220, 0.72);
+    box-shadow: inset 0 0 0 1px rgba(244, 234, 220, 0.38);
 }
 
 .vertical-card__visual span:nth-child(1) {
-    top: 20%;
-    left: 15%;
+    top: 17%;
+    left: 14%;
     width: 24%;
     height: 24%;
 }
 
 .vertical-card__visual span:nth-child(2) {
-    top: 38%;
+    top: 36%;
     left: 34%;
     width: 32%;
-    height: 18%;
+    height: 19%;
 }
 
 .vertical-card__visual span:nth-child(3) {
-    top: 24%;
-    right: 14%;
+    top: 22%;
+    right: 13%;
     width: 25%;
     height: 25%;
     border-color: rgba(237, 114, 32, 0.48);
 }
 
+.vertical-card__visual span:nth-child(4) {
+    right: 25%;
+    bottom: 25%;
+    width: 18%;
+    height: 18%;
+    border-radius: 50%;
+}
+
+.vertical-card__visual span:nth-child(5) {
+    bottom: 27%;
+    left: 20%;
+    width: 22%;
+    height: 12%;
+    border-color: rgba(156, 163, 175, 0.62);
+}
+
+.vertical-card--consulting .vertical-card__visual span:nth-child(1) {
+    border-radius: 50%;
+}
+
+.vertical-card--consulting .vertical-card__visual span:nth-child(2) {
+    border-color: rgba(237, 114, 32, 0.42);
+}
+
+.vertical-card--apogeo .vertical-card__visual span:nth-child(1),
+.vertical-card--apogeo .vertical-card__visual span:nth-child(3) {
+    border-radius: 3px;
+}
+
+.vertical-card--apogeo .vertical-card__visual span:nth-child(2) {
+    width: 28%;
+    height: 28%;
+    border-color: rgba(17, 24, 38, 0.3);
+}
+
+.vertical-card--humans .vertical-card__visual span:nth-child(1),
+.vertical-card--humans .vertical-card__visual span:nth-child(4) {
+    border-radius: 50%;
+    border-color: rgba(237, 114, 32, 0.45);
+}
+
+.vertical-card--humans .vertical-card__visual span:nth-child(2) {
+    border-radius: 999px;
+}
+
 .vertical-card__footer {
-    padding: 0 24px 26px;
+    padding: 0 26px 28px;
 }
 
 .vertical-card__cta {
@@ -1620,6 +1672,19 @@ details p {
 
     .alma-home .lead {
         font-size: 1.12rem;
+    }
+
+    .vertical-card__header {
+        min-height: auto;
+        padding: 24px 22px 18px;
+    }
+
+    .vertical-card__visual {
+        margin: 0 22px 20px;
+    }
+
+    .vertical-card__footer {
+        padding: 0 22px 24px;
     }
 
     .home-third--hero {
