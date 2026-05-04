@@ -1000,6 +1000,41 @@ summary:focus-visible {
     flex: 0 0 auto;
 }
 
+.alma-final-cta--apogeo {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) max-content;
+    width: min(1160px, calc(100% - 32px));
+    margin: clamp(62px, 8vw, 108px) auto clamp(58px, 8vw, 96px);
+    padding: clamp(28px, 4.5vw, 48px);
+    box-sizing: border-box;
+    border: 1px solid rgba(244, 234, 220, 0.16);
+    border-radius: 18px;
+    background:
+        radial-gradient(circle at 88% 18%, rgba(249, 115, 22, 0.1), transparent 28%),
+        linear-gradient(135deg, rgba(244, 234, 220, 0.052), rgba(20, 29, 47, 0.7));
+    box-shadow: inset 0 1px 0 rgba(244, 234, 220, 0.08);
+}
+
+.alma-final-cta--apogeo div {
+    min-width: 0;
+    max-width: 760px;
+}
+
+.alma-final-cta--apogeo h2 {
+    overflow-wrap: normal;
+}
+
+.alma-final-cta--apogeo p:not(.eyebrow) {
+    max-width: 68ch;
+    line-height: 1.62;
+}
+
+.alma-final-cta--apogeo .button {
+    min-width: 0;
+    max-width: 100%;
+    white-space: normal;
+}
+
 .vertical-detail-hero,
 .vertical-detail-content,
 .vertical-detail-guardrails {
@@ -2330,6 +2365,11 @@ details p {
     .site-footer__identity {
         grid-template-columns: 1fr;
         gap: 18px;
+    }
+
+    .alma-final-cta--apogeo {
+        grid-template-columns: 1fr;
+        align-items: stretch;
     }
 
     .trust-pillar-grid {

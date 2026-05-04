@@ -115,41 +115,7 @@ final class ContentController extends BaseController
                 'Está diseñado para organizaciones que necesitan tomar decisiones complejas con mejor contexto, reducir dependencia de información fragmentada y mantener evidencia clara sobre documentos, acuerdos, criterios y flujos de trabajo entre equipos o partes relacionadas.',
                 'Apogeo no busca reemplazar el criterio profesional. Busca entregar a la gerencia una base de conocimiento más clara, conectada y gobernada para decidir con mayor seguridad.',
             ],
-            'sections' => [
-                [
-                    'title' => 'El problema gerencial',
-                    'body' => [
-                        'En muchas organizaciones, la información clave para decidir está distribuida entre correos, documentos, carpetas compartidas, actas, contratos, reportes, planillas, normativas internas, conversaciones y memoria informal de los equipos.',
-                        'Eso genera problemas concretos para la gerencia:',
-                    ],
-                    'items' => [
-                        'Decisiones tomadas con información incompleta.',
-                        'Pérdida de contexto entre áreas.',
-                        'Dificultad para saber qué documento respalda una afirmación.',
-                        'Duplicidad de versiones.',
-                        'Falta de trazabilidad sobre acuerdos y criterios.',
-                        'Dependencia excesiva de personas específicas.',
-                        'Baja velocidad para reconstruir evidencia cuando aparece una auditoría, conflicto, negociación o decisión crítica.',
-                        'Cuando el conocimiento no está conectado, la organización no solo pierde eficiencia. Pierde capacidad de comprender su propia operación.',
-                    ],
-                ],
-                [
-                    'title' => 'Qué es Apogeo',
-                    'body' => [
-                        'Apogeo es una arquitectura de conocimiento aumentado para organizaciones que necesitan consultar, conectar, compartir y validar información crítica bajo reglas de gobernanza.',
-                        'Su valor no está en “buscar documentos” de forma aislada. Su valor está en convertir información dispersa en contexto útil para decisiones empresariales.',
-                        'Apogeo permite que una gerencia pueda preguntar, revisar, contrastar y entender información relevante sin perder de vista:',
-                    ],
-                    'items' => [
-                        'De dónde proviene cada dato.',
-                        'Qué documento lo respalda.',
-                        'Qué relación tiene con otros antecedentes.',
-                        'Qué versión está vigente.',
-                        'Qué parte debe validarlo.',
-                        'Qué decisión humana depende de esa información.',
-                    ],
-                ],
-            ],
+            'sections' => [],
             'cardSections' => [
                 [
                     'eyebrow' => 'Capacidades gerenciales',
@@ -328,6 +294,7 @@ final class ContentController extends BaseController
                 'body' => 'Si tu organización necesita ordenar información crítica, conectar evidencia y mejorar trazabilidad entre áreas o partes relacionadas, Apogeo puede ser una base para diseñar un sistema de conocimiento aumentado con foco gerencial.',
                 'label' => 'Conversar sobre Apogeo',
                 'href' => url('/contacto'),
+                'variant' => 'apogeo',
             ],
         ]);
     }

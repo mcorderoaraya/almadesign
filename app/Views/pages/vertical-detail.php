@@ -34,25 +34,27 @@ $finalCta = $finalCta ?? [
         </div>
     </section>
 
-    <section class="vertical-detail-content alma-section" aria-label="Contenido principal">
-        <?php foreach ($sections as $section): ?>
-            <article class="vertical-detail-block">
-                <h2><?= e($section['title']) ?></h2>
-                <?php if (isset($section['body'])): ?>
-                    <?php foreach ((array) $section['body'] as $bodyParagraph): ?>
-                        <p><?= e($bodyParagraph) ?></p>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-                <?php if (isset($section['items'])): ?>
-                    <ul>
-                        <?php foreach ($section['items'] as $item): ?>
-                            <li><?= e($item) ?></li>
+    <?php if ($sections !== []): ?>
+        <section class="vertical-detail-content alma-section" aria-label="Contenido principal">
+            <?php foreach ($sections as $section): ?>
+                <article class="vertical-detail-block">
+                    <h2><?= e($section['title']) ?></h2>
+                    <?php if (isset($section['body'])): ?>
+                        <?php foreach ((array) $section['body'] as $bodyParagraph): ?>
+                            <p><?= e($bodyParagraph) ?></p>
                         <?php endforeach; ?>
-                    </ul>
-                <?php endif; ?>
-            </article>
-        <?php endforeach; ?>
-    </section>
+                    <?php endif; ?>
+                    <?php if (isset($section['items'])): ?>
+                        <ul>
+                            <?php foreach ($section['items'] as $item): ?>
+                                <li><?= e($item) ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
+                </article>
+            <?php endforeach; ?>
+        </section>
+    <?php endif; ?>
 
     <?php foreach ($cardSections as $cardSectionIndex => $cardSection): ?>
         <?php
@@ -175,7 +177,8 @@ $finalCta = $finalCta ?? [
         </section>
     <?php endif; ?>
 
-    <section class="alma-final-cta" aria-labelledby="vertical-final-cta">
+    <?php $finalCtaVariant = isset($finalCta['variant']) ? ' alma-final-cta--' . $finalCta['variant'] : ''; ?>
+    <section class="alma-final-cta<?= e($finalCtaVariant) ?>" aria-labelledby="vertical-final-cta">
         <div>
             <p class="eyebrow"><?= e($finalCta['eyebrow']) ?></p>
             <h2 id="vertical-final-cta"><?= e($finalCta['title']) ?></h2>
