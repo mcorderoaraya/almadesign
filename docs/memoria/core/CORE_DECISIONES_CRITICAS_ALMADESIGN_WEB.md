@@ -59,6 +59,12 @@ HOTFIX_CACHE_BUSTING_ASSETS_ALMADESIGN: CERRADO_OK. El helper `asset()` versiona
 
 No hay base de datos, login ni uploads. SQL_SURFACE: NONE. SQLI_RISK: NOT_APPLICABLE. `public/` no expone archivos sensibles. `.env` y `logs/contact.log` quedan fuera de Git.
 
+## Decisión 14
+
+HOME_ALMADESIGN_FRONTEND_LOCAL: VALIDADO_POR_MAURICIO. HOME_VISUAL_GLOBAL: VALIDADO. CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
+
+El Home frontend nuevo fue validado visualmente en entorno local. DEPLOY_FRONTEND_HOME: NO_EJECUTADO. HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA. El siguiente frente recomendado es PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
+
 ## Límites
 
 Fuera de alcance: Apogeo Lux backend, GraphRAG del backend Apogeo Lux, Neo4j, PostgreSQL Apogeo Lux, evidencia técnica Apogeo Lux, VPS, Cloudflare, Zoho, DNS, SSL, Nginx, `.env`, llaves SSH, base de datos, formulario, Composer, WordPress, Docker y cPanel en este frente.

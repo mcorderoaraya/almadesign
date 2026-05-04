@@ -45,6 +45,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 
 ## Pendientes
 
+- PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
 - HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
 
 ## Frentes implementados localmente
@@ -85,7 +86,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - No hay base de datos todavía.
 - Formulario de contacto desplegado y validado productivamente con SMTP Zoho.
 - Deploy controlado a VPS ejecutado correctamente.
-- Siguiente frente recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
+- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
 
 ## Observaciones deploy VPS
 
@@ -107,7 +108,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Healthcheck manual ejecutado correctamente en VPS.
 - Backup manual ejecutado correctamente en VPS.
 - No se tocaron Cloudflare, Zoho, DNS, SSL, `.env`, llaves SSH, base de datos, formulario, Composer, WordPress, Docker ni cPanel.
-- Siguiente frente recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
+- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
 
 ## Estado formulario
 
@@ -132,7 +133,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Log mínimo en `logs/contact.log`, sin guardar cuerpo completo del mensaje.
 - No hay base de datos.
 - DEPLOY_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
-- Siguiente frente recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
+- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
 
 ## Estado frontend
 
@@ -141,10 +142,15 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Mejora visual aplicada localmente sobre Home, `/apogeo-lux`, `/contacto` y `/contacto/gracias`.
 - Hallazgos de accesibilidad, foco visible, anclas sticky, motion safety y autocomplete corregidos localmente.
 - Se reforzó dirección visual humana, sobria, premium, tecnológica e institucional.
-- Frontend desplegado y validado productivamente.
+- Frontend base previo desplegado y validado productivamente.
+- HOME_ALMADESIGN_FRONTEND_LOCAL: VALIDADO_POR_MAURICIO.
+- HOME_VISUAL_GLOBAL: VALIDADO.
+- CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
+- DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
+- HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
 - FORMULARIO_CONTACTO_ALMADESIGN_PRODUCTIVO: VALIDADO.
 - SMTP_PRODUCTIVO_ZOHO: VALIDADO.
-- Siguiente frente recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
+- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
 
 ## Fuera de alcance
 
@@ -160,7 +166,8 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - DEPLOY_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
 - SMTP_PRODUCTIVO_ZOHO: VALIDADO.
 - CUERPO_CORREO_PRODUCTIVO: VALIDADO.
-- HOME_ALMADESIGN_PRODUCTIVO: VALIDADO.
+- HOME_ALMADESIGN_PRODUCTIVO_PREVIO: VALIDADO.
+- HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
 - FORMULARIO_VISUAL_PRODUCTIVO: VALIDADO.
 - `/contacto`, `/contacto/gracias`, `/robots.txt` y `/sitemap.xml` operativos.
 - POST productivo OK.

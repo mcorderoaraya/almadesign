@@ -7,16 +7,21 @@
 
 ## Estado del documento
 
-- Estado: DOCUMENTAL / DISEÑO CONCEPTUAL.
+- Estado: DOCUMENTAL / DISEÑO VALIDADO LOCALMENTE.
 - Alcance: estructura visual, jerarquía, responsive, accesibilidad y reglas SEO / AI SEO del Home.
-- Implementación frontend: NO INICIADA.
-- Código productivo modificado: NO.
-- CSS productivo modificado: NO.
-- Assets movidos o copiados: NO.
+- Implementación frontend Home: VALIDADA_LOCALMENTE_POR_MAURICIO.
+- HOME_ALMADESIGN_FRONTEND_LOCAL: VALIDADO_POR_MAURICIO.
+- HOME_VISUAL_GLOBAL: VALIDADO.
+- CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
+- DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
+- HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
+- Código productivo modificado: NO_DESPLEGADO.
+- CSS productivo modificado: NO_DESPLEGADO.
+- Assets Home validados localmente: SI.
 - Base de datos: NO ABIERTA.
-- Deploy: NO APLICA.
+- Deploy: NO EJECUTADO para el Home frontend nuevo.
 
-Este documento define la estructura frontend conceptual del Home de AlmaDesign Web para validación visual de Mauricio antes de cualquier implementación en vistas, rutas, CSS, assets o base de datos.
+Este documento registra la estructura frontend del Home de AlmaDesign Web validada visualmente por Mauricio en entorno local. No debe interpretarse como validación productiva en `almadesign.cl` hasta ejecutar un deploy controlado.
 
 ## Objetivo del Home
 
@@ -514,16 +519,16 @@ Usar en cambio:
 
 ## Criterios de aceptación visual
 
-El diseño conceptual del Home se considera aprobado para pasar a implementación solo si cumple:
+El Home validado localmente por Mauricio se considera aprobado para preparar deploy controlado si mantiene:
 
 - Fondo principal `#111827`.
 - Texto principal `#F4EADC`.
 - Logo horizontal naranja visible y legible sobre fondo oscuro.
-- H1 con Inter 28pt Bold.
-- Bajadas y párrafos con Inter 28pt Regular.
+- H1, H2 y H3 con la regla tipográfica vigente basada en `var(--serif)`.
+- Bajadas y párrafos con la regla vigente basada en `var(--sans)`.
 - CTAs visibles, accesibles y con destinos correctos.
-- Cards con imagen 1:1 sin texto incrustado.
-- Títulos, resúmenes y CTA de cards como HTML real.
+- Cards Home visualmente validadas.
+- Cards Home con imágenes `.webp` 1:1 y texto accesible/SEO asociado en HTML.
 - Tres cards enlazadas a páginas largas.
 - Sección Método AlmaDesign presente.
 - Bloque de confianza presente.
@@ -531,27 +536,31 @@ El diseño conceptual del Home se considera aprobado para pasar a implementació
 - Responsive definido para desktop, tablet y mobile.
 - Jerarquía semántica H1/H2/H3 correcta.
 - No se incorporan claims prohibidos como afirmaciones.
-- No se modifica código, CSS, assets, rutas ni base de datos durante la fase documental.
+- No se modifica base de datos.
+- DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
 
 ## Validación documental
 
 - Documento creado en `docs/contenido/`.
-- Código productivo modificado: NO.
-- CSS productivo modificado: NO.
+- Código productivo modificado: NO_DESPLEGADO para el Home frontend nuevo.
+- CSS productivo modificado: NO_DESPLEGADO para el Home frontend nuevo.
 - Fuentes movidas: NO.
-- Imágenes productivas tocadas: NO.
+- Imágenes Home validadas localmente: SI.
 - Base de datos abierta: NO.
 - Deploy realizado: NO.
 
 ## Estado de aprobación
 
-- DISEÑO_FRONTEND_HOME: DOCUMENTADO.
+- DISEÑO_FRONTEND_HOME: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- HOME_ALMADESIGN_FRONTEND_LOCAL: VALIDADO_POR_MAURICIO.
+- HOME_VISUAL_GLOBAL: VALIDADO.
 - CONTENIDO: ALINEADO.
 - TIPOGRAFÍAS: DEFINIDAS COMO LOCALES.
 - LOGO: DEFINIDO.
 - PALETA: DEFINIDA.
-- CARDS: TEXTO HTML + IMAGEN SIN TEXTO.
-- CÓDIGO: NO MODIFICADO.
-- DEPLOY: NO.
+- CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
+- CÓDIGO PRODUCTIVO: NO_DESPLEGADO.
+- DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
+- HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
 
-Próximo paso sugerido: validar esta estructura con Mauricio antes de abrir `IMPLEMENTAR_FRONTEND_HOME_ALMADESIGN_WEB`.
+Próximo paso sugerido: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.

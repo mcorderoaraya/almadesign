@@ -74,7 +74,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Backups destinados a `/var/backups/almadesign`.
 - Healthcheck manual ejecutado correctamente en VPS.
 - Backup manual ejecutado correctamente en VPS.
-- Siguiente frente recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
+- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
 
 ## Estado local MVC
 
@@ -117,7 +117,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Log mínimo en `logs/contact.log` sin guardar el contenido completo del mensaje.
 - No hay base de datos.
 - DEPLOY_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
-- Siguiente frente recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
+- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
 
 ## Estado frontend
 
@@ -126,10 +126,15 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Mejora visual aplicada localmente a Home, `/apogeo-lux` y contacto.
 - Hallazgos de accesibilidad, foco visible, anclas sticky, motion safety y autocomplete corregidos localmente.
 - Dirección visual: grafito, azul oscuro, crema y acento naranjo AlmaDesign.
-- Frontend desplegado y validado productivamente.
+- Frontend base previo desplegado y validado productivamente.
+- HOME_ALMADESIGN_FRONTEND_LOCAL: VALIDADO_POR_MAURICIO.
+- HOME_VISUAL_GLOBAL: VALIDADO.
+- CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
+- DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
+- HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
 - FORMULARIO_CONTACTO_ALMADESIGN_PRODUCTIVO: VALIDADO.
 - SMTP_PRODUCTIVO_ZOHO: VALIDADO.
-- Siguiente frente recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
+- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
 
 ## Fuera de alcance
 
@@ -145,7 +150,8 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - DEPLOY_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
 - SMTP_PRODUCTIVO_ZOHO: VALIDADO.
 - CUERPO_CORREO_PRODUCTIVO: VALIDADO.
-- HOME_ALMADESIGN_PRODUCTIVO: VALIDADO.
+- HOME_ALMADESIGN_PRODUCTIVO_PREVIO: VALIDADO.
+- HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
 - FORMULARIO_VISUAL_PRODUCTIVO: VALIDADO.
 - CORREGIR_REGRESION_CSS_POST_DEPLOY_ALMADESIGN: CERRADO_OK.
 - HOTFIX_CACHE_BUSTING_ASSETS_ALMADESIGN: CERRADO_OK.

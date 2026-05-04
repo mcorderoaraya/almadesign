@@ -77,8 +77,18 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend técnico 
 - `.env.example` creado sin secretos reales.
 - `.env` real no versionado.
 - No hay base de datos.
-- Siguiente frente recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
+- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
 - Frente futuro recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
+
+## Estado Home frontend nuevo validado localmente
+
+- HOME_ALMADESIGN_FRONTEND_LOCAL: VALIDADO_POR_MAURICIO.
+- HOME_VISUAL_GLOBAL: VALIDADO.
+- CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
+- DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
+- HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
+- SIGUIENTE_FRENTE_RECOMENDADO: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
+- No afirmar validación del Home nuevo en `almadesign.cl` hasta deploy controlado.
 
 ## Restricciones de traspaso
 
@@ -92,7 +102,8 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend técnico 
 - DEPLOY_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
 - SMTP_PRODUCTIVO_ZOHO: VALIDADO.
 - CUERPO_CORREO_PRODUCTIVO: VALIDADO.
-- HOME_ALMADESIGN_PRODUCTIVO: VALIDADO.
+- HOME_ALMADESIGN_PRODUCTIVO_PREVIO: VALIDADO.
+- HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
 - FORMULARIO_VISUAL_PRODUCTIVO: VALIDADO.
 - POST productivo OK y redirección a `/contacto/gracias` OK.
 - Subject real: `Desde web almadesign`, definido en servidor y no manipulable por POST.

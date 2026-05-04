@@ -26,10 +26,17 @@
 - Formulario de contacto productivo validado: SMTP Zoho operativo, POST productivo OK, redirección a `/contacto/gracias` OK y cuerpo visual por línea confirmado por Mauricio.
 - El problema observado no fue red, puerto, permisos ni autenticación SMTP.
 - PHPMailer instalado vía Composer.
+- HOME_ALMADESIGN_FRONTEND_LOCAL: VALIDADO_POR_MAURICIO.
+- HOME_VISUAL_GLOBAL: VALIDADO.
+- CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
+- DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
+- HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
+- SIGUIENTE_FRENTE_RECOMENDADO: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
 
 ## Producción validada
 
 - ALMADESIGN_WEB_PUBLICO: OPERATIVO.
+- HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA respecto del Home frontend nuevo validado localmente.
 - VPS: Hostinger KVM 2.
 - OS: Ubuntu 24.04 LTS.
 - Nginx: operativo.

@@ -67,6 +67,7 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend Apogeo Lu
 
 ## Pendientes
 
+- PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
 - HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
 
 ## Estado formulario
@@ -98,7 +99,12 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend Apogeo Lu
 - CORREGIR_HALLAZGOS_WEB_DESIGN_GUIDELINES_ALMADESIGN: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
 - Dirección visual: humano, sobrio, premium, tecnológico e institucional.
 - Hallazgos de accesibilidad, foco visible, anclas sticky, motion safety y autocomplete corregidos localmente.
-- Frontend desplegado y validado productivamente.
+- Frontend base previo desplegado y validado productivamente.
+- HOME_ALMADESIGN_FRONTEND_LOCAL: VALIDADO_POR_MAURICIO.
+- HOME_VISUAL_GLOBAL: VALIDADO.
+- CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
+- DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
+- HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
 - FORMULARIO_CONTACTO_ALMADESIGN_PRODUCTIVO: VALIDADO.
 - SMTP_PRODUCTIVO_ZOHO: VALIDADO.
 
@@ -116,7 +122,8 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend Apogeo Lu
 - DEPLOY_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
 - SMTP_PRODUCTIVO_ZOHO: VALIDADO.
 - CUERPO_CORREO_PRODUCTIVO: VALIDADO.
-- HOME_ALMADESIGN_PRODUCTIVO: VALIDADO.
+- HOME_ALMADESIGN_PRODUCTIVO_PREVIO: VALIDADO.
+- HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
 - FORMULARIO_VISUAL_PRODUCTIVO: VALIDADO.
 - HOTFIX_CACHE_BUSTING_ASSETS_ALMADESIGN: CERRADO_OK.
 - CORREGIR_REGRESION_CSS_POST_DEPLOY_ALMADESIGN: CERRADO_OK.
@@ -130,4 +137,4 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend Apogeo Lu
 - Reply-To configurado en app: SI.
 - Reply-To validado localmente: SI.
 - REPLY_TO_PRODUCTIVO: PENDIENTE_CONFIRMACION_SECUNDARIA.
-- Siguiente frente recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
+- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.

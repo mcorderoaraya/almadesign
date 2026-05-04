@@ -8,13 +8,18 @@
 ## Estado del documento
 
 - Estado: DOCUMENTAL / EDITORIAL.
-- Alcance: contenidos conceptuales para futuras mejoras frontend.
-- Implementación frontend: NO INICIADA.
+- Alcance: contenidos normalizados para Home, verticales públicas y futuras mejoras frontend.
+- Implementación frontend Home: VALIDADA_LOCALMENTE_POR_MAURICIO.
+- HOME_ALMADESIGN_FRONTEND_LOCAL: VALIDADO_POR_MAURICIO.
+- HOME_VISUAL_GLOBAL: VALIDADO.
+- CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
+- DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
+- HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
 - Base de datos: NO ABIERTA.
 - SQL: CONCEPTUAL FUTURO, no instrucción de implementación.
-- Deploy: NO APLICA.
+- Deploy: NO EJECUTADO para el Home frontend nuevo.
 
-Este documento sirve como fuente editorial para validar mensajes, jerarquía de contenido, rutas conceptuales, arquitectura SEO y AI SEO antes de diseñar o implementar cambios visibles en el sitio.
+Este documento sirve como fuente editorial para mantener mensajes, jerarquía de contenido, rutas conceptuales, arquitectura SEO y AI SEO. El Home frontend nuevo ya fue validado localmente por Mauricio; producción queda pendiente de deploy controlado.
 
 ## Principio editorial
 
@@ -608,8 +613,11 @@ HowTo solo cuando existan guías realmente paso a paso y verificables
 No usar SoftwareApplication ni Product para Apogeo mientras no exista una oferta validada públicamente como producto listo para mercado.
 
 Estado de aprobación
-Documento actualizado para validación editorial de Mauricio.
-Contenido apto para discusión y refinamiento.
-No aprobado todavía para implementación frontend.
-No habilita cambios en PHP, CSS, rutas productivas ni base de datos.
-Próximo paso sugerido: validar contenido editorial con Mauricio antes de abrir diseño frontend.
+Documento actualizado con Home frontend nuevo validado localmente por Mauricio.
+HOME_ALMADESIGN_FRONTEND_LOCAL: VALIDADO_POR_MAURICIO.
+HOME_VISUAL_GLOBAL: VALIDADO.
+CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
+DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
+HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
+No habilita cambios en base de datos.
+Próximo paso sugerido: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.

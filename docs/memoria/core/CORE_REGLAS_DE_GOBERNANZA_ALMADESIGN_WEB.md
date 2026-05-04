@@ -14,6 +14,11 @@ AlmaDesign Web no debe tratar el backend técnico Apogeo Lux como parte modifica
 ## Estado público
 
 - ALMADESIGN_WEB_PUBLICO: OPERATIVO.
+- HOME_ALMADESIGN_FRONTEND_LOCAL: VALIDADO_POR_MAURICIO.
+- HOME_VISUAL_GLOBAL: VALIDADO.
+- CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
+- DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
+- HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
 - DEPLOY_CONTROLADO_ALMADESIGN_WEB_A_VPS: EJECUTADO_OK.
 - EJECUTAR_BACKUP_Y_HEALTHCHECK_ALMADESIGN_EN_VPS: EJECUTADO_OK.
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
@@ -52,10 +57,13 @@ No modificar desde este frente documental:
 
 ## Reglas para próximos frentes
 
+- El Home frontend nuevo fue validado localmente; no afirmar que está productivo hasta ejecutar PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
+- Las cards del Home quedan como estándar visual validado.
+- Mantener prohibición de Google Fonts y fuentes externas.
 - El formulario productivo ya fue desplegado y validado; no declarar nuevos cambios productivos sin su propio deploy controlado.
 - El envío end-to-end productivo fue validado por Mauricio; Reply-To productivo queda pendiente de confirmación secundaria.
 - No imprimir `.env` ni contraseñas SMTP.
-- Siguiente frente recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
+- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
 - Frente futuro recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
 - No ejecutar deploy salvo frente explícito de deploy controlado.
 - No imprimir secretos.
