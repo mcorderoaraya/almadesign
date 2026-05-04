@@ -2,9 +2,12 @@
 declare(strict_types=1);
 
 /** @var array<int, array{title: string, body?: string|list<string>, items?: list<string>}> $sections */
+/** @var array<int, array{title: string, body?: string|list<string>, items?: list<string>}>|null $postSections */
 /** @var array<int, array{title: string, intro: string, items: list<array{title: string, body?: string|list<string>, items?: list<string>, key: string}>, eyebrow?: string, keyLabel?: string, variant?: string}>|null $cardSections */
 /** @var list<string> $guardrails */
 $cardSections = $cardSections ?? [];
+$postSections = $postSections ?? [];
+$infographicSection = $infographicSection ?? null;
 $leadParagraphs = $leadParagraphs ?? [$lead];
 $guardrailsEyebrow = $guardrailsEyebrow ?? 'Gobernanza';
 $guardrailsTitle = $guardrailsTitle ?? 'Límites explícitos de comunicación.';
@@ -84,6 +87,48 @@ $finalCta = $finalCta ?? [
             </div>
         </section>
     <?php endforeach; ?>
+
+    <?php if ($infographicSection !== null): ?>
+        <section class="apogeo-infographic-section" aria-labelledby="apogeo-infographic-title">
+            <div class="section-heading">
+                <p class="eyebrow"><?= e($infographicSection['eyebrow']) ?></p>
+                <h2 id="apogeo-infographic-title"><?= e($infographicSection['title']) ?></h2>
+                <p><?= e($infographicSection['body']) ?></p>
+            </div>
+            <figure class="apogeo-infographic-card">
+                <img
+                    src="<?= e(asset($infographicSection['image'])) ?>"
+                    alt="<?= e($infographicSection['alt']) ?>"
+                    loading="lazy"
+                    width="1672"
+                    height="941"
+                >
+                <figcaption><?= e($infographicSection['caption']) ?></figcaption>
+            </figure>
+        </section>
+    <?php endif; ?>
+
+    <?php if ($postSections !== []): ?>
+        <section class="vertical-detail-content vertical-detail-content--after alma-section" aria-label="Contenido complementario">
+            <?php foreach ($postSections as $section): ?>
+                <article class="vertical-detail-block">
+                    <h2><?= e($section['title']) ?></h2>
+                    <?php if (isset($section['body'])): ?>
+                        <?php foreach ((array) $section['body'] as $bodyParagraph): ?>
+                            <p><?= e($bodyParagraph) ?></p>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                    <?php if (isset($section['items'])): ?>
+                        <ul>
+                            <?php foreach ($section['items'] as $item): ?>
+                                <li><?= e($item) ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
+                </article>
+            <?php endforeach; ?>
+        </section>
+    <?php endif; ?>
 
     <section class="vertical-detail-guardrails alma-section" aria-labelledby="guardrails-title">
         <div class="section-heading">

@@ -149,21 +149,6 @@ final class ContentController extends BaseController
                         'Qué decisión humana depende de esa información.',
                     ],
                 ],
-                [
-                    'title' => 'RAGK como concepto gerencial',
-                    'body' => [
-                        'RAGK no debe explicarse públicamente como una lista de tecnologías.',
-                        'Para una gerencia, RAGK debe entenderse como una arquitectura de conocimiento confiable: una forma de recuperar contexto, conectar documentos, coordinar información y sostener decisiones con evidencia verificable.',
-                        'En términos simples: RAGK convierte conocimiento disperso en información consultable, conectada, trazable y validable entre partes.',
-                        'Su valor está en unir cuatro dimensiones:',
-                    ],
-                    'items' => [
-                        'Recuperación de información relevante.',
-                        'Conexión de conocimiento.',
-                        'Flujo gobernado de información.',
-                        'Evidencia verificable para decisiones humanas.',
-                    ],
-                ],
             ],
             'cardSections' => [
                 [
@@ -275,6 +260,31 @@ final class ContentController extends BaseController
                             ],
                             'key' => 'Reduce zonas grises en coordinación y responsabilidad.',
                         ],
+                    ],
+                ],
+            ],
+            'infographicSection' => [
+                'eyebrow' => 'Arquitectura RAGK',
+                'title' => 'Cómo Apogeo organiza el contexto para decisiones complejas.',
+                'body' => 'Desde una consulta inicial hasta la construcción de una respuesta compuesta con trazabilidad, relaciones documentales y validación contextual.',
+                'image' => 'img/apogeo/infografia-ragk.webp',
+                'alt' => 'Proceso RAGK desde la pregunta hasta una respuesta compuesta con trazabilidad y validación humana.',
+                'caption' => 'La arquitectura articula recuperación contextual, relaciones documentales, flujo gobernado de información y evidencia verificable para sostener respuestas compuestas con criterio humano.',
+            ],
+            'postSections' => [
+                [
+                    'title' => 'RAGK como concepto gerencial',
+                    'body' => [
+                        'RAGK no debe explicarse públicamente como una lista de tecnologías.',
+                        'Para una gerencia, RAGK debe entenderse como una arquitectura de conocimiento confiable: una forma de recuperar contexto, conectar documentos, coordinar información y sostener decisiones con evidencia verificable.',
+                        'En términos simples: RAGK convierte conocimiento disperso en información consultable, conectada, trazable y validable entre partes.',
+                        'Su valor está en unir cuatro dimensiones:',
+                    ],
+                    'items' => [
+                        'Recuperación de información relevante.',
+                        'Conexión de conocimiento.',
+                        'Flujo gobernado de información.',
+                        'Evidencia verificable para decisiones humanas.',
                     ],
                 ],
             ],

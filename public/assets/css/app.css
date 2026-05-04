@@ -1234,6 +1234,59 @@ summary:focus-visible {
     border-top: 1px solid rgba(156, 163, 175, 0.24);
 }
 
+.apogeo-infographic-section {
+    width: min(1240px, calc(100% - 32px));
+    margin: clamp(56px, 7vw, 92px) auto 0;
+    padding: clamp(34px, 5vw, 60px);
+    border: 1px solid rgba(244, 234, 220, 0.12);
+    border-radius: 18px;
+    background:
+        radial-gradient(circle at 82% 14%, rgba(94, 234, 212, 0.1), transparent 30%),
+        linear-gradient(135deg, rgba(244, 234, 220, 0.05), rgba(17, 24, 39, 0.74));
+    box-shadow: inset 0 1px 0 rgba(244, 234, 220, 0.08);
+}
+
+.apogeo-infographic-section .section-heading {
+    max-width: 820px;
+}
+
+.apogeo-infographic-section .section-heading p:not(.eyebrow) {
+    color: var(--gris-humo);
+    font-size: clamp(1.02rem, 1.3vw, 1.18rem);
+    line-height: 1.62;
+}
+
+.apogeo-infographic-card {
+    margin: 34px 0 0;
+    overflow: hidden;
+    padding: clamp(12px, 2.2vw, 22px);
+    border: 1px solid rgba(94, 234, 212, 0.18);
+    border-radius: 28px;
+    background:
+        linear-gradient(90deg, rgba(94, 234, 212, 0.045) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(94, 234, 212, 0.035) 1px, transparent 1px),
+        rgba(20, 29, 47, 0.74);
+    background-size: 36px 36px, 36px 36px, auto;
+    box-shadow: 0 22px 54px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(244, 234, 220, 0.08);
+}
+
+.apogeo-infographic-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    display: block;
+}
+
+.apogeo-infographic-card figcaption {
+    max-width: 860px;
+    margin: 18px auto 4px;
+    color: rgba(244, 234, 220, 0.76);
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    text-align: center;
+}
+
 .hero,
 .home-hero {
     display: grid;
@@ -2091,6 +2144,19 @@ details p {
 
     .consulting-section {
         padding: 24px;
+    }
+
+    .apogeo-infographic-section {
+        padding: 24px;
+    }
+
+    .apogeo-infographic-card {
+        border-radius: 22px;
+        padding: 10px;
+    }
+
+    .apogeo-infographic-card img {
+        border-radius: 16px;
     }
 
     .consulting-card {
