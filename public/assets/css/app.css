@@ -1672,9 +1672,8 @@ details p {
 
 .site-footer {
     width: 100%;
-    min-height: 150px;
     margin: 0;
-    padding: 34px max(16px, calc((100% - 1160px) / 2));
+    padding: 48px max(16px, calc((100% - 1160px) / 2)) 42px;
     border-top: 1px solid rgba(156, 163, 175, 0.36);
     background: var(--carbon);
     color: var(--gris-humo);
@@ -1683,32 +1682,67 @@ details p {
 
 .site-footer__inner {
     display: grid;
-    grid-template-columns: minmax(0, 1.25fr) minmax(220px, 0.9fr) minmax(180px, 0.55fr);
-    gap: 28px;
+    grid-template-columns: minmax(0, 1.45fr) minmax(180px, 0.5fr) minmax(190px, 0.48fr);
+    gap: clamp(28px, 5vw, 72px);
     align-items: start;
 }
 
-.site-footer strong {
-    display: block;
-    margin-bottom: 8px;
-    color: var(--beige);
-    font-size: 1rem;
+.site-footer__identity {
+    display: grid;
+    grid-template-columns: auto minmax(0, 520px);
+    gap: clamp(18px, 3vw, 34px);
+    align-items: center;
 }
 
-.site-footer p {
-    max-width: 480px;
+.site-footer__logo {
+    display: block;
+    width: clamp(54px, 7vw, 82px);
+    height: auto;
+}
+
+.site-footer__statement {
+    max-width: 520px;
     margin: 0;
+    padding-left: clamp(16px, 2vw, 24px);
+    border-left: 1px solid var(--naranja);
+    color: var(--beige);
+    font-family: var(--serif);
+    font-size: clamp(1.22rem, 2vw, 1.72rem);
+    font-style: italic;
+    line-height: 1.22;
 }
 
 .site-footer__nav,
-.site-footer__contact {
+.site-footer__social {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px 16px;
+    flex-direction: column;
+    gap: 12px;
 }
 
-.site-footer__contact {
-    flex-direction: column;
+.site-footer__nav a {
+    width: max-content;
+    max-width: 100%;
+}
+
+.site-footer__instagram {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    max-width: 100%;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.site-footer__instagram svg {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 auto;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.6;
 }
 
 .site-footer a {
@@ -1802,6 +1836,10 @@ details p {
 
     .site-footer__inner {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .site-footer__identity {
+        grid-column: 1 / -1;
     }
 
     .final-cta {
@@ -1914,6 +1952,11 @@ details p {
 
     .site-footer__inner {
         grid-template-columns: 1fr;
+    }
+
+    .site-footer__identity {
+        grid-template-columns: 1fr;
+        gap: 18px;
     }
 
     .trust-pillar-grid {
