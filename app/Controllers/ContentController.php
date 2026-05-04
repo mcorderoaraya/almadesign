@@ -264,9 +264,7 @@ final class ContentController extends BaseController
                 'image' => 'img/apogeo/infografia-ragk.webp',
                 'alt' => 'Proceso RAGK desde la pregunta hasta una respuesta compuesta con trazabilidad y validación humana.',
                 'caption' => 'La arquitectura articula recuperación contextual, relaciones documentales, flujo gobernado de información y evidencia verificable para sostener respuestas compuestas con criterio humano.',
-            ],
-            'postSections' => [
-                [
+                'concept' => [
                     'title' => 'RAGK como concepto gerencial',
                     'body' => [
                         'RAGK no debe explicarse públicamente como una lista de tecnologías.',
@@ -282,6 +280,7 @@ final class ContentController extends BaseController
                     ],
                 ],
             ],
+            'postSections' => [],
             'limitsSection' => [
                 'eyebrow' => 'Límites y alcance',
                 'title' => 'Qué no hace Apogeo',

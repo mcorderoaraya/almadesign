@@ -1397,6 +1397,48 @@ summary:focus-visible {
     text-align: center;
 }
 
+.apogeo-infographic-concept {
+    display: grid;
+    grid-template-columns: minmax(0, 0.72fr) minmax(0, 1fr);
+    gap: clamp(20px, 4vw, 46px);
+    margin-top: clamp(24px, 4vw, 40px);
+    padding: clamp(24px, 4vw, 42px);
+    border-top: 1px solid rgba(156, 163, 175, 0.28);
+}
+
+.apogeo-infographic-concept h3 {
+    margin: 0;
+    color: var(--beige);
+    font-size: clamp(2rem, 3vw, 3.2rem);
+    line-height: 1.02;
+}
+
+.apogeo-infographic-concept p,
+.apogeo-infographic-concept li {
+    color: var(--gris-humo);
+    line-height: 1.65;
+}
+
+.apogeo-infographic-concept p {
+    margin: 0;
+}
+
+.apogeo-infographic-concept p + p {
+    margin-top: 14px;
+}
+
+.apogeo-infographic-concept ul {
+    display: grid;
+    gap: 10px;
+    grid-column: 2;
+    margin: 4px 0 0;
+    padding-left: 1.15rem;
+}
+
+.apogeo-infographic-concept li::marker {
+    color: var(--naranja);
+}
+
 .apogeo-limits-section {
     width: min(1160px, calc(100% - 32px));
     margin: clamp(64px, 8vw, 104px) auto 0;
@@ -2374,6 +2416,15 @@ details p {
 
     .apogeo-infographic-card img {
         border-radius: 16px;
+    }
+
+    .apogeo-infographic-concept {
+        grid-template-columns: 1fr;
+        padding: 24px 10px 12px;
+    }
+
+    .apogeo-infographic-concept ul {
+        grid-column: auto;
     }
 
     .apogeo-limits-item {

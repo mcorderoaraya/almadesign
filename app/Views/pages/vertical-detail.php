@@ -138,6 +138,19 @@ $finalCta = $finalCta ?? [
                     height="941"
                 >
                 <figcaption><?= e($infographicSection['caption']) ?></figcaption>
+                <?php if (isset($infographicSection['concept'])): ?>
+                    <div class="apogeo-infographic-concept">
+                        <h3><?= e($infographicSection['concept']['title']) ?></h3>
+                        <?php foreach ($infographicSection['concept']['body'] as $paragraph): ?>
+                            <p><?= e($paragraph) ?></p>
+                        <?php endforeach; ?>
+                        <ul>
+                            <?php foreach ($infographicSection['concept']['items'] as $item): ?>
+                                <li><?= e($item) ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
             </figure>
         </section>
     <?php endif; ?>
