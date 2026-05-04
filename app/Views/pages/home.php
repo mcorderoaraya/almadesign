@@ -9,6 +9,8 @@ $verticals = [
         'summary' => 'Ordenamos fricciones internas, procesos y criterios para implementar IA con claridad, control y adopción responsable.',
         'cta' => 'Solicitar diagnóstico',
         'label' => 'CONSULTORÍA IA EMPRESAS',
+        'image' => 'img/cards/consultoria-ia-procesos.webp',
+        'accessible' => 'Consultoría IA y procesos. Ordenamos fricciones internas, procesos y criterios para implementar IA con claridad, control y adopción responsable.',
     ],
     [
         'title' => 'Apogeo',
@@ -17,6 +19,8 @@ $verticals = [
         'summary' => 'Sistemas de conocimiento aumentado para recuperar contexto, sostener trazabilidad y trabajar con documentación verificable entre partes.',
         'cta' => 'Conocer Apogeo',
         'label' => 'RECUPERACIÓN CONTEXTUAL',
+        'image' => 'img/cards/apogeo.webp',
+        'accessible' => 'Apogeo. Sistemas de conocimiento aumentado para recuperar contexto, sostener trazabilidad y trabajar con documentación verificable entre partes.',
     ],
     [
         'title' => 'AI for Humans',
@@ -25,6 +29,8 @@ $verticals = [
         'summary' => 'IA gobernada para proteger, potenciar y no reemplazar al humano en sus decisiones, procesos y capacidades.',
         'cta' => 'Explorar AI for Humans',
         'label' => 'DECISIONES HUMANAS COMPLEJAS',
+        'image' => 'img/cards/ai-for-humans.webp',
+        'accessible' => 'AI for Humans. IA gobernada para proteger, potenciar y no reemplazar al humano en sus decisiones, procesos y capacidades.',
     ],
 ];
 
@@ -109,22 +115,17 @@ $methodSteps = [
                 <div class="alma-vertical-card-grid">
                     <?php foreach ($verticals as $vertical): ?>
                         <article class="alma-vertical-card alma-vertical-card--<?= e($vertical['variant']) ?>">
-                            <header class="alma-vertical-card__header">
-                                <span class="alma-vertical-card__label"><?= e($vertical['label']) ?></span>
-                                <h3 class="alma-vertical-card__title"><?= e($vertical['title']) ?></h3>
-                                <p class="alma-vertical-card__summary"><?= e($vertical['summary']) ?></p>
-                                <div class="alma-vertical-card__rule" aria-hidden="true"></div>
-                            </header>
-                            <div class="alma-vertical-card__media" aria-hidden="true">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                            <footer class="alma-vertical-card__footer">
-                                <a class="alma-vertical-card__cta" href="<?= e($vertical['href']) ?>" aria-label="<?= e($vertical['title'] . ': ' . $vertical['cta']) ?>"><?= e($vertical['cta']) ?></a>
-                            </footer>
+                            <a class="alma-vertical-card__link" href="<?= e($vertical['href']) ?>" aria-label="<?= e($vertical['title'] . ': ' . $vertical['cta']) ?>">
+                                <img
+                                    class="alma-vertical-card__image"
+                                    src="<?= e(asset($vertical['image'])) ?>"
+                                    alt="<?= e($vertical['accessible']) ?>"
+                                    loading="lazy"
+                                    width="1254"
+                                    height="1254"
+                                >
+                                <span class="sr-only"><?= e($vertical['accessible']) ?></span>
+                            </a>
                         </article>
                     <?php endforeach; ?>
                 </div>
