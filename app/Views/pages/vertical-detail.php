@@ -2,7 +2,9 @@
 declare(strict_types=1);
 
 /** @var array<int, array{title: string, body?: string, items?: list<string>}> $sections */
+/** @var array<int, array{title: string, intro: string, items: list<array{title: string, body: string, key: string}>}>|null $cardSections */
 /** @var list<string> $guardrails */
+$cardSections = $cardSections ?? [];
 ?>
 <div class="alma-home">
     <section class="vertical-detail-hero" aria-labelledby="vertical-detail-title">
@@ -32,6 +34,26 @@ declare(strict_types=1);
             </article>
         <?php endforeach; ?>
     </section>
+
+    <?php foreach ($cardSections as $cardSectionIndex => $cardSection): ?>
+        <section class="consulting-section <?= $cardSectionIndex === 0 ? 'consulting-section--approach' : 'consulting-section--deliverables' ?>" aria-labelledby="consulting-section-<?= e((string) $cardSectionIndex) ?>">
+            <div class="section-heading">
+                <p class="eyebrow">Consultoría IA y procesos</p>
+                <h2 id="consulting-section-<?= e((string) $cardSectionIndex) ?>"><?= e($cardSection['title']) ?></h2>
+                <p><?= e($cardSection['intro']) ?></p>
+            </div>
+            <div class="consulting-card-grid">
+                <?php foreach ($cardSection['items'] as $itemIndex => $item): ?>
+                    <article class="consulting-card">
+                        <span class="consulting-card__index"><?= e(str_pad((string) ($itemIndex + 1), 2, '0', STR_PAD_LEFT)) ?></span>
+                        <h3><?= e($item['title']) ?></h3>
+                        <p><?= e($item['body']) ?></p>
+                        <p class="consulting-card__key"><strong>Clave:</strong> <?= e($item['key']) ?></p>
+                    </article>
+                <?php endforeach; ?>
+            </div>
+        </section>
+    <?php endforeach; ?>
 
     <section class="vertical-detail-guardrails alma-section" aria-labelledby="guardrails-title">
         <div class="section-heading">
