@@ -41,7 +41,7 @@ $methodSteps = [
         <div class="home-third__inner">
             <div class="alma-hero__top" aria-label="Contexto AlmaDesign">
                 <p class="eyebrow">Arquitectura de conocimiento · IA gobernada · AI for Humans</p>
-                <p class="meta">AlmaDesign · Talca, Chile</p>
+                <p class="meta">CLARIDAD · TRAZABILIDAD · CRITERIO HUMANO</p>
             </div>
 
             <div class="alma-hero">

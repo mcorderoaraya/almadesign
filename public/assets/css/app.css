@@ -437,10 +437,10 @@ summary:focus-visible {
 }
 
 .alma-home h1 {
-    max-width: 12ch;
+    max-width: 11ch;
     margin-bottom: clamp(24px, 3vw, 36px);
     color: var(--beige);
-    font-size: clamp(3rem, 6.2vw, 5.9rem);
+    font-size: clamp(2.9rem, 4.8vw, 5.2rem);
     font-weight: 700;
     line-height: 0.98;
     letter-spacing: -0.035em;
@@ -1668,8 +1668,8 @@ details p {
     }
 
     .alma-home h1 {
-        max-width: 13ch;
-        font-size: clamp(2.8rem, 6.2vw, 5rem);
+        max-width: 12ch;
+        font-size: clamp(2.7rem, 4.8vw, 4.6rem);
     }
 
     .alma-hero__signal {
@@ -1741,7 +1741,7 @@ details p {
 
     .alma-home h1 {
         max-width: 100%;
-        font-size: clamp(2.35rem, 6.2vw, 3.7rem);
+        font-size: clamp(2.3rem, 4.8vw, 3.35rem);
         line-height: 1.02;
         letter-spacing: -0.025em;
     }
