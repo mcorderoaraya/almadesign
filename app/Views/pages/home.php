@@ -176,15 +176,27 @@ $trustPillars = [
                     <blockquote>¿Esta tecnología mejora la capacidad humana de comprender, decidir y crear?</blockquote>
                     <p>Si la respuesta es no, no se construye. La eficiencia importa, pero nunca debe justificar deshumanización, pérdida de criterio, invasión de privacidad o automatización opaca.</p>
                 </div>
-                <ul class="trust-pillar-grid" aria-label="Pilares de confianza">
-                    <?php foreach ($trustPillars as $pillar): ?>
-                        <li>
-                            <span class="trust-pillar-grid__mark" aria-hidden="true"></span>
-                            <strong><?= e($pillar['title']) ?></strong>
-                            <span><?= e($pillar['detail']) ?></span>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
+                <div class="trust-system">
+                    <svg class="trust-system__map" viewBox="0 0 420 420" aria-hidden="true">
+                        <path d="M94 98 H210 V210 H326" />
+                        <path d="M94 322 H210 V210 H326" />
+                        <circle cx="94" cy="98" r="6" />
+                        <circle cx="326" cy="98" r="6" />
+                        <circle cx="94" cy="322" r="6" />
+                        <circle cx="326" cy="322" r="6" />
+                        <circle cx="210" cy="210" r="8" />
+                    </svg>
+                    <ul class="trust-pillar-grid" aria-label="Pilares de confianza">
+                        <?php foreach ($trustPillars as $index => $pillar): ?>
+                            <li>
+                                <span class="trust-pillar-grid__index"><?= e(str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT)) ?></span>
+                                <span class="trust-pillar-grid__mark" aria-hidden="true"></span>
+                                <strong><?= e($pillar['title']) ?></strong>
+                                <span><?= e($pillar['detail']) ?></span>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
             </section>
 
             <section class="alma-final-cta" aria-labelledby="final-cta-title">
