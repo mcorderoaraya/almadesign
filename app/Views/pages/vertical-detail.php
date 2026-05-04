@@ -74,8 +74,8 @@ $finalCta = $finalCta ?? [
                                     src="<?= e(asset($card['image'])) ?>"
                                     alt="<?= e($card['alt']) ?>"
                                     loading="lazy"
-                                    width="520"
-                                    height="360"
+                                    width="1122"
+                                    height="1402"
                                 >
                             </div>
                             <div class="apogeo-architecture-card__body">

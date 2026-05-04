@@ -1328,9 +1328,9 @@ summary:focus-visible {
 
 .apogeo-architecture-card__media {
     display: grid;
-    aspect-ratio: 1.28 / 1;
+    aspect-ratio: 1122 / 1402;
     place-items: center;
-    padding: clamp(14px, 2vw, 22px);
+    padding: clamp(10px, 1.6vw, 16px);
     border-bottom: 1px solid rgba(17, 24, 39, 0.1);
     background:
         radial-gradient(circle at 72% 18%, rgba(94, 234, 212, 0.18), transparent 28%),
@@ -1338,8 +1338,9 @@ summary:focus-visible {
 }
 
 .apogeo-architecture-card__media img {
-    width: min(100%, 420px);
+    width: 100%;
     height: auto;
+    border-radius: 18px;
     display: block;
 }
 
