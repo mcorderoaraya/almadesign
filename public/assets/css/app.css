@@ -636,58 +636,107 @@ summary:focus-visible {
     color: var(--naranja);
 }
 
-.method-list {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 0;
-    position: relative;
-    margin: 42px 0 0;
-    padding: 0;
-    list-style: none;
+.method-section {
+    padding: 88px 0 84px;
 }
 
-.method-list::before {
+.method-system {
+    position: relative;
+    margin-top: 46px;
+    padding: clamp(28px, 4vw, 48px);
+    overflow: hidden;
+    border: 1px solid rgba(244, 234, 220, 0.14);
+    border-radius: 16px;
+    background:
+        linear-gradient(90deg, rgba(94, 234, 212, 0.08) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(94, 234, 212, 0.055) 1px, transparent 1px),
+        radial-gradient(circle at 18% 18%, rgba(94, 234, 212, 0.11), transparent 26%),
+        radial-gradient(circle at 82% 72%, rgba(249, 115, 22, 0.08), transparent 30%),
+        rgba(17, 24, 39, 0.46);
+    background-size: 42px 42px, 42px 42px, auto, auto, auto;
+    box-shadow: inset 0 1px 0 rgba(244, 234, 220, 0.08);
+}
+
+.method-system::before,
+.method-system::after {
     position: absolute;
-    top: 42px;
-    right: 8%;
-    left: 8%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(94, 234, 212, 0.54), rgba(249, 115, 22, 0.42), transparent);
-    box-shadow: 0 0 18px rgba(94, 234, 212, 0.2);
+    pointer-events: none;
     content: "";
 }
 
-.method-section {
-    padding: 88px 0 84px;
+.method-system::before {
+    inset: 18px;
+    border: 1px solid rgba(244, 234, 220, 0.07);
+    border-radius: 12px;
+}
+
+.method-system::after {
+    right: clamp(22px, 4vw, 48px);
+    bottom: clamp(20px, 3vw, 38px);
+    width: min(260px, 36%);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(94, 234, 212, 0.46), rgba(249, 115, 22, 0.42));
+    box-shadow: 0 0 18px rgba(94, 234, 212, 0.18);
+}
+
+.method-system__trace {
+    position: absolute;
+    inset: clamp(30px, 4vw, 54px) clamp(32px, 5vw, 64px);
+    width: auto;
+    height: calc(100% - clamp(60px, 8vw, 108px));
+    overflow: visible;
+    opacity: 0.72;
+    z-index: 0;
+}
+
+.method-system__trace path {
+    fill: none;
+    stroke: rgba(94, 234, 212, 0.46);
+    stroke-dasharray: 10 12;
+    stroke-linecap: round;
+    stroke-width: 2;
+    filter: drop-shadow(0 0 8px rgba(94, 234, 212, 0.3));
+}
+
+.method-system__trace circle {
+    fill: var(--carbon);
+    stroke: rgba(94, 234, 212, 0.9);
+    stroke-width: 2;
+    filter: drop-shadow(0 0 8px rgba(94, 234, 212, 0.42));
+}
+
+.method-list {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: clamp(14px, 1.8vw, 22px);
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .method-list li {
     position: relative;
     display: grid;
     grid-template-rows: auto auto auto 1fr;
-    gap: 12px;
-    min-height: 232px;
+    gap: 13px;
+    min-height: 262px;
     padding: 22px 18px 20px;
     border: 1px solid rgba(244, 234, 220, 0.16);
     border-left-color: rgba(94, 234, 212, 0.28);
     background:
+        linear-gradient(90deg, rgba(94, 234, 212, 0.12) 1px, transparent 1px),
         linear-gradient(180deg, rgba(94, 234, 212, 0.06), transparent 42%),
         linear-gradient(145deg, rgba(244, 234, 220, 0.075), rgba(17, 24, 39, 0.66));
+    background-size: 28px 100%, auto, auto;
     box-shadow: inset 0 1px 0 rgba(244, 234, 220, 0.1);
     overflow: hidden;
     transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
-.method-list li:first-child {
-    border-radius: 10px 0 0 10px;
-}
-
-.method-list li:last-child {
-    border-radius: 0 10px 10px 0;
-}
-
-.method-list li + li {
-    margin-left: -1px;
+.method-list li:nth-child(even) {
+    margin-top: 58px;
 }
 
 .method-list li::before {
@@ -710,6 +759,12 @@ summary:focus-visible {
     border-bottom: 1px solid rgba(94, 234, 212, 0.26);
     border-radius: 0 0 8px 0;
     content: "";
+}
+
+.method-list li:first-child,
+.method-list li:last-child,
+.method-list li {
+    border-radius: 12px;
 }
 
 .method-list__node {
@@ -1641,14 +1696,14 @@ details p {
         gap: 14px;
     }
 
-    .method-list::before {
+    .method-system__trace {
         display: none;
     }
 
     .method-list li,
     .method-list li:first-child,
     .method-list li:last-child {
-        margin-left: 0;
+        margin: 0;
         border-radius: 10px;
     }
 
@@ -1747,6 +1802,36 @@ details p {
 
     .alma-home .lead {
         font-size: 1.06rem;
+    }
+
+    .method-system {
+        padding: 22px;
+    }
+
+    .method-list {
+        gap: 16px;
+        padding-left: 24px;
+    }
+
+    .method-list::before {
+        position: absolute;
+        top: 18px;
+        bottom: 18px;
+        left: 7px;
+        width: 1px;
+        background: linear-gradient(180deg, rgba(94, 234, 212, 0.52), rgba(249, 115, 22, 0.34), rgba(94, 234, 212, 0.22));
+        box-shadow: 0 0 14px rgba(94, 234, 212, 0.18);
+        content: "";
+    }
+
+    .method-list li {
+        min-height: auto;
+    }
+
+    .method-list__node {
+        position: absolute;
+        top: 24px;
+        left: -24px;
     }
 
     .home-third--hero {

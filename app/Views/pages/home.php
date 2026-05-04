@@ -147,16 +147,26 @@ $trustPillars = [
                     <p class="eyebrow">Método AlmaDesign</p>
                     <h2 id="method-title">De la fricción al sistema gobernado.</h2>
                 </div>
-                <ol class="method-list" aria-label="Método AlmaDesign">
-                    <?php foreach ($methodSteps as $index => $methodStep): ?>
-                        <li>
-                            <span class="method-list__node" aria-hidden="true"></span>
-                            <span class="method-list__step"><?= e(str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT)) ?></span>
-                            <strong><?= e($methodStep['step']) ?></strong>
-                            <span><?= e($methodStep['text']) ?></span>
-                        </li>
-                    <?php endforeach; ?>
-                </ol>
+                <div class="method-system">
+                    <svg class="method-system__trace" viewBox="0 0 1000 260" preserveAspectRatio="none" aria-hidden="true">
+                        <path d="M40 70 C170 70 170 186 300 186 S430 70 500 70 S630 186 700 186 S830 70 960 70" />
+                        <circle cx="40" cy="70" r="5" />
+                        <circle cx="300" cy="186" r="5" />
+                        <circle cx="500" cy="70" r="5" />
+                        <circle cx="700" cy="186" r="5" />
+                        <circle cx="960" cy="70" r="5" />
+                    </svg>
+                    <ol class="method-list" aria-label="Método AlmaDesign">
+                        <?php foreach ($methodSteps as $index => $methodStep): ?>
+                            <li>
+                                <span class="method-list__node" aria-hidden="true"></span>
+                                <span class="method-list__step"><?= e(str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT)) ?></span>
+                                <strong><?= e($methodStep['step']) ?></strong>
+                                <span><?= e($methodStep['text']) ?></span>
+                            </li>
+                        <?php endforeach; ?>
+                    </ol>
+                </div>
             </section>
 
             <section class="trust-section" aria-labelledby="trust-title">
