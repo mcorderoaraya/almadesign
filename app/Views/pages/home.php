@@ -8,7 +8,7 @@ $verticals = [
         'variant' => 'consulting',
         'summary' => 'Ordenamos fricciones internas, procesos y criterios para implementar IA con claridad, control y adopción responsable.',
         'cta' => 'Solicitar diagnóstico',
-        'keywords' => 'CONSULTORÍA IA EMPRESAS',
+        'label' => 'CONSULTORÍA IA EMPRESAS',
     ],
     [
         'title' => 'Apogeo',
@@ -16,7 +16,7 @@ $verticals = [
         'variant' => 'apogeo',
         'summary' => 'Sistemas de conocimiento aumentado para recuperar contexto, sostener trazabilidad y trabajar con documentación verificable entre partes.',
         'cta' => 'Conocer Apogeo',
-        'keywords' => 'RECUPERACIÓN CONTEXTUAL',
+        'label' => 'RECUPERACIÓN CONTEXTUAL',
     ],
     [
         'title' => 'AI for Humans',
@@ -24,7 +24,7 @@ $verticals = [
         'variant' => 'humans',
         'summary' => 'IA gobernada para proteger, potenciar y no reemplazar al humano en sus decisiones, procesos y capacidades.',
         'cta' => 'Explorar AI for Humans',
-        'keywords' => 'DECISIONES HUMANAS COMPLEJAS',
+        'label' => 'DECISIONES HUMANAS COMPLEJAS',
     ],
 ];
 
@@ -106,27 +106,25 @@ $methodSteps = [
                     <h2 id="verticales-title">Tres caminos para convertir complejidad en claridad.</h2>
                     <p>AlmaDesign trabaja en tres verticales conectadas por un mismo principio: ordenar procesos, conectar conocimiento y aplicar IA gobernada para apoyar decisiones humanas complejas.</p>
                 </div>
-                <div class="vertical-card-grid">
+                <div class="alma-vertical-card-grid">
                     <?php foreach ($verticals as $vertical): ?>
-                        <article class="vertical-card vertical-card--<?= e($vertical['variant']) ?>">
-                            <div class="vertical-card__shell">
-                                <div class="vertical-card__header">
-                                    <span class="vertical-card__keyword"><?= e($vertical['keywords']) ?></span>
-                                    <h3><?= e($vertical['title']) ?></h3>
-                                    <p class="vertical-card__summary"><?= e($vertical['summary']) ?></p>
-                                    <span class="vertical-card__separator" aria-hidden="true"></span>
-                                </div>
-                                <div class="vertical-card__visual" aria-hidden="true">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-                                <div class="vertical-card__footer">
-                                    <a class="vertical-card__cta" href="<?= e($vertical['href']) ?>" aria-label="<?= e($vertical['title'] . ': ' . $vertical['cta']) ?>"><?= e($vertical['cta']) ?></a>
-                                </div>
+                        <article class="alma-vertical-card alma-vertical-card--<?= e($vertical['variant']) ?>">
+                            <header class="alma-vertical-card__header">
+                                <span class="alma-vertical-card__label"><?= e($vertical['label']) ?></span>
+                                <h3 class="alma-vertical-card__title"><?= e($vertical['title']) ?></h3>
+                                <p class="alma-vertical-card__summary"><?= e($vertical['summary']) ?></p>
+                                <div class="alma-vertical-card__rule" aria-hidden="true"></div>
+                            </header>
+                            <div class="alma-vertical-card__media" aria-hidden="true">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
                             </div>
+                            <footer class="alma-vertical-card__footer">
+                                <a class="alma-vertical-card__cta" href="<?= e($vertical['href']) ?>" aria-label="<?= e($vertical['title'] . ': ' . $vertical['cta']) ?>"><?= e($vertical['cta']) ?></a>
+                            </footer>
                         </article>
                     <?php endforeach; ?>
                 </div>

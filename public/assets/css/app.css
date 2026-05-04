@@ -572,89 +572,87 @@ summary:focus-visible {
     scroll-margin-top: 104px;
 }
 
-.vertical-card-grid {
+.alma-vertical-card-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
+    gap: 22px;
     margin-top: 36px;
 }
 
-.vertical-card {
+.alma-vertical-card {
     display: grid;
+    grid-template-rows: auto minmax(220px, 1fr) auto;
     min-width: 0;
-}
-
-.vertical-card__shell {
-    display: grid;
-    grid-template-rows: auto auto auto;
     height: 100%;
-    overflow: hidden;
+    min-height: 610px;
+    overflow: clip;
     border: 1px solid rgba(156, 163, 175, 0.5);
     border-radius: 8px;
     background: var(--beige);
-    box-shadow: 0 10px 26px rgba(17, 24, 39, 0.07);
+    box-shadow: 0 10px 24px rgba(17, 24, 39, 0.06);
     cursor: pointer;
-    opacity: 1;
-    transition: opacity 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    transition: border-color 180ms ease, box-shadow 180ms ease, opacity 180ms ease, transform 180ms ease;
 }
 
-.vertical-card__shell:hover,
-.vertical-card:focus-within .vertical-card__shell {
+.alma-vertical-card:hover,
+.alma-vertical-card:focus-within {
     border-color: rgba(249, 115, 22, 0.7);
-    box-shadow: 0 14px 34px rgba(17, 24, 39, 0.1), 0 0 0 1px rgba(249, 115, 22, 0.2);
-    opacity: 0.9;
+    box-shadow: 0 16px 36px rgba(17, 24, 39, 0.1), 0 0 0 1px rgba(249, 115, 22, 0.18);
 }
 
-.vertical-card__shell:hover .vertical-card__cta,
-.vertical-card:focus-within .vertical-card__cta {
+.alma-vertical-card:hover .alma-vertical-card__cta,
+.alma-vertical-card:focus-within .alma-vertical-card__cta {
     color: var(--tinta);
     border-bottom-color: var(--naranja);
 }
 
-.vertical-card__header {
+.alma-vertical-card__header {
     display: grid;
     align-content: start;
-    gap: 13px;
-    min-height: 244px;
-    padding: 28px 26px 20px;
+    gap: 16px;
+    min-height: 260px;
+    padding: 32px 30px 22px;
 }
 
-.vertical-card__keyword {
+.alma-vertical-card__label {
     color: var(--naranja);
     font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0;
+    font-weight: 700;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
 }
 
-.vertical-card h3 {
+.alma-vertical-card__title {
     margin-bottom: 0;
     color: var(--tinta);
-    font-size: 1.48rem;
-    line-height: 1.1;
+    font-family: var(--serif);
+    font-size: clamp(2rem, 2.4vw, 2.85rem);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
 }
 
-.vertical-card__summary {
+.alma-vertical-card__summary {
     margin: 0;
     color: var(--tinta);
-    font-size: 0.98rem;
-    line-height: 1.5;
+    font-family: var(--sans);
+    font-size: 1rem;
+    line-height: 1.55;
 }
 
-.vertical-card__separator {
+.alma-vertical-card__rule {
     display: block;
     width: 100%;
     height: 1px;
-    margin-top: 8px;
+    margin-top: 2px;
     background: var(--gris-humo);
 }
 
-.vertical-card__visual {
+.alma-vertical-card__media {
     position: relative;
     display: grid;
     aspect-ratio: 1 / 1;
-    margin: 0 26px 22px;
-    overflow: hidden;
+    margin: 0 30px 24px;
+    overflow: clip;
     border: 1px solid rgba(156, 163, 175, 0.52);
     border-radius: 8px;
     background:
@@ -664,13 +662,18 @@ summary:focus-visible {
     transition: opacity 180ms ease;
 }
 
-.vertical-card__visual::before,
-.vertical-card__visual::after {
+.alma-vertical-card:hover .alma-vertical-card__media,
+.alma-vertical-card:focus-within .alma-vertical-card__media {
+    opacity: 0.9;
+}
+
+.alma-vertical-card__media::before,
+.alma-vertical-card__media::after {
     position: absolute;
     content: "";
 }
 
-.vertical-card__visual::before {
+.alma-vertical-card__media::before {
     right: 12%;
     bottom: 18%;
     left: 12%;
@@ -678,7 +681,7 @@ summary:focus-visible {
     background: rgba(156, 163, 175, 0.9);
 }
 
-.vertical-card__visual::after {
+.alma-vertical-card__media::after {
     right: 14%;
     bottom: 18%;
     width: 33%;
@@ -686,7 +689,7 @@ summary:focus-visible {
     background: var(--naranja);
 }
 
-.vertical-card__visual span {
+.alma-vertical-card__media span {
     position: absolute;
     display: block;
     border: 1px solid rgba(17, 24, 39, 0.24);
@@ -695,21 +698,21 @@ summary:focus-visible {
     box-shadow: inset 0 0 0 1px rgba(244, 234, 220, 0.38);
 }
 
-.vertical-card__visual span:nth-child(1) {
+.alma-vertical-card__media span:nth-child(1) {
     top: 17%;
     left: 14%;
     width: 24%;
     height: 24%;
 }
 
-.vertical-card__visual span:nth-child(2) {
+.alma-vertical-card__media span:nth-child(2) {
     top: 36%;
     left: 34%;
     width: 32%;
     height: 19%;
 }
 
-.vertical-card__visual span:nth-child(3) {
+.alma-vertical-card__media span:nth-child(3) {
     top: 22%;
     right: 13%;
     width: 25%;
@@ -717,7 +720,7 @@ summary:focus-visible {
     border-color: rgba(249, 115, 22, 0.48);
 }
 
-.vertical-card__visual span:nth-child(4) {
+.alma-vertical-card__media span:nth-child(4) {
     right: 25%;
     bottom: 25%;
     width: 18%;
@@ -725,7 +728,7 @@ summary:focus-visible {
     border-radius: 50%;
 }
 
-.vertical-card__visual span:nth-child(5) {
+.alma-vertical-card__media span:nth-child(5) {
     bottom: 27%;
     left: 20%;
     width: 22%;
@@ -733,40 +736,42 @@ summary:focus-visible {
     border-color: rgba(156, 163, 175, 0.62);
 }
 
-.vertical-card--consulting .vertical-card__visual span:nth-child(1) {
+.alma-vertical-card--consulting .alma-vertical-card__media span:nth-child(1) {
     border-radius: 50%;
 }
 
-.vertical-card--consulting .vertical-card__visual span:nth-child(2) {
+.alma-vertical-card--consulting .alma-vertical-card__media span:nth-child(2) {
     border-color: rgba(249, 115, 22, 0.42);
 }
 
-.vertical-card--apogeo .vertical-card__visual span:nth-child(1),
-.vertical-card--apogeo .vertical-card__visual span:nth-child(3) {
+.alma-vertical-card--apogeo .alma-vertical-card__media span:nth-child(1),
+.alma-vertical-card--apogeo .alma-vertical-card__media span:nth-child(3) {
     border-radius: 3px;
 }
 
-.vertical-card--apogeo .vertical-card__visual span:nth-child(2) {
+.alma-vertical-card--apogeo .alma-vertical-card__media span:nth-child(2) {
     width: 28%;
     height: 28%;
     border-color: rgba(17, 24, 39, 0.3);
 }
 
-.vertical-card--humans .vertical-card__visual span:nth-child(1),
-.vertical-card--humans .vertical-card__visual span:nth-child(4) {
+.alma-vertical-card--humans .alma-vertical-card__media span:nth-child(1),
+.alma-vertical-card--humans .alma-vertical-card__media span:nth-child(4) {
     border-radius: 50%;
     border-color: rgba(249, 115, 22, 0.45);
 }
 
-.vertical-card--humans .vertical-card__visual span:nth-child(2) {
+.alma-vertical-card--humans .alma-vertical-card__media span:nth-child(2) {
     border-radius: 999px;
 }
 
-.vertical-card__footer {
-    padding: 0 26px 28px;
+.alma-vertical-card__footer {
+    display: flex;
+    align-items: end;
+    padding: 0 30px 32px;
 }
 
-.vertical-card__cta {
+.alma-vertical-card__cta {
     display: inline-flex;
     width: max-content;
     max-width: 100%;
@@ -779,11 +784,11 @@ summary:focus-visible {
     transition: color 180ms ease, transform 180ms ease;
 }
 
-.vertical-card__cta:hover {
+.alma-vertical-card__cta:hover {
     color: var(--naranja);
 }
 
-.vertical-card__cta:focus-visible {
+.alma-vertical-card__cta:focus-visible {
     border-radius: 6px;
     outline: 3px solid rgba(249, 115, 22, 0.46);
     outline-offset: 4px;
@@ -795,7 +800,7 @@ summary:focus-visible {
 }
 
 .home-third--verticals .eyebrow,
-.home-third--verticals .vertical-card__keyword {
+.home-third--verticals .alma-vertical-card__label {
     color: var(--naranja);
 }
 
@@ -1650,7 +1655,7 @@ details p {
     }
 
     .cards-grid--three,
-    .vertical-card-grid,
+    .alma-vertical-card-grid,
     .flow-list,
     .method-list,
     .audience-grid {
@@ -1730,7 +1735,7 @@ details p {
     }
 
     .cards-grid--three,
-    .vertical-card-grid,
+    .alma-vertical-card-grid,
     .flow-list,
     .method-list,
     .demo-board,
@@ -1754,16 +1759,20 @@ details p {
         font-size: 1.06rem;
     }
 
-    .vertical-card__header {
+    .alma-vertical-card {
+        min-height: auto;
+    }
+
+    .alma-vertical-card__header {
         min-height: auto;
         padding: 24px 22px 18px;
     }
 
-    .vertical-card__visual {
+    .alma-vertical-card__media {
         margin: 0 22px 20px;
     }
 
-    .vertical-card__footer {
+    .alma-vertical-card__footer {
         padding: 0 22px 24px;
     }
 
@@ -1824,14 +1833,14 @@ details p {
         transform: translateY(-2px);
     }
 
-    .vertical-card__shell:hover,
-    .vertical-card:focus-within .vertical-card__shell {
+    .alma-vertical-card:hover,
+    .alma-vertical-card:focus-within {
         transform: translateY(-3px);
     }
 
-    .vertical-card__shell:hover .vertical-card__cta,
-    .vertical-card:focus-within .vertical-card__cta,
-    .vertical-card__cta:hover {
+    .alma-vertical-card:hover .alma-vertical-card__cta,
+    .alma-vertical-card:focus-within .alma-vertical-card__cta,
+    .alma-vertical-card__cta:hover {
         transform: translateX(3px);
     }
 
