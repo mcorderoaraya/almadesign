@@ -345,22 +345,21 @@ summary:focus-visible {
 .home-third--hero {
     position: relative;
     min-height: 80vh;
-    background:
-        linear-gradient(90deg, rgba(244, 234, 220, 0.035) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(244, 234, 220, 0.026) 1px, transparent 1px),
-        var(--carbon);
-    background-size: 76px 76px, 76px 76px, auto;
+    background: var(--carbon);
+    background-image: none;
+    box-shadow: none;
     color: var(--beige);
+    filter: none;
 }
 
-.home-third--hero::before {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-        linear-gradient(180deg, rgba(17, 24, 39, 0.18), var(--carbon) 96%),
-        repeating-linear-gradient(115deg, rgba(244, 234, 220, 0.022) 0 1px, transparent 1px 18px);
-    content: "";
+.home-third--hero::before,
+.home-third--hero::after {
+    display: none;
+    background: none;
+    background-image: none;
+    box-shadow: none;
+    content: none;
+    filter: none;
 }
 
 .home-third--verticals {
@@ -482,8 +481,8 @@ summary:focus-visible {
     border: 1px solid rgba(244, 234, 220, 0.2);
     border-radius: 8px;
     background: rgba(17, 24, 39, 0.72);
-    box-shadow: 0 28px 90px rgba(0, 0, 0, 0.34);
-    backdrop-filter: blur(18px);
+    box-shadow: none;
+    filter: none;
 }
 
 .alma-hero__signal img {
@@ -537,12 +536,12 @@ summary:focus-visible {
 }
 
 .alma-hero__footstrip span::before {
-    width: 6px;
-    height: 6px;
-    border-radius: 999px;
-    background: var(--naranja);
-    box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.18);
-    content: "";
+    display: none;
+    background: none;
+    background-image: none;
+    box-shadow: none;
+    content: none;
+    filter: none;
 }
 
 .alma-purpose {
