@@ -41,6 +41,13 @@ $methodSteps = [
     ['step' => 'Gobernar', 'text' => 'Definir límites, trazabilidad, supervisión humana y criterios de uso.'],
     ['step' => 'Acompañar', 'text' => 'Apoyar adopción, aprendizaje y mejora continua con dirección humana.'],
 ];
+
+$trustPillars = [
+    ['title' => 'Claridad', 'detail' => 'Comprensión compartida antes de automatizar.'],
+    ['title' => 'Trazabilidad', 'detail' => 'Evidencia verificable para cada decisión.'],
+    ['title' => 'Seguridad', 'detail' => 'Límites, resguardos y supervisión humana.'],
+    ['title' => 'Criterio humano', 'detail' => 'La tecnología acompaña, no reemplaza.'],
+];
 ?>
 <div class="alma-home">
     <section class="home-third home-third--hero" aria-labelledby="home-title">
@@ -141,8 +148,10 @@ $methodSteps = [
                     <h2 id="method-title">De la fricción al sistema gobernado.</h2>
                 </div>
                 <ol class="method-list" aria-label="Método AlmaDesign">
-                    <?php foreach ($methodSteps as $methodStep): ?>
+                    <?php foreach ($methodSteps as $index => $methodStep): ?>
                         <li>
+                            <span class="method-list__node" aria-hidden="true"></span>
+                            <span class="method-list__step"><?= e(str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT)) ?></span>
                             <strong><?= e($methodStep['step']) ?></strong>
                             <span><?= e($methodStep['text']) ?></span>
                         </li>
@@ -157,12 +166,15 @@ $methodSteps = [
                     <blockquote>¿Esta tecnología mejora la capacidad humana de comprender, decidir y crear?</blockquote>
                     <p>Si la respuesta es no, no se construye. La eficiencia importa, pero nunca debe justificar deshumanización, pérdida de criterio, invasión de privacidad o automatización opaca.</p>
                 </div>
-                <div class="trust-pillar-grid" aria-label="Pilares de confianza">
-                    <span>Claridad</span>
-                    <span>Trazabilidad</span>
-                    <span>Seguridad</span>
-                    <span>Criterio humano</span>
-                </div>
+                <ul class="trust-pillar-grid" aria-label="Pilares de confianza">
+                    <?php foreach ($trustPillars as $pillar): ?>
+                        <li>
+                            <span class="trust-pillar-grid__mark" aria-hidden="true"></span>
+                            <strong><?= e($pillar['title']) ?></strong>
+                            <span><?= e($pillar['detail']) ?></span>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
             </section>
 
             <section class="alma-final-cta" aria-labelledby="final-cta-title">
