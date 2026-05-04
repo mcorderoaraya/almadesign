@@ -311,7 +311,8 @@ summary:focus-visible {
 
 .alma-home {
     position: relative;
-    overflow: hidden;
+    overflow-x: clip;
+    overflow-y: visible;
     background: var(--carbon);
     color: var(--beige);
 }
@@ -399,15 +400,16 @@ summary:focus-visible {
 
 .alma-hero {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(310px, 0.42fr);
-    gap: 44px;
+    grid-template-columns: minmax(0, 1.65fr) minmax(280px, 0.9fr);
+    gap: clamp(40px, 6vw, 84px);
     align-items: center;
-    min-height: calc(80vh - 76px);
-    padding: 68px 0 98px;
+    min-height: calc(80vh - 112px);
+    padding: clamp(72px, 9vw, 118px) 0 clamp(78px, 9vw, 118px);
 }
 
 .alma-hero__content {
-    max-width: 890px;
+    min-width: 0;
+    max-width: 820px;
 }
 
 .alma-hero__chapter {
@@ -435,12 +437,13 @@ summary:focus-visible {
 }
 
 .alma-home h1 {
-    max-width: 970px;
-    margin-bottom: 24px;
+    max-width: 12ch;
+    margin-bottom: clamp(24px, 3vw, 36px);
     color: var(--beige);
-    font-size: clamp(2.75rem, 6.2vw, 5.25rem);
+    font-size: clamp(3rem, 6.2vw, 5.9rem);
     font-weight: 700;
-    line-height: 1.02;
+    line-height: 0.98;
+    letter-spacing: -0.035em;
 }
 
 .alma-home h2 {
@@ -458,12 +461,12 @@ summary:focus-visible {
 }
 
 .alma-home .lead {
-    max-width: 820px;
-    color: var(--beige);
+    max-width: 58ch;
+    color: rgba(244, 234, 220, 0.9);
     font-family: var(--sans);
-    font-size: 1.38rem;
+    font-size: clamp(1rem, 1.35vw, 1.25rem);
     font-weight: 400;
-    line-height: 1.38;
+    line-height: 1.55;
 }
 
 .alma-home .hero-text,
@@ -477,19 +480,21 @@ summary:focus-visible {
 }
 
 .alma-hero__signal {
-    overflow: hidden;
-    border: 1px solid rgba(244, 234, 220, 0.2);
-    border-radius: 8px;
-    background: rgba(17, 24, 39, 0.72);
+    min-width: 0;
+    overflow: visible;
+    border: 0;
+    border-left: 1px solid rgba(156, 163, 175, 0.44);
+    border-radius: 0;
+    background: transparent;
     box-shadow: none;
     filter: none;
 }
 
 .alma-hero__signal img {
     display: block;
-    width: min(258px, calc(100% - 36px));
+    width: min(206px, calc(100% - 36px));
     height: auto;
-    margin: 22px 18px;
+    margin: 0 0 28px 28px;
 }
 
 .alma-hero__signal dl {
@@ -497,8 +502,8 @@ summary:focus-visible {
 }
 
 .alma-hero__signal div {
-    padding: 18px;
-    border-top: 1px solid rgba(244, 234, 220, 0.14);
+    padding: 16px 0 16px 28px;
+    border-top: 1px solid rgba(156, 163, 175, 0.28);
 }
 
 .alma-hero__signal dt,
@@ -508,14 +513,16 @@ summary:focus-visible {
 
 .alma-hero__signal dt {
     color: var(--naranja);
-    font-size: 0.78rem;
+    font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
 }
 
 .alma-hero__signal dd {
     margin-top: 5px;
-    color: var(--beige);
+    color: rgba(244, 234, 220, 0.82);
+    font-size: 0.95rem;
+    line-height: 1.45;
 }
 
 .alma-hero__footstrip {
@@ -1022,7 +1029,7 @@ summary:focus-visible {
     align-items: center;
     justify-content: center;
     min-height: 46px;
-    padding: 0 18px;
+    padding: 0 20px;
     border-radius: 8px;
     font-weight: 850;
     text-decoration: none;
@@ -1040,8 +1047,8 @@ summary:focus-visible {
 }
 
 .button-secondary {
-    border: var(--rule);
-    background: rgba(244, 234, 220, 0.06);
+    border: 1px solid rgba(244, 234, 220, 0.55);
+    background: transparent;
     color: var(--beige);
 }
 
@@ -1654,6 +1661,31 @@ details p {
         font-size: 2.45rem;
     }
 
+    .alma-hero {
+        gap: 34px;
+        min-height: auto;
+        padding: 62px 0 82px;
+    }
+
+    .alma-home h1 {
+        max-width: 13ch;
+        font-size: clamp(2.8rem, 6.2vw, 5rem);
+    }
+
+    .alma-hero__signal {
+        border-top: 1px solid rgba(156, 163, 175, 0.44);
+        border-left: 0;
+        padding-top: 28px;
+    }
+
+    .alma-hero__signal img {
+        margin-left: 0;
+    }
+
+    .alma-hero__signal div {
+        padding-left: 0;
+    }
+
     .site-footer__inner {
         grid-template-columns: 1fr 1fr;
     }
@@ -1708,7 +1740,10 @@ details p {
     }
 
     .alma-home h1 {
+        max-width: 100%;
+        font-size: clamp(2.35rem, 6.2vw, 3.7rem);
         line-height: 1.02;
+        letter-spacing: -0.025em;
     }
 
     .alma-home h2 {
@@ -1716,7 +1751,7 @@ details p {
     }
 
     .alma-home .lead {
-        font-size: 1.12rem;
+        font-size: 1.06rem;
     }
 
     .vertical-card__header {
