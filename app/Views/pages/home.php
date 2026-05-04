@@ -4,24 +4,24 @@ declare(strict_types=1);
 $verticals = [
     [
         'title' => 'Consultoría IA y procesos',
-        'href' => url('/consultoria-ia-procesos'),
+        'href' => url('/contacto'),
         'summary' => 'Ordenamos fricciones internas, procesos y criterios para implementar IA con claridad, control y adopción responsable.',
         'cta' => 'Solicitar diagnóstico',
-        'keywords' => 'consultoría IA empresas',
+        'keywords' => 'CONSULTORÍA IA EMPRESAS',
     ],
     [
         'title' => 'Apogeo',
         'href' => url('/apogeo'),
         'summary' => 'Sistemas de conocimiento aumentado para recuperar contexto, sostener trazabilidad y trabajar con documentación verificable entre partes.',
         'cta' => 'Conocer Apogeo',
-        'keywords' => 'recuperación contextual',
+        'keywords' => 'RECUPERACIÓN CONTEXTUAL',
     ],
     [
         'title' => 'AI for Humans',
         'href' => url('/ai-for-humans'),
         'summary' => 'IA gobernada para proteger, potenciar y no reemplazar al humano en sus decisiones, procesos y capacidades.',
         'cta' => 'Explorar AI for Humans',
-        'keywords' => 'decisiones humanas complejas',
+        'keywords' => 'DECISIONES HUMANAS COMPLEJAS',
     ],
 ];
 
@@ -92,19 +92,22 @@ $methodSteps = [
                 <div class="vertical-card-grid">
                     <?php foreach ($verticals as $vertical): ?>
                         <article class="vertical-card">
-                            <a class="vertical-card__link" href="<?= e($vertical['href']) ?>" aria-label="<?= e($vertical['title'] . ': ' . $vertical['cta']) ?>">
+                            <div class="vertical-card__shell">
+                                <div class="vertical-card__header">
+                                    <span class="vertical-card__keyword"><?= e($vertical['keywords']) ?></span>
+                                    <h3><?= e($vertical['title']) ?></h3>
+                                    <p class="vertical-card__summary"><?= e($vertical['summary']) ?></p>
+                                    <span class="vertical-card__separator" aria-hidden="true"></span>
+                                </div>
                                 <div class="vertical-card__visual" aria-hidden="true">
                                     <span></span>
                                     <span></span>
                                     <span></span>
                                 </div>
-                                <div class="vertical-card__body">
-                                    <span class="vertical-card__keyword"><?= e($vertical['keywords']) ?></span>
-                                    <h3><?= e($vertical['title']) ?></h3>
-                                    <p class="vertical-card__summary"><?= e($vertical['summary']) ?></p>
-                                    <span class="vertical-card__cta"><?= e($vertical['cta']) ?></span>
+                                <div class="vertical-card__footer">
+                                    <a class="vertical-card__cta" href="<?= e($vertical['href']) ?>" aria-label="<?= e($vertical['title'] . ': ' . $vertical['cta']) ?>"><?= e($vertical['cta']) ?></a>
                                 </div>
-                            </a>
+                            </div>
                         </article>
                     <?php endforeach; ?>
                 </div>
