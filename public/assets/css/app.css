@@ -1313,78 +1313,35 @@ summary:focus-visible {
 }
 
 .apogeo-architecture-card {
-    display: grid;
     min-width: 0;
+}
+
+.apogeo-architecture-card__link {
+    display: block;
     overflow: hidden;
-    border: 1px solid rgba(17, 24, 39, 0.14);
-    border-radius: 24px;
-    background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.48), rgba(244, 234, 220, 0.32)),
-        rgba(255, 255, 255, 0.2);
-    box-shadow: 0 18px 48px rgba(17, 24, 39, 0.09), inset 0 1px 0 rgba(255, 255, 255, 0.42);
-    backdrop-filter: blur(14px);
-    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    border: 1px solid rgba(17, 24, 39, 0.16);
+    border-radius: 28px;
+    background: var(--beige);
+    box-shadow: 0 18px 50px rgba(17, 24, 39, 0.12);
+    transition: opacity 200ms ease, transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
 }
 
-.apogeo-architecture-card__media {
-    display: grid;
-    aspect-ratio: 1122 / 1402;
-    place-items: center;
-    padding: clamp(10px, 1.6vw, 16px);
-    border-bottom: 1px solid rgba(17, 24, 39, 0.1);
-    background:
-        radial-gradient(circle at 72% 18%, rgba(94, 234, 212, 0.18), transparent 28%),
-        linear-gradient(135deg, rgba(244, 234, 220, 0.2), rgba(255, 255, 255, 0.34));
+.apogeo-architecture-card__link:hover,
+.apogeo-architecture-card__link:focus-visible {
+    opacity: 0.9;
+    border-color: rgba(249, 115, 22, 0.55);
+    box-shadow: 0 24px 64px rgba(17, 24, 39, 0.16);
 }
 
-.apogeo-architecture-card__media img {
+.apogeo-architecture-card__link:focus-visible {
+    outline: 2px solid var(--naranja);
+    outline-offset: 4px;
+}
+
+.apogeo-architecture-card__image {
     width: 100%;
     height: auto;
-    border-radius: 18px;
     display: block;
-}
-
-.apogeo-architecture-card__body {
-    display: flex;
-    min-width: 0;
-    min-height: 260px;
-    flex-direction: column;
-    gap: 14px;
-    padding: clamp(24px, 3vw, 32px);
-}
-
-.apogeo-architecture-card__micro {
-    width: max-content;
-    max-width: 100%;
-    margin: 0;
-    padding: 6px 10px;
-    border: 1px solid rgba(249, 115, 22, 0.28);
-    border-radius: 999px;
-    color: var(--naranja);
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-}
-
-.apogeo-architecture-card h3 {
-    margin: 0;
-    color: var(--tinta);
-    font-size: clamp(2rem, 3vw, 3.25rem);
-    line-height: 0.98;
-}
-
-.apogeo-architecture-card__body > p:not(.apogeo-architecture-card__micro) {
-    margin: 0;
-    color: rgba(20, 29, 47, 0.78);
-    font-size: 1rem;
-    line-height: 1.58;
-}
-
-.apogeo-architecture-card:hover {
-    border-color: rgba(249, 115, 22, 0.32);
-    box-shadow: 0 22px 58px rgba(17, 24, 39, 0.13), inset 0 1px 0 rgba(255, 255, 255, 0.52);
 }
 
 .apogeo-infographic-section {

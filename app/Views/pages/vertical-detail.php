@@ -69,20 +69,17 @@ $finalCta = $finalCta ?? [
                 <div class="apogeo-architecture-grid">
                     <?php foreach ($architectureSection['cards'] as $card): ?>
                         <article class="apogeo-architecture-card">
-                            <div class="apogeo-architecture-card__media">
+                            <a class="apogeo-architecture-card__link" href="#apogeo-architectures-title" aria-label="<?= e($card['title'] . ': ' . $card['body']) ?>">
                                 <img
+                                    class="apogeo-architecture-card__image"
                                     src="<?= e(asset($card['image'])) ?>"
                                     alt="<?= e($card['alt']) ?>"
                                     loading="lazy"
                                     width="1122"
                                     height="1402"
                                 >
-                            </div>
-                            <div class="apogeo-architecture-card__body">
-                                <p class="apogeo-architecture-card__micro"><?= e($card['micro']) ?></p>
-                                <h3><?= e($card['title']) ?></h3>
-                                <p><?= e($card['body']) ?></p>
-                            </div>
+                                <span class="sr-only"><?= e($card['title'] . '. ' . $card['body'] . ' ' . $card['micro']) ?></span>
+                            </a>
                         </article>
                     <?php endforeach; ?>
                 </div>
