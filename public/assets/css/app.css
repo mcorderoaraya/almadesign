@@ -484,12 +484,22 @@ summary:focus-visible {
     border-radius: 8px;
     background: #f4eadc;
     box-shadow: 0 10px 26px rgba(17, 24, 38, 0.07);
-    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
-.vertical-card__shell:hover {
+.vertical-card__shell:hover,
+.vertical-card:focus-within .vertical-card__shell {
     border-color: rgba(237, 114, 32, 0.7);
-    box-shadow: 0 14px 34px rgba(17, 24, 38, 0.1);
+    box-shadow: 0 14px 34px rgba(17, 24, 38, 0.1), 0 0 0 1px rgba(237, 114, 32, 0.2);
+    opacity: 0.9;
+}
+
+.vertical-card__shell:hover .vertical-card__cta,
+.vertical-card:focus-within .vertical-card__cta {
+    color: #111826;
+    border-bottom-color: #ed7220;
 }
 
 .vertical-card__header {
@@ -542,6 +552,7 @@ summary:focus-visible {
         radial-gradient(circle at 22% 78%, rgba(237, 114, 32, 0.14), transparent 20%),
         radial-gradient(circle at 78% 22%, rgba(17, 24, 38, 0.1), transparent 22%),
         linear-gradient(135deg, #f8f0e4, #eadfce);
+    transition: opacity 180ms ease;
 }
 
 .vertical-card__visual::before,
@@ -656,6 +667,7 @@ summary:focus-visible {
     color: #111826;
     font-weight: 500;
     text-decoration: none;
+    transition: color 180ms ease, transform 180ms ease;
 }
 
 .vertical-card__cta:hover {
@@ -1745,9 +1757,19 @@ details p {
     .demo-group:hover,
     .scope-card:hover,
     .audience-grid span:hover,
-    .vertical-card__shell:hover,
     details:hover {
         transform: translateY(-2px);
+    }
+
+    .vertical-card__shell:hover,
+    .vertical-card:focus-within .vertical-card__shell {
+        transform: translateY(-3px);
+    }
+
+    .vertical-card__shell:hover .vertical-card__cta,
+    .vertical-card:focus-within .vertical-card__cta,
+    .vertical-card__cta:hover {
+        transform: translateX(3px);
     }
 
     .scroll-down__line::after {
