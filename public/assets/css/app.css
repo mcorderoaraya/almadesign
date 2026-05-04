@@ -332,6 +332,15 @@ summary:focus-visible {
     margin: 0 auto;
 }
 
+.meta {
+    color: var(--gris-humo);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
 .home-third--hero {
     position: relative;
     min-height: 80vh;
@@ -369,6 +378,25 @@ summary:focus-visible {
     border-top: 1px solid rgba(244, 234, 220, 0.14);
 }
 
+.alma-hero__top,
+.alma-hero__footstrip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 28px;
+    border-bottom: 1px solid rgba(156, 163, 175, 0.42);
+}
+
+.alma-hero__top {
+    padding: 22px 0;
+}
+
+.alma-hero__top .eyebrow,
+.alma-hero__top .meta {
+    margin: 0;
+}
+
 .alma-hero {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(310px, 0.42fr);
@@ -380,6 +408,30 @@ summary:focus-visible {
 
 .alma-hero__content {
     max-width: 890px;
+}
+
+.alma-hero__chapter {
+    display: grid;
+    gap: 4px;
+    margin-bottom: 24px;
+    color: var(--gris-humo);
+}
+
+.alma-hero__chapter span {
+    color: var(--naranja);
+    font-family: var(--serif);
+    font-size: clamp(2.1rem, 4vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1;
+}
+
+.alma-hero__chapter small {
+    color: var(--gris-humo);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .alma-home h1 {
@@ -466,6 +518,32 @@ summary:focus-visible {
 .alma-hero__signal dd {
     margin-top: 5px;
     color: var(--beige);
+}
+
+.alma-hero__footstrip {
+    padding: 18px 0 22px;
+    border-top: 1px solid rgba(156, 163, 175, 0.42);
+    color: var(--gris-humo);
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.alma-hero__footstrip span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.alma-hero__footstrip span::before {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--naranja);
+    box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.18);
+    content: "";
 }
 
 .alma-purpose {

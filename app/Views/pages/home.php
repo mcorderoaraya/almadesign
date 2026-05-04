@@ -38,34 +38,53 @@ $methodSteps = [
 ?>
 <div class="alma-home">
     <section class="home-third home-third--hero" aria-labelledby="home-title">
-        <div class="home-third__inner alma-hero">
-            <div class="alma-hero__content">
-                <p class="eyebrow">Inteligencia artificial gobernada</p>
-                <h1 id="home-title">Arquitectura de conocimiento e inteligencia artificial gobernada para decisiones humanas complejas.</h1>
-                <p class="lead">AlmaDesign diseña, ordena y gobierna sistemas de información, procesos e inteligencia aplicada para que las organizaciones decidan con más claridad, trazabilidad y criterio humano.</p>
-                <p class="hero-text">No vendemos IA como moda. Diseñamos tecnología útil para reducir fricción, ordenar conocimiento y proteger el control humano sobre decisiones críticas.</p>
-                <div class="hero-actions" aria-label="Acciones principales">
-                    <a class="button button-primary" href="<?= e(url('/contacto')) ?>">Solicitar diagnóstico</a>
-                    <a class="button button-secondary" href="#verticales">Explorar verticales</a>
-                </div>
+        <div class="home-third__inner">
+            <div class="alma-hero__top" aria-label="Contexto AlmaDesign">
+                <p class="eyebrow">Arquitectura de conocimiento · IA gobernada · AI for Humans</p>
+                <p class="meta">AlmaDesign · Talca, Chile</p>
             </div>
-            <aside class="alma-hero__signal" aria-label="Principios AlmaDesign">
-                <img src="<?= e(asset('img/logo_horizontal_naranja.svg')) ?>" alt="AlmaDesign" width="258" height="118">
-                <dl>
-                    <div>
-                        <dt>Claridad</dt>
-                        <dd>Información comprensible para equipos humanos.</dd>
+
+            <div class="alma-hero">
+                <div class="alma-hero__content">
+                    <div class="alma-hero__chapter">
+                        <span>AI for Humans</span>
+                        <small>Gobernanza antes que automatización.</small>
                     </div>
-                    <div>
-                        <dt>Trazabilidad</dt>
-                        <dd>Criterios, fuentes y decisiones con ruta verificable.</dd>
+                    <h1 id="home-title">Arquitectura de conocimiento e inteligencia artificial gobernada para decisiones humanas complejas.</h1>
+                    <p class="lead">AlmaDesign diseña, ordena y gobierna sistemas de información, procesos e inteligencia aplicada para que las organizaciones decidan con más claridad, trazabilidad y criterio humano.</p>
+                    <div class="hero-actions" aria-label="Acciones principales">
+                        <a class="button button-primary" href="<?= e(url('/contacto')) ?>">Solicitar diagnóstico</a>
+                        <a class="button button-secondary" href="#verticales">Explorar verticales</a>
                     </div>
-                    <div>
-                        <dt>Gobernanza</dt>
-                        <dd>IA con límites explícitos, supervisión y responsabilidad.</dd>
-                    </div>
-                </dl>
-            </aside>
+                </div>
+                <aside class="alma-hero__signal" aria-label="Síntesis AlmaDesign">
+                    <img src="<?= e(asset('img/logo_horizontal_naranja.svg')) ?>" alt="AlmaDesign" width="258" height="118">
+                    <dl>
+                        <div>
+                            <dt>Disciplina</dt>
+                            <dd>Consultoría de inteligencia artificial gobernada</dd>
+                        </div>
+                        <div>
+                            <dt>Línea de productos</dt>
+                            <dd>Apogeo · conocimiento aumentado y trazabilidad documental</dd>
+                        </div>
+                        <div>
+                            <dt>Enfoque</dt>
+                            <dd>Procesos, conocimiento y decisiones humanas complejas</dd>
+                        </div>
+                        <div>
+                            <dt>Principio</dt>
+                            <dd>Proteger, potenciar y no reemplazar al humano</dd>
+                        </div>
+                    </dl>
+                </aside>
+            </div>
+
+            <div class="alma-hero__footstrip" aria-label="Verticales AlmaDesign">
+                <span>Consultoría IA</span>
+                <span>Apogeo</span>
+                <span>AI for Humans</span>
+            </div>
         </div>
         <a class="scroll-down" href="#verticales" aria-label="Ir a verticales de AlmaDesign">
             <span class="scroll-down__label">Deslizar</span>
