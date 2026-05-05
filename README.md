@@ -5,7 +5,7 @@
 
 # AlmaDesign Web
 
-AlmaDesign Web es el proyecto comercial del sitio web de AlmaDesign y la landing comercial de Apogeo Lux.
+AlmaDesign Web es el proyecto comercial del sitio web de AlmaDesign, sus verticales públicas y la landing comercial de Apogeo Lux.
 
 ## Separación obligatoria
 
@@ -26,6 +26,9 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - No hay base de datos.
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
 - PHPMailer desplegado como dependencia runtime; formulario productivo validado con SMTP Zoho.
+- APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: IMPLEMENTADO_LOCALMENTE_EN_REPO.
+- La página pública `/apogeo` existe localmente con narrativa gerencial, arquitecturas RAG / GraphRAG / RAGK, cards finales WebP e infografía RAGK.
+- DEPLOY_FRONTEND_HOME_Y_APOGEO: NO_EJECUTADO.
 
 ## VPS productivo validado
 
@@ -50,6 +53,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 
 ## Pendientes
 
+- PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
 - HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
 
 ## Estado deploy
@@ -74,16 +78,27 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Backups destinados a `/var/backups/almadesign`.
 - Healthcheck manual ejecutado correctamente en VPS.
 - Backup manual ejecutado correctamente en VPS.
-- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
+- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
 
 ## Estado local MVC
 
 - CREAR_ESTRUCTURA_PHP_MVC_ALMADESIGN: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
-- PHP MVC liviano creado sin framework y sin Composer.
-- Rutas disponibles: `/` y `/apogeo-lux`.
+- PHP MVC liviano creado sin framework; Composer se usa para PHPMailer.
+- Rutas disponibles localmente: `/`, `/consultoria-ia-procesos`, `/apogeo`, `/ai-for-humans`, `/apogeo-lux`, `/contacto`, `/contacto/enviar` y `/contacto/gracias`.
 - Sin conexión de base de datos por ahora.
 - Formulario de contacto desplegado y validado productivamente con SMTP Zoho.
 - Deploy controlado a VPS ejecutado correctamente.
+
+## Estado local pagina Apogeo
+
+- APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: IMPLEMENTADO_LOCALMENTE_EN_REPO.
+- Ruta local: `/apogeo`.
+- Presenta Apogeo como línea de productos de conocimiento aumentado, documentación verificable y apoyo a decisiones gerenciales mejor informadas.
+- Incluye hero extendido, sección de arquitecturas Apogeo, capacidades gerenciales, infografía RAGK, concepto gerencial RAGK, límites explícitos y CTA final hacia `/contacto`.
+- La sección de arquitecturas muestra tres tarjetas de imagen: RAG, GraphRAG y RAGK.
+- Assets vigentes: `public/assets/img/apogeo/apogeo-rag-card.webp`, `public/assets/img/apogeo/apogeo-graphrag-card.webp`, `public/assets/img/apogeo/apogeo-ragk-card.webp` e `public/assets/img/apogeo/infografia-ragk.webp`.
+- RAGK se comunica públicamente como arquitectura de conocimiento confiable: recuperación contextual, conocimiento conectado, flujo gobernado y evidencia verificable para decisiones humanas.
+- No afirmar que `/apogeo` nuevo está publicado en `almadesign.cl` hasta ejecutar y validar un deploy controlado.
 
 ## Estado local landing Apogeo Lux
 
@@ -117,13 +132,13 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Log mínimo en `logs/contact.log` sin guardar el contenido completo del mensaje.
 - No hay base de datos.
 - DEPLOY_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
-- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
+- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
 
 ## Estado frontend
 
 - APLICAR_FRONTEND_DESIGN_ALMADESIGN_WEB: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
 - CORREGIR_HALLAZGOS_WEB_DESIGN_GUIDELINES_ALMADESIGN: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
-- Mejora visual aplicada localmente a Home, `/apogeo-lux` y contacto.
+- Mejora visual aplicada localmente a Home, `/apogeo`, `/apogeo-lux`, `/contacto` y `/contacto/gracias`.
 - Hallazgos de accesibilidad, foco visible, anclas sticky, motion safety y autocomplete corregidos localmente.
 - Dirección visual: grafito, azul oscuro, crema y acento naranjo AlmaDesign.
 - Frontend base previo desplegado y validado productivamente.
@@ -134,12 +149,12 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
 - FORMULARIO_CONTACTO_ALMADESIGN_PRODUCTIVO: VALIDADO.
 - SMTP_PRODUCTIVO_ZOHO: VALIDADO.
-- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
+- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
 
 ## Fuera de alcance
 
 - Apogeo Lux backend.
-- GraphRAG.
+- GraphRAG del backend técnico Apogeo Lux.
 - Neo4j.
 - PostgreSQL Apogeo Lux.
 - evidencia técnica Apogeo Lux.
@@ -190,4 +205,5 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 
 ## Frente siguiente recomendado
 
+- PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
 - HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.

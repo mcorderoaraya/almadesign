@@ -15,11 +15,14 @@
 - CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
 - DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
 - HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
+- APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: IMPLEMENTADO_LOCALMENTE_EN_REPO.
+- Página `/apogeo`: implementada localmente con narrativa gerencial, arquitecturas RAG / GraphRAG / RAGK, cards finales WebP, infografía RAGK y bloque conceptual gerencial.
+- DEPLOY_FRONTEND_HOME_Y_APOGEO: NO_EJECUTADO.
 - Base de datos: NO ABIERTA.
 - SQL: CONCEPTUAL FUTURO, no instrucción de implementación.
-- Deploy: NO EJECUTADO para el Home frontend nuevo.
+- Deploy: NO EJECUTADO para el Home frontend nuevo ni para la página `/apogeo` nueva.
 
-Este documento sirve como fuente editorial para mantener mensajes, jerarquía de contenido, rutas conceptuales, arquitectura SEO y AI SEO. El Home frontend nuevo ya fue validado localmente por Mauricio; producción queda pendiente de deploy controlado.
+Este documento sirve como fuente editorial para mantener mensajes, jerarquía de contenido, rutas conceptuales, arquitectura SEO y AI SEO. El Home frontend nuevo ya fue validado localmente por Mauricio; la página `/apogeo` fue implementada localmente en repo. Producción queda pendiente de deploy controlado.
 
 ## Principio editorial
 
@@ -31,7 +34,7 @@ La comunicación pública debe mantener tres reglas:
 - Confianza antes que promesa exagerada.
 - Gobierno humano antes que automatización ciega.
 
-Apogeo debe presentarse como una línea de producto y pensamiento aplicado, no como exposición técnica. RAGK debe comunicarse como una capacidad funcional de recuperación, contexto, conocimiento gobernado, mensajería segura y documentación verificable, sin convertir la página pública en una ficha de arquitectura.
+Apogeo debe presentarse como una línea de producto y pensamiento aplicado, no como exposición técnica dura. RAGK debe comunicarse como arquitectura de conocimiento confiable: recuperación contextual, conocimiento conectado, flujo gobernado de información y evidencia verificable para decisiones humanas. La página puede usar diagramas o cards conceptuales RAG / GraphRAG / RAGK, siempre que mantenga lenguaje gerencial y límites explícitos.
 
 AI for Humans debe sostener el principio: IA gobernada para proteger, potenciar y no reemplazar al humano.
 
@@ -289,9 +292,11 @@ Apogeo para conocimiento aumentado y decisiones mejor informadas.
 
 ### Bajada
 
-Apogeo organiza información crítica para que equipos humanos puedan recuperar contexto, entender trazabilidad y trabajar con documentación verificable bajo reglas de gobernanza.
+Apogeo es la línea de productos de AlmaDesign orientada a transformar información crítica, dispersa y cambiante en conocimiento consultable, trazable y verificable.
 
-No se limita a buscar documentos. Su propósito es mantener contexto, evidencia, relaciones y control humano durante todo el ciclo de intercambio de información.
+Está diseñado para organizaciones que necesitan tomar decisiones complejas con mejor contexto, reducir dependencia de información fragmentada y mantener evidencia clara sobre documentos, acuerdos, criterios y flujos de trabajo entre equipos o partes relacionadas.
+
+Apogeo no busca reemplazar el criterio profesional. Busca entregar a la gerencia una base de conocimiento más clara, conectada y gobernada para decidir con mayor seguridad.
 
 ### Qué es Apogeo
 
@@ -311,6 +316,29 @@ Permite que la información pueda ser:
 - compartida con seguridad;
 - validada entre partes;
 - organizada bajo reglas de gobernanza.
+
+### Arquitecturas Apogeo
+
+La página `/apogeo` implementada localmente incluye una sección conceptual de arquitecturas Apogeo con tres niveles:
+
+#### RAG
+
+Recuperación contextual de información relevante a partir de documentos y fuentes disponibles, para responder mejor una consulta sin depender de búsqueda manual dispersa.
+
+#### GraphRAG
+
+Expande la recuperación incorporando relaciones entre conceptos, documentos, eventos y entidades, para construir respuestas con mayor profundidad de contexto y conexión entre antecedentes.
+
+#### RAGK
+
+Integra recuperación, conocimiento conectado, trazabilidad y flujo gobernado de información para sostener respuestas compuestas, validables y útiles en decisiones humanas complejas.
+
+Assets vigentes:
+
+- `public/assets/img/apogeo/apogeo-rag-card.webp`
+- `public/assets/img/apogeo/apogeo-graphrag-card.webp`
+- `public/assets/img/apogeo/apogeo-ragk-card.webp`
+- `public/assets/img/apogeo/infografia-ragk.webp`
 
 ### Capacidades conceptuales
 
@@ -342,21 +370,22 @@ Mantiene evidencia confiable, versionada, trazable y firmable o validable según
 
 Permite conocer origen, relación, estado y contexto de la información utilizada para una decisión.
 
-### RAGK como concepto funcional
+### RAGK como concepto gerencial
 
-RAGK debe comunicarse como una capacidad de recuperación, contexto, conocimiento gobernado y comunicación confiable.
+RAGK no debe explicarse públicamente como una lista de tecnologías.
 
-Su función es conectar preguntas, documentos, criterios, evidencia y traspasos de información entre partes sin exponer arquitectura interna ni tecnologías específicas.
+Para una gerencia, RAGK debe entenderse como una arquitectura de conocimiento confiable: una forma de recuperar contexto, conectar documentos, coordinar información y sostener decisiones con evidencia verificable.
+
+En términos simples: RAGK convierte conocimiento disperso en información consultable, conectada, trazable y validable entre partes.
+
+Su valor está en unir cuatro dimensiones:
 
 En comunicación pública se describen capacidades:
 
-- recuperación contextual;
-- conocimiento conectado;
-- búsqueda inteligente;
-- orquestación de información;
-- mensajería segura;
-- documentación verificable;
-- trazabilidad entre partes.
+- recuperación de información relevante;
+- conexión de conocimiento;
+- flujo gobernado de información;
+- evidencia verificable para decisiones humanas.
 
 ### Qué no comunica Apogeo
 
@@ -382,7 +411,7 @@ Destino: `/contacto`
 ### SEO
 
 **Title:** Apogeo | Conocimiento aumentado y documentación verificable  
-**Meta description:** Apogeo desarrolla sistemas de conocimiento aumentado para recuperar contexto, conectar información crítica y sostener decisiones con trazabilidad documental.
+**Meta description:** Apogeo transforma información crítica, dispersa y cambiante en conocimiento consultable, trazable y verificable para decisiones gerenciales mejor informadas.
 
 ## Página larga — AI for Humans
 
@@ -613,11 +642,11 @@ HowTo solo cuando existan guías realmente paso a paso y verificables
 No usar SoftwareApplication ni Product para Apogeo mientras no exista una oferta validada públicamente como producto listo para mercado.
 
 Estado de aprobación
-Documento actualizado con Home frontend nuevo validado localmente por Mauricio.
+Documento actualizado con Home frontend nuevo validado localmente por Mauricio y página `/apogeo` implementada localmente en repo.
 HOME_ALMADESIGN_FRONTEND_LOCAL: VALIDADO_POR_MAURICIO.
 HOME_VISUAL_GLOBAL: VALIDADO.
 CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
 DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
 HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
 No habilita cambios en base de datos.
-Próximo paso sugerido: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
+Próximo paso sugerido: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.

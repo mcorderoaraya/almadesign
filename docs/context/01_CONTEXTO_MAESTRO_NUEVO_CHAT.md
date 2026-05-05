@@ -59,6 +59,17 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend técnico 
 - Healthcheck manual ejecutado correctamente en VPS.
 - Backup manual ejecutado correctamente en VPS.
 
+## Rutas locales vigentes
+
+- `/`
+- `/consultoria-ia-procesos`
+- `/apogeo`
+- `/ai-for-humans`
+- `/apogeo-lux`
+- `/contacto`
+- `/contacto/enviar`
+- `/contacto/gracias`
+
 ## Formulario
 
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
@@ -77,7 +88,7 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend técnico 
 - `.env.example` creado sin secretos reales.
 - `.env` real no versionado.
 - No hay base de datos.
-- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
+- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
 - Frente futuro recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
 
 ## Estado Home frontend nuevo validado localmente
@@ -87,14 +98,25 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend técnico 
 - CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
 - DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
 - HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
-- SIGUIENTE_FRENTE_RECOMENDADO: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
+- APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: IMPLEMENTADO_LOCALMENTE_EN_REPO.
+- DEPLOY_FRONTEND_HOME_Y_APOGEO: NO_EJECUTADO.
+- SIGUIENTE_FRENTE_RECOMENDADO: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
 - No afirmar validación del Home nuevo en `almadesign.cl` hasta deploy controlado.
+- No afirmar validación productiva de la nueva página `/apogeo` hasta deploy controlado.
+
+## Estado Apogeo local vigente
+
+- `/apogeo` presenta Apogeo como línea de productos de conocimiento aumentado, documentación verificable, trazabilidad y apoyo a decisiones gerenciales.
+- Incluye hero extendido, arquitecturas Apogeo, capacidades gerenciales, infografía RAGK, concepto gerencial RAGK, límites explícitos y CTA final hacia `/contacto`.
+- La sección de arquitecturas compara RAG, GraphRAG y RAGK con cards finales WebP.
+- Assets vigentes: `public/assets/img/apogeo/apogeo-rag-card.webp`, `public/assets/img/apogeo/apogeo-graphrag-card.webp`, `public/assets/img/apogeo/apogeo-ragk-card.webp` y `public/assets/img/apogeo/infografia-ragk.webp`.
+- RAGK se comunica como arquitectura de conocimiento confiable: recuperación contextual, conocimiento conectado, flujo gobernado y evidencia verificable para decisiones humanas.
 
 ## Restricciones de traspaso
 
 - No tocar `~/workspace/apogeo-lux/backend`.
 - No tocar VPS, Cloudflare, Zoho, DNS, SSL, Nginx, `.env`, llaves SSH, base de datos, Composer, WordPress, Docker ni cPanel.
-- No tratar GraphRAG del backend Apogeo Lux como alcance de AlmaDesign Web.
+- No tratar GraphRAG del backend técnico Apogeo Lux como alcance de AlmaDesign Web.
 
 ## Estado post deploy formulario validado
 

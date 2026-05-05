@@ -19,7 +19,7 @@
 - CSS productivo modificado: NO_DESPLEGADO.
 - Assets Home validados localmente: SI.
 - Base de datos: NO ABIERTA.
-- Deploy: NO EJECUTADO para el Home frontend nuevo.
+- Deploy: NO EJECUTADO para el Home frontend nuevo ni para la página `/apogeo` nueva.
 
 Este documento registra la estructura frontend del Home de AlmaDesign Web validada visualmente por Mauricio en entorno local. No debe interpretarse como validación productiva en `almadesign.cl` hasta ejecutar un deploy controlado.
 
@@ -224,7 +224,7 @@ Modelo semántico futuro recomendado:
 
 - Título HTML: `Consultoría IA y procesos`
 - Ruta: `/consultoria-ia-procesos`
-- Imagen futura: `public/assets/img/cards/consultoria-ia-procesos.png`
+- Imagen vigente: `public/assets/img/cards/consultoria-ia-procesos.webp`
 - Resumen: Ordenamos fricciones internas, procesos y criterios para implementar IA con claridad, control y adopción responsable.
 - CTA: `Solicitar diagnóstico`
 - Destino CTA: `/contacto`
@@ -234,7 +234,7 @@ Modelo semántico futuro recomendado:
 
 - Título HTML: `Apogeo`
 - Ruta: `/apogeo`
-- Imagen futura: `public/assets/img/cards/apogeo.png`
+- Imagen vigente: `public/assets/img/cards/apogeo.webp`
 - Resumen: Sistemas de conocimiento aumentado para recuperar contexto, sostener trazabilidad y trabajar con documentación verificable entre partes.
 - CTA: `Conocer Apogeo`
 - Destino CTA: `/apogeo`
@@ -244,7 +244,7 @@ Modelo semántico futuro recomendado:
 
 - Título HTML: `AI for Humans`
 - Ruta: `/ai-for-humans`
-- Imagen futura: `public/assets/img/cards/ai-for-humans.png`
+- Imagen vigente: `public/assets/img/cards/ai-for-humans.webp`
 - Resumen: IA gobernada para proteger, potenciar y no reemplazar al humano en sus decisiones, procesos y capacidades.
 - CTA: `Explorar AI for Humans`
 - Destino CTA: `/ai-for-humans`
@@ -480,13 +480,13 @@ Assets futuros sugeridos, solo documentados en este frente:
 | Fuente medium | `public/assets/fonts/Inter_28pt-Medium.woff2` |
 | Fuente italic | `public/assets/fonts/Inter_28pt-SemiBoldItalic.woff2` |
 | Fuente editorial opcional | `public/assets/fonts/PlayfairDisplay-Italic.woff2` |
-| Card Consultoría | `public/assets/img/cards/consultoria-ia-procesos.png` |
-| Card Apogeo | `public/assets/img/cards/apogeo.png` |
-| Card AI for Humans | `public/assets/img/cards/ai-for-humans.png` |
+| Card Consultoría | `public/assets/img/cards/consultoria-ia-procesos.webp` |
+| Card Apogeo | `public/assets/img/cards/apogeo.webp` |
+| Card AI for Humans | `public/assets/img/cards/ai-for-humans.webp` |
 
 Reglas:
 
-- No copiar, mover ni publicar assets en este frente.
+- Assets de cards Home ya existen en WebP en `public/assets/img/cards`.
 - Las imágenes de cards deben ser 1:1.
 - Las imágenes no deben incluir texto incrustado.
 - Los archivos de fuentes no deben imprimirse, compartirse ni exponerse fuera del flujo autorizado.
@@ -542,8 +542,8 @@ El Home validado localmente por Mauricio se considera aprobado para preparar dep
 ## Validación documental
 
 - Documento creado en `docs/contenido/`.
-- Código productivo modificado: NO_DESPLEGADO para el Home frontend nuevo.
-- CSS productivo modificado: NO_DESPLEGADO para el Home frontend nuevo.
+- Código productivo modificado: NO_DESPLEGADO para el Home frontend nuevo ni para `/apogeo` nueva.
+- CSS productivo modificado: NO_DESPLEGADO para el Home frontend nuevo ni para `/apogeo` nueva.
 - Fuentes movidas: NO.
 - Imágenes Home validadas localmente: SI.
 - Base de datos abierta: NO.
@@ -563,4 +563,4 @@ El Home validado localmente por Mauricio se considera aprobado para preparar dep
 - DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
 - HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
 
-Próximo paso sugerido: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
+Próximo paso sugerido: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.

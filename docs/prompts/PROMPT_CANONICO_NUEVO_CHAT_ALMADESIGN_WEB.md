@@ -63,11 +63,14 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend Apogeo Lu
 - PHPMailer desplegado como dependencia runtime; formulario productivo validado con SMTP Zoho.
 - Formulario de contacto desplegado y validado productivamente con SMTP Zoho.
 - APLICAR_FRONTEND_DESIGN_ALMADESIGN_WEB: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
-- Mejora visual aplicada localmente a Home, `/apogeo-lux` y contacto.
+- Mejora visual aplicada localmente a Home, `/apogeo`, `/apogeo-lux`, `/contacto` y `/contacto/gracias`.
+- APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: IMPLEMENTADO_LOCALMENTE_EN_REPO.
+- `/apogeo` existe localmente con narrativa gerencial, arquitecturas RAG / GraphRAG / RAGK, cards finales WebP, infografía RAGK y concepto gerencial RAGK.
+- DEPLOY_FRONTEND_HOME_Y_APOGEO: NO_EJECUTADO.
 
 ## Pendientes
 
-- PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
+- PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
 - HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
 
 ## Estado formulario
@@ -105,13 +108,25 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend Apogeo Lu
 - CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
 - DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
 - HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
+- APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: IMPLEMENTADO_LOCALMENTE_EN_REPO.
+- DEPLOY_FRONTEND_HOME_Y_APOGEO: NO_EJECUTADO.
 - FORMULARIO_CONTACTO_ALMADESIGN_PRODUCTIVO: VALIDADO.
 - SMTP_PRODUCTIVO_ZOHO: VALIDADO.
+
+## Estado Apogeo local vigente
+
+- Ruta local: `/apogeo`.
+- Implementación: `ContentController::apogeo()` y `app/Views/pages/vertical-detail.php`.
+- Apogeo se presenta como línea de productos de conocimiento aumentado, documentación verificable, trazabilidad y apoyo a decisiones gerenciales.
+- Componentes: hero extendido, arquitecturas Apogeo, cards ejecutivas, infografía RAGK, bloque "RAGK como concepto gerencial", límites explícitos y CTA final hacia `/contacto`.
+- Assets vigentes: `public/assets/img/apogeo/apogeo-rag-card.webp`, `public/assets/img/apogeo/apogeo-graphrag-card.webp`, `public/assets/img/apogeo/apogeo-ragk-card.webp` y `public/assets/img/apogeo/infografia-ragk.webp`.
+- RAGK debe explicarse como arquitectura de conocimiento confiable: recuperación contextual, conocimiento conectado, flujo gobernado y evidencia verificable para decisiones humanas.
+- No afirmar que la nueva página `/apogeo` está publicada en `almadesign.cl` hasta deploy controlado.
 
 ## Fuera de alcance
 
 - Apogeo Lux backend.
-- GraphRAG.
+- GraphRAG del backend técnico Apogeo Lux.
 - Neo4j.
 - PostgreSQL Apogeo Lux.
 - evidencia técnica Apogeo Lux.
@@ -137,4 +152,4 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend Apogeo Lu
 - Reply-To configurado en app: SI.
 - Reply-To validado localmente: SI.
 - REPLY_TO_PRODUCTIVO: PENDIENTE_CONFIRMACION_SECUNDARIA.
-- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
+- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.

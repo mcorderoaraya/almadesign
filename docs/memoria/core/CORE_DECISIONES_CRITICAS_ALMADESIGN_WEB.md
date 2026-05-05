@@ -63,8 +63,18 @@ No hay base de datos, login ni uploads. SQL_SURFACE: NONE. SQLI_RISK: NOT_APPLIC
 
 HOME_ALMADESIGN_FRONTEND_LOCAL: VALIDADO_POR_MAURICIO. HOME_VISUAL_GLOBAL: VALIDADO. CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
 
-El Home frontend nuevo fue validado visualmente en entorno local. DEPLOY_FRONTEND_HOME: NO_EJECUTADO. HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA. El siguiente frente recomendado es PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
+El Home frontend nuevo fue validado visualmente en entorno local. DEPLOY_FRONTEND_HOME: NO_EJECUTADO. HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA. El siguiente frente recomendado es PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
+
+## Decisión 15
+
+APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: IMPLEMENTADO_LOCALMENTE_EN_REPO.
+
+La ruta `/apogeo` presenta Apogeo como línea de productos de conocimiento aumentado, documentación verificable, trazabilidad y apoyo a decisiones gerenciales mejor informadas. Incluye arquitecturas Apogeo RAG / GraphRAG / RAGK, cards finales WebP, infografía RAGK, bloque "RAGK como concepto gerencial", límites explícitos y CTA final hacia `/contacto`.
+
+RAGK debe comunicarse públicamente como arquitectura de conocimiento confiable: recuperación contextual, conocimiento conectado, flujo gobernado de información y evidencia verificable para decisiones humanas. No debe presentarse como una lista de tecnologías ni como promesa de automatización total.
+
+DEPLOY_FRONTEND_HOME_Y_APOGEO: NO_EJECUTADO. No afirmar que la nueva página `/apogeo` está publicada en `almadesign.cl` hasta ejecutar y validar un deploy controlado.
 
 ## Límites
 
-Fuera de alcance: Apogeo Lux backend, GraphRAG del backend Apogeo Lux, Neo4j, PostgreSQL Apogeo Lux, evidencia técnica Apogeo Lux, VPS, Cloudflare, Zoho, DNS, SSL, Nginx, `.env`, llaves SSH, base de datos, formulario, Composer, WordPress, Docker y cPanel en este frente.
+Fuera de alcance: Apogeo Lux backend, GraphRAG del backend técnico Apogeo Lux, Neo4j, PostgreSQL Apogeo Lux, evidencia técnica Apogeo Lux, VPS, Cloudflare, Zoho, DNS, SSL, Nginx, `.env`, llaves SSH, base de datos, formulario, Composer, WordPress, Docker y cPanel en este frente.

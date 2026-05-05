@@ -40,7 +40,11 @@ AlmaDesign Web está explícitamente separado del backend técnico Apogeo Lux.
 - Rollback: disponible.
 - DEPLOY_CONTROLADO_ALMADESIGN_WEB_A_VPS: EJECUTADO_OK.
 - MVC PHP local: creado.
+- Rutas locales activas: `/`, `/consultoria-ia-procesos`, `/apogeo`, `/ai-for-humans`, `/apogeo-lux`, `/contacto`, `/contacto/enviar` y `/contacto/gracias`.
 - Landing `/apogeo-lux`: corregida localmente y desplegada.
+- Página `/apogeo`: implementada localmente en repo con narrativa gerencial, arquitecturas RAG / GraphRAG / RAGK, cards finales WebP e infografía RAGK.
+- APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: IMPLEMENTADO_LOCALMENTE_EN_REPO.
+- DEPLOY_FRONTEND_HOME_Y_APOGEO: NO_EJECUTADO.
 - No hay base de datos.
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
 - CORREGIR_HONEYPOT_FORMULARIO_ALMADESIGN: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
@@ -68,7 +72,7 @@ AlmaDesign Web está explícitamente separado del backend técnico Apogeo Lux.
 
 ## Pendientes vigentes
 
-- PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
+- PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
 - HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
 
 ## Estado Home frontend nuevo validado localmente
@@ -78,13 +82,23 @@ AlmaDesign Web está explícitamente separado del backend técnico Apogeo Lux.
 - CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
 - DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
 - HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
-- SIGUIENTE_FRENTE_RECOMENDADO: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
+- SIGUIENTE_FRENTE_RECOMENDADO: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
 - Nota: no afirmar que el Home nuevo está publicado en `almadesign.cl` hasta ejecutar y validar un deploy controlado específico.
+- Nota: no afirmar que la página `/apogeo` nueva está publicada en `almadesign.cl` hasta ejecutar y validar el mismo deploy controlado.
+
+## Estado Apogeo local vigente
+
+- Ruta local: `/apogeo`.
+- Implementación: `ContentController::apogeo()` + `app/Views/pages/vertical-detail.php`.
+- Contenido: Apogeo como línea de productos de conocimiento aumentado, documentación verificable, trazabilidad y apoyo a decisiones gerenciales.
+- Arquitecturas visibles: RAG, GraphRAG y RAGK.
+- Assets vigentes: `public/assets/img/apogeo/apogeo-rag-card.webp`, `public/assets/img/apogeo/apogeo-graphrag-card.webp`, `public/assets/img/apogeo/apogeo-ragk-card.webp` y `public/assets/img/apogeo/infografia-ragk.webp`.
+- RAGK se explica como arquitectura de conocimiento confiable: recuperación contextual, conocimiento conectado, flujo gobernado y evidencia verificable para decisiones humanas.
 
 ## Fuera de alcance
 
 - Apogeo Lux backend.
-- GraphRAG del backend Apogeo Lux.
+- GraphRAG del backend técnico Apogeo Lux.
 - Neo4j.
 - PostgreSQL Apogeo Lux.
 - evidencia técnica Apogeo Lux.

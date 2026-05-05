@@ -19,6 +19,8 @@ AlmaDesign Web no debe tratar el backend técnico Apogeo Lux como parte modifica
 - CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
 - DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
 - HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
+- APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: IMPLEMENTADO_LOCALMENTE_EN_REPO.
+- DEPLOY_FRONTEND_HOME_Y_APOGEO: NO_EJECUTADO.
 - DEPLOY_CONTROLADO_ALMADESIGN_WEB_A_VPS: EJECUTADO_OK.
 - EJECUTAR_BACKUP_Y_HEALTHCHECK_ALMADESIGN_EN_VPS: EJECUTADO_OK.
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
@@ -37,7 +39,7 @@ AlmaDesign Web no debe tratar el backend técnico Apogeo Lux como parte modifica
 No modificar desde este frente documental:
 
 - Apogeo Lux backend.
-- GraphRAG del backend Apogeo Lux.
+- GraphRAG del backend técnico Apogeo Lux.
 - Neo4j.
 - PostgreSQL Apogeo Lux.
 - evidencia técnica Apogeo Lux.
@@ -57,13 +59,15 @@ No modificar desde este frente documental:
 
 ## Reglas para próximos frentes
 
-- El Home frontend nuevo fue validado localmente; no afirmar que está productivo hasta ejecutar PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
+- El Home frontend nuevo fue validado localmente; no afirmar que está productivo hasta ejecutar PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
+- La nueva página `/apogeo` fue implementada localmente; no afirmar que está productiva hasta ejecutar y validar PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
+- RAGK se comunica en público como arquitectura de conocimiento confiable, no como lista de tecnologías ni como promesa de decisión automatizada.
 - Las cards del Home quedan como estándar visual validado.
 - Mantener prohibición de Google Fonts y fuentes externas.
 - El formulario productivo ya fue desplegado y validado; no declarar nuevos cambios productivos sin su propio deploy controlado.
 - El envío end-to-end productivo fue validado por Mauricio; Reply-To productivo queda pendiente de confirmación secundaria.
 - No imprimir `.env` ni contraseñas SMTP.
-- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
+- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
 - Frente futuro recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
 - No ejecutar deploy salvo frente explícito de deploy controlado.
 - No imprimir secretos.

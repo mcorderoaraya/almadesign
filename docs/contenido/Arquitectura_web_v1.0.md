@@ -48,7 +48,9 @@ Estado vigente post validación local Mauricio:
 - CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
 - DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
 - HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
-- SIGUIENTE_FRENTE_RECOMENDADO: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
+- APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: IMPLEMENTADO_LOCALMENTE_EN_REPO.
+- DEPLOY_FRONTEND_HOME_Y_APOGEO: NO_EJECUTADO.
+- SIGUIENTE_FRENTE_RECOMENDADO: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
 
 Reglas vigentes:
 
@@ -71,4 +73,16 @@ Reglas vigentes:
 	2. Instagram como única red social pública vigente
 	3. Página de contacto
 	4. Mapa del sitio
+
+### Apogeo
+
+Estado vigente local:
+
+- Ruta: `/apogeo`.
+- Implementación: página comercial larga con narrativa gerencial.
+- Arquitecturas visibles: RAG, GraphRAG y RAGK.
+- Assets cards arquitectura: `public/assets/img/apogeo/apogeo-rag-card.webp`, `public/assets/img/apogeo/apogeo-graphrag-card.webp` y `public/assets/img/apogeo/apogeo-ragk-card.webp`.
+- Infografía vigente: `public/assets/img/apogeo/infografia-ragk.webp`.
+- RAGK se comunica como arquitectura de conocimiento confiable, no como promesa de automatización total.
+- No declarar `/apogeo` nuevo como productivo hasta deploy controlado.
 	

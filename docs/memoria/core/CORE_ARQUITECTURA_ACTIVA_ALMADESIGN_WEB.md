@@ -10,7 +10,7 @@
 - Root local: `~/workspace/almadesign-web`.
 - Front controller: `public/index.php`.
 - MVC PHP liviano sin framework.
-- Rutas principales: `/` y `/apogeo-lux`.
+- Rutas principales locales: `/`, `/consultoria-ia-procesos`, `/apogeo`, `/ai-for-humans`, `/apogeo-lux`, `/contacto`, `/contacto/enviar` y `/contacto/gracias`.
 - Nginx local en puerto `8088`.
 - PHP 8.3-FPM.
 - No existe conexión de base de datos.
@@ -31,7 +31,10 @@
 - CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
 - DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
 - HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
-- SIGUIENTE_FRENTE_RECOMENDADO: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
+- SIGUIENTE_FRENTE_RECOMENDADO: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
+- APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: IMPLEMENTADO_LOCALMENTE_EN_REPO.
+- `/apogeo` usa `ContentController::apogeo()` y `app/Views/pages/vertical-detail.php`.
+- `/apogeo` incluye hero extendido, arquitecturas Apogeo, cards ejecutivas, infografía RAGK, concepto gerencial RAGK, límites explícitos y CTA final.
 
 ## Producción validada
 
@@ -97,3 +100,6 @@ AlmaDesign Web es proyecto separado del backend técnico Apogeo Lux. No modifica
 - JS productivo: `/assets/js/app.js?v=[filemtime]`.
 - HOTFIX_CACHE_BUSTING_ASSETS_ALMADESIGN: CERRADO_OK.
 - CSS_PRODUCTIVO: CONFORME.
+- Cards Home vigentes en WebP: `public/assets/img/cards/consultoria-ia-procesos.webp`, `public/assets/img/cards/apogeo.webp` y `public/assets/img/cards/ai-for-humans.webp`.
+- Cards arquitectura Apogeo vigentes en WebP: `public/assets/img/apogeo/apogeo-rag-card.webp`, `public/assets/img/apogeo/apogeo-graphrag-card.webp` y `public/assets/img/apogeo/apogeo-ragk-card.webp`.
+- Infografía RAGK vigente: `public/assets/img/apogeo/infografia-ragk.webp`.

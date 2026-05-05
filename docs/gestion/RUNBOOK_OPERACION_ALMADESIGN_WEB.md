@@ -14,7 +14,10 @@
 - CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
 - DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
 - HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
-- SIGUIENTE_FRENTE_RECOMENDADO: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_ALMADESIGN_WEB.
+- APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: IMPLEMENTADO_LOCALMENTE_EN_REPO.
+- Página `/apogeo` nueva: NO_DESPLEGADA_PRODUCTIVAMENTE.
+- DEPLOY_FRONTEND_HOME_Y_APOGEO: NO_EJECUTADO.
+- SIGUIENTE_FRENTE_RECOMENDADO: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
 - VPS: Hostinger KVM 2 con Ubuntu 24.04 LTS.
 - Web server: Nginx.
 - Runtime: PHP 8.3-FPM.
@@ -40,6 +43,19 @@
 - Estado resumido: formulario productivo validado.
 - Formulario de contacto productivo validado: SMTP Zoho operativo, POST productivo OK, redirección a `/contacto/gracias` OK y cuerpo visual por línea confirmado por Mauricio.
 - El problema observado no fue red, puerto, permisos ni autenticación SMTP.
+
+## Rutas locales vigentes en repo
+
+- `/`
+- `/consultoria-ia-procesos`
+- `/apogeo`
+- `/ai-for-humans`
+- `/apogeo-lux`
+- `/contacto`
+- `/contacto/enviar`
+- `/contacto/gracias`
+
+La ruta `/apogeo` nueva debe validarse productivamente solo dentro de PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
 
 ## Acceso SSH
 
