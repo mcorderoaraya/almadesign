@@ -13,12 +13,7 @@ final class ContentController extends BaseController
             'eyebrow' => 'Consultoría IA y procesos',
             'heading' => 'Consultoría de inteligencia artificial y procesos para empresas.',
             'lead' => 'Antes de automatizar, ordenamos procesos, fricciones, criterios y responsabilidades. AlmaDesign ayuda a organizaciones a identificar dónde la IA puede aportar valor real y cómo implementarla con trazabilidad, gobernanza y control humano.',
-            'sections' => [
-                [
-                    'title' => 'El problema',
-                    'body' => 'Muchas organizaciones quieren usar IA, pero sus procesos, documentos, responsabilidades y criterios de decisión están dispersos. En ese contexto, automatizar puede aumentar el desorden en vez de resolverlo.',
-                ],
-            ],
+            'sections' => [],
             'cardSections' => [
                 [
                     'title' => 'Enfoque AlmaDesign',
