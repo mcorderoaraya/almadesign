@@ -31,11 +31,18 @@
 - HOME_VISUAL_LOCAL: VALIDADO_POR_MAURICIO.
 - HOME_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
 - APOGEO_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
+- FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: PUSH_ORIGIN_MAIN_OK.
+- PRODUCCION_FRONTEND_ACUMULADO: PENDIENTE_DEPLOY_PRODUCTIVO.
+- AI_FOR_HUMANS_MANIFIESTO_PUBLICO: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- CONTACTO_BOTON_DISABLED_HASTA_VALIDACION_CLIENTE: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- MENU_MOBILE_HAMBURGUESA: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- FOOTER_GLOBAL_SIN_LOGO_GRIS: VALIDADO_LOCALMENTE_POR_MAURICIO.
 - Base de datos: NO ABIERTA.
 - SQL: CONCEPTUAL FUTURO, no instrucción de implementación.
 - Deploy: EJECUTADO_OK para Home, `/apogeo` y remoción del bloque "El problema" en `/consultoria-ia-procesos`.
 
-Este documento sirve como fuente editorial para mantener mensajes, jerarquía de contenido, rutas conceptuales, arquitectura SEO y AI SEO. El Home frontend nuevo fue validado localmente por Mauricio; Home, `/apogeo` y `/consultoria-ia-procesos` quedaron desplegados y validados por HTTP en producción. La revisión visual productiva queda pendiente de confirmación manual de Mauricio.
+Este documento sirve como fuente editorial para mantener mensajes, jerarquía de contenido, rutas conceptuales, arquitectura SEO y AI SEO. El Home frontend nuevo fue validado localmente por Mauricio; Home, `/apogeo` y `/consultoria-ia-procesos` quedaron desplegados y validados por HTTP en producción. El frente acumulado AI for Humans / menu / formulario / footer fue validado localmente y pusheado a `origin/main`, pero produccion sigue pendiente de deploy controlado.
 
 ## Principio editorial
 
@@ -50,6 +57,17 @@ La comunicación pública debe mantener tres reglas:
 Apogeo debe presentarse como una línea de producto y pensamiento aplicado, no como exposición técnica dura. RAGK debe comunicarse como arquitectura de conocimiento confiable: recuperación contextual, conocimiento conectado, flujo gobernado de información y evidencia verificable para decisiones humanas. La página puede usar diagramas o cards conceptuales RAG / GraphRAG / RAGK, siempre que mantenga lenguaje gerencial y límites explícitos.
 
 AI for Humans debe sostener el principio: IA gobernada para proteger, potenciar y no reemplazar al humano.
+
+## AI for Humans manifiesto publico validado localmente
+
+- `/ai-for-humans` queda definido como manifiesto publico fundacional de AlmaDesign.
+- Fondo de pagina: `#F4EADC` / `var(--beige)`.
+- Header/navegador de `/ai-for-humans`: fondo claro validado localmente.
+- Numeracion editorial: responsive, con composicion desktop lateral y mobile sobre el H2.
+- Cierre editorial: firma fundacional con imagen de Mauricio y cita validada.
+- CTA final: homologada al bloque final del Home.
+- Estado: VALIDADO_LOCALMENTE_POR_MAURICIO y PUSH_ORIGIN_MAIN_OK.
+- Produccion: PENDIENTE_DEPLOY_PRODUCTIVO.
 
 ## Arquitectura pública de contenido
 
@@ -432,62 +450,89 @@ Destino: `/contacto`
 
 `/ai-for-humans`
 
-### Objetivo
+### Estado
 
-Posicionar AI for Humans como marco propio de AlmaDesign para adopción responsable, inteligencia artificial gobernada y protección del criterio humano.
+- AI_FOR_HUMANS_MANIFIESTO_PUBLICO: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: PUSH_ORIGIN_MAIN_OK.
+- PRODUCCION_FRONTEND_ACUMULADO: PENDIENTE_DEPLOY_PRODUCTIVO.
 
-### H1
+### Naturaleza de la página
 
-AI for Humans: IA gobernada para proteger y potenciar al humano.
+AI for Humans no es una norma externa, una certificación, una ficha técnica ni una página comercial convencional. Es el manifiesto público fundacional de AlmaDesign: una postura filosófica y editorial sobre cómo debe diseñarse, adoptarse y gobernarse la inteligencia artificial al servicio del ser humano.
 
-### Bajada
+Esta página no busca explicar modelos, frameworks ni stacks técnicos. Su función es declarar el ADN de AlmaDesign frente a la IA: proteger, potenciar y no reemplazar al humano.
 
-AI for Humans es nuestra forma de diseñar inteligencia artificial: sistemas que protegen, potencian y no reemplazan al humano.
+### Tesis fundacional
 
-La IA debe ayudar a pensar mejor, ordenar información, reducir sobrecarga y aumentar claridad, sin invadir espacios personales ni delegar decisiones críticas al modelo.
+Inteligencia artificial gobernada para proteger, potenciar y no reemplazar al humano.
 
-### Principio
+Esta frase opera como criterio de diseño, límite ético y declaración pública de dirección. No se usa como eslogan superficial, sino como restricción de arquitectura, comunicación y producto.
 
-> IA gobernada para proteger, potenciar y no reemplazar al humano.
+### Idea central
 
-Cada palabra funciona como restricción de diseño.
+La inteligencia artificial solo tiene sentido cuando amplía la capacidad humana de crear, comprender, decidir y vivir con mayor dignidad. No debe reducir al ser humano a una variable de eficiencia, ni reemplazar su criterio, creatividad, responsabilidad, valor cognitivo o salud física y mental.
 
-### Proteger
+### Origen conceptual
 
-Proteger significa resguardar privacidad, tiempo, criterio profesional, dignidad y límites humanos.
+AI for Humans nace desde una experiencia humana concreta: la tecnología puede devolver capacidad. Puede abrir caminos creativos, técnicos y productivos que antes dependían del acceso a equipos, capital, industria, formación técnica, infraestructura o redes de oportunidad.
 
-Una IA útil no debe transformarse en vigilancia, presión invisible o automatización sin consentimiento.
+Su origen no es una norma ni una tendencia de mercado. Es una convicción de AlmaDesign: la tecnología correcta no borra la historia humana; la prolonga.
 
-### Potenciar
+### Desarrollo conceptual
 
-Potenciar significa aumentar la capacidad humana de comprender, crear, decidir y actuar con mayor claridad.
+#### Proteger
 
-La IA debe sugerir, explicar, ordenar y acompañar. No debe sustituir juicio ni responsabilidad.
+Proteger significa diseñar IA con límites. La tecnología no debe invadir el tiempo humano, el espacio personal, la privacidad, el criterio profesional, la dignidad laboral ni la salud mental. Una IA verdaderamente humana no transforma cada dato en materia prima ni cada minuto en una unidad optimizable.
 
-### No reemplazar
+#### Potenciar
 
-Las decisiones críticas deben permanecer bajo control humano.
+Potenciar significa entregar mejores instrumentos para pensar, crear y decidir. La IA puede actuar como amplificador cognitivo: ordena información, reduce ruido, abre posibilidades creativas y permite que el criterio humano actúe con mayor claridad. Pero amplificar no es sustituir. Un amplificador aumenta una señal que ya existe; no inventa el alma de quien crea.
 
-La IA puede asistir procesos, organizar información y proponer alternativas, pero no debe convertirse en supervisor oculto ni reemplazo de criterio profesional.
+#### No reemplazar
 
-### Riesgos que aborda
+No reemplazar significa que el criterio, la responsabilidad, la creatividad, la experiencia y la decisión relevante siguen bajo control humano. La IA puede asistir, ordenar, sugerir, comparar y alertar, pero no debe apropiarse del sentido ni de la responsabilidad.
 
-- Automatización sin criterio.
-- Pérdida de responsabilidad humana.
-- Decisiones opacas.
-- Dependencia excesiva de modelos.
-- Uso de IA sin contexto ni gobernanza.
-- Promesas de productividad sin evidencia.
+#### Creatividad
 
-### Aplicaciones posibles
+La IA debe abrir posibilidades expresivas, no uniformar el alma. Debe permitir que más personas creen con herramientas antes inaccesibles, sin convertir la creatividad en un resultado estandarizado por la máquina.
 
-- Asistentes personales gobernados.
-- Sistemas de apoyo a decisiones.
-- Organización de conocimiento personal.
-- Productividad consciente.
-- Métricas de bienestar y carga operativa.
-- Separación entre espacio personal y corporativo.
-- Gobernanza previa a la automatización.
+#### Toma de decisión
+
+La IA debe ayudar a ver mejor, ordenar evidencia y presentar alternativas. La decisión relevante debe seguir siendo humana, trazable y responsable, especialmente cuando afecta personas, recursos, derechos, bienestar o dirección estratégica.
+
+#### Valor cognitivo
+
+El pensamiento humano no es un costo operativo a reducir. Es el activo central que debe recibir mejores condiciones para existir. No se trata de pensar menos; se trata de pensar mejor.
+
+#### Salud física y mental
+
+La eficiencia no puede justificar sobrecarga, vigilancia, fragmentación del foco o pérdida de límites. La tecnología no tiene cuerpo; las personas sí. Por eso una IA al servicio del humano debe proteger ritmo, descanso, foco y dignidad.
+
+#### Gobernanza antes de automatización
+
+Gobernar la IA no es burocracia. Es una forma de respeto humano. Antes de automatizar, deben existir propósito, límites, trazabilidad, responsabilidad y revisión. La gobernanza evita que la inteligencia se vuelva opaca, invasiva o irresponsable.
+
+### Qué no es AI for Humans
+
+AI for Humans no es automatización total, no es una norma externa, no es una certificación, no es una postura anti-tecnología y no es una campaña de productividad sin límites. Es una decisión de diseño: afirmar que la IA debe ampliar la capacidad humana sin borrar el valor de quien piensa, crea, decide y vive las consecuencias del mundo real.
+
+### Compromiso AlmaDesign
+
+AlmaDesign adopta AI for Humans como manifiesto fundacional: construir tecnología que ordene información, reduzca fricción, fortalezca capacidades humanas y mantenga el control humano sobre decisiones relevantes.
+
+La inteligencia artificial no debe borrar el alma humana. Debe ayudarla a desarrollarse.
+
+### Reglas visuales vigentes
+
+- Fondo único `#F4EADC` / `var(--beige)`.
+- No usar cards.
+- Header claro local en `/ai-for-humans`.
+- Numeración editorial responsive.
+- Firma fundacional con imagen de Mauricio.
+- Footer global sin logo gris.
+- Menú mobile hamburguesa.
+- Formulario de contacto con botón deshabilitado hasta validación cliente.
+- Producción pendiente de deploy controlado.
 
 ### Páginas de apoyo recomendadas
 
@@ -504,8 +549,8 @@ Destino: `/contacto`
 
 ### SEO
 
-**Title:** AI for Humans | IA gobernada para proteger y potenciar al humano  
-**Meta description:** AI for Humans es la visión de AlmaDesign para diseñar inteligencia artificial gobernada que protege, potencia y no reemplaza el criterio humano.
+**Title:** AI for Humans | Manifiesto público de AlmaDesign
+**Meta description:** AI for Humans es el manifiesto público fundacional de AlmaDesign: inteligencia artificial gobernada para proteger, potenciar y no reemplazar al humano.
 
 ## Modelo SQL conceptual futuro
 

@@ -73,6 +73,14 @@ No modificar desde este frente documental:
 
 - El Home frontend nuevo fue desplegado y validado por HTTP; revisión visual productiva pendiente de Mauricio.
 - La nueva página `/apogeo` fue desplegada y validada por HTTP; revisión visual productiva pendiente de Mauricio.
+- FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: PUSH_ORIGIN_MAIN_OK.
+- PRODUCCION_FRONTEND_ACUMULADO: PENDIENTE_DEPLOY_PRODUCTIVO.
+- AI_FOR_HUMANS_MANIFIESTO_PUBLICO: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- CONTACTO_BOTON_DISABLED_HASTA_VALIDACION_CLIENTE: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- MENU_MOBILE_HAMBURGUESA: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- FOOTER_GLOBAL_SIN_LOGO_GRIS: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- No afirmar que el frente acumulado AI for Humans / menu / formulario / footer esta en produccion hasta ejecutar deploy controlado especifico.
 - RAGK se comunica en público como arquitectura de conocimiento confiable, no como lista de tecnologías ni como promesa de decisión automatizada.
 - Las cards del Home quedan como estándar visual validado.
 - Mantener prohibición de Google Fonts y fuentes externas.

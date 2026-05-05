@@ -95,6 +95,21 @@ DEPLOY_CONTROLADO_FRONTEND_HOME_APOGEO_Y_CONSULTORIA_ALMADESIGN_WEB: EJECUTADO_O
 
 HTTP 200 y assets OK no equivalen a validación visual productiva completa. El siguiente frente recomendado es VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
 
+## Decisión 17
+
+FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: VALIDADO_LOCALMENTE_POR_MAURICIO.
+
+- FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: PUSH_ORIGIN_MAIN_OK.
+- PRODUCCION_FRONTEND_ACUMULADO: PENDIENTE_DEPLOY_PRODUCTIVO.
+- AI_FOR_HUMANS_MANIFIESTO_PUBLICO: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- CONTACTO_BOTON_DISABLED_HASTA_VALIDACION_CLIENTE: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- MENU_MOBILE_HAMBURGUESA: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- FOOTER_GLOBAL_SIN_LOGO_GRIS: VALIDADO_LOCALMENTE_POR_MAURICIO.
+
+El frente acumulado incluye `/ai-for-humans` como manifiesto publico fundacional, fondo claro `#F4EADC` / `var(--beige)`, header claro local, menu mobile hamburguesa, numeracion editorial responsive, firma fundacional con imagen de Mauricio, boton del formulario deshabilitado hasta validacion cliente, footer global sin logo gris y CTA final verticales homologada.
+
+No afirmar actualizacion productiva de este frente hasta deploy controlado especifico.
+
 ## Límites
 
 Fuera de alcance: Apogeo Lux backend, GraphRAG del backend técnico Apogeo Lux, Neo4j, PostgreSQL Apogeo Lux, evidencia técnica Apogeo Lux, VPS, Cloudflare, Zoho, DNS, SSL, Nginx, `.env`, llaves SSH, base de datos, formulario, Composer, WordPress, Docker y cPanel en este frente.

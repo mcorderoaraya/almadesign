@@ -48,6 +48,14 @@
 - APOGEO_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
 - `/apogeo` usa `ContentController::apogeo()` y `app/Views/pages/vertical-detail.php`.
 - `/apogeo` incluye hero extendido, arquitecturas Apogeo, cards ejecutivas, infografía RAGK, concepto gerencial RAGK, límites explícitos y CTA final.
+- FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: PUSH_ORIGIN_MAIN_OK.
+- PRODUCCION_FRONTEND_ACUMULADO: PENDIENTE_DEPLOY_PRODUCTIVO.
+- AI_FOR_HUMANS_MANIFIESTO_PUBLICO: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- CONTACTO_BOTON_DISABLED_HASTA_VALIDACION_CLIENTE: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- MENU_MOBILE_HAMBURGUESA: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- FOOTER_GLOBAL_SIN_LOGO_GRIS: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- Arquitectura frontend acumulada: `/ai-for-humans` usa `ContentController::aiForHumans()` y `vertical-detail.php` para renderizar manifiesto publico fundacional; `app.css` contiene estilos scopeados del manifiesto, header claro local y menu responsive; `app.js` contiene toggle accesible del menu mobile y validacion cliente del formulario de contacto.
 
 ## Producción validada
 
@@ -73,6 +81,7 @@
 - Headers de seguridad: activos.
 - Rollback: disponible.
 - DEPLOY_CONTROLADO_ALMADESIGN_WEB_A_VPS: EJECUTADO_OK.
+- Produccion no esta actualizada con `FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO`; requiere deploy controlado pendiente.
 
 ## Operación
 

@@ -45,6 +45,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 
 ## Pendientes
 
+- DEPLOY_CONTROLADO_FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO.
 - VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
 - HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
 
@@ -56,6 +57,13 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
 - APLICAR_FRONTEND_DESIGN_ALMADESIGN_WEB: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
 - APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: DESPLEGADO_Y_VALIDADO_HTTP.
+- FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: PUSH_ORIGIN_MAIN_OK.
+- PRODUCCION_FRONTEND_ACUMULADO: PENDIENTE_DEPLOY_PRODUCTIVO.
+- AI_FOR_HUMANS_MANIFIESTO_PUBLICO: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- CONTACTO_BOTON_DISABLED_HASTA_VALIDACION_CLIENTE: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- MENU_MOBILE_HAMBURGUESA: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- FOOTER_GLOBAL_SIN_LOGO_GRIS: VALIDADO_LOCALMENTE_POR_MAURICIO.
 
 ## Frentes ejecutados en VPS
 
@@ -177,6 +185,8 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - HOME_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
 - FORMULARIO_CONTACTO_ALMADESIGN_PRODUCTIVO: VALIDADO.
 - SMTP_PRODUCTIVO_ZOHO: VALIDADO.
+- El frente acumulado AI for Humans / menu / formulario / footer fue validado localmente por Mauricio y pusheado a `origin/main`; produccion sigue pendiente de deploy controlado.
+- Cambios acumulados: `/ai-for-humans` como manifiesto publico fundacional, fondo claro `#F4EADC` / `var(--beige)`, header claro local, menu mobile hamburguesa, numeracion editorial responsive, firma fundacional con imagen de Mauricio, boton de contacto deshabilitado hasta validacion cliente, footer global sin logo gris y CTA final verticales homologada.
 - Siguiente frente recomendado: VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
 
 ## Fuera de alcance
