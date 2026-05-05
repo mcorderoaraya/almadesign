@@ -39,12 +39,26 @@ AlmaDesign Web está explícitamente separado del backend técnico Apogeo Lux.
 - Headers de seguridad: activos.
 - Rollback: disponible.
 - DEPLOY_CONTROLADO_ALMADESIGN_WEB_A_VPS: EJECUTADO_OK.
+- DEPLOY_CONTROLADO_FRONTEND_HOME_APOGEO_Y_CONSULTORIA_ALMADESIGN_WEB: EJECUTADO_OK.
+- HASH_DEPLOY_FRONTEND: e33447ab3e2298a6b7ae0a1c7e80743d0c89372d.
+- HOME_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
+- APOGEO_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
+- CONSULTORIA_BLOQUE_EL_PROBLEMA: REMOVIDO_EN_PRODUCCION.
+- TEXTO_EL_PROBLEMA_CONSULTORIA: AUSENTE_EN_PRODUCCION.
+- BACKUP_PRE_DEPLOY_FRONTEND: `/var/backups/almadesign/almadesign_backup_20260505_142352.tar.gz`.
+- CHECKSUM_BACKUP_PRE_DEPLOY_FRONTEND: OK.
+- HEALTHCHECK_POST_DEPLOY_FRONTEND: OK.
+- RUTAS_PRODUCTIVAS_POST_DEPLOY_FRONTEND: HTTP_200.
+- ASSETS_HOME_APOGEO_POST_DEPLOY: HTTP_200.
+- HOME_VISUAL_LOCAL: VALIDADO_POR_MAURICIO.
+- HOME_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
+- APOGEO_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
 - MVC PHP local: creado.
 - Rutas locales activas: `/`, `/consultoria-ia-procesos`, `/apogeo`, `/ai-for-humans`, `/apogeo-lux`, `/contacto`, `/contacto/enviar` y `/contacto/gracias`.
 - Landing `/apogeo-lux`: corregida localmente y desplegada.
-- Página `/apogeo`: implementada localmente en repo con narrativa gerencial, arquitecturas RAG / GraphRAG / RAGK, cards finales WebP e infografía RAGK.
-- APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: IMPLEMENTADO_LOCALMENTE_EN_REPO.
-- DEPLOY_FRONTEND_HOME_Y_APOGEO: NO_EJECUTADO.
+- Página `/apogeo`: desplegada y validada productivamente por HTTP en repo con narrativa gerencial, arquitecturas RAG / GraphRAG / RAGK, cards finales WebP e infografía RAGK.
+- APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: DESPLEGADO_Y_VALIDADO_HTTP.
+- DEPLOY_CONTROLADO_FRONTEND_HOME_APOGEO_Y_CONSULTORIA_ALMADESIGN_WEB: EJECUTADO_OK.
 - No hay base de datos.
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
 - CORREGIR_HONEYPOT_FORMULARIO_ALMADESIGN: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
@@ -72,7 +86,7 @@ AlmaDesign Web está explícitamente separado del backend técnico Apogeo Lux.
 
 ## Pendientes vigentes
 
-- PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
+- VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
 - HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
 
 ## Estado Home frontend nuevo validado localmente
@@ -80,11 +94,11 @@ AlmaDesign Web está explícitamente separado del backend técnico Apogeo Lux.
 - HOME_ALMADESIGN_FRONTEND_LOCAL: VALIDADO_POR_MAURICIO.
 - HOME_VISUAL_GLOBAL: VALIDADO.
 - CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
-- DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
-- HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
-- SIGUIENTE_FRENTE_RECOMENDADO: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
-- Nota: no afirmar que el Home nuevo está publicado en `almadesign.cl` hasta ejecutar y validar un deploy controlado específico.
-- Nota: no afirmar que la página `/apogeo` nueva está publicada en `almadesign.cl` hasta ejecutar y validar el mismo deploy controlado.
+- DEPLOY_FRONTEND_HOME: DESPLEGADO_Y_VALIDADO_HTTP.
+- HOME_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
+- SIGUIENTE_FRENTE_RECOMENDADO: VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
+- Nota: Home está desplegado y validado por HTTP; la revisión visual productiva queda pendiente de Mauricio.
+- Nota: `/apogeo` está desplegada y validada por HTTP; la revisión visual productiva queda pendiente de Mauricio.
 
 ## Estado Apogeo local vigente
 
@@ -111,7 +125,7 @@ AlmaDesign Web está explícitamente separado del backend técnico Apogeo Lux.
 - SMTP_PRODUCTIVO_ZOHO: VALIDADO.
 - CUERPO_CORREO_PRODUCTIVO: VALIDADO.
 - HOME_ALMADESIGN_PRODUCTIVO_PREVIO: VALIDADO.
-- HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
+- HOME_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
 - FORMULARIO_VISUAL_PRODUCTIVO: VALIDADO.
 - HOTFIX_CACHE_BUSTING_ASSETS_ALMADESIGN: CERRADO_OK.
 - CORREGIR_REGRESION_CSS_POST_DEPLOY_ALMADESIGN: CERRADO_OK.

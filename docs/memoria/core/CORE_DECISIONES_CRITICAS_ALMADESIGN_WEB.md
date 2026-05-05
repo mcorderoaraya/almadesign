@@ -63,17 +63,37 @@ No hay base de datos, login ni uploads. SQL_SURFACE: NONE. SQLI_RISK: NOT_APPLIC
 
 HOME_ALMADESIGN_FRONTEND_LOCAL: VALIDADO_POR_MAURICIO. HOME_VISUAL_GLOBAL: VALIDADO. CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
 
-El Home frontend nuevo fue validado visualmente en entorno local. DEPLOY_FRONTEND_HOME: NO_EJECUTADO. HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA. El siguiente frente recomendado es PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
+El Home frontend nuevo fue validado visualmente en entorno local. DEPLOY_FRONTEND_HOME: DESPLEGADO_Y_VALIDADO_HTTP. HOME_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP. El siguiente frente recomendado es VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
 
 ## Decisión 15
 
-APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: IMPLEMENTADO_LOCALMENTE_EN_REPO.
+APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: DESPLEGADO_Y_VALIDADO_HTTP.
 
 La ruta `/apogeo` presenta Apogeo como línea de productos de conocimiento aumentado, documentación verificable, trazabilidad y apoyo a decisiones gerenciales mejor informadas. Incluye arquitecturas Apogeo RAG / GraphRAG / RAGK, cards finales WebP, infografía RAGK, bloque "RAGK como concepto gerencial", límites explícitos y CTA final hacia `/contacto`.
 
 RAGK debe comunicarse públicamente como arquitectura de conocimiento confiable: recuperación contextual, conocimiento conectado, flujo gobernado de información y evidencia verificable para decisiones humanas. No debe presentarse como una lista de tecnologías ni como promesa de automatización total.
 
-DEPLOY_FRONTEND_HOME_Y_APOGEO: NO_EJECUTADO. No afirmar que la nueva página `/apogeo` está publicada en `almadesign.cl` hasta ejecutar y validar un deploy controlado.
+DEPLOY_CONTROLADO_FRONTEND_HOME_APOGEO_Y_CONSULTORIA_ALMADESIGN_WEB: EJECUTADO_OK. `/apogeo` nuevo está publicado y validado por HTTP; revisión visual productiva pendiente de Mauricio.
+
+## Decisión 16
+
+DEPLOY_CONTROLADO_FRONTEND_HOME_APOGEO_Y_CONSULTORIA_ALMADESIGN_WEB: EJECUTADO_OK.
+
+- HASH_DEPLOY_FRONTEND: e33447ab3e2298a6b7ae0a1c7e80743d0c89372d.
+- HOME_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
+- APOGEO_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
+- CONSULTORIA_BLOQUE_EL_PROBLEMA: REMOVIDO_EN_PRODUCCION.
+- TEXTO_EL_PROBLEMA_CONSULTORIA: AUSENTE_EN_PRODUCCION.
+- BACKUP_PRE_DEPLOY_FRONTEND: `/var/backups/almadesign/almadesign_backup_20260505_142352.tar.gz`.
+- CHECKSUM_BACKUP_PRE_DEPLOY_FRONTEND: OK.
+- HEALTHCHECK_POST_DEPLOY_FRONTEND: OK.
+- RUTAS_PRODUCTIVAS_POST_DEPLOY_FRONTEND: HTTP_200.
+- ASSETS_HOME_APOGEO_POST_DEPLOY: HTTP_200.
+- HOME_VISUAL_LOCAL: VALIDADO_POR_MAURICIO.
+- HOME_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
+- APOGEO_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
+
+HTTP 200 y assets OK no equivalen a validación visual productiva completa. El siguiente frente recomendado es VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
 
 ## Límites
 

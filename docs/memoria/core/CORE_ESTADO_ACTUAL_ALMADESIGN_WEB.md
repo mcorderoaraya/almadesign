@@ -45,7 +45,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 
 ## Pendientes
 
-- PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
+- VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
 - HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
 
 ## Frentes implementados localmente
@@ -55,12 +55,26 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - PREPARAR_BACKUPS_Y_OPERACION_ALMADESIGN_WEB: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
 - APLICAR_FRONTEND_DESIGN_ALMADESIGN_WEB: IMPLEMENTADO_LOCALMENTE_CON_OBSERVACIONES.
-- APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: IMPLEMENTADO_LOCALMENTE_EN_REPO.
+- APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: DESPLEGADO_Y_VALIDADO_HTTP.
 
 ## Frentes ejecutados en VPS
 
 - DEPLOY_CONTROLADO_ALMADESIGN_WEB_A_VPS: EJECUTADO_OK.
 - EJECUTAR_BACKUP_Y_HEALTHCHECK_ALMADESIGN_EN_VPS: EJECUTADO_OK.
+- DEPLOY_CONTROLADO_FRONTEND_HOME_APOGEO_Y_CONSULTORIA_ALMADESIGN_WEB: EJECUTADO_OK.
+- HASH_DEPLOY_FRONTEND: e33447ab3e2298a6b7ae0a1c7e80743d0c89372d.
+- HOME_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
+- APOGEO_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
+- CONSULTORIA_BLOQUE_EL_PROBLEMA: REMOVIDO_EN_PRODUCCION.
+- TEXTO_EL_PROBLEMA_CONSULTORIA: AUSENTE_EN_PRODUCCION.
+- BACKUP_PRE_DEPLOY_FRONTEND: `/var/backups/almadesign/almadesign_backup_20260505_142352.tar.gz`.
+- CHECKSUM_BACKUP_PRE_DEPLOY_FRONTEND: OK.
+- HEALTHCHECK_POST_DEPLOY_FRONTEND: OK.
+- RUTAS_PRODUCTIVAS_POST_DEPLOY_FRONTEND: HTTP_200.
+- ASSETS_HOME_APOGEO_POST_DEPLOY: HTTP_200.
+- HOME_VISUAL_LOCAL: VALIDADO_POR_MAURICIO.
+- HOME_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
+- APOGEO_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
 - BASE_SEGURIDAD_POST_SSL_ALMADESIGN: CONFIGURADA.
 - HEADERS_SEGURIDAD: ACTIVOS.
 - CLOUDFLARE_PROXY: ACTIVO.
@@ -87,11 +101,11 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - No hay base de datos todavía.
 - Formulario de contacto desplegado y validado productivamente con SMTP Zoho.
 - Deploy controlado a VPS ejecutado correctamente.
-- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
+- Siguiente frente recomendado: VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
 
 ## Observaciones página Apogeo
 
-- APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: IMPLEMENTADO_LOCALMENTE_EN_REPO.
+- APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: DESPLEGADO_Y_VALIDADO_HTTP.
 - Ruta local: `/apogeo`.
 - La página presenta Apogeo como línea de productos de conocimiento aumentado, documentación verificable, trazabilidad y apoyo a decisiones gerenciales mejor informadas.
 - Incluye hero extendido, sección de arquitecturas Apogeo, cards ejecutivas, infografía RAGK, bloque "RAGK como concepto gerencial", límites explícitos y CTA final hacia `/contacto`.
@@ -99,7 +113,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Las tarjetas de arquitectura usan imágenes finales WebP: `public/assets/img/apogeo/apogeo-rag-card.webp`, `public/assets/img/apogeo/apogeo-graphrag-card.webp` y `public/assets/img/apogeo/apogeo-ragk-card.webp`.
 - La infografía vigente es `public/assets/img/apogeo/infografia-ragk.webp`.
 - RAGK se comunica públicamente como arquitectura de conocimiento confiable: recuperación contextual, conocimiento conectado, flujo gobernado de información y evidencia verificable para decisiones humanas.
-- No afirmar que la nueva página `/apogeo` está publicada en `almadesign.cl` hasta ejecutar y validar un deploy controlado.
+- `/apogeo` nuevo está publicado y validado por HTTP; revisión visual productiva pendiente de Mauricio.
 
 ## Observaciones deploy VPS
 
@@ -121,7 +135,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Healthcheck manual ejecutado correctamente en VPS.
 - Backup manual ejecutado correctamente en VPS.
 - No se tocaron Cloudflare, Zoho, DNS, SSL, `.env`, llaves SSH, base de datos, formulario, Composer, WordPress, Docker ni cPanel.
-- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
+- Siguiente frente recomendado: VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
 
 ## Estado formulario
 
@@ -146,7 +160,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Log mínimo en `logs/contact.log`, sin guardar cuerpo completo del mensaje.
 - No hay base de datos.
 - DEPLOY_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
-- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
+- Siguiente frente recomendado: VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
 
 ## Estado frontend
 
@@ -159,11 +173,11 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - HOME_ALMADESIGN_FRONTEND_LOCAL: VALIDADO_POR_MAURICIO.
 - HOME_VISUAL_GLOBAL: VALIDADO.
 - CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
-- DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
-- HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
+- DEPLOY_FRONTEND_HOME: DESPLEGADO_Y_VALIDADO_HTTP.
+- HOME_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
 - FORMULARIO_CONTACTO_ALMADESIGN_PRODUCTIVO: VALIDADO.
 - SMTP_PRODUCTIVO_ZOHO: VALIDADO.
-- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
+- Siguiente frente recomendado: VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
 
 ## Fuera de alcance
 
@@ -180,7 +194,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - SMTP_PRODUCTIVO_ZOHO: VALIDADO.
 - CUERPO_CORREO_PRODUCTIVO: VALIDADO.
 - HOME_ALMADESIGN_PRODUCTIVO_PREVIO: VALIDADO.
-- HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
+- HOME_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
 - FORMULARIO_VISUAL_PRODUCTIVO: VALIDADO.
 - `/contacto`, `/contacto/gracias`, `/robots.txt` y `/sitemap.xml` operativos.
 - POST productivo OK.
@@ -224,5 +238,5 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 
 ## Frente siguiente recomendado
 
-- PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
+- VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
 - HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.

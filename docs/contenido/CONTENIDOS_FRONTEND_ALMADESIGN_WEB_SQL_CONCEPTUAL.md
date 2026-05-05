@@ -13,16 +13,29 @@
 - HOME_ALMADESIGN_FRONTEND_LOCAL: VALIDADO_POR_MAURICIO.
 - HOME_VISUAL_GLOBAL: VALIDADO.
 - CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
-- DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
-- HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
-- APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: IMPLEMENTADO_LOCALMENTE_EN_REPO.
-- Página `/apogeo`: implementada localmente con narrativa gerencial, arquitecturas RAG / GraphRAG / RAGK, cards finales WebP, infografía RAGK y bloque conceptual gerencial.
-- DEPLOY_FRONTEND_HOME_Y_APOGEO: NO_EJECUTADO.
+- DEPLOY_FRONTEND_HOME: DESPLEGADO_Y_VALIDADO_HTTP.
+- HOME_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
+- APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: DESPLEGADO_Y_VALIDADO_HTTP.
+- Página `/apogeo`: desplegada y validada productivamente por HTTP con narrativa gerencial, arquitecturas RAG / GraphRAG / RAGK, cards finales WebP, infografía RAGK y bloque conceptual gerencial.
+- DEPLOY_CONTROLADO_FRONTEND_HOME_APOGEO_Y_CONSULTORIA_ALMADESIGN_WEB: EJECUTADO_OK.
+- HASH_DEPLOY_FRONTEND: e33447ab3e2298a6b7ae0a1c7e80743d0c89372d.
+- HOME_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
+- APOGEO_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
+- CONSULTORIA_BLOQUE_EL_PROBLEMA: REMOVIDO_EN_PRODUCCION.
+- TEXTO_EL_PROBLEMA_CONSULTORIA: AUSENTE_EN_PRODUCCION.
+- BACKUP_PRE_DEPLOY_FRONTEND: `/var/backups/almadesign/almadesign_backup_20260505_142352.tar.gz`.
+- CHECKSUM_BACKUP_PRE_DEPLOY_FRONTEND: OK.
+- HEALTHCHECK_POST_DEPLOY_FRONTEND: OK.
+- RUTAS_PRODUCTIVAS_POST_DEPLOY_FRONTEND: HTTP_200.
+- ASSETS_HOME_APOGEO_POST_DEPLOY: HTTP_200.
+- HOME_VISUAL_LOCAL: VALIDADO_POR_MAURICIO.
+- HOME_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
+- APOGEO_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
 - Base de datos: NO ABIERTA.
 - SQL: CONCEPTUAL FUTURO, no instrucción de implementación.
-- Deploy: NO EJECUTADO para el Home frontend nuevo ni para la página `/apogeo` nueva.
+- Deploy: EJECUTADO_OK para Home, `/apogeo` y remoción del bloque "El problema" en `/consultoria-ia-procesos`.
 
-Este documento sirve como fuente editorial para mantener mensajes, jerarquía de contenido, rutas conceptuales, arquitectura SEO y AI SEO. El Home frontend nuevo ya fue validado localmente por Mauricio; la página `/apogeo` fue implementada localmente en repo. Producción queda pendiente de deploy controlado.
+Este documento sirve como fuente editorial para mantener mensajes, jerarquía de contenido, rutas conceptuales, arquitectura SEO y AI SEO. El Home frontend nuevo fue validado localmente por Mauricio; Home, `/apogeo` y `/consultoria-ia-procesos` quedaron desplegados y validados por HTTP en producción. La revisión visual productiva queda pendiente de confirmación manual de Mauricio.
 
 ## Principio editorial
 
@@ -225,9 +238,9 @@ Consultoría de inteligencia artificial y procesos para empresas.
 
 Antes de automatizar, ordenamos procesos, fricciones, criterios y responsabilidades. AlmaDesign ayuda a organizaciones a identificar dónde la IA puede aportar valor real y cómo implementarla con trazabilidad, gobernanza y control humano.
 
-### El problema
+### Bloque removido en producción
 
-Muchas organizaciones quieren usar IA, pero sus procesos, documentos, responsabilidades y criterios de decisión están dispersos. En ese contexto, automatizar puede aumentar el desorden en vez de resolverlo.
+Bloque removido de la página productiva `/consultoria-ia-procesos`.
 
 La IA útil no empieza con herramientas. Empieza con procesos claros, objetivos explícitos y decisiones bien gobernadas.
 
@@ -319,7 +332,7 @@ Permite que la información pueda ser:
 
 ### Arquitecturas Apogeo
 
-La página `/apogeo` implementada localmente incluye una sección conceptual de arquitecturas Apogeo con tres niveles:
+La página `/apogeo` desplegada y validada por HTTP incluye una sección conceptual de arquitecturas Apogeo con tres niveles:
 
 #### RAG
 
@@ -642,11 +655,16 @@ HowTo solo cuando existan guías realmente paso a paso y verificables
 No usar SoftwareApplication ni Product para Apogeo mientras no exista una oferta validada públicamente como producto listo para mercado.
 
 Estado de aprobación
-Documento actualizado con Home frontend nuevo validado localmente por Mauricio y página `/apogeo` implementada localmente en repo.
+Documento actualizado con Home frontend nuevo validado localmente por Mauricio, página `/apogeo` desplegada y remoción productiva del bloque "El problema" en `/consultoria-ia-procesos`.
 HOME_ALMADESIGN_FRONTEND_LOCAL: VALIDADO_POR_MAURICIO.
 HOME_VISUAL_GLOBAL: VALIDADO.
+HOME_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
+APOGEO_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
+CONSULTORIA_BLOQUE_EL_PROBLEMA: REMOVIDO_EN_PRODUCCION.
+HOME_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
+APOGEO_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
 CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
-DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
-HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
+DEPLOY_FRONTEND_HOME: DESPLEGADO_Y_VALIDADO_HTTP.
+HOME_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
 No habilita cambios en base de datos.
-Próximo paso sugerido: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
+Próximo paso sugerido: VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.

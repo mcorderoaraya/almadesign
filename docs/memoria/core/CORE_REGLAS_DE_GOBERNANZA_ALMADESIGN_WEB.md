@@ -17,10 +17,22 @@ AlmaDesign Web no debe tratar el backend técnico Apogeo Lux como parte modifica
 - HOME_ALMADESIGN_FRONTEND_LOCAL: VALIDADO_POR_MAURICIO.
 - HOME_VISUAL_GLOBAL: VALIDADO.
 - CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
-- DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
-- HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
-- APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: IMPLEMENTADO_LOCALMENTE_EN_REPO.
-- DEPLOY_FRONTEND_HOME_Y_APOGEO: NO_EJECUTADO.
+- DEPLOY_FRONTEND_HOME: DESPLEGADO_Y_VALIDADO_HTTP.
+- HOME_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
+- APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: DESPLEGADO_Y_VALIDADO_HTTP.
+- DEPLOY_CONTROLADO_FRONTEND_HOME_APOGEO_Y_CONSULTORIA_ALMADESIGN_WEB: EJECUTADO_OK.
+- HASH_DEPLOY_FRONTEND: e33447ab3e2298a6b7ae0a1c7e80743d0c89372d.
+- APOGEO_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
+- CONSULTORIA_BLOQUE_EL_PROBLEMA: REMOVIDO_EN_PRODUCCION.
+- TEXTO_EL_PROBLEMA_CONSULTORIA: AUSENTE_EN_PRODUCCION.
+- BACKUP_PRE_DEPLOY_FRONTEND: `/var/backups/almadesign/almadesign_backup_20260505_142352.tar.gz`.
+- CHECKSUM_BACKUP_PRE_DEPLOY_FRONTEND: OK.
+- HEALTHCHECK_POST_DEPLOY_FRONTEND: OK.
+- RUTAS_PRODUCTIVAS_POST_DEPLOY_FRONTEND: HTTP_200.
+- ASSETS_HOME_APOGEO_POST_DEPLOY: HTTP_200.
+- HOME_VISUAL_LOCAL: VALIDADO_POR_MAURICIO.
+- HOME_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
+- APOGEO_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
 - DEPLOY_CONTROLADO_ALMADESIGN_WEB_A_VPS: EJECUTADO_OK.
 - EJECUTAR_BACKUP_Y_HEALTHCHECK_ALMADESIGN_EN_VPS: EJECUTADO_OK.
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
@@ -59,15 +71,15 @@ No modificar desde este frente documental:
 
 ## Reglas para próximos frentes
 
-- El Home frontend nuevo fue validado localmente; no afirmar que está productivo hasta ejecutar PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
-- La nueva página `/apogeo` fue implementada localmente; no afirmar que está productiva hasta ejecutar y validar PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
+- El Home frontend nuevo fue desplegado y validado por HTTP; revisión visual productiva pendiente de Mauricio.
+- La nueva página `/apogeo` fue desplegada y validada por HTTP; revisión visual productiva pendiente de Mauricio.
 - RAGK se comunica en público como arquitectura de conocimiento confiable, no como lista de tecnologías ni como promesa de decisión automatizada.
 - Las cards del Home quedan como estándar visual validado.
 - Mantener prohibición de Google Fonts y fuentes externas.
 - El formulario productivo ya fue desplegado y validado; no declarar nuevos cambios productivos sin su propio deploy controlado.
 - El envío end-to-end productivo fue validado por Mauricio; Reply-To productivo queda pendiente de confirmación secundaria.
 - No imprimir `.env` ni contraseñas SMTP.
-- Siguiente frente recomendado: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
+- Siguiente frente recomendado: VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
 - Frente futuro recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
 - No ejecutar deploy salvo frente explícito de deploy controlado.
 - No imprimir secretos.

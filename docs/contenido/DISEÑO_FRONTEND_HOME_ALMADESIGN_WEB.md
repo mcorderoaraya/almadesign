@@ -13,15 +13,28 @@
 - HOME_ALMADESIGN_FRONTEND_LOCAL: VALIDADO_POR_MAURICIO.
 - HOME_VISUAL_GLOBAL: VALIDADO.
 - CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
-- DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
-- HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
-- Código productivo modificado: NO_DESPLEGADO.
-- CSS productivo modificado: NO_DESPLEGADO.
+- DEPLOY_FRONTEND_HOME: DESPLEGADO_Y_VALIDADO_HTTP.
+- HOME_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
+- Código productivo modificado: DESPLEGADO_Y_VALIDADO_HTTP.
+- CSS productivo modificado: DESPLEGADO_Y_VALIDADO_HTTP.
+- DEPLOY_CONTROLADO_FRONTEND_HOME_APOGEO_Y_CONSULTORIA_ALMADESIGN_WEB: EJECUTADO_OK.
+- HASH_DEPLOY_FRONTEND: e33447ab3e2298a6b7ae0a1c7e80743d0c89372d.
+- APOGEO_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
+- CONSULTORIA_BLOQUE_EL_PROBLEMA: REMOVIDO_EN_PRODUCCION.
+- TEXTO_EL_PROBLEMA_CONSULTORIA: AUSENTE_EN_PRODUCCION.
+- BACKUP_PRE_DEPLOY_FRONTEND: `/var/backups/almadesign/almadesign_backup_20260505_142352.tar.gz`.
+- CHECKSUM_BACKUP_PRE_DEPLOY_FRONTEND: OK.
+- HEALTHCHECK_POST_DEPLOY_FRONTEND: OK.
+- RUTAS_PRODUCTIVAS_POST_DEPLOY_FRONTEND: HTTP_200.
+- ASSETS_HOME_APOGEO_POST_DEPLOY: HTTP_200.
+- HOME_VISUAL_LOCAL: VALIDADO_POR_MAURICIO.
+- HOME_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
+- APOGEO_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
 - Assets Home validados localmente: SI.
 - Base de datos: NO ABIERTA.
-- Deploy: NO EJECUTADO para el Home frontend nuevo ni para la página `/apogeo` nueva.
+- Deploy: EJECUTADO_OK para Home, `/apogeo` y remoción del bloque "El problema" en `/consultoria-ia-procesos`.
 
-Este documento registra la estructura frontend del Home de AlmaDesign Web validada visualmente por Mauricio en entorno local. No debe interpretarse como validación productiva en `almadesign.cl` hasta ejecutar un deploy controlado.
+Este documento registra la estructura frontend del Home de AlmaDesign Web validada visualmente por Mauricio en entorno local. El despliegue productivo quedó validado por HTTP; la revisión visual productiva en `almadesign.cl` queda pendiente de confirmación manual de Mauricio.
 
 ## Objetivo del Home
 
@@ -537,17 +550,17 @@ El Home validado localmente por Mauricio se considera aprobado para preparar dep
 - Jerarquía semántica H1/H2/H3 correcta.
 - No se incorporan claims prohibidos como afirmaciones.
 - No se modifica base de datos.
-- DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
+- DEPLOY_FRONTEND_HOME: DESPLEGADO_Y_VALIDADO_HTTP.
 
 ## Validación documental
 
 - Documento creado en `docs/contenido/`.
-- Código productivo modificado: NO_DESPLEGADO para el Home frontend nuevo ni para `/apogeo` nueva.
-- CSS productivo modificado: NO_DESPLEGADO para el Home frontend nuevo ni para `/apogeo` nueva.
+- Código productivo modificado: DESPLEGADO_Y_VALIDADO_HTTP para Home, `/apogeo` y `/consultoria-ia-procesos`.
+- CSS productivo modificado: DESPLEGADO_Y_VALIDADO_HTTP para Home y `/apogeo`.
 - Fuentes movidas: NO.
 - Imágenes Home validadas localmente: SI.
 - Base de datos abierta: NO.
-- Deploy realizado: NO.
+- Deploy realizado: SI.
 
 ## Estado de aprobación
 
@@ -559,8 +572,10 @@ El Home validado localmente por Mauricio se considera aprobado para preparar dep
 - LOGO: DEFINIDO.
 - PALETA: DEFINIDA.
 - CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
-- CÓDIGO PRODUCTIVO: NO_DESPLEGADO.
-- DEPLOY_FRONTEND_HOME: NO_EJECUTADO.
-- HOME_PRODUCTIVO: NO_ACTUALIZADO_TODAVIA.
+- CÓDIGO PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
+- DEPLOY_FRONTEND_HOME: DESPLEGADO_Y_VALIDADO_HTTP.
+- HOME_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
+- HOME_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
+- APOGEO_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
 
-Próximo paso sugerido: PREPARAR_DEPLOY_CONTROLADO_FRONTEND_HOME_Y_APOGEO_ALMADESIGN_WEB.
+Próximo paso sugerido: VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
