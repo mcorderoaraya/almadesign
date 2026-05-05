@@ -4,7 +4,7 @@ declare(strict_types=1);
 /** @var array<int, array{title: string, body?: string|list<string>, items?: list<string>}> $sections */
 /** @var array<int, array{title: string, body?: string|list<string>, items?: list<string>}>|null $postSections */
 /** @var array<int, array{title: string, intro: string, items: list<array{title: string, body?: string|list<string>, items?: list<string>, key: string}>, eyebrow?: string, keyLabel?: string, variant?: string}>|null $cardSections */
-/** @var list<string> $guardrails */
+/** @var list<string|array{title: string, body: string}> $guardrails */
 $cardSections = $cardSections ?? [];
 $postSections = $postSections ?? [];
 $architectureSection = $architectureSection ?? null;
@@ -14,6 +14,7 @@ $leadParagraphs = $leadParagraphs ?? [$lead];
 $guardrailsEyebrow = $guardrailsEyebrow ?? 'Gobernanza';
 $guardrailsTitle = $guardrailsTitle ?? 'Límites explícitos de comunicación.';
 $guardrailsIntro = $guardrailsIntro ?? null;
+$hasStructuredGuardrails = $guardrails !== [] && is_array($guardrails[0] ?? null);
 ?>
 <div class="alma-home">
     <section class="vertical-detail-hero" aria-labelledby="vertical-detail-title">
@@ -206,11 +207,20 @@ $guardrailsIntro = $guardrailsIntro ?? null;
                     <p><?= e($guardrailsIntro) ?></p>
                 <?php endif; ?>
             </div>
-            <ul>
+            <?php if ($hasStructuredGuardrails): ?>
                 <?php foreach ($guardrails as $guardrail): ?>
-                    <li><?= e($guardrail) ?></li>
+                    <blockquote>
+                        <p><strong><?= e($guardrail['title']) ?></strong></p>
+                        <p><?= e($guardrail['body']) ?></p>
+                    </blockquote>
                 <?php endforeach; ?>
-            </ul>
+            <?php else: ?>
+                <ul>
+                    <?php foreach ($guardrails as $guardrail): ?>
+                        <li><?= e($guardrail) ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php endif; ?>
         </section>
     <?php endif; ?>
 

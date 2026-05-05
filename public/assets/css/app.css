@@ -278,6 +278,10 @@ h3 {
     color: var(--naranja);
 }
 
+.site-nav a.is-active {
+    color: var(--naranja);
+}
+
 .nav-cta {
     min-height: 38px;
     padding: 7px 13px;
@@ -314,6 +318,10 @@ summary:focus-visible {
 }
 
 .site-nav a:hover::after {
+    transform: scaleX(1);
+}
+
+.site-nav a.is-active::after {
     transform: scaleX(1);
 }
 
@@ -1101,6 +1109,29 @@ summary:focus-visible {
 .vertical-detail-block li + li,
 .vertical-detail-guardrails li + li {
     margin-top: 9px;
+}
+
+.vertical-detail-guardrails blockquote {
+    margin: 0;
+    padding-left: 18px;
+    border-left: 3px solid var(--naranja);
+}
+
+.vertical-detail-guardrails blockquote + blockquote {
+    margin-top: 18px;
+}
+
+.vertical-detail-guardrails blockquote p {
+    margin: 0;
+    color: var(--gris-humo);
+}
+
+.vertical-detail-guardrails blockquote p + p {
+    margin-top: 8px;
+}
+
+.vertical-detail-guardrails blockquote strong {
+    color: var(--beige);
 }
 
 .consulting-section {

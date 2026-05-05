@@ -89,9 +89,18 @@ final class ContentController extends BaseController
                 ],
             ],
             'guardrails' => [
-                'No se promete automatización sin validación humana.',
-                'No se prometen diagnósticos profundos como gratuitos.',
-                'No se promete reducción de costos sin evidencia ni evaluación.',
+                [
+                    'title' => 'No se promete automatización sin validación humana.',
+                    'body' => 'Toda automatización debe tener un propósito claro, responsables definidos y criterios de revisión. La IA puede apoyar procesos, ordenar información y reducir carga operativa, pero las decisiones relevantes deben mantenerse bajo supervisión humana.',
+                ],
+                [
+                    'title' => 'No se prometen diagnósticos profundos como gratuitos.',
+                    'body' => 'Una conversación inicial puede ayudar a entender el problema. Un diagnóstico serio requiere revisar procesos reales, documentos, restricciones, responsabilidades y prioridades. AlmaDesign distingue claramente entre una orientación inicial y una evaluación técnica u organizacional profunda.',
+                ],
+                [
+                    'title' => 'No se promete reducción de costos sin evidencia ni evaluación.',
+                    'body' => 'La eficiencia debe demostrarse con datos, medición y análisis del impacto real. No se ofrecen porcentajes, ahorros ni resultados asegurados sin revisar antes el contexto operativo, los costos actuales, los riesgos y la capacidad de adopción de la organización.',
+                ],
             ],
             'cta' => 'Solicitar diagnóstico',
         ]);
@@ -355,7 +364,7 @@ final class ContentController extends BaseController
             ],
             'guardrails' => [
                 'No se delegan decisiones críticas al modelo.',
-                'No se diseña reemplazo humano.',
+                'No se diseña sustitución de personas.',
                 'No se prometen resultados de productividad sin evidencia.',
             ],
             'cta' => 'Explorar AI for Humans',
