@@ -244,6 +244,13 @@ h3 {
     backdrop-filter: blur(18px);
 }
 
+.site-header--ai-for-humans {
+    border-bottom-color: var(--gris-humo);
+    background: var(--beige);
+    color: #111827;
+    backdrop-filter: none;
+}
+
 .brand,
 .site-nav {
     display: flex;
@@ -259,6 +266,27 @@ h3 {
     display: block;
     width: clamp(146px, 17vw, 196px);
     height: auto;
+}
+
+.menu-toggle {
+    display: none;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border: 1px solid rgba(244, 234, 220, 0.24);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--beige);
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 999px;
+    background: currentColor;
+    transition: transform 180ms ease, opacity 180ms ease;
 }
 
 .site-nav {
@@ -282,6 +310,29 @@ h3 {
     color: var(--naranja);
 }
 
+.site-header--ai-for-humans .site-nav {
+    color: #111827;
+}
+
+.site-header--ai-for-humans .menu-toggle {
+    border-color: rgba(17, 24, 39, 0.22);
+    color: #111827;
+}
+
+.site-header--ai-for-humans .site-nav a {
+    color: #111827;
+}
+
+.site-header--ai-for-humans .site-nav a:hover,
+.site-header--ai-for-humans .site-nav a.is-active {
+    color: var(--naranja);
+}
+
+.site-header--ai-for-humans .site-nav a.is-active::after {
+    background: var(--naranja);
+    transform: scaleX(1);
+}
+
 .nav-cta {
     min-height: 38px;
     padding: 7px 13px;
@@ -289,6 +340,10 @@ h3 {
     border-radius: 8px;
     color: var(--beige);
     font-weight: 700;
+}
+
+.site-header--ai-for-humans .nav-cta {
+    color: #111827;
 }
 
 .nav-cta:hover {
@@ -1132,6 +1187,249 @@ summary:focus-visible {
 
 .vertical-detail-guardrails blockquote strong {
     color: var(--beige);
+}
+
+.ai-for-humans-manifest {
+    background: var(--beige);
+    color: var(--carbon);
+    font-family: var(--sans);
+}
+
+.ai-for-humans-manifest .manifest-hero,
+.ai-for-humans-manifest .manifest-body,
+.ai-for-humans-manifest .home-third__inner {
+    width: min(960px, calc(100% - 32px));
+    margin: 0 auto;
+}
+
+.ai-for-humans-manifest .manifest-hero {
+    padding: clamp(78px, 11vw, 132px) 0 clamp(56px, 8vw, 88px);
+}
+
+.ai-for-humans-manifest .eyebrow,
+.ai-for-humans-manifest .manifest-section__number,
+.ai-for-humans-manifest .manifest-section__subtitle {
+    color: var(--naranja);
+}
+
+.ai-for-humans-manifest h1,
+.ai-for-humans-manifest h2,
+.ai-for-humans-manifest h3 {
+    color: var(--carbon);
+    font-family: var(--serif);
+    font-weight: 700;
+}
+
+.ai-for-humans-manifest h2 {
+    color: #111827;
+    font-style: italic;
+}
+
+.ai-for-humans-manifest h1 {
+    max-width: 780px;
+    margin: 0;
+    font-size: clamp(4.2rem, 13vw, 9.4rem);
+    color: #111827;
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 0.9;
+}
+
+.ai-for-humans-manifest .lead {
+    max-width: 760px;
+    margin-top: clamp(28px, 4vw, 44px);
+    color: var(--carbon);
+    font-family: var(--sans);
+    font-size: clamp(1.32rem, 2.4vw, 2rem);
+    line-height: 1.35;
+}
+
+.ai-for-humans-manifest .manifest-body {
+    padding-bottom: clamp(42px, 7vw, 88px);
+}
+
+.ai-for-humans-manifest .manifest-section {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    align-items: start;
+    column-gap: clamp(18px, 3vw, 34px);
+    row-gap: clamp(18px, 3vw, 34px);
+    padding: clamp(58px, 8vw, 92px) 0;
+    border-top: 1px solid var(--gris-humo);
+}
+
+.ai-for-humans-manifest .manifest-section:last-child {
+    border-bottom: 1px solid var(--gris-humo);
+}
+
+.ai-for-humans-manifest .manifest-section__number {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 0;
+    color: var(--naranja);
+    font-family: var(--italic);
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 0.9;
+}
+
+.ai-for-humans-manifest .manifest-section__number::before {
+    display: block;
+    flex: 0 0 35px;
+    width: 35px;
+    max-width: 35px;
+    height: 4px;
+    background: var(--naranja);
+    content: "";
+}
+
+.ai-for-humans-manifest .manifest-section__content {
+    min-width: 0;
+}
+
+.ai-for-humans-manifest .manifest-section__number em {
+    display: inline-block;
+    color: var(--naranja);
+    font-family: var(--italic);
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.ai-for-humans-manifest .manifest-section__subtitle {
+    margin: 0 0 12px;
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.ai-for-humans-manifest .manifest-section h2 {
+    margin: 0 0 clamp(22px, 3vw, 34px);
+    color: #111827;
+    font-size: clamp(2.1rem, 5vw, 4.7rem);
+    font-style: italic;
+    line-height: 0.98;
+}
+
+.ai-for-humans-manifest .manifest-section p {
+    max-width: 76ch;
+    margin: 0;
+    color: var(--carbon);
+    font-family: var(--sans);
+    font-size: clamp(1.02rem, 1.35vw, 1.18rem);
+    line-height: 1.78;
+}
+
+.ai-for-humans-manifest .manifest-section p + p {
+    margin-top: 18px;
+}
+
+.ai-for-humans-manifest blockquote {
+    max-width: 76ch;
+    margin: clamp(24px, 4vw, 38px) 0 0;
+    padding-left: 20px;
+    border-left: 3px solid var(--naranja);
+}
+
+.ai-for-humans-manifest blockquote p {
+    color: var(--carbon);
+    font-family: var(--serif);
+    font-size: clamp(1.3rem, 2vw, 1.85rem);
+    font-weight: 700;
+    line-height: 1.28;
+}
+
+.ai-for-humans-signature {
+    width: min(960px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: clamp(42px, 6vw, 76px) 0;
+}
+
+.ai-for-humans-signature__inner {
+    display: grid;
+    grid-template-columns: minmax(180px, 0.85fr) minmax(0, 1.85fr);
+    gap: clamp(16px, 2vw, 28px);
+    align-items: stretch;
+}
+
+.ai-for-humans-signature__media {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    margin: 0;
+}
+
+.ai-for-humans-signature__media img {
+    display: block;
+    width: 75%;
+    height: 100%;
+    min-height: 100%;
+    border-radius: 30px;
+    object-fit: cover;
+}
+
+.ai-for-humans-signature__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    width: 100%;
+    max-width: none;
+}
+
+.ai-for-humans-signature__quote {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding-left: 20px;
+    border-left: 3px solid var(--naranja);
+}
+
+.ai-for-humans-signature__quote p {
+    margin: 0;
+    color: #111827;
+    font-family: var(--serif);
+    font-size: clamp(1.55rem, 2.7vw, 2.42rem);
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.ai-for-humans-signature__name {
+    margin: 18px 0 4px;
+    color: #111827;
+    font-family: var(--sans);
+    font-weight: 700;
+}
+
+.ai-for-humans-signature__role {
+    margin: 0;
+    color: rgba(17, 24, 39, 0.72);
+    font-family: var(--sans);
+}
+
+.ai-for-humans-manifest .home-third--human {
+    background: var(--beige);
+    color: var(--carbon);
+}
+
+.ai-for-humans-manifest .alma-final-cta {
+    border-top: 1px solid var(--gris-humo);
+}
+
+.ai-for-humans-manifest .alma-final-cta p,
+.ai-for-humans-manifest .alma-final-cta h2 {
+    color: var(--carbon);
 }
 
 .consulting-section {
@@ -2120,6 +2418,12 @@ details p {
     outline-offset: 2px;
 }
 
+.contact-form button:disabled,
+.contact-form .button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
 .contact-form small,
 .form-actions p {
     color: var(--naranja);
@@ -2209,16 +2513,7 @@ details p {
 }
 
 .site-footer__identity {
-    display: grid;
-    grid-template-columns: auto minmax(0, 520px);
-    gap: clamp(18px, 3vw, 34px);
-    align-items: center;
-}
-
-.site-footer__logo {
     display: block;
-    width: clamp(54px, 7vw, 82px);
-    height: auto;
 }
 
 .site-footer__statement {
@@ -2381,13 +2676,44 @@ details p {
     }
 
     .site-header {
-        align-items: flex-start;
-        flex-direction: column;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .menu-toggle {
+        display: grid;
+        gap: 4px;
+    }
+
+    .site-header.is-menu-open .menu-toggle span:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+    }
+
+    .site-header.is-menu-open .menu-toggle span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .site-header.is-menu-open .menu-toggle span:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
     }
 
     .site-nav {
+        display: none;
         width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
         justify-content: flex-start;
+        gap: 14px;
+        padding: 18px 0 4px;
+    }
+
+    .site-header.is-menu-open .site-nav {
+        display: flex;
+    }
+
+    .site-nav a::after {
+        bottom: -4px;
     }
 
     .hero,
@@ -2426,6 +2752,64 @@ details p {
 
     .alma-home h2 {
         font-size: 2rem;
+    }
+
+    .ai-for-humans-manifest h1 {
+        font-size: clamp(3.2rem, 17vw, 5rem);
+        line-height: 0.94;
+        letter-spacing: 0;
+    }
+
+    .ai-for-humans-manifest .manifest-section__number {
+        gap: 12px;
+        justify-content: center;
+        margin-bottom: 4px;
+        font-size: clamp(2.2rem, 14vw, 3.8rem);
+        line-height: 0.9;
+    }
+
+    .ai-for-humans-manifest .manifest-section__number::before {
+        flex-basis: 28px;
+        width: 28px;
+        max-width: 28px;
+        height: 3px;
+    }
+
+    .ai-for-humans-manifest .manifest-section__number em {
+        font-size: clamp(2.2rem, 14vw, 3.8rem);
+    }
+
+    .ai-for-humans-manifest .manifest-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+        row-gap: 16px;
+        padding: 42px 0;
+    }
+
+    .ai-for-humans-manifest .manifest-section p,
+    .ai-for-humans-manifest blockquote {
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .ai-for-humans-manifest .manifest-section h2 {
+        font-size: clamp(2rem, 12vw, 3.35rem);
+    }
+
+    .ai-for-humans-signature__inner {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        align-items: start;
+    }
+
+    .ai-for-humans-signature__media img {
+        width: min(75%, 220px);
+        height: auto;
+        min-height: 0;
+    }
+
+    .ai-for-humans-signature__quote p {
+        font-size: clamp(1.38rem, 7vw, 2rem);
     }
 
     .alma-home .lead {

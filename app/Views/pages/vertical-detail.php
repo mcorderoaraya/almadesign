@@ -5,18 +5,80 @@ declare(strict_types=1);
 /** @var array<int, array{title: string, body?: string|list<string>, items?: list<string>}>|null $postSections */
 /** @var array<int, array{title: string, intro: string, items: list<array{title: string, body?: string|list<string>, items?: list<string>, key: string}>, eyebrow?: string, keyLabel?: string, variant?: string}>|null $cardSections */
 /** @var list<string|array{title: string, body: string}> $guardrails */
+/** @var array<int, array{title: string, body: list<string>, subtitle?: string, quote?: string}>|null $manifestSections */
 $cardSections = $cardSections ?? [];
 $postSections = $postSections ?? [];
 $architectureSection = $architectureSection ?? null;
 $infographicSection = $infographicSection ?? null;
 $limitsSection = $limitsSection ?? null;
+$manifestSections = $manifestSections ?? [];
+$pageClass = $pageClass ?? '';
 $leadParagraphs = $leadParagraphs ?? [$lead];
 $guardrailsEyebrow = $guardrailsEyebrow ?? 'Gobernanza';
 $guardrailsTitle = $guardrailsTitle ?? 'Límites explícitos de comunicación.';
 $guardrailsIntro = $guardrailsIntro ?? null;
 $hasStructuredGuardrails = $guardrails !== [] && is_array($guardrails[0] ?? null);
+$pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
 ?>
-<div class="alma-home">
+<div class="alma-home<?= e($pageClassAttribute) ?>">
+    <?php if ($manifestSections !== []): ?>
+        <section class="manifest-hero" aria-labelledby="manifest-title">
+            <p class="eyebrow"><?= e($eyebrow) ?></p>
+            <h1 id="manifest-title"><?= e($heading) ?></h1>
+            <p class="lead"><?= e($lead) ?></p>
+        </section>
+
+        <section class="manifest-body" aria-label="Manifiesto AI for Humans">
+            <?php foreach ($manifestSections as $manifestIndex => $manifestSection): ?>
+                <article class="manifest-section">
+                    <p class="manifest-section__number"><em><?= e(str_pad((string) ($manifestIndex + 1), 2, '0', STR_PAD_LEFT)) ?></em></p>
+                    <div class="manifest-section__content">
+                        <?php if (isset($manifestSection['subtitle'])): ?>
+                            <p class="manifest-section__subtitle"><?= e($manifestSection['subtitle']) ?></p>
+                        <?php endif; ?>
+                        <h2><?= e($manifestSection['title']) ?></h2>
+                        <?php foreach ($manifestSection['body'] as $paragraph): ?>
+                            <p><?= e($paragraph) ?></p>
+                        <?php endforeach; ?>
+                        <?php if (isset($manifestSection['quote'])): ?>
+                            <blockquote>
+                                <p><?= e($manifestSection['quote']) ?></p>
+                            </blockquote>
+                        <?php endif; ?>
+                    </div>
+                </article>
+            <?php endforeach; ?>
+        </section>
+
+        <section class="ai-for-humans-signature alma-section" aria-labelledby="ai-for-humans-signature-title">
+            <div class="ai-for-humans-signature__inner">
+                <figure class="ai-for-humans-signature__media">
+                    <img src="<?= e(asset('img/mauricio.webp')) ?>" alt="Mauricio Cordero Araya" loading="lazy" decoding="async" width="320" height="400">
+                </figure>
+                <div class="ai-for-humans-signature__content">
+                    <h2 id="ai-for-humans-signature-title" class="sr-only">Firma fundacional</h2>
+                    <blockquote class="ai-for-humans-signature__quote">
+                        <p>AlmaDesign nace de una convicción: la tecnología correcta no reemplaza el alma humana; le devuelve instrumentos para crear, decidir y desarrollarse.</p>
+                    </blockquote>
+                    <p class="ai-for-humans-signature__name">Mauricio Cordero Araya</p>
+                    <p class="ai-for-humans-signature__role">Fundador de AlmaDesign</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="home-third home-third--human" aria-label="Conversemos">
+            <div class="home-third__inner">
+                <section class="alma-final-cta" aria-labelledby="final-cta-title">
+                    <div>
+                        <p class="eyebrow">Conversemos</p>
+                        <h2 id="final-cta-title">Hablemos de tu proyecto.</h2>
+                        <p>Si tu organización enfrenta información dispersa, procesos difíciles de explicar o decisiones que requieren mayor claridad, AlmaDesign puede ayudarte a diseñar una solución gobernada, trazable y sostenible.</p>
+                    </div>
+                    <a class="button button-primary" href="<?= e(url('/contacto')) ?>">Hablemos de tu proyecto</a>
+                </section>
+            </div>
+        </section>
+    <?php else: ?>
     <section class="vertical-detail-hero" aria-labelledby="vertical-detail-title">
         <p class="eyebrow"><?= e($eyebrow) ?></p>
         <h1 id="vertical-detail-title"><?= e($heading) ?></h1>
@@ -236,4 +298,5 @@ $hasStructuredGuardrails = $guardrails !== [] && is_array($guardrails[0] ?? null
             </section>
         </div>
     </section>
+    <?php endif; ?>
 </div>

@@ -45,8 +45,8 @@ $field = static fn (string $name): string => (string) ($old[$name] ?? '');
         </label>
 
         <label>
-            <span>Teléfono <em>opcional</em></span>
-            <input name="telefono" type="tel" value="<?= e($field('telefono')) ?>" maxlength="40" pattern="[0-9+() .-]{6,40}" autocomplete="tel" inputmode="tel">
+            <span>Teléfono</span>
+            <input name="telefono" type="tel" value="<?= e($field('telefono')) ?>" maxlength="40" pattern="[0-9+() .-]{6,40}" autocomplete="tel" inputmode="tel" required>
             <?php if (!empty($errors['telefono'])): ?><small><?= e($errors['telefono']) ?></small><?php endif; ?>
         </label>
 
@@ -63,7 +63,7 @@ $field = static fn (string $name): string => (string) ($old[$name] ?? '');
         </label>
 
         <div class="form-actions full-span">
-            <button class="button button-primary" type="submit">Enviar mensaje</button>
+            <button class="button button-primary" type="submit" disabled>Enviar mensaje</button>
             <p>No guardamos el contenido completo del mensaje en logs.</p>
         </div>
     </form>

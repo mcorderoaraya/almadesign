@@ -11,12 +11,22 @@ $navItems = [
     ['label' => 'Apogeo', 'href' => url('/apogeo')],
     ['label' => 'AI for Humans', 'href' => url('/ai-for-humans')],
 ];
+
+$headerClass = 'site-header' . ($currentPath === '/ai-for-humans' ? ' site-header--ai-for-humans' : '');
+$brandLogo = $currentPath === '/ai-for-humans'
+    ? 'img/logos/logo_azul_horizontal_2.svg'
+    : 'img/logos/logo_crema_horizontal.svg';
 ?>
-<header class="site-header">
+<header class="<?= e($headerClass) ?>">
     <a class="brand" href="<?= e(url('/')) ?>" aria-label="Ir al inicio">
-        <img class="brand-logo" src="<?= e(asset('img/logos/logo_crema_horizontal.svg')) ?>" alt="AlmaDesign" width="196" height="86">
+        <img class="brand-logo" src="<?= e(asset($brandLogo)) ?>" alt="AlmaDesign" width="196" height="86">
     </a>
-    <nav class="site-nav" aria-label="Navegación principal">
+    <button class="menu-toggle" type="button" aria-label="Abrir menú principal" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
         <?php foreach ($navItems as $navItem): ?>
             <?php $isActive = $currentPath === $navItem['href']; ?>
             <a

@@ -4,7 +4,6 @@ declare(strict_types=1);
 <footer class="site-footer">
     <div class="site-footer__inner">
         <div class="site-footer__identity">
-            <img class="site-footer__logo" src="<?= e(asset('img/logos/logo_gris_solo.svg')) ?>" alt="AlmaDesign" width="82" height="89">
             <p class="site-footer__statement">Arquitectura de conocimiento e inteligencia artificial gobernada para decisiones humanas complejas.</p>
         </div>
         <nav class="site-footer__nav" aria-label="Mapa del sitio">
