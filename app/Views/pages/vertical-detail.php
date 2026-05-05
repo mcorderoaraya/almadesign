@@ -14,13 +14,6 @@ $leadParagraphs = $leadParagraphs ?? [$lead];
 $guardrailsEyebrow = $guardrailsEyebrow ?? 'Gobernanza';
 $guardrailsTitle = $guardrailsTitle ?? 'Límites explícitos de comunicación.';
 $guardrailsIntro = $guardrailsIntro ?? null;
-$finalCta = $finalCta ?? [
-    'eyebrow' => 'Conversemos',
-    'title' => 'Hablemos de tu proyecto.',
-    'body' => 'Si tu organización necesita claridad, trazabilidad y criterio humano para adoptar IA, AlmaDesign puede ayudarte a ordenar el camino.',
-    'label' => 'Hablemos de tu proyecto',
-    'href' => url('/contacto'),
-];
 ?>
 <div class="alma-home">
     <section class="vertical-detail-hero" aria-labelledby="vertical-detail-title">
@@ -221,13 +214,16 @@ $finalCta = $finalCta ?? [
         </section>
     <?php endif; ?>
 
-    <?php $finalCtaVariant = isset($finalCta['variant']) ? ' alma-final-cta--' . $finalCta['variant'] : ''; ?>
-    <section class="alma-final-cta<?= e($finalCtaVariant) ?>" aria-labelledby="vertical-final-cta">
-        <div>
-            <p class="eyebrow"><?= e($finalCta['eyebrow']) ?></p>
-            <h2 id="vertical-final-cta"><?= e($finalCta['title']) ?></h2>
-            <p><?= e($finalCta['body']) ?></p>
+    <section class="home-third home-third--human" aria-label="Conversemos">
+        <div class="home-third__inner">
+            <section class="alma-final-cta" aria-labelledby="final-cta-title">
+                <div>
+                    <p class="eyebrow">Conversemos</p>
+                    <h2 id="final-cta-title">Hablemos de tu proyecto.</h2>
+                    <p>Si tu organización enfrenta información dispersa, procesos difíciles de explicar o decisiones que requieren mayor claridad, AlmaDesign puede ayudarte a diseñar una solución gobernada, trazable y sostenible.</p>
+                </div>
+                <a class="button button-primary" href="<?= e(url('/contacto')) ?>">Hablemos de tu proyecto</a>
+            </section>
         </div>
-        <a class="button button-primary" href="<?= e($finalCta['href']) ?>"><?= e($finalCta['label']) ?></a>
     </section>
 </div>
