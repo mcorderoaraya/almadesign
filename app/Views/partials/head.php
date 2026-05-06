@@ -18,5 +18,6 @@ $ogType = $ogType ?? 'website';
     <meta property="og:description" content="<?= e($ogDescription) ?>">
     <meta property="og:type" content="<?= e($ogType) ?>">
     <title><?= e($pageTitle) ?></title>
+    <link rel="icon" type="image/svg+xml" href="<?= asset('assets/img/favicon.svg') ?>">
     <link rel="stylesheet" href="<?= e(asset('css/app.css')) ?>">
 </head>
