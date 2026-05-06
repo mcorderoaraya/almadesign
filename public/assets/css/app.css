@@ -2582,6 +2582,28 @@ details p {
     scroll-margin-top: 96px;
 }
 
+.vertical-detail-hero[id],
+.vertical-detail-content [id],
+.apogeo-architectures-section[id],
+.apogeo-architecture-card[id],
+.consulting-section[id],
+.consulting-card[id],
+.apogeo-infographic-section[id],
+.apogeo-infographic-concept[id],
+.apogeo-limits-section[id],
+.vertical-detail-guardrails[id],
+.ai-for-humans-manifest [id],
+.home-third[id],
+.anchor-target {
+    scroll-margin-top: 96px;
+}
+
+.anchor-target {
+    display: block;
+    height: 0;
+    overflow: hidden;
+}
+
 @media (max-width: 980px) {
     h2 {
         font-size: 2.55rem;

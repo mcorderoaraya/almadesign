@@ -16,6 +16,7 @@ final class ContentController extends BaseController
             'sections' => [],
             'cardSections' => [
                 [
+                    'anchor' => 'enfoque-almadesign',
                     'title' => 'Enfoque AlmaDesign',
                     'intro' => 'No partimos por la herramienta. Partimos por la realidad de la organización. Nuestro enfoque busca ordenar procesos, criterios y decisiones antes de automatizar, para que la inteligencia artificial se integre con claridad, trazabilidad y sentido humano.',
                     'items' => [
@@ -35,6 +36,7 @@ final class ContentController extends BaseController
                             'key' => 'Elegir mejor antes de implementar más.',
                         ],
                         [
+                            'anchor' => 'gobernanza',
                             'title' => 'Diseño de guardrails y criterios humanos',
                             'body' => 'Definimos límites, reglas de uso y puntos de supervisión para que la tecnología opere dentro de un marco claro. Esto incluye criterios de validación, decisiones que deben seguir bajo control humano, manejo de excepciones y resguardo de la trazabilidad.',
                             'key' => 'Gobernar antes de delegar.',
@@ -52,6 +54,7 @@ final class ContentController extends BaseController
                     ],
                 ],
                 [
+                    'anchor' => 'que-se-entrega',
                     'title' => 'Qué se entrega',
                     'intro' => 'El resultado de una consultoría no debe ser una promesa abstracta. Debe dejar claridad accionable: procesos entendidos, oportunidades priorizadas, riesgos visibles y un camino de implementación que la organización pueda evaluar, gobernar y ejecutar.',
                     'items' => [
@@ -102,6 +105,11 @@ final class ContentController extends BaseController
                     'body' => 'La eficiencia debe demostrarse con datos, medición y análisis del impacto real. No se ofrecen porcentajes, ahorros ni resultados asegurados sin revisar antes el contexto operativo, los costos actuales, los riesgos y la capacidad de adopción de la organización.',
                 ],
             ],
+            'guardrailsAnchor' => 'que-no-se-promete',
+            'guardrailsSecondaryAnchors' => [
+                'limites-explicitos-de-comunicacion',
+            ],
+            'finalCtaAnchor' => 'conversemos',
             'cta' => 'Solicitar diagnóstico',
         ]);
     }
@@ -114,6 +122,7 @@ final class ContentController extends BaseController
             'eyebrow' => 'Apogeo',
             'heading' => 'Apogeo para conocimiento aumentado y decisiones mejor informadas.',
             'lead' => 'Apogeo es la línea de productos de AlmaDesign orientada a transformar información crítica, dispersa y cambiante en conocimiento consultable, trazable y verificable.',
+            'heroAnchor' => 'que-es-apogeo',
             'leadParagraphs' => [
                 'Apogeo es la línea de productos de AlmaDesign orientada a transformar información crítica, dispersa y cambiante en conocimiento consultable, trazable y verificable.',
                 'Está diseñado para organizaciones que necesitan tomar decisiones complejas con mejor contexto, reducir dependencia de información fragmentada y mantener evidencia clara sobre documentos, acuerdos, criterios y flujos de trabajo entre equipos o partes relacionadas.',
@@ -126,6 +135,7 @@ final class ContentController extends BaseController
                 'body' => 'Apogeo aborda distintos niveles de madurez en recuperación, relación y gobernanza del conocimiento. Estas tres aproximaciones permiten avanzar desde la consulta contextual hasta sistemas de conocimiento más conectados, trazables y coordinados.',
                 'cards' => [
                     [
+                        'anchor' => 'rag',
                         'title' => 'RAG',
                         'body' => 'Recuperación contextual de información relevante a partir de documentos y fuentes disponibles, para responder mejor una consulta sin depender de búsqueda manual dispersa.',
                         'micro' => 'Primer nivel de conocimiento aumentado.',
@@ -133,6 +143,7 @@ final class ContentController extends BaseController
                         'alt' => 'Diagrama abstracto de búsqueda contextual conectando una pregunta con documentos recuperados.',
                     ],
                     [
+                        'anchor' => 'graphrag',
                         'title' => 'GraphRAG',
                         'body' => 'Expande la recuperación incorporando relaciones entre conceptos, documentos, eventos y entidades, para construir respuestas con mayor profundidad de contexto y conexión entre antecedentes.',
                         'micro' => 'Contexto enriquecido por relaciones.',
@@ -140,6 +151,7 @@ final class ContentController extends BaseController
                         'alt' => 'Diagrama abstracto de nodos y relaciones entre piezas de información.',
                     ],
                     [
+                        'anchor' => 'ragk',
                         'title' => 'RAGK',
                         'body' => 'Integra recuperación, conocimiento conectado, trazabilidad y flujo gobernado de información para sostener respuestas compuestas, validables y útiles en decisiones humanas complejas.',
                         'micro' => 'Conocimiento confiable para decisiones complejas.',
@@ -150,6 +162,7 @@ final class ContentController extends BaseController
             ],
             'cardSections' => [
                 [
+                    'anchor' => 'que-resuelve',
                     'eyebrow' => 'Capacidades gerenciales',
                     'title' => 'Capacidades gerenciales de Apogeo',
                     'intro' => 'Apogeo ordena la información crítica como una base de conocimiento gobernada: consultable, conectada y verificable para que equipos ejecutivos decidan con mayor contexto.',
@@ -269,6 +282,7 @@ final class ContentController extends BaseController
                 'alt' => 'Proceso RAGK desde la pregunta hasta una respuesta compuesta con trazabilidad y validación humana.',
                 'caption' => 'La arquitectura articula recuperación contextual, relaciones documentales, flujo gobernado de información y evidencia verificable para sostener respuestas compuestas con criterio humano.',
                 'concept' => [
+                    'anchor' => 'ragk-como-concepto-gerencial',
                     'title' => 'RAGK como concepto gerencial',
                     'body' => [
                         'RAGK no debe explicarse públicamente como una lista de tecnologías.',
@@ -286,6 +300,7 @@ final class ContentController extends BaseController
             ],
             'postSections' => [],
             'limitsSection' => [
+                'anchor' => 'limites-explicitos',
                 'eyebrow' => 'Límites y alcance',
                 'title' => 'Qué no hace Apogeo',
                 'lead' => 'Apogeo está diseñado para ordenar conocimiento, conectar evidencia y mejorar la trazabilidad de información crítica. Su valor está en apoyar decisiones humanas mejor informadas, no en sustituir el criterio profesional ni automatizar responsabilidades que deben permanecer bajo control humano.',
@@ -318,6 +333,7 @@ final class ContentController extends BaseController
                 'closing' => 'En síntesis, Apogeo organiza, conecta y hace trazable el conocimiento para que las personas puedan decidir mejor. Su propósito no es reemplazar el juicio humano, sino fortalecerlo con contexto, evidencia y gobernanza.',
             ],
             'guardrails' => [],
+            'finalCtaAnchor' => 'conversemos',
             'cta' => 'Conversar sobre Apogeo',
             'finalCta' => [
                 'eyebrow' => 'Conversemos',
@@ -339,6 +355,7 @@ final class ContentController extends BaseController
             'eyebrow' => 'AI for Humans',
             'heading' => 'AI for Humans',
             'lead' => 'Inteligencia artificial gobernada para proteger, potenciar y no reemplazar al humano.',
+            'heroAnchor' => 'manifiesto',
             'sections' => [],
             'manifestSections' => [
                 [
@@ -355,6 +372,7 @@ final class ContentController extends BaseController
                     'quote' => 'AI for Humans afirma una dirección: la IA debe estar al servicio del ser humano, no el ser humano al servicio de la IA.',
                 ],
                 [
+                    'anchor' => 'origen',
                     'title' => 'El origen de una convicción',
                     'body' => [
                         'AlmaDesign nace desde una experiencia concreta: la tecnología puede devolver capacidad.',
@@ -366,6 +384,7 @@ final class ContentController extends BaseController
                     'quote' => 'La tecnología correcta no borra la historia humana. La prolonga.',
                 ],
                 [
+                    'anchor' => 'humano-al-centro',
                     'title' => 'La IA no debe ocupar el lugar del humano',
                     'body' => [
                         'La inteligencia artificial no debe ocupar el centro. El centro le pertenece al ser humano.',
@@ -377,6 +396,7 @@ final class ContentController extends BaseController
                     'quote' => 'La IA no debe ocupar el lugar del humano. Debe ampliar su campo de posibilidad.',
                 ],
                 [
+                    'anchor' => 'proteger',
                     'title' => 'Proteger',
                     'body' => [
                         'Proteger es la primera palabra del manifiesto porque la potencia sin protección se transforma en riesgo.',
@@ -389,6 +409,7 @@ final class ContentController extends BaseController
                     ],
                 ],
                 [
+                    'anchor' => 'potenciar',
                     'title' => 'Potenciar',
                     'body' => [
                         'Potenciar no significa exigir más rendimiento hasta agotar a la persona.',
@@ -402,6 +423,7 @@ final class ContentController extends BaseController
                     'quote' => 'La IA bien diseñada no reemplaza la chispa humana. Le entrega oxígeno.',
                 ],
                 [
+                    'anchor' => 'no-reemplazar',
                     'title' => 'No reemplazar',
                     'body' => [
                         'No reemplazar no es una frase defensiva. Es una frontera ética.',
@@ -414,6 +436,7 @@ final class ContentController extends BaseController
                     ],
                 ],
                 [
+                    'anchor' => 'creatividad',
                     'title' => 'Creatividad',
                     'body' => [
                         'La creatividad humana no es un lujo. Es una forma de existencia.',
@@ -425,6 +448,7 @@ final class ContentController extends BaseController
                     ],
                 ],
                 [
+                    'anchor' => 'toma-de-decision',
                     'title' => 'Toma de decisión',
                     'body' => [
                         'Decidir es uno de los actos más humanos que existen.',
@@ -436,6 +460,7 @@ final class ContentController extends BaseController
                     'quote' => 'Una IA correcta no decide por la persona. Le permite decidir con mayor claridad.',
                 ],
                 [
+                    'anchor' => 'valor-cognitivo',
                     'title' => 'Valor cognitivo',
                     'body' => [
                         'El pensamiento humano no es un costo operativo a reducir.',
@@ -448,6 +473,7 @@ final class ContentController extends BaseController
                     ],
                 ],
                 [
+                    'anchor' => 'salud-fisica-y-mental',
                     'title' => 'Salud física y mental',
                     'body' => [
                         'La eficiencia sin cuidado puede transformarse en una forma elegante de agotamiento.',
@@ -460,6 +486,7 @@ final class ContentController extends BaseController
                     ],
                 ],
                 [
+                    'anchor' => 'gobernanza-antes-de-automatizacion',
                     'title' => 'Gobernanza antes de automatización',
                     'body' => [
                         'Gobernar la IA no es burocracia. Es una forma de respeto.',
@@ -483,6 +510,7 @@ final class ContentController extends BaseController
                     ],
                 ],
                 [
+                    'anchor' => 'compromiso-almadesign',
                     'title' => 'Compromiso AlmaDesign',
                     'body' => [
                         'AlmaDesign adopta AI for Humans como manifiesto fundacional.',
@@ -495,6 +523,8 @@ final class ContentController extends BaseController
                 ],
             ],
             'guardrails' => [],
+            'signatureAnchor' => 'firma-fundacional',
+            'finalCtaAnchor' => 'conversemos',
             'cta' => 'Hablemos de tu proyecto',
         ]);
     }
