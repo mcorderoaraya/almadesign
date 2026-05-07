@@ -8,10 +8,10 @@ final class ApogeoLuxController extends BaseController
     public function index(): void
     {
         $this->view('pages/apogeo-lux', [
-            'title' => 'Apogeo Lux | IA jurídica gobernada y GraphRAG sobre normas BCN | AlmaDesign',
-            'metaDescription' => 'Apogeo Lux es un producto de AlmaDesign que demuestra un MVP GraphRAG local funcional para demo sobre normas públicas BCN, con respuestas extractivas citadas, source_ref verificable y trazabilidad auditable.',
-            'ogTitle' => 'Apogeo Lux | IA jurídica gobernada | AlmaDesign',
-            'ogDescription' => 'MVP GraphRAG local funcional para demo sobre normas públicas BCN, con respuestas extractivas citadas, source_ref verificable y trazabilidad auditable.',
+            'title' => 'Apogeo Lux | Consulta jurídica confiable y arquitectura GraphRAG | AlmaDesign',
+            'metaDescription' => 'Apogeo Lux es la visión de AlmaDesign para una solución de consulta jurídica confiable sobre normas, leyes chilenas, jurisprudencia, fuentes verificables y trazabilidad avanzada.',
+            'ogTitle' => 'Apogeo Lux | Consulta jurídica confiable | AlmaDesign',
+            'ogDescription' => 'Nuestra visión es reunir consulta normativa, relaciones entre fuentes, contexto jurídico, trazabilidad, jurisprudencia y criterio humano en una arquitectura GraphRAG gobernada.',
             'ogType' => 'website',
         ]);
     }

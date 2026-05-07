@@ -2577,6 +2577,321 @@ details p {
     outline-offset: 4px;
 }
 
+.apogeo-lux-editorial {
+    max-width: 920px;
+}
+
+.apogeo-lux-landing .vertical-detail-hero {
+    position: relative;
+    width: min(1080px, calc(100% - 32px));
+    padding: clamp(72px, 9vw, 118px) 0 clamp(78px, 10vw, 128px);
+}
+
+.apogeo-lux-landing .vertical-detail-hero::before {
+    position: absolute;
+    top: clamp(34px, 6vw, 76px);
+    right: 0;
+    width: min(42vw, 420px);
+    height: min(42vw, 420px);
+    border: 1px solid rgba(249, 115, 22, 0.2);
+    border-radius: 50%;
+    background:
+        linear-gradient(90deg, rgba(249, 115, 22, 0.1) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(244, 234, 220, 0.055) 1px, transparent 1px);
+    background-size: 34px 34px;
+    opacity: 0.38;
+    pointer-events: none;
+    content: "";
+    mask-image: radial-gradient(circle, #000 0 48%, transparent 73%);
+}
+
+.apogeo-lux-hero__eyebrow {
+    margin-bottom: 14px;
+}
+
+.apogeo-lux-hero__brand {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0;
+}
+
+.apogeo-lux-hero__separator {
+    position: relative;
+    z-index: 1;
+    width: clamp(36px, 5vw, 64px);
+    height: 3px;
+    margin: clamp(16px, 2vw, 24px) 0;
+    border-radius: 999px;
+    background: var(--naranja);
+}
+
+.apogeo-lux-wordmark {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.18em;
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 4vw, 4rem);
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 0.96;
+    text-transform: none;
+}
+
+.apogeo-lux-wordmark__apogeo {
+    color: var(--beige);
+}
+
+.apogeo-lux-wordmark__lux {
+    color: var(--naranja);
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 700;
+}
+
+.apogeo-lux-wordmark--light .apogeo-lux-wordmark__apogeo {
+    color: #111827;
+}
+
+.apogeo-lux-wordmark--dark .apogeo-lux-wordmark__apogeo {
+    color: var(--beige);
+}
+
+.apogeo-lux-wordmark--inline {
+    font-size: 1em;
+}
+
+.apogeo-lux-editorial-section h2 .apogeo-lux-wordmark {
+    margin-right: 0.12em;
+    vertical-align: baseline;
+}
+
+.apogeo-lux-editorial-section {
+    width: min(1040px, calc(100% - 32px));
+    margin: clamp(58px, 8vw, 104px) auto 0;
+    padding: clamp(28px, 5vw, 58px) 0;
+    border-bottom: 1px solid rgba(156, 163, 175, 0.2);
+}
+
+.apogeo-lux-editorial-section .section-heading {
+    max-width: 900px;
+    margin-bottom: clamp(28px, 4vw, 48px);
+}
+
+.apogeo-lux-editorial-section .eyebrow {
+    margin-bottom: 16px;
+    color: var(--naranja);
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.apogeo-lux-editorial-section h2 {
+    max-width: 880px;
+    margin: 0;
+    color: var(--beige);
+    font-family: var(--serif);
+    font-size: clamp(2.35rem, 4.6vw, 4.35rem);
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.02;
+}
+
+.apogeo-lux-editorial-copy {
+    max-width: 850px;
+    border-left: 4px solid var(--naranja);
+    padding-left: clamp(18px, 3vw, 30px);
+}
+
+.apogeo-lux-editorial-copy p {
+    margin: 0;
+    color: rgba(244, 234, 220, 0.78);
+    font-family: var(--sans);
+    font-size: clamp(1.05rem, 1.35vw, 1.22rem);
+    line-height: 1.72;
+}
+
+.apogeo-lux-editorial-copy p + p {
+    margin-top: 18px;
+}
+
+.apogeo-lux-technical-application {
+    background: var(--beige);
+    padding: clamp(56px, 7vw, 96px) 0;
+    color: #111827;
+}
+
+.apogeo-lux-technical-application__inner {
+    width: min(var(--max), calc(100% - 32px));
+    margin: 0 auto;
+}
+
+.apogeo-lux-technical-application__card {
+    padding: clamp(24px, 4vw, 44px);
+    border: 1px solid rgba(17, 24, 39, 0.12);
+    border-radius: 30px;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.64), rgba(244, 234, 220, 0.72)),
+        radial-gradient(circle at 100% 0%, rgba(249, 115, 22, 0.12), transparent 34%);
+    box-shadow: 0 22px 70px rgba(17, 24, 39, 0.12);
+}
+
+.apogeo-lux-technical-application__heading {
+    margin-bottom: clamp(20px, 3vw, 32px);
+}
+
+.apogeo-lux-technical-application__heading .eyebrow {
+    color: var(--naranja);
+}
+
+.apogeo-lux-technical-application__heading h2 {
+    margin: 0;
+    color: #111827;
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1.05;
+}
+
+.apogeo-lux-technical-application__heading p:not(.eyebrow) {
+    margin: 0.75rem 0 0;
+    color: #111827;
+    font-family: var(--sans);
+    font-size: clamp(1rem, 1.3vw, 1.2rem);
+}
+
+.apogeo-lux-technical-application__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid rgba(17, 24, 39, 0.12);
+    border-radius: 24px;
+    box-shadow: 0 18px 48px rgba(17, 24, 39, 0.14);
+}
+
+.apogeo-lux-matrix,
+.apogeo-lux-diagram-grid,
+.apogeo-lux-audience-grid {
+    display: grid;
+    gap: 14px;
+    margin-top: 34px;
+}
+
+.apogeo-lux-matrix {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.apogeo-lux-matrix article,
+.apogeo-lux-audience-grid span,
+.apogeo-lux-interest__panel {
+    border: 1px solid rgba(244, 234, 220, 0.16);
+    border-radius: 12px;
+    background: linear-gradient(155deg, rgba(244, 234, 220, 0.075), rgba(17, 24, 39, 0.56));
+    box-shadow: inset 0 1px 0 rgba(244, 234, 220, 0.08);
+}
+
+.apogeo-lux-matrix article {
+    display: grid;
+    min-height: 128px;
+    align-content: space-between;
+    gap: 18px;
+    padding: 18px;
+}
+
+.apogeo-lux-matrix span {
+    color: var(--naranja);
+    font-family: var(--mono);
+    font-size: 0.74rem;
+}
+
+.apogeo-lux-matrix strong {
+    color: var(--beige);
+    font-size: 0.98rem;
+    line-height: 1.35;
+}
+
+.apogeo-lux-diagram-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.apogeo-lux-diagram {
+    min-width: 0;
+    padding: clamp(20px, 3vw, 28px);
+    border: 1px solid rgba(249, 115, 22, 0.22);
+    border-radius: 14px;
+    background:
+        linear-gradient(180deg, rgba(244, 234, 220, 0.085), rgba(17, 24, 39, 0.68)),
+        radial-gradient(circle at 0% 0%, rgba(249, 115, 22, 0.12), transparent 38%);
+    box-shadow: inset 0 1px 0 rgba(244, 234, 220, 0.1);
+}
+
+.apogeo-lux-diagram h3 {
+    margin-bottom: 18px;
+    color: var(--beige);
+    font-size: clamp(1.35rem, 2vw, 1.85rem);
+    line-height: 1.08;
+}
+
+.apogeo-lux-diagram ol {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.apogeo-lux-diagram li {
+    position: relative;
+    padding: 13px 14px 13px 18px;
+    border: 1px solid rgba(244, 234, 220, 0.13);
+    border-radius: 9px;
+    background: rgba(244, 234, 220, 0.052);
+    color: var(--beige);
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.apogeo-lux-diagram li::before {
+    position: absolute;
+    top: -13px;
+    left: 24px;
+    width: 1px;
+    height: 12px;
+    background: linear-gradient(180deg, rgba(249, 115, 22, 0.16), rgba(249, 115, 22, 0.76));
+    content: "";
+}
+
+.apogeo-lux-diagram li:first-child::before {
+    display: none;
+}
+
+.apogeo-lux-audience-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.apogeo-lux-audience-grid span {
+    min-height: 94px;
+    padding: 18px;
+    color: var(--beige);
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.apogeo-lux-interest__panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-top: 30px;
+    padding: clamp(22px, 4vw, 34px);
+}
+
+.apogeo-lux-interest__panel p {
+    max-width: 680px;
+    margin: 0;
+    color: var(--beige);
+    font-size: clamp(1.04rem, 1.4vw, 1.22rem);
+}
+
 #enfoque-tec,
 #cta-final {
     scroll-margin-top: 96px;
@@ -2625,6 +2940,9 @@ details p {
     .alma-vertical-card-grid,
     .apogeo-architecture-grid,
     .consulting-card-grid,
+    .apogeo-lux-matrix,
+    .apogeo-lux-diagram-grid,
+    .apogeo-lux-audience-grid,
     .flow-list,
     .method-list,
     .audience-grid {
@@ -2681,6 +2999,11 @@ details p {
 
     .site-footer__identity {
         grid-column: 1 / -1;
+    }
+
+    .apogeo-lux-interest__panel {
+        align-items: flex-start;
+        flex-direction: column;
     }
 
     .final-cta {
@@ -2757,12 +3080,28 @@ details p {
     .alma-vertical-card-grid,
     .apogeo-architecture-grid,
     .consulting-card-grid,
+    .apogeo-lux-matrix,
+    .apogeo-lux-diagram-grid,
+    .apogeo-lux-audience-grid,
     .flow-list,
     .method-list,
     .demo-board,
     .governance-grid,
     .audience-grid {
         grid-template-columns: 1fr;
+    }
+
+    .apogeo-lux-matrix article,
+    .apogeo-lux-audience-grid span {
+        min-height: auto;
+    }
+
+    .apogeo-lux-technical-application__card {
+        border-radius: 20px;
+    }
+
+    .apogeo-lux-technical-application__image {
+        border-radius: 18px;
     }
 
     .alma-home h1 {
