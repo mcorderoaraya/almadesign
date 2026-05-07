@@ -48,7 +48,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - PRODUCCION_ANCHORS_Y_FAVICON_FIX: PENDIENTE_DEPLOY_CONTROLADO.
 - MENU_VERTICAL_PRODUCTOS_ALMADESIGN_WEB: NO_VALIDADO.
 - SUBMENU_PRODUCTOS: REMOVER_SOLICITADO.
-- VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
+- VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO: CERRADO_OK.
 - HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
 
 ## Frentes implementados localmente
@@ -101,8 +101,8 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - RUTAS_PRODUCTIVAS_POST_DEPLOY_FRONTEND: HTTP_200.
 - ASSETS_HOME_APOGEO_POST_DEPLOY: HTTP_200.
 - HOME_VISUAL_LOCAL: VALIDADO_POR_MAURICIO.
-- HOME_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
-- APOGEO_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
+- HOME_VISUAL_PRODUCTIVO: VALIDADO_POR_MAURICIO.
+- APOGEO_VISUAL_PRODUCTIVO: VALIDADO_POR_MAURICIO.
 - BASE_SEGURIDAD_POST_SSL_ALMADESIGN: CONFIGURADA.
 - HEADERS_SEGURIDAD: ACTIVOS.
 - CLOUDFLARE_PROXY: ACTIVO.
@@ -136,7 +136,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - BACKEND_APOGEO_LUX: NO_TOCADO.
 - No hay base de datos todavía.
 - Formulario de contacto desplegado y validado productivamente con SMTP Zoho.
-- Siguiente frente recomendado: VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
+- VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO: CERRADO_OK.
 
 ## Observaciones página Apogeo
 
@@ -148,7 +148,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Las tarjetas de arquitectura usan imágenes finales WebP: `public/assets/img/apogeo/apogeo-rag-card.webp`, `public/assets/img/apogeo/apogeo-graphrag-card.webp` y `public/assets/img/apogeo/apogeo-ragk-card.webp`.
 - La infografía vigente es `public/assets/img/apogeo/infografia-ragk.webp`.
 - RAGK se comunica públicamente como arquitectura de conocimiento confiable: recuperación contextual, conocimiento conectado, flujo gobernado de información y evidencia verificable para decisiones humanas.
-- `/apogeo` nuevo está publicado y validado por HTTP; revisión visual productiva pendiente de Mauricio.
+- `/apogeo` nuevo está publicado, validado por HTTP y validado visualmente por Mauricio.
 
 ## Observaciones deploy VPS
 
@@ -170,7 +170,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Healthcheck manual ejecutado correctamente en VPS.
 - Backup manual ejecutado correctamente en VPS.
 - No se tocaron Cloudflare, Zoho, DNS, SSL, `.env`, llaves SSH, base de datos, formulario, Composer, WordPress, Docker ni cPanel.
-- Siguiente frente recomendado: VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
+- VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO: CERRADO_OK.
 
 ## Estado formulario
 
@@ -195,7 +195,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - Log mínimo en `logs/contact.log`, sin guardar cuerpo completo del mensaje.
 - No hay base de datos.
 - DEPLOY_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
-- Siguiente frente recomendado: VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
+- VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO: CERRADO_OK.
 
 ## Estado frontend
 
@@ -214,7 +214,7 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - SMTP_PRODUCTIVO_ZOHO: VALIDADO.
 - El frente acumulado AI for Humans / menu / formulario / footer quedó desplegado y validado productivamente por Mauricio en `DEPLOY_HEAD` 06b64fedcbc669fa570fbb7fe347da9c86e4f050.
 - Cambios acumulados: `/ai-for-humans` como manifiesto publico fundacional, fondo claro `#F4EADC` / `var(--beige)`, header claro local, menu mobile hamburguesa, numeracion editorial responsive, firma fundacional con imagen de Mauricio, boton de contacto deshabilitado hasta validacion cliente, footer global sin logo gris y CTA final verticales homologada.
-- Siguiente frente recomendado: VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
+- VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO: CERRADO_OK.
 
 ## Fuera de alcance
 
@@ -275,5 +275,5 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 
 ## Frente siguiente recomendado
 
-- VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
+- VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO: CERRADO_OK.
 - HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.

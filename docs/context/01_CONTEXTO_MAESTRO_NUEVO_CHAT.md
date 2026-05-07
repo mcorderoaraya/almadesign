@@ -106,7 +106,7 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend técnico 
 - `.env.example` creado sin secretos reales.
 - `.env` real no versionado.
 - No hay base de datos.
-- Siguiente frente recomendado: VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
+- VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO: CERRADO_OK.
 - Frente futuro recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
 
 ## Estado Home frontend nuevo validado localmente
@@ -128,11 +128,11 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend técnico 
 - RUTAS_PRODUCTIVAS_POST_DEPLOY_FRONTEND: HTTP_200.
 - ASSETS_HOME_APOGEO_POST_DEPLOY: HTTP_200.
 - HOME_VISUAL_LOCAL: VALIDADO_POR_MAURICIO.
-- HOME_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
-- APOGEO_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
-- SIGUIENTE_FRENTE_RECOMENDADO: VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
-- No afirmar validación visual productiva completa del Home nuevo hasta confirmación manual de Mauricio.
-- `/apogeo` productivo validado por HTTP; revisión visual productiva pendiente de Mauricio.
+- HOME_VISUAL_PRODUCTIVO: VALIDADO_POR_MAURICIO.
+- APOGEO_VISUAL_PRODUCTIVO: VALIDADO_POR_MAURICIO.
+- VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO: CERRADO_OK.
+- Home nuevo validado visualmente en producción por Mauricio.
+- `/apogeo` productivo validado por HTTP y validado visualmente por Mauricio.
 
 ## Estado Apogeo local vigente
 
