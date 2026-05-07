@@ -130,12 +130,19 @@ No declarar anchors/favicon como desplegados hasta deploy controlado.
 - BASE_DE_DATOS: NO_ABIERTA.
 - LOGIN: NO_EXISTE.
 - UPLOADS: NO_EXISTEN.
-- REPARACION_COMERCIAL_APOGEO_LUX: EN_CURSO / PENDIENTE_VALIDACION_MAURICIO.
+- REPARACION_COMERCIAL_APOGEO_LUX: CERRADO_OK.
+- APOGEO_LUX_COMERCIAL: DESPLEGADO_Y_VALIDADO_VISUALMENTE_POR_MAURICIO.
+- VALIDACION_VISUAL_PRODUCTIVA_APOGEO_LUX: CERRADO_OK.
+- DEPLOY_HEAD_APOGEO_LUX_COMERCIAL: 7ec67a151cbd37812a6d0565f79113f2db2fe5e8.
+- FAVICON_PRODUCTIVO: OK.
+- INFOGRAFIA_GRAPHRAG_APOGEO_LUX: VALIDADA.
+- HEADER_SIN_PRODUCTOS: VALIDADO.
+- BACKEND_APOGEO_LUX: NO_TOCADO.
 - MENU_VERTICAL_PRODUCTOS_ALMADESIGN_WEB: NO_VALIDADO.
 - SUBMENU_PRODUCTOS: REMOVER_SOLICITADO.
 - workflow_marketing: PRODUCTO_DOCUMENTAL_NUEVO_PLANIFICADO / FUERA_DE_ALCANCE_ALMADESIGN_WEB_PRODUCTIVO.
 
-No afirmar Apogeo Lux comercial cerrado, deploy nuevo de `/apogeo-lux`, integración de nuevas infografías ni cierre del submenu productos sin reporte final.
+`/apogeo-lux` quedó como landing comercial madura para captura de interés, con visión de producto GraphRAG jurídico, fuentes verificables, jurisprudencia, trazabilidad, criterio humano, infografía GraphRAG, sección "Quiero ser el primero en contar con esta solución" y CTA hacia `/contacto`.
 
 ## Límites
 

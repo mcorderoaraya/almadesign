@@ -42,11 +42,19 @@
 - ANCHORS_SEMANTICOS_CAMPANAS_ALMADESIGN_WEB: EN_ORIGIN_MAIN.
 - PRODUCCION_ANCHORS_Y_FAVICON_FIX: PENDIENTE_DEPLOY_CONTROLADO.
 - BACKEND_ALMADESIGN_WEB: NO_ABRIR_TODAVIA.
+- REPARACION_COMERCIAL_APOGEO_LUX: CERRADO_OK.
+- APOGEO_LUX_COMERCIAL: DESPLEGADO_Y_VALIDADO_VISUALMENTE_POR_MAURICIO.
+- VALIDACION_VISUAL_PRODUCTIVA_APOGEO_LUX: CERRADO_OK.
+- DEPLOY_HEAD_APOGEO_LUX_COMERCIAL: 7ec67a151cbd37812a6d0565f79113f2db2fe5e8.
+- FAVICON_PRODUCTIVO: OK.
+- INFOGRAFIA_GRAPHRAG_APOGEO_LUX: VALIDADA.
+- HEADER_SIN_PRODUCTOS: VALIDADO.
+- BACKEND_APOGEO_LUX: NO_TOCADO.
 - Assets Home validados localmente: SI.
 - Base de datos: NO ABIERTA.
 - Deploy: EJECUTADO_OK para Home, `/apogeo` y remoción del bloque "El problema" en `/consultoria-ia-procesos`.
 
-Este documento registra la estructura frontend del Home de AlmaDesign Web validada visualmente por Mauricio en entorno local. El despliegue productivo previo quedó validado por HTTP; la revisión visual productiva en `almadesign.cl` queda pendiente de confirmación manual de Mauricio. El frente acumulado AI for Humans / menu / formulario / footer quedó desplegado y validado productivamente por Mauricio. Anchors y fix favicon están en `origin/main`, pero siguen pendientes de deploy controlado.
+Este documento registra la estructura frontend del Home de AlmaDesign Web validada visualmente por Mauricio en entorno local. El despliegue productivo previo quedó validado por HTTP; la revisión visual productiva en `almadesign.cl` queda pendiente de confirmación manual de Mauricio. El frente acumulado AI for Humans / menu / formulario / footer quedó desplegado y validado productivamente por Mauricio. `/apogeo-lux` quedó desplegada como landing comercial madura con infografía GraphRAG, captura de interés y CTA hacia `/contacto`.
 
 ## Objetivo del Home
 

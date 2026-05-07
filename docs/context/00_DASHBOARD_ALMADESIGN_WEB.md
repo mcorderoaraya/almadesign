@@ -55,7 +55,7 @@ AlmaDesign Web está explícitamente separado del backend técnico Apogeo Lux.
 - APOGEO_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
 - MVC PHP local: creado.
 - Rutas locales activas: `/`, `/consultoria-ia-procesos`, `/apogeo`, `/ai-for-humans`, `/apogeo-lux`, `/contacto`, `/contacto/enviar` y `/contacto/gracias`.
-- Landing `/apogeo-lux`: estado historico local; reparacion comercial actual EN_CURSO / PENDIENTE_VALIDACION_MAURICIO.
+- Landing `/apogeo-lux`: APOGEO_LUX_COMERCIAL: DESPLEGADO_Y_VALIDADO_VISUALMENTE_POR_MAURICIO.
 - Página `/apogeo`: desplegada y validada productivamente por HTTP en repo con narrativa gerencial, arquitecturas RAG / GraphRAG / RAGK, cards finales WebP e infografía RAGK.
 - APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: DESPLEGADO_Y_VALIDADO_HTTP.
 - DEPLOY_CONTROLADO_FRONTEND_HOME_APOGEO_Y_CONSULTORIA_ALMADESIGN_WEB: EJECUTADO_OK.
@@ -92,7 +92,14 @@ AlmaDesign Web está explícitamente separado del backend técnico Apogeo Lux.
 - BASE_DE_DATOS: NO_ABIERTA.
 - LOGIN: NO_EXISTE.
 - UPLOADS: NO_EXISTEN.
-- REPARACION_COMERCIAL_APOGEO_LUX: EN_CURSO / PENDIENTE_VALIDACION_MAURICIO.
+- REPARACION_COMERCIAL_APOGEO_LUX: CERRADO_OK.
+- APOGEO_LUX_COMERCIAL: DESPLEGADO_Y_VALIDADO_VISUALMENTE_POR_MAURICIO.
+- VALIDACION_VISUAL_PRODUCTIVA_APOGEO_LUX: CERRADO_OK.
+- DEPLOY_HEAD_APOGEO_LUX_COMERCIAL: 7ec67a151cbd37812a6d0565f79113f2db2fe5e8.
+- FAVICON_PRODUCTIVO: OK.
+- INFOGRAFIA_GRAPHRAG_APOGEO_LUX: VALIDADA.
+- HEADER_SIN_PRODUCTOS: VALIDADO.
+- BACKEND_APOGEO_LUX: NO_TOCADO.
 - MENU_VERTICAL_PRODUCTOS_ALMADESIGN_WEB: NO_VALIDADO.
 - SUBMENU_PRODUCTOS: REMOVER_SOLICITADO.
 - workflow_marketing: PRODUCTO_DOCUMENTAL_NUEVO_PLANIFICADO / FUERA_DE_ALCANCE_ALMADESIGN_WEB_PRODUCTIVO.
@@ -111,7 +118,7 @@ AlmaDesign Web está explícitamente separado del backend técnico Apogeo Lux.
 ## Pendientes vigentes
 
 - PRODUCCION_ANCHORS_Y_FAVICON_FIX: PENDIENTE_DEPLOY_CONTROLADO.
-- REPARACION_COMERCIAL_APOGEO_LUX: EN_CURSO / PENDIENTE_VALIDACION_MAURICIO.
+- REPARACION_COMERCIAL_APOGEO_LUX: CERRADO_OK.
 - MENU_VERTICAL_PRODUCTOS_ALMADESIGN_WEB: NO_VALIDADO.
 - SUBMENU_PRODUCTOS: REMOVER_SOLICITADO.
 - VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
@@ -151,7 +158,8 @@ AlmaDesign Web está explícitamente separado del backend técnico Apogeo Lux.
 - Neo4j.
 - PostgreSQL Apogeo Lux.
 - evidencia técnica Apogeo Lux.
-- REPARACION_COMERCIAL_APOGEO_LUX no cerrada ni desplegada como nuevo frente.
+- REPARACION_COMERCIAL_APOGEO_LUX: CERRADO_OK.
+- BACKEND_APOGEO_LUX: NO_TOCADO.
 - workflow_marketing, producto documental nuevo planificado fuera del sitio productivo.
 - VPS, Cloudflare, Zoho, DNS, SSL, Nginx, `.env`, llaves SSH, base de datos, formulario, Composer, WordPress, Docker y cPanel en este frente.
 

@@ -46,7 +46,6 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 ## Pendientes
 
 - PRODUCCION_ANCHORS_Y_FAVICON_FIX: PENDIENTE_DEPLOY_CONTROLADO.
-- REPARACION_COMERCIAL_APOGEO_LUX: EN_CURSO / PENDIENTE_VALIDACION_MAURICIO.
 - MENU_VERTICAL_PRODUCTOS_ALMADESIGN_WEB: NO_VALIDADO.
 - SUBMENU_PRODUCTOS: REMOVER_SOLICITADO.
 - VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
@@ -75,6 +74,14 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - BASE_DE_DATOS: NO_ABIERTA.
 - LOGIN: NO_EXISTE.
 - UPLOADS: NO_EXISTEN.
+- REPARACION_COMERCIAL_APOGEO_LUX: CERRADO_OK.
+- APOGEO_LUX_COMERCIAL: DESPLEGADO_Y_VALIDADO_VISUALMENTE_POR_MAURICIO.
+- VALIDACION_VISUAL_PRODUCTIVA_APOGEO_LUX: CERRADO_OK.
+- DEPLOY_HEAD_APOGEO_LUX_COMERCIAL: 7ec67a151cbd37812a6d0565f79113f2db2fe5e8.
+- FAVICON_PRODUCTIVO: OK.
+- INFOGRAFIA_GRAPHRAG_APOGEO_LUX: VALIDADA.
+- HEADER_SIN_PRODUCTOS: VALIDADO.
+- BACKEND_APOGEO_LUX: NO_TOCADO.
 
 ## Frentes ejecutados en VPS
 
@@ -115,13 +122,18 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 
 ## Observaciones landing Apogeo Lux
 
-- Landing `/apogeo-lux`: estado histórico local documentado; reparación comercial actual no cerrada.
-- REPARACION_COMERCIAL_APOGEO_LUX: EN_CURSO / PENDIENTE_VALIDACION_MAURICIO.
-- No afirmar que `/apogeo-lux` ya quedó corregida comercialmente.
-- No afirmar deploy nuevo de `/apogeo-lux` ni integración de nuevas infografías sin commit y validación.
-- Presenta Apogeo Lux como producto de AlmaDesign.
-- Usa claims gobernados sobre MVP GraphRAG local funcional para demo, normas públicas BCN / LeyChile, respuestas extractivas citadas, `source_ref`, trazabilidad, auditoría y gobernanza.
-- Declara explícitamente límites: no producción, no asesoría legal, no reemplazo de abogados, no LLM generativo usado en esta demo, no jurisprudencia integrada, no SaaS listo, no GraphRAG enterprise y no `ready_for_production_anchor=true`.
+- REPARACION_COMERCIAL_APOGEO_LUX: CERRADO_OK.
+- APOGEO_LUX_COMERCIAL: DESPLEGADO_Y_VALIDADO_VISUALMENTE_POR_MAURICIO.
+- VALIDACION_VISUAL_PRODUCTIVA_APOGEO_LUX: CERRADO_OK.
+- DEPLOY_HEAD_APOGEO_LUX_COMERCIAL: 7ec67a151cbd37812a6d0565f79113f2db2fe5e8.
+- `/apogeo-lux` quedó como landing comercial madura para capturar interés por Apogeo Lux.
+- Mensaje central: consulta jurídica confiable sobre normas, leyes chilenas y relaciones de conocimiento.
+- La página comunica visión de producto GraphRAG jurídico, fuentes verificables, jurisprudencia, trazabilidad y criterio humano.
+- INFOGRAFIA_GRAPHRAG_APOGEO_LUX: VALIDADA.
+- Incluye sección "Quiero ser el primero en contar con esta solución" y CTA hacia `/contacto`.
+- FAVICON_PRODUCTIVO: OK.
+- HEADER_SIN_PRODUCTOS: VALIDADO.
+- BACKEND_APOGEO_LUX: NO_TOCADO.
 - No hay base de datos todavía.
 - Formulario de contacto desplegado y validado productivamente con SMTP Zoho.
 - Siguiente frente recomendado: VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.

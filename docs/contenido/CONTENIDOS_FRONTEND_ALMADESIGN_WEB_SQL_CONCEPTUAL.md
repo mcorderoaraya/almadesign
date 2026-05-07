@@ -43,11 +43,19 @@
 - ANCHORS_SEMANTICOS_CAMPANAS_ALMADESIGN_WEB: EN_ORIGIN_MAIN.
 - PRODUCCION_ANCHORS_Y_FAVICON_FIX: PENDIENTE_DEPLOY_CONTROLADO.
 - BACKEND_ALMADESIGN_WEB: NO_ABRIR_TODAVIA.
+- REPARACION_COMERCIAL_APOGEO_LUX: CERRADO_OK.
+- APOGEO_LUX_COMERCIAL: DESPLEGADO_Y_VALIDADO_VISUALMENTE_POR_MAURICIO.
+- VALIDACION_VISUAL_PRODUCTIVA_APOGEO_LUX: CERRADO_OK.
+- DEPLOY_HEAD_APOGEO_LUX_COMERCIAL: 7ec67a151cbd37812a6d0565f79113f2db2fe5e8.
+- FAVICON_PRODUCTIVO: OK.
+- INFOGRAFIA_GRAPHRAG_APOGEO_LUX: VALIDADA.
+- HEADER_SIN_PRODUCTOS: VALIDADO.
+- BACKEND_APOGEO_LUX: NO_TOCADO.
 - Base de datos: NO ABIERTA.
 - SQL: CONCEPTUAL FUTURO, no instrucción de implementación.
 - Deploy: EJECUTADO_OK para Home, `/apogeo` y remoción del bloque "El problema" en `/consultoria-ia-procesos`.
 
-Este documento sirve como fuente editorial para mantener mensajes, jerarquía de contenido, rutas conceptuales, arquitectura SEO y AI SEO. El Home frontend nuevo fue validado localmente por Mauricio; Home, `/apogeo` y `/consultoria-ia-procesos` quedaron desplegados y validados por HTTP en producción. El frente acumulado AI for Humans / menu / formulario / footer quedó desplegado y validado productivamente por Mauricio. Anchors y fix favicon están en `origin/main`, pero siguen pendientes de deploy controlado.
+Este documento sirve como fuente editorial para mantener mensajes, jerarquía de contenido, rutas conceptuales, arquitectura SEO y AI SEO. El Home frontend nuevo fue validado localmente por Mauricio; Home, `/apogeo` y `/consultoria-ia-procesos` quedaron desplegados y validados por HTTP en producción. El frente acumulado AI for Humans / menu / formulario / footer quedó desplegado y validado productivamente por Mauricio. `/apogeo-lux` quedó como landing comercial madura de captura de interés sobre consulta jurídica confiable, visión GraphRAG jurídica, fuentes verificables, jurisprudencia, trazabilidad y criterio humano.
 
 ## Principio editorial
 

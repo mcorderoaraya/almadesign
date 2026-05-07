@@ -90,8 +90,15 @@ No modificar desde este frente documental:
 - La nueva página `/apogeo` fue desplegada y validada por HTTP; revisión visual productiva pendiente de Mauricio.
 - El frente acumulado AI for Humans / menu / formulario / footer esta desplegado y validado productivamente en `DEPLOY_HEAD` 06b64fedcbc669fa570fbb7fe347da9c86e4f050.
 - No declarar anchors/favicon como desplegados: estan en `origin/main` y pendientes de deploy controlado.
-- REPARACION_COMERCIAL_APOGEO_LUX: EN_CURSO / PENDIENTE_VALIDACION_MAURICIO.
-- No afirmar que `/apogeo-lux` ya quedó corregida comercialmente, desplegada como nuevo frente o con nuevas infografías integradas sin commit y validación.
+- REPARACION_COMERCIAL_APOGEO_LUX: CERRADO_OK.
+- APOGEO_LUX_COMERCIAL: DESPLEGADO_Y_VALIDADO_VISUALMENTE_POR_MAURICIO.
+- VALIDACION_VISUAL_PRODUCTIVA_APOGEO_LUX: CERRADO_OK.
+- DEPLOY_HEAD_APOGEO_LUX_COMERCIAL: 7ec67a151cbd37812a6d0565f79113f2db2fe5e8.
+- FAVICON_PRODUCTIVO: OK.
+- INFOGRAFIA_GRAPHRAG_APOGEO_LUX: VALIDADA.
+- HEADER_SIN_PRODUCTOS: VALIDADO.
+- BACKEND_APOGEO_LUX: NO_TOCADO.
+- `/apogeo-lux` quedó como landing comercial madura de captura de interés, con visión GraphRAG jurídica y CTA hacia `/contacto`.
 - MENU_VERTICAL_PRODUCTOS_ALMADESIGN_WEB: NO_VALIDADO.
 - SUBMENU_PRODUCTOS: REMOVER_SOLICITADO.
 - workflow_marketing: PRODUCTO_DOCUMENTAL_NUEVO_PLANIFICADO / FUERA_DE_ALCANCE_ALMADESIGN_WEB_PRODUCTIVO.
