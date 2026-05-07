@@ -29,6 +29,25 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - APOGEO_CONOCIMIENTO_AUMENTADO_RAGK: DESPLEGADO_Y_VALIDADO_HTTP.
 - La página pública `/apogeo` está desplegada y validada por HTTP con narrativa gerencial, arquitecturas RAG / GraphRAG / RAGK, cards finales WebP e infografía RAGK.
 - DEPLOY_CONTROLADO_FRONTEND_HOME_APOGEO_Y_CONSULTORIA_ALMADESIGN_WEB: EJECUTADO_OK.
+- DEPLOY_CONTROLADO_FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: CERRADO_OK.
+- DEPLOY_HEAD: 06b64fedcbc669fa570fbb7fe347da9c86e4f050.
+- VALIDACION_VISUAL_PRODUCTIVA_FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: CERRADO_OK.
+- AI_FOR_HUMANS: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- MENU_MOBILE: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- FORMULARIO_CONTACTO_CLIENT_SIDE: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- FOOTER_GLOBAL: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- ANCHORS_FAVICON_HEAD: 33ed31c8638b6f0c3f13c36f31e02cf184cc70ed.
+- FAVICON_PATH_FIX: EN_ORIGIN_MAIN.
+- ANCHORS_SEMANTICOS_CAMPANAS_ALMADESIGN_WEB: EN_ORIGIN_MAIN.
+- PRODUCCION_ANCHORS_Y_FAVICON_FIX: PENDIENTE_DEPLOY_CONTROLADO.
+- BACKEND_ALMADESIGN_WEB: NO_ABRIR_TODAVIA.
+- BASE_DE_DATOS: NO_ABIERTA.
+- LOGIN: NO_EXISTE.
+- UPLOADS: NO_EXISTEN.
+- REPARACION_COMERCIAL_APOGEO_LUX: EN_CURSO / PENDIENTE_VALIDACION_MAURICIO.
+- MENU_VERTICAL_PRODUCTOS_ALMADESIGN_WEB: NO_VALIDADO.
+- SUBMENU_PRODUCTOS: REMOVER_SOLICITADO.
+- workflow_marketing: PRODUCTO_DOCUMENTAL_NUEVO_PLANIFICADO / FUERA_DE_ALCANCE_ALMADESIGN_WEB_PRODUCTIVO.
 
 ## VPS productivo validado
 
@@ -53,7 +72,10 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 
 ## Pendientes
 
-- DEPLOY_CONTROLADO_FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO.
+- PRODUCCION_ANCHORS_Y_FAVICON_FIX: PENDIENTE_DEPLOY_CONTROLADO.
+- REPARACION_COMERCIAL_APOGEO_LUX: EN_CURSO / PENDIENTE_VALIDACION_MAURICIO.
+- MENU_VERTICAL_PRODUCTOS_ALMADESIGN_WEB: NO_VALIDADO.
+- SUBMENU_PRODUCTOS: REMOVER_SOLICITADO.
 - VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
 - HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
 
@@ -82,17 +104,21 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 - GitHub repo: `https://github.com/mcorderoaraya/almadesign`.
 - Branch deploy: `main`.
 
-## Estado frontend acumulado pendiente de deploy
+## Estado frontend acumulado cerrado
 
-- FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: PUSH_ORIGIN_MAIN_OK.
-- PRODUCCION_FRONTEND_ACUMULADO: PENDIENTE_DEPLOY_PRODUCTIVO.
-- AI_FOR_HUMANS_MANIFIESTO_PUBLICO: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- CONTACTO_BOTON_DISABLED_HASTA_VALIDACION_CLIENTE: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- MENU_MOBILE_HAMBURGUESA: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- FOOTER_GLOBAL_SIN_LOGO_GRIS: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- Alcance registrado: `/ai-for-humans` como manifiesto publico fundacional con fondo `#F4EADC` / `var(--beige)`, header claro local validado, menu mobile hamburguesa, numeracion editorial responsive, firma fundacional con imagen de Mauricio, formulario de contacto con boton deshabilitado hasta validacion cliente, footer global sin logo gris y CTA final de verticales homologada.
-- Nota de gobernanza: estos cambios estan en `origin/main`, pero produccion todavia no esta actualizada con este frente acumulado.
+- DEPLOY_CONTROLADO_FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: CERRADO_OK.
+- DEPLOY_HEAD: 06b64fedcbc669fa570fbb7fe347da9c86e4f050.
+- BACKUP_PRE_DEPLOY_FRONTEND_ACUMULADO: `/var/backups/almadesign/almadesign_backup_20260505_214506.tar.gz`.
+- CHECKSUM_BACKUP_PRE_DEPLOY_FRONTEND_ACUMULADO: OK.
+- HEALTHCHECK_POST_DEPLOY_FRONTEND_ACUMULADO: OK.
+- RUTAS_PRODUCTIVAS_FRONTEND_ACUMULADO: HTTP_200.
+- ASSETS_PRODUCTIVOS_FRONTEND_ACUMULADO: HTTP_200.
+- VALIDACION_VISUAL_PRODUCTIVA_FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: CERRADO_OK.
+- AI_FOR_HUMANS: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- MENU_MOBILE: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- FORMULARIO_CONTACTO_CLIENT_SIDE: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- FOOTER_GLOBAL: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- Alcance registrado: `/ai-for-humans` como manifiesto publico fundacional con fondo `#F4EADC` / `var(--beige)`, header claro validado productivamente, menu mobile hamburguesa, numeracion editorial responsive, firma fundacional con imagen de Mauricio, formulario de contacto con boton deshabilitado hasta validacion cliente, footer global sin logo gris y CTA final de verticales homologada.
 
 ## Estado operación y backups
 
@@ -129,12 +155,13 @@ AlmaDesign Web es proyecto separado del backend Apogeo Lux.
 
 ## Estado local landing Apogeo Lux
 
-- CORREGIR_LANDING_APOGEO_LUX_ALMADESIGN: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
-- Landing `/apogeo-lux` corregida localmente con claims gobernados.
+- CORREGIR_LANDING_APOGEO_LUX_ALMADESIGN: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES_HISTORICAS.
+- REPARACION_COMERCIAL_APOGEO_LUX: EN_CURSO / PENDIENTE_VALIDACION_MAURICIO.
+- No afirmar que `/apogeo-lux` ya quedó corregida comercialmente.
+- No afirmar deploy nuevo de `/apogeo-lux` ni integración de nuevas infografías sin commit y validación.
 - Incluye metadata específica, Open Graph básico y FAQ JSON-LD.
 - Sin conexión de base de datos por ahora.
 - Formulario de contacto desplegado y validado productivamente con SMTP Zoho.
-- Deploy controlado a VPS ejecutado correctamente.
 
 ## Estado formulario
 

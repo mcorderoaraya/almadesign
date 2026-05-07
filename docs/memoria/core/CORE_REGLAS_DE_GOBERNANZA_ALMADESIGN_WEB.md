@@ -45,6 +45,21 @@ AlmaDesign Web no debe tratar el backend técnico Apogeo Lux como parte modifica
 - DEPLOY_FORMULARIO_CONTACTO_ALMADESIGN: CERRADO_OK.
 - Estado resumido: formulario productivo validado.
 - Formulario de contacto productivo validado: SMTP Zoho operativo, POST productivo OK, redirección a `/contacto/gracias` OK y cuerpo visual por línea confirmado por Mauricio.
+- DEPLOY_CONTROLADO_FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: CERRADO_OK.
+- DEPLOY_HEAD: 06b64fedcbc669fa570fbb7fe347da9c86e4f050.
+- VALIDACION_VISUAL_PRODUCTIVA_FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: CERRADO_OK.
+- AI_FOR_HUMANS: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- MENU_MOBILE: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- FORMULARIO_CONTACTO_CLIENT_SIDE: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- FOOTER_GLOBAL: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- ANCHORS_FAVICON_HEAD: 33ed31c8638b6f0c3f13c36f31e02cf184cc70ed.
+- FAVICON_PATH_FIX: EN_ORIGIN_MAIN.
+- ANCHORS_SEMANTICOS_CAMPANAS_ALMADESIGN_WEB: EN_ORIGIN_MAIN.
+- PRODUCCION_ANCHORS_Y_FAVICON_FIX: PENDIENTE_DEPLOY_CONTROLADO.
+- BACKEND_ALMADESIGN_WEB: NO_ABRIR_TODAVIA.
+- BASE_DE_DATOS: NO_ABIERTA.
+- LOGIN: NO_EXISTE.
+- UPLOADS: NO_EXISTEN.
 
 ## Restricciones
 
@@ -73,14 +88,13 @@ No modificar desde este frente documental:
 
 - El Home frontend nuevo fue desplegado y validado por HTTP; revisión visual productiva pendiente de Mauricio.
 - La nueva página `/apogeo` fue desplegada y validada por HTTP; revisión visual productiva pendiente de Mauricio.
-- FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: PUSH_ORIGIN_MAIN_OK.
-- PRODUCCION_FRONTEND_ACUMULADO: PENDIENTE_DEPLOY_PRODUCTIVO.
-- AI_FOR_HUMANS_MANIFIESTO_PUBLICO: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- CONTACTO_BOTON_DISABLED_HASTA_VALIDACION_CLIENTE: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- MENU_MOBILE_HAMBURGUESA: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- FOOTER_GLOBAL_SIN_LOGO_GRIS: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- No afirmar que el frente acumulado AI for Humans / menu / formulario / footer esta en produccion hasta ejecutar deploy controlado especifico.
+- El frente acumulado AI for Humans / menu / formulario / footer esta desplegado y validado productivamente en `DEPLOY_HEAD` 06b64fedcbc669fa570fbb7fe347da9c86e4f050.
+- No declarar anchors/favicon como desplegados: estan en `origin/main` y pendientes de deploy controlado.
+- REPARACION_COMERCIAL_APOGEO_LUX: EN_CURSO / PENDIENTE_VALIDACION_MAURICIO.
+- No afirmar que `/apogeo-lux` ya quedó corregida comercialmente, desplegada como nuevo frente o con nuevas infografías integradas sin commit y validación.
+- MENU_VERTICAL_PRODUCTOS_ALMADESIGN_WEB: NO_VALIDADO.
+- SUBMENU_PRODUCTOS: REMOVER_SOLICITADO.
+- workflow_marketing: PRODUCTO_DOCUMENTAL_NUEVO_PLANIFICADO / FUERA_DE_ALCANCE_ALMADESIGN_WEB_PRODUCTIVO.
 - RAGK se comunica en público como arquitectura de conocimiento confiable, no como lista de tecnologías ni como promesa de decisión automatizada.
 - Las cards del Home quedan como estándar visual validado.
 - Mantener prohibición de Google Fonts y fuentes externas.

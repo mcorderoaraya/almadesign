@@ -31,18 +31,23 @@
 - HOME_VISUAL_LOCAL: VALIDADO_POR_MAURICIO.
 - HOME_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
 - APOGEO_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
-- FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: PUSH_ORIGIN_MAIN_OK.
-- PRODUCCION_FRONTEND_ACUMULADO: PENDIENTE_DEPLOY_PRODUCTIVO.
-- AI_FOR_HUMANS_MANIFIESTO_PUBLICO: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- CONTACTO_BOTON_DISABLED_HASTA_VALIDACION_CLIENTE: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- MENU_MOBILE_HAMBURGUESA: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- FOOTER_GLOBAL_SIN_LOGO_GRIS: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- DEPLOY_CONTROLADO_FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: CERRADO_OK.
+- DEPLOY_HEAD: 06b64fedcbc669fa570fbb7fe347da9c86e4f050.
+- VALIDACION_VISUAL_PRODUCTIVA_FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: CERRADO_OK.
+- AI_FOR_HUMANS: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- MENU_MOBILE: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- FORMULARIO_CONTACTO_CLIENT_SIDE: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- FOOTER_GLOBAL: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- ANCHORS_FAVICON_HEAD: 33ed31c8638b6f0c3f13c36f31e02cf184cc70ed.
+- FAVICON_PATH_FIX: EN_ORIGIN_MAIN.
+- ANCHORS_SEMANTICOS_CAMPANAS_ALMADESIGN_WEB: EN_ORIGIN_MAIN.
+- PRODUCCION_ANCHORS_Y_FAVICON_FIX: PENDIENTE_DEPLOY_CONTROLADO.
+- BACKEND_ALMADESIGN_WEB: NO_ABRIR_TODAVIA.
 - Base de datos: NO ABIERTA.
 - SQL: CONCEPTUAL FUTURO, no instrucción de implementación.
 - Deploy: EJECUTADO_OK para Home, `/apogeo` y remoción del bloque "El problema" en `/consultoria-ia-procesos`.
 
-Este documento sirve como fuente editorial para mantener mensajes, jerarquía de contenido, rutas conceptuales, arquitectura SEO y AI SEO. El Home frontend nuevo fue validado localmente por Mauricio; Home, `/apogeo` y `/consultoria-ia-procesos` quedaron desplegados y validados por HTTP en producción. El frente acumulado AI for Humans / menu / formulario / footer fue validado localmente y pusheado a `origin/main`, pero produccion sigue pendiente de deploy controlado.
+Este documento sirve como fuente editorial para mantener mensajes, jerarquía de contenido, rutas conceptuales, arquitectura SEO y AI SEO. El Home frontend nuevo fue validado localmente por Mauricio; Home, `/apogeo` y `/consultoria-ia-procesos` quedaron desplegados y validados por HTTP en producción. El frente acumulado AI for Humans / menu / formulario / footer quedó desplegado y validado productivamente por Mauricio. Anchors y fix favicon están en `origin/main`, pero siguen pendientes de deploy controlado.
 
 ## Principio editorial
 
@@ -66,8 +71,8 @@ AI for Humans debe sostener el principio: IA gobernada para proteger, potenciar 
 - Numeracion editorial: responsive, con composicion desktop lateral y mobile sobre el H2.
 - Cierre editorial: firma fundacional con imagen de Mauricio y cita validada.
 - CTA final: homologada al bloque final del Home.
-- Estado: VALIDADO_LOCALMENTE_POR_MAURICIO y PUSH_ORIGIN_MAIN_OK.
-- Produccion: PENDIENTE_DEPLOY_PRODUCTIVO.
+- Estado: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- Produccion: CERRADO_OK dentro de `DEPLOY_CONTROLADO_FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO`.
 
 ## Arquitectura pública de contenido
 
@@ -452,9 +457,9 @@ Destino: `/contacto`
 
 ### Estado
 
-- AI_FOR_HUMANS_MANIFIESTO_PUBLICO: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: PUSH_ORIGIN_MAIN_OK.
-- PRODUCCION_FRONTEND_ACUMULADO: PENDIENTE_DEPLOY_PRODUCTIVO.
+- AI_FOR_HUMANS: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- DEPLOY_CONTROLADO_FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: CERRADO_OK.
+- VALIDACION_VISUAL_PRODUCTIVA_FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: CERRADO_OK.
 
 ### Naturaleza de la página
 

@@ -45,10 +45,12 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend técnico 
 ## Frentes completados
 
 - CREAR_ESTRUCTURA_PHP_MVC_ALMADESIGN: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
-- CORREGIR_LANDING_APOGEO_LUX_ALMADESIGN: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
+- CORREGIR_LANDING_APOGEO_LUX_ALMADESIGN: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES_HISTORICAS.
 - DEPLOY_CONTROLADO_ALMADESIGN_WEB_A_VPS: EJECUTADO_OK.
 - PREPARAR_BACKUPS_Y_OPERACION_ALMADESIGN_WEB: IMPLEMENTADA_LOCALMENTE_CON_OBSERVACIONES.
 - EJECUTAR_BACKUP_Y_HEALTHCHECK_ALMADESIGN_EN_VPS: EJECUTADO_OK.
+- DEPLOY_CONTROLADO_FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: CERRADO_OK.
+- VALIDACION_VISUAL_PRODUCTIVA_FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: CERRADO_OK.
 
 ## Operación
 
@@ -70,18 +72,21 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend técnico 
 - `/contacto/enviar`
 - `/contacto/gracias`
 
-## Estado frontend acumulado local validado
+## Estado frontend acumulado cerrado
 
-- FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: PUSH_ORIGIN_MAIN_OK.
-- PRODUCCION_FRONTEND_ACUMULADO: PENDIENTE_DEPLOY_PRODUCTIVO.
-- AI_FOR_HUMANS_MANIFIESTO_PUBLICO: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- CONTACTO_BOTON_DISABLED_HASTA_VALIDACION_CLIENTE: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- MENU_MOBILE_HAMBURGUESA: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- FOOTER_GLOBAL_SIN_LOGO_GRIS: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- Alcance: AI for Humans como manifiesto publico fundacional, fondo `#F4EADC` / `var(--beige)`, header claro local, menu mobile hamburguesa, numeracion editorial responsive, firma fundacional con imagen de Mauricio, boton de contacto deshabilitado hasta validacion cliente, footer global sin logo gris y CTA final verticales homologada.
-- No afirmar produccion para este frente acumulado hasta deploy controlado.
-- Siguiente frente recomendado: DEPLOY_CONTROLADO_FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO.
+- DEPLOY_CONTROLADO_FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: CERRADO_OK.
+- DEPLOY_HEAD: 06b64fedcbc669fa570fbb7fe347da9c86e4f050.
+- BACKUP_PRE_DEPLOY_FRONTEND_ACUMULADO: `/var/backups/almadesign/almadesign_backup_20260505_214506.tar.gz`.
+- CHECKSUM_BACKUP_PRE_DEPLOY_FRONTEND_ACUMULADO: OK.
+- HEALTHCHECK_POST_DEPLOY_FRONTEND_ACUMULADO: OK.
+- RUTAS_PRODUCTIVAS_FRONTEND_ACUMULADO: HTTP_200.
+- ASSETS_PRODUCTIVOS_FRONTEND_ACUMULADO: HTTP_200.
+- VALIDACION_VISUAL_PRODUCTIVA_FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: CERRADO_OK.
+- AI_FOR_HUMANS: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- MENU_MOBILE: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- FORMULARIO_CONTACTO_CLIENT_SIDE: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- FOOTER_GLOBAL: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- Alcance: AI for Humans como manifiesto publico fundacional, fondo `#F4EADC` / `var(--beige)`, header claro, menu mobile hamburguesa, numeracion editorial responsive, firma fundacional con imagen de Mauricio, boton de contacto deshabilitado hasta validacion cliente, footer global sin logo gris y CTA final verticales homologada.
 
 ## Formulario
 
@@ -142,6 +147,19 @@ Trabajar sobre AlmaDesign Web, proyecto comercial separado del backend técnico 
 - No tocar `~/workspace/apogeo-lux/backend`.
 - No tocar VPS, Cloudflare, Zoho, DNS, SSL, Nginx, `.env`, llaves SSH, base de datos, Composer, WordPress, Docker ni cPanel.
 - No tratar GraphRAG del backend técnico Apogeo Lux como alcance de AlmaDesign Web.
+- BACKEND_ALMADESIGN_WEB: NO_ABRIR_TODAVIA.
+- BASE_DE_DATOS: NO_ABIERTA.
+- LOGIN: NO_EXISTE.
+- UPLOADS: NO_EXISTEN.
+- ANCHORS_FAVICON_HEAD: 33ed31c8638b6f0c3f13c36f31e02cf184cc70ed.
+- FAVICON_PATH_FIX: EN_ORIGIN_MAIN.
+- ANCHORS_SEMANTICOS_CAMPANAS_ALMADESIGN_WEB: EN_ORIGIN_MAIN.
+- PRODUCCION_ANCHORS_Y_FAVICON_FIX: PENDIENTE_DEPLOY_CONTROLADO.
+- REPARACION_COMERCIAL_APOGEO_LUX: EN_CURSO / PENDIENTE_VALIDACION_MAURICIO.
+- No afirmar que `/apogeo-lux` ya quedó corregida comercialmente ni desplegada como nuevo frente.
+- MENU_VERTICAL_PRODUCTOS_ALMADESIGN_WEB: NO_VALIDADO.
+- SUBMENU_PRODUCTOS: REMOVER_SOLICITADO.
+- workflow_marketing: PRODUCTO_DOCUMENTAL_NUEVO_PLANIFICADO / FUERA_DE_ALCANCE_ALMADESIGN_WEB_PRODUCTIVO.
 
 ## Estado post deploy formulario validado
 

@@ -48,14 +48,23 @@
 - APOGEO_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
 - `/apogeo` usa `ContentController::apogeo()` y `app/Views/pages/vertical-detail.php`.
 - `/apogeo` incluye hero extendido, arquitecturas Apogeo, cards ejecutivas, infografía RAGK, concepto gerencial RAGK, límites explícitos y CTA final.
-- FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: PUSH_ORIGIN_MAIN_OK.
-- PRODUCCION_FRONTEND_ACUMULADO: PENDIENTE_DEPLOY_PRODUCTIVO.
-- AI_FOR_HUMANS_MANIFIESTO_PUBLICO: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- CONTACTO_BOTON_DISABLED_HASTA_VALIDACION_CLIENTE: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- MENU_MOBILE_HAMBURGUESA: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- FOOTER_GLOBAL_SIN_LOGO_GRIS: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- Arquitectura frontend acumulada: `/ai-for-humans` usa `ContentController::aiForHumans()` y `vertical-detail.php` para renderizar manifiesto publico fundacional; `app.css` contiene estilos scopeados del manifiesto, header claro local y menu responsive; `app.js` contiene toggle accesible del menu mobile y validacion cliente del formulario de contacto.
+- DEPLOY_CONTROLADO_FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: CERRADO_OK.
+- DEPLOY_HEAD: 06b64fedcbc669fa570fbb7fe347da9c86e4f050.
+- BACKUP_PRE_DEPLOY_FRONTEND_ACUMULADO: `/var/backups/almadesign/almadesign_backup_20260505_214506.tar.gz`.
+- CHECKSUM_BACKUP_PRE_DEPLOY_FRONTEND_ACUMULADO: OK.
+- HEALTHCHECK_POST_DEPLOY_FRONTEND_ACUMULADO: OK.
+- RUTAS_PRODUCTIVAS_FRONTEND_ACUMULADO: HTTP_200.
+- ASSETS_PRODUCTIVOS_FRONTEND_ACUMULADO: HTTP_200.
+- VALIDACION_VISUAL_PRODUCTIVA_FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: CERRADO_OK.
+- AI_FOR_HUMANS: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- MENU_MOBILE: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- FORMULARIO_CONTACTO_CLIENT_SIDE: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- FOOTER_GLOBAL: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- Arquitectura frontend acumulada desplegada: `/ai-for-humans` usa `ContentController::aiForHumans()` y `vertical-detail.php` para renderizar manifiesto publico fundacional; `app.css` contiene estilos scopeados del manifiesto, header claro y menu responsive; `app.js` contiene toggle accesible del menu mobile y validacion cliente del formulario de contacto.
+- ANCHORS_FAVICON_HEAD: 33ed31c8638b6f0c3f13c36f31e02cf184cc70ed.
+- FAVICON_PATH_FIX: EN_ORIGIN_MAIN.
+- ANCHORS_SEMANTICOS_CAMPANAS_ALMADESIGN_WEB: EN_ORIGIN_MAIN.
+- PRODUCCION_ANCHORS_Y_FAVICON_FIX: PENDIENTE_DEPLOY_CONTROLADO.
 
 ## Producción validada
 
@@ -81,7 +90,8 @@
 - Headers de seguridad: activos.
 - Rollback: disponible.
 - DEPLOY_CONTROLADO_ALMADESIGN_WEB_A_VPS: EJECUTADO_OK.
-- Produccion no esta actualizada con `FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO`; requiere deploy controlado pendiente.
+- DEPLOY_CONTROLADO_FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: CERRADO_OK.
+- Produccion no esta actualizada con `ANCHORS_FAVICON_HEAD` 33ed31c8638b6f0c3f13c36f31e02cf184cc70ed; requiere deploy controlado pendiente.
 
 ## Operación
 
@@ -97,6 +107,16 @@
 ## Separación
 
 AlmaDesign Web es proyecto separado del backend técnico Apogeo Lux. No modifica `~/workspace/apogeo-lux/backend` ni evidencia técnica Apogeo Lux.
+
+- BACKEND_ALMADESIGN_WEB: NO_ABRIR_TODAVIA.
+- BASE_DE_DATOS: NO_ABIERTA.
+- LOGIN: NO_EXISTE.
+- UPLOADS: NO_EXISTEN.
+- REPARACION_COMERCIAL_APOGEO_LUX: EN_CURSO / PENDIENTE_VALIDACION_MAURICIO.
+- No afirmar deploy nuevo ni cierre comercial de `/apogeo-lux` sin commit, deploy y validación.
+- MENU_VERTICAL_PRODUCTOS_ALMADESIGN_WEB: NO_VALIDADO.
+- SUBMENU_PRODUCTOS: REMOVER_SOLICITADO.
+- workflow_marketing: PRODUCTO_DOCUMENTAL_NUEVO_PLANIFICADO / FUERA_DE_ALCANCE_ALMADESIGN_WEB_PRODUCTIVO.
 
 ## Formulario productivo
 

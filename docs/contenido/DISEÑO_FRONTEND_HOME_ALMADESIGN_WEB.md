@@ -30,18 +30,23 @@
 - HOME_VISUAL_LOCAL: VALIDADO_POR_MAURICIO.
 - HOME_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
 - APOGEO_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
-- FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: PUSH_ORIGIN_MAIN_OK.
-- PRODUCCION_FRONTEND_ACUMULADO: PENDIENTE_DEPLOY_PRODUCTIVO.
-- AI_FOR_HUMANS_MANIFIESTO_PUBLICO: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- CONTACTO_BOTON_DISABLED_HASTA_VALIDACION_CLIENTE: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- MENU_MOBILE_HAMBURGUESA: VALIDADO_LOCALMENTE_POR_MAURICIO.
-- FOOTER_GLOBAL_SIN_LOGO_GRIS: VALIDADO_LOCALMENTE_POR_MAURICIO.
+- DEPLOY_CONTROLADO_FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: CERRADO_OK.
+- DEPLOY_HEAD: 06b64fedcbc669fa570fbb7fe347da9c86e4f050.
+- VALIDACION_VISUAL_PRODUCTIVA_FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO: CERRADO_OK.
+- AI_FOR_HUMANS: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- MENU_MOBILE: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- FORMULARIO_CONTACTO_CLIENT_SIDE: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- FOOTER_GLOBAL: VALIDADO_PRODUCTIVAMENTE_POR_MAURICIO.
+- ANCHORS_FAVICON_HEAD: 33ed31c8638b6f0c3f13c36f31e02cf184cc70ed.
+- FAVICON_PATH_FIX: EN_ORIGIN_MAIN.
+- ANCHORS_SEMANTICOS_CAMPANAS_ALMADESIGN_WEB: EN_ORIGIN_MAIN.
+- PRODUCCION_ANCHORS_Y_FAVICON_FIX: PENDIENTE_DEPLOY_CONTROLADO.
+- BACKEND_ALMADESIGN_WEB: NO_ABRIR_TODAVIA.
 - Assets Home validados localmente: SI.
 - Base de datos: NO ABIERTA.
 - Deploy: EJECUTADO_OK para Home, `/apogeo` y remoción del bloque "El problema" en `/consultoria-ia-procesos`.
 
-Este documento registra la estructura frontend del Home de AlmaDesign Web validada visualmente por Mauricio en entorno local. El despliegue productivo previo quedó validado por HTTP; la revisión visual productiva en `almadesign.cl` queda pendiente de confirmación manual de Mauricio. El frente acumulado AI for Humans / menu / formulario / footer fue validado localmente y pusheado a `origin/main`, pero produccion sigue pendiente de deploy controlado.
+Este documento registra la estructura frontend del Home de AlmaDesign Web validada visualmente por Mauricio en entorno local. El despliegue productivo previo quedó validado por HTTP; la revisión visual productiva en `almadesign.cl` queda pendiente de confirmación manual de Mauricio. El frente acumulado AI for Humans / menu / formulario / footer quedó desplegado y validado productivamente por Mauricio. Anchors y fix favicon están en `origin/main`, pero siguen pendientes de deploy controlado.
 
 ## Objetivo del Home
 
@@ -169,7 +174,7 @@ Reglas visuales:
 - Navegación clara y legible.
 - Estado hover/focus visible.
 - En mobile, navegación colapsada o simplificada sin ocultar el CTA de contacto si el espacio lo permite.
-- Estado acumulado local: menu mobile hamburguesa validado localmente por Mauricio, pendiente de deploy productivo dentro de `FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO`.
+- Estado acumulado: menu mobile hamburguesa validado productivamente por Mauricio dentro de `DEPLOY_CONTROLADO_FRONTEND_ACUMULADO_AI_FOR_HUMANS_MENU_FORMULARIO`.
 
 ## B. Hero
 
