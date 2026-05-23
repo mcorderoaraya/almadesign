@@ -6,12 +6,14 @@ declare(strict_types=1);
 /** @var array<int, array{title: string, intro: string, items: list<array{title: string, body?: string|list<string>, items?: list<string>, key: string, anchor?: string}>, eyebrow?: string, keyLabel?: string, variant?: string, anchor?: string}>|null $cardSections */
 /** @var list<string|array{title: string, body: string}> $guardrails */
 /** @var array<int, array{title: string, body: list<string>, subtitle?: string, quote?: string, anchor?: string}>|null $manifestSections */
+/** @var array{eyebrow: string, title: string, body: string, file: string}|null $audioCard */
 $cardSections = $cardSections ?? [];
 $postSections = $postSections ?? [];
 $architectureSection = $architectureSection ?? null;
 $infographicSection = $infographicSection ?? null;
 $limitsSection = $limitsSection ?? null;
 $manifestSections = $manifestSections ?? [];
+$audioCard = $audioCard ?? null;
 $pageClass = $pageClass ?? '';
 $leadParagraphs = $leadParagraphs ?? [$lead];
 $heroAnchor = $heroAnchor ?? null;
@@ -28,9 +30,23 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
 <div class="alma-home<?= e($pageClassAttribute) ?>">
     <?php if ($manifestSections !== []): ?>
         <section class="manifest-hero"<?= $heroAnchor !== null ? ' id="' . e($heroAnchor) . '"' : '' ?> aria-labelledby="manifest-title">
-            <p class="eyebrow"><?= e($eyebrow) ?></p>
-            <h1 id="manifest-title"><?= e($heading) ?></h1>
-            <p class="lead"><?= e($lead) ?></p>
+            <div class="manifest-hero__grid">
+                <div class="manifest-hero__copy">
+                    <p class="eyebrow"><?= e($eyebrow) ?></p>
+                    <h1 id="manifest-title"><?= e($heading) ?></h1>
+                    <p class="lead"><?= e($lead) ?></p>
+                </div>
+                <?php if ($audioCard !== null): ?>
+                    <aside class="manifest-audio-card" aria-labelledby="manifest-audio-title">
+                        <p class="manifest-audio-card__eyebrow"><?= e($audioCard['eyebrow']) ?></p>
+                        <h2 id="manifest-audio-title"><?= e($audioCard['title']) ?></h2>
+                        <p><?= e($audioCard['body']) ?></p>
+                        <audio controls preload="metadata" src="<?= e(asset($audioCard['file'])) ?>">
+                            Tu navegador no soporta audio HTML5.
+                        </audio>
+                    </aside>
+                <?php endif; ?>
+            </div>
         </section>
 
         <section class="manifest-body" aria-label="Manifiesto AI for Humans">

@@ -357,6 +357,12 @@ final class ContentController extends BaseController
             'lead' => 'Inteligencia artificial gobernada para proteger, potenciar y no reemplazar al humano.',
             'heroAnchor' => 'manifiesto',
             'sections' => [],
+            'audioCard' => [
+                'eyebrow' => 'Audio',
+                'title' => 'IA que protege y no reemplaza',
+                'body' => 'Audio creado con NotebookLM como resumen del manifiesto AI for Humans de AlmaDesign.',
+                'file' => 'audio/ia-que-protege-y-no-reemplaza.m4a',
+            ],
             'manifestSections' => [
                 [
                     'title' => 'AI for Humans',
