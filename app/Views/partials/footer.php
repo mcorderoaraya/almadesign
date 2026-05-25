@@ -20,13 +20,30 @@ declare(strict_types=1);
                     <circle cx="12" cy="12" r="3.6"></circle>
                     <circle cx="17.2" cy="6.8" r="0.8"></circle>
                 </svg>
-                <span>@almadesign2026/</span>
+                <span>@almadesign</span>
+            </a>
+        
+            <a class="site-footer__instagram"
+            href="https://www.linkedin.com/company/ai-alma-design/"
+            target="_blank"
+            rel="noopener noreferrer">
+
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <rect x="3" y="3" width="18" height="18" rx="4"></rect>
+
+                    <!-- i -->
+                    <rect x="7" y="10" width="2" height="7"></rect>
+                    <circle cx="8" cy="7.5" r="1"></circle>
+
+                    <!-- n -->
+                    <path d="M11 10h2v1.2c0.5-0.8 1.3-1.4 2.6-1.4
+                            2 0 3.4 1.3 3.4 4v3.2h-2v-3
+                            c0-1.2-0.5-2-1.7-2s-2 0.9-2 2.3V17h-2z">
+                    </path>
+                </svg>
+
+                <span>@almadesign</span>
             </a>
         </div>
     </div>
 </footer>
-
-
-
-
-
