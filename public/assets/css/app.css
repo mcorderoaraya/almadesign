@@ -2599,7 +2599,7 @@ details p {
     max-width: 100%;
 }
 
-.site-footer__instagram {
+.site-footer__social-link {
     display: inline-flex;
     align-items: center;
     gap: 10px;
@@ -2609,7 +2609,7 @@ details p {
     overflow-wrap: anywhere;
 }
 
-.site-footer__instagram svg {
+.site-footer__social-link svg {
     width: 20px;
     height: 20px;
     flex: 0 0 auto;

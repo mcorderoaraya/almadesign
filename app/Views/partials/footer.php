@@ -14,7 +14,7 @@ declare(strict_types=1);
             <a href="<?= e(url('/contacto')) ?>">Contacto</a>
         </nav>
         <div class="site-footer__social" aria-label="Redes sociales">
-            <a class="site-footer__instagram" href="https://www.instagram.com/almadesign2026/" target="_blank" rel="noopener noreferrer">
+            <a class="site-footer__social-link" href="https://www.instagram.com/almadesign2026/" target="_blank" rel="noopener noreferrer">
                 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                     <rect x="4" y="4" width="16" height="16" rx="5"></rect>
                     <circle cx="12" cy="12" r="3.6"></circle>
@@ -23,7 +23,7 @@ declare(strict_types=1);
                 <span>@almadesign</span>
             </a>
         
-            <a class="site-footer__instagram"
+            <a class="site-footer__social-link"
             href="https://www.linkedin.com/company/ai-alma-design/"
             target="_blank"
             rel="noopener noreferrer">
