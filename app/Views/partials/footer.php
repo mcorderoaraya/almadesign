@@ -20,7 +20,7 @@ declare(strict_types=1);
                     <circle cx="12" cy="12" r="3.6"></circle>
                     <circle cx="17.2" cy="6.8" r="0.8"></circle>
                 </svg>
-                <span>https://www.instagram.com/almadesign2026/</span>
+                <span>@almadesign2026/</span>
             </a>
         </div>
     </div>
