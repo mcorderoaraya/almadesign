@@ -4,7 +4,7 @@ declare(strict_types=1);
 $verticals = [
     [
         'title' => 'Consultoría IA y procesos',
-        'href' => url('/contacto'),
+        'href' => url('/consultoria-ia-procesos'),
         'variant' => 'consulting',
         'summary' => 'Ordenamos fricciones internas, procesos y criterios para implementar IA con claridad, control y adopción responsable.',
         'cta' => 'Solicitar diagnóstico',
