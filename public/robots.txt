@@ -1,5 +1,4 @@
 User-agent: *
-Allow: /
 Disallow: /contacto/enviar
 Disallow: /vendor/
 Disallow: /logs/
@@ -7,19 +6,21 @@ Disallow: /storage/
 Disallow: /docs/
 Disallow: /ops/
 
+# Bloqueo entrenamiento IA
 User-agent: GPTBot
 Disallow: /
 
+# Permitir navegación/citación
 User-agent: ChatGPT-User
-Disallow: /
-
-User-agent: CCBot
-Disallow: /
+Allow: /
 
 User-agent: ClaudeBot
 Disallow: /
 
 User-agent: PerplexityBot
+Disallow: /
+
+User-agent: CCBot
 Disallow: /
 
 Sitemap: https://almadesign.cl/sitemap.xml
