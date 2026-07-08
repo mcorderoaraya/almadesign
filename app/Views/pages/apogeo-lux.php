@@ -309,18 +309,6 @@ $faqJsonLd = [
         </div>
     </section>
 
-    <section class="home-third home-third--human" aria-label="Conversemos">
-        <div class="home-third__inner">
-            <section class="alma-final-cta" aria-labelledby="final-cta-title">
-                <div>
-                    <p class="eyebrow">Conversemos</p>
-                    <h2 id="final-cta-title">Hablemos de tu proyecto.</h2>
-                    <p>Si tu organización enfrenta información dispersa, procesos difíciles de explicar o decisiones que requieren mayor claridad, AlmaDesign puede ayudarte a diseñar una solución gobernada, trazable y sostenible.</p>
-                </div>
-                <a class="button button-primary" href="/contacto">Hablemos de tu proyecto</a>
-            </section>
-        </div>
-    </section>
 </div>
 
 <script type="application/ld+json">

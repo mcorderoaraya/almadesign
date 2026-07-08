@@ -22,5 +22,7 @@ function asset(string $path): string
         return $assetPath;
     }
 
+    clearstatcache(true, $filePath);
+
     return $assetPath . '?v=' . filemtime($filePath);
 }

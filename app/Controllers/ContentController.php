@@ -10,6 +10,7 @@ final class ContentController extends BaseController
         $this->view('pages/vertical-detail', [
             'title' => 'Consultoría de inteligencia artificial y procesos | AlmaDesign',
             'metaDescription' => 'Consultoría IA para empresas que necesitan ordenar procesos, diagnosticar fricciones internas e implementar inteligencia artificial con gobernanza y trazabilidad.',
+            'pageClass' => 'consulting-page',
             'eyebrow' => 'Consultoría IA y procesos',
             'heading' => 'Consultoría de inteligencia artificial y procesos para empresas.',
             'lead' => 'Antes de automatizar, ordenamos procesos, fricciones, criterios y responsabilidades. AlmaDesign ayuda a organizaciones a identificar dónde la IA puede aportar valor real y cómo implementarla con trazabilidad, gobernanza y control humano.',
@@ -37,7 +38,7 @@ final class ContentController extends BaseController
                         ],
                         [
                             'anchor' => 'gobernanza',
-                            'title' => 'Diseño de guardrails y criterios humanos',
+                            'title' => 'Diseño de límites explícitos y criterios humanos',
                             'body' => 'Definimos límites, reglas de uso y puntos de supervisión para que la tecnología opere dentro de un marco claro. Esto incluye criterios de validación, decisiones que deben seguir bajo control humano, manejo de excepciones y resguardo de la trazabilidad.',
                             'key' => 'Gobernar antes de delegar.',
                         ],
@@ -69,7 +70,7 @@ final class ContentController extends BaseController
                             'key' => 'No todo lo posible es prioritario.',
                         ],
                         [
-                            'title' => 'Riesgos, límites y guardrails',
+                            'title' => 'Riesgos y límites explícitos',
                             'body' => 'Identificación de riesgos operativos, humanos, técnicos y de gobernanza asociados a cada caso de uso. Incluye límites de automatización, controles mínimos, criterios de validación y puntos donde la supervisión humana debe permanecer activa.',
                             'key' => 'La IA necesita bordes antes de operar.',
                         ],
@@ -109,7 +110,6 @@ final class ContentController extends BaseController
             'guardrailsSecondaryAnchors' => [
                 'limites-explicitos-de-comunicacion',
             ],
-            'finalCtaAnchor' => 'conversemos',
             'cta' => 'Solicitar diagnóstico',
         ]);
     }
@@ -333,16 +333,392 @@ final class ContentController extends BaseController
                 'closing' => 'En síntesis, Apogeo organiza, conecta y hace trazable el conocimiento para que las personas puedan decidir mejor. Su propósito no es reemplazar el juicio humano, sino fortalecerlo con contexto, evidencia y gobernanza.',
             ],
             'guardrails' => [],
-            'finalCtaAnchor' => 'conversemos',
             'cta' => 'Conversar sobre Apogeo',
-            'finalCta' => [
-                'eyebrow' => 'Conversemos',
-                'title' => 'Conversar sobre Apogeo',
-                'body' => 'Si tu organización necesita ordenar información crítica, conectar evidencia y mejorar trazabilidad entre áreas o partes relacionadas, Apogeo puede ser una base para diseñar un sistema de conocimiento aumentado con foco gerencial.',
-                'label' => 'Conversar sobre Apogeo',
-                'href' => url('/contacto'),
-                'variant' => 'apogeo',
+        ]);
+    }
+
+    public function talksAiForHumans(): void
+    {
+        $this->view('pages/charlas-ai-for-humans', [
+            'title' => 'Charlas AlmaDesign | Inteligencia artificial para personas y equipos',
+            'metaDescription' => 'Charlas AlmaDesign sobre inteligencia artificial para personas, equipos y organizaciones: comprender la IA sin miedo, sin humo y sin tecnicismos innecesarios.',
+        ]);
+    }
+
+    public function documentManagement(): void
+    {
+        $this->view('pages/vertical-detail', [
+            'title' => 'Gestión Documental Gobernada | AlmaDesign',
+            'metaDescription' => 'Gestión documental gobernada para ordenar documentos críticos, habilitar asistentes IA con evidencia, trazabilidad y límites claros de uso.',
+            'pageClass' => 'document-management-page',
+            'eyebrow' => 'Gestión Documental',
+            'heading' => 'Gestión Documental Gobernada',
+            'lead' => 'Ordenamos documentos críticos para que una IA pueda asistir a las personas con evidencia, trazabilidad y límites claros de uso, aumentando la capacidad humana para encontrar información, responder con mayor eficiencia y tomar mejores decisiones.',
+            'heroAnchor' => 'gestion-documental',
+            'featureBlock' => [
+                'left' => [
+                    'anchor' => 'coherencia-documental',
+                    'eyebrow' => 'Diagnóstico documental',
+                    'title' => 'El problema no es la falta de información. Es la coherencia.',
+                    'body' => [
+                        'Muchas organizaciones no tienen un problema de falta de información. Tienen un problema de coherencia.',
+                        'Los documentos existen, pero están dispersos en carpetas, correos, sistemas internos, unidades compartidas, versiones antiguas, archivos personales y plataformas que no conversan entre sí. El resultado es una operación lenta: las personas pierden tiempo buscando antecedentes, validando cuál es la versión correcta y preguntando una y otra vez por información que ya existe.',
+                    ],
+                ],
+                'right' => [
+                    'anchor' => 'ia-con-fuentes-confiables',
+                    'eyebrow' => 'IA con evidencia',
+                    'title' => 'Una IA útil necesita fuentes confiables.',
+                    'body' => [
+                        'Esa fricción aumenta cuando se incorpora inteligencia artificial sin una gestión documental gobernada. Un asistente de IA puede ser muy útil, pero necesita fuentes confiables, permisos claros, documentos vigentes y trazabilidad. Si la base documental está desordenada, la IA puede entregar respuestas incompletas, poco verificables o basadas en documentos que no deberían ser usados.',
+                        'Aquí entra la gestión documental gobernada: ordenar la información para que pueda ser encontrada, entendida, consultada y auditada.',
+                    ],
+                ],
             ],
+            'ragGraphSection' => [
+                'anchor' => 'centralizar-documentacion',
+                'eyebrow' => 'Documentación centralizada',
+                'title' => 'Centralizar la documentación transforma información dispersa en capacidad operativa.',
+                'body' => 'Centralizar no significa guardar todo en una misma carpeta. Significa ordenar fuentes, versiones, permisos y vigencia para que las personas y los asistentes de IA puedan trabajar con evidencia confiable.',
+                'columns' => [
+                    [
+                        'anchor' => 'beneficios-centralizar-documentacion',
+                        'label' => 'Beneficios',
+                        'title' => 'Qué gana una organización al centralizar su documentación.',
+                        'body' => 'Cuando la documentación se vuelve confiable, las personas dejan de perder tiempo buscando, validando versiones o preguntando por antecedentes que ya existen.',
+                        'items' => [
+                            'Menos tiempo perdido buscando documentos o confirmando versiones.',
+                            'Respuestas más consistentes entre áreas, equipos y canales.',
+                            'Mejor trazabilidad para decisiones, auditorías, soporte y cumplimiento.',
+                            'Menor dependencia de personas clave para acceder al conocimiento interno.',
+                        ],
+                    ],
+                    [
+                        'anchor' => 'como-centralizar-documentacion',
+                        'label' => 'Cómo',
+                        'title' => 'Cómo lo resolvemos con gestión documental gobernada.',
+                        'body' => 'Primero ordenamos el corpus documental. Después definimos fuentes autorizadas, permisos, metadatos y criterios de uso. Recién entonces una IA puede asistir con respuestas citadas, límites claros y revisión humana.',
+                        'items' => [
+                            'RAG para recuperar documentos relevantes y responder con evidencia.',
+                            'GraphRAG cuando importan relaciones entre normas, contratos, áreas o procesos.',
+                            'Gobernanza para controlar qué se usa, quién puede verlo y cuándo escalar a una persona.',
+                        ],
+                    ],
+                ],
+                'decisionRows' => [
+                    ['Beneficio operativo', 'Las personas encuentran información vigente sin recorrer carpetas, correos o versiones antiguas.'],
+                    ['Beneficio para IA', 'El asistente responde desde documentos autorizados, con fuentes citables y menor riesgo de inventar.'],
+                    ['Beneficio de gobierno', 'La organización define permisos, límites de uso, responsables, vigencia y trazabilidad antes de automatizar.'],
+                ],
+                'flow' => [
+                    'Inventariar',
+                    'Depurar versiones',
+                    'Definir permisos',
+                    'Indexar',
+                    'Responder con evidencia',
+                    'Auditar',
+                ],
+            ],
+            'sections' => [
+                [
+                    'anchor' => 'casos-uso-rag-empresa',
+                    'title' => 'Casos de uso empresariales concretos',
+                    'body' => [
+                        'La evidencia más útil para decidir no son las demos, sino los resultados operativos. En la muestra revisada, RAG y sus variantes ya muestran impacto en banca, automoción, salud, inteligencia, cumplimiento y research automation.',
+                    ],
+                    'table' => [
+                        'headers' => ['Sector', 'Problema', 'Solución', 'Resultado medible'],
+                        'rows' => [
+                            ['Automoción', 'Sistemas RAG fragmentados por departamento, con dificultad para colaboración segura.', 'Toyota construyó una infraestructura RAG compartida en AWS con autenticación interna y control centralizado de acceso a archivos.', 'Reducción aproximada del 20% en tiempo de investigación y 50% en esfuerzo de investigación en una iniciativa interna.'],
+                            ['Banca minorista', 'Tellers necesitaban consultar políticas y procedimientos durante interacciones con clientes.', 'Wells Fargo desplegó una herramienta RAG para recuperar políticas y procedimientos en tiempo real.', 'Reducción aproximada del 20% del flujo de resolución de consultas.'],
+                            ['Banca digital', 'Chatbot con base de conocimiento estática, lentitud y baja precisión.', 'Hong Leong Bank migró a RAG dinámico con Gemini 2.5 Flash.', 'Precisión del chatbot subió de 75% a 99% y las transacciones mensuales de chat crecieron 3x.'],
+                            ['Salud digital', 'Conocimiento interno en seis silos; baja velocidad de resolución y pérdida de tiempo en soporte.', 'Orion Health creó Oribot, chatbot interno con Amazon Bedrock y RAG sobre más de 500.000 registros.', 'Recupera respuestas en menos de 1 minuto, ahorra 50 horas/día y resultó 10x más costo-efectivo que alternativas comerciales.'],
+                            ['Cumplimiento bancario', 'Revisiones manuales de proveedores y quejas con alta carga operativa.', 'Coastal Community Bank usó una aplicación RAG para acelerar procesamiento documental y prellenado.', 'Revisión de quejas al 100% con 94% de precisión y ahorro equivalente a 1 FTE/año; el detalle exacto del ahorro de la app RAG de vendor reviews no está especificado.'],
+                            ['Investigación e innovación', 'Elaboración manual de reportes demasiado lenta.', 'Cypris integró búsqueda vectorial y RAG con Elasticsearch para investigación asistida.', 'Generación de reportes pasó de semanas a 15 minutos.'],
+                            ['Inteligencia y seguridad', 'Tiempo excesivo para producir briefings accionables.', 'MAX Security y BigData Boutique desarrollaron SCOUT AI con RAG.', 'Briefings bajaron de 2 horas a 25 minutos y se redujo la carga de investigación en 7 horas por analista por semana.'],
+                            ['IA empresarial', 'Exactitud insuficiente para usos de alto valor con grandes volúmenes documentales.', 'Contextual AI construyó una plataforma avanzada de RAG sobre Elastic con búsqueda híbrida.', '90%+ de precisión RAG y operación sobre repositorios de hasta 22 millones de chunks.'],
+                        ],
+                    ],
+                ],
+            ],
+            'insightBlock' => [
+                'left' => [
+                    'anchor' => 'lectura-transversal-rag-empresa',
+                    'eyebrow' => 'Síntesis operativa',
+                    'title' => 'La lectura transversal',
+                    'body' => [
+                        'La primera ola de valor aparece en knowledge access, customer support, document QA, compliance y research workflows.',
+                        'Los resultados medibles más frecuentes son reducción de tiempo, más precisión, más cobertura operativa y menor dependencia de expertos humanos para búsquedas repetitivas.',
+                        'Los casos que más justifican GraphRAG son aquellos donde la semántica sola no basta: citas legales, trazabilidad contractual, causalidad de incidentes, jerarquías organizativas o relaciones entre eventos.',
+                    ],
+                ],
+                'right' => [
+                    'anchor' => 'gobernanza-documental',
+                    'eyebrow' => 'Gobernanza',
+                    'title' => 'Gobernanza antes de tecnología.',
+                    'body' => [
+                        'Por eso, la gestión documental gobernada no debe partir por la tecnología, sino por una pregunta operativa: ¿qué decisiones queremos asistir con evidencia confiable?',
+                        'Desde ahí se definen las fuentes autorizadas, los permisos, la vigencia documental, los criterios de calidad, la trazabilidad de respuestas y los límites de uso de la IA.',
+                        'El objetivo no es reemplazar el criterio profesional. Es reducir la fricción documental, acelerar la búsqueda de evidencia y permitir que las personas decidan mejor, con menos ruido y más trazabilidad.',
+                    ],
+                ],
+            ],
+            'guardrails' => [],
+            'cta' => 'Conversar sobre Gestión Documental',
+        ]);
+    }
+
+    public function assistantOrchestration(): void
+    {
+        $this->view('pages/vertical-detail', [
+            'title' => 'Orquestación con Asistentes IA | AlmaDesign',
+            'metaDescription' => 'Automatización con criterio humano: asistentes IA, procesos y aplicaciones a medida que aumentan eficiencia sin borrar responsabilidad, validación ni juicio humano.',
+            'pageClass' => 'assistant-orchestration-page',
+            'eyebrow' => 'Orquestación con Asistentes IA',
+            'heading' => 'Orquestación con Asistentes IA',
+            'lead' => 'Automatizamos con criterio humano: asistentes IA, procesos y aplicaciones a medida que aumentan la eficiencia sin borrar la responsabilidad, la validación y el juicio de las personas.',
+            'heroAnchor' => 'orquestacion-asistentes-ia',
+            'featureBlock' => [
+                'ariaLabel' => 'Diagnóstico de automatización con asistentes IA',
+                'left' => [
+                    'anchor' => 'automatizacion-con-limites',
+                    'eyebrow' => 'Diagnóstico operativo',
+                    'title' => 'La IA puede resolver más rápido que la empresa puede operar.',
+                    'body' => [
+                        'Automatizamos procesos, desarrollamos asistentes y construimos aplicaciones a medida, pero no creemos que todo deba ser automatizado.',
+                        'Un asistente IA puede clasificar tickets, responder consultas, preparar documentos, sugerir decisiones y acelerar flujos completos. Eso aumenta capacidad, pero también cambia la presión sobre las áreas que deben ejecutar el trabajo real.',
+                    ],
+                ],
+                'right' => [
+                    'anchor' => 'capacidad-operativa',
+                    'eyebrow' => 'Riesgo',
+                    'title' => 'La fricción aparece cuando la velocidad digital choca con la capacidad física.',
+                    'body' => [
+                        'La IA no elimina automáticamente el trabajo: muchas veces lo desplaza hacia bodega, reparto, soporte, validación, cumplimiento o supervisión humana.',
+                        'Por eso AlmaDesign diseña automatizaciones con criterio operativo: primero comprender el proceso completo, luego definir límites, después automatizar solo donde la organización puede absorber esa velocidad.',
+                    ],
+                ],
+            ],
+            'ragGraphSection' => [
+                'anchor' => 'orquestar-con-capacidad',
+                'eyebrow' => 'Orquestación',
+                'title' => 'Orquestar es equilibrar velocidad, capacidad y responsabilidad.',
+                'body' => 'Un asistente útil no solo responde rápido. Debe saber cuándo preparar, cuándo sugerir, cuándo ejecutar una tarea repetitiva y cuándo escalar a una persona. La orquestación conecta IA, sistemas, procesos y validación humana para que la automatización no rompa la operación.',
+                'comparisonLabel' => 'Beneficios y forma de gobernar asistentes IA',
+                'decisionLabel' => 'Criterios operativos de orquestación IA',
+                'flowLabel' => 'Flujo operativo para automatizar con criterio humano',
+                'columns' => [
+                    [
+                        'anchor' => 'beneficios-orquestacion-ia',
+                        'label' => 'Beneficios',
+                        'title' => 'Dónde la IA sí aumenta capacidad.',
+                        'body' => 'La IA aporta valor cuando reduce fricción repetitiva y deja mejor preparado el trabajo que una persona debe validar o ejecutar.',
+                        'items' => [
+                            'Clasificación de tickets, solicitudes y casos recurrentes.',
+                            'Respuestas sugeridas basadas en conocimiento gobernado.',
+                            'Recuperación de evidencia documental antes de decidir.',
+                            'Derivación más clara entre soporte, ventas, operaciones y administración.',
+                        ],
+                    ],
+                    [
+                        'anchor' => 'como-gobernar-orquestacion-ia',
+                        'label' => 'Cómo',
+                        'title' => 'Cómo evitamos la sobreautomatización.',
+                        'body' => 'Antes de escalar, medimos qué pasa aguas abajo: quién ejecuta, qué capacidad existe, qué costo aparece y qué decisiones requieren responsabilidad humana.',
+                        'items' => [
+                            'Definir límites explícitos para cada asistente.',
+                            'Medir impacto sobre personas, tiempos físicos y costos reales.',
+                            'Mantener revisión humana en decisiones sensibles.',
+                            'Escalar por pilotos, no por entusiasmo tecnológico.',
+                        ],
+                    ],
+                ],
+                'decisionRows' => [
+                    ['Beneficio operativo', 'La IA prepara, ordena y acelera tareas repetitivas sin exigir que todo el proceso sea automático.'],
+                    ['Punto crítico', 'Si una etapa se acelera sin mirar la capacidad del resto del proceso, el cuello de botella solo cambia de lugar.'],
+                    ['Regla de diseño', 'Automatizar solo cuando la organización puede sostener la velocidad con personas, sistemas, costos y responsabilidad claros.'],
+                ],
+                'flow' => [
+                    'Diagnosticar',
+                    'Priorizar',
+                    'Pilotear',
+                    'Medir capacidad',
+                    'Escalar',
+                    'Gobernar',
+                ],
+            ],
+            'sections' => [
+                [
+                    'anchor' => 'caso-distribucion-ia',
+                    'title' => 'Caso de uso: cuando la IA acelera más que la operación.',
+                    'body' => [
+                        'Una empresa de distribución implementa un asistente IA para su mesa de tickets. El sistema clasifica solicitudes, responde en segundos y resuelve casos frecuentes como devoluciones, reposición de productos, cambios de entrega o nuevos despachos.',
+                        'El asistente funciona bien, pero aparece una fricción que no estaba en el cálculo inicial: la operación física no se mueve a la misma velocidad que la IA. Si el sistema aprueba más devoluciones, alguien debe retirar esos productos. Si genera más entregas, alguien debe despacharlas. Si ordena más solicitudes por hora, bodega, repartidores, camiones y coordinación reciben más carga en menos tiempo.',
+                        'La IA no eliminó el trabajo: lo desplazó hacia otra parte del proceso. La empresa descubre que el cuello de botella no estaba solo en la atención al cliente, sino en la capacidad real de reparto, logística y cumplimiento.',
+                        'El retorno esperado por automatizar tickets puede demorarse o incluso volverse en contra si la organización debe contratar más repartidores, ampliar turnos, aumentar flota o reforzar áreas que no estaban preparadas para absorber ese volumen.',
+                        'Por eso, antes de acelerar una etapa, hay que mirar la cadena completa: personas, tiempos físicos, costos, capacidad instalada, experiencia del cliente y responsabilidad operacional.',
+                    ],
+                    'quote' => 'La IA puede acelerar una decisión, pero no puede ignorar la capacidad humana y operativa que debe sostenerla.',
+                ],
+                [
+                    'anchor' => 'knowledge-desk-copilot',
+                    'title' => 'Producto destacado: Knowledge Desk Copilot',
+                    'body' => [
+                        'Mesa de ayuda inteligente basada en conocimiento gobernado, donde la IA sugiere respuestas, clasifica solicitudes y recupera evidencia documental, pero cada decisión relevante mantiene validación humana.',
+                        'Un sistema de asistencia operativa para reducir fricción interna sin perder control humano.',
+                    ],
+                ],
+                [
+                    'anchor' => 'productos-de-automatizacion',
+                    'title' => 'La IA prepara, ordena, sugiere y ejecuta tareas repetitivas; el humano valida, decide y responde por el resultado.',
+                    'table' => [
+                        'headers' => ['Producto', 'Qué resuelve', 'Base técnica'],
+                        'rows' => [
+                            ['Knowledge Desk Copilot', 'Mesa de ayuda interna con tickets, respuestas sugeridas y base de conocimiento gobernada', 'RAG + ticketing'],
+                            ['CRM Copilot', 'Seguimiento comercial, historial de clientes, próximas acciones y respuestas asistidas', 'CRM + RAG'],
+                            ['Policy & Procedure Assistant', 'Consulta de políticas internas, procedimientos, manuales y normativa interna', 'RAG documental'],
+                            ['Bid / Proposal Copilot', 'Apoyo para licitaciones, propuestas técnicas y documentos repetitivos', 'RAG + trazabilidad'],
+                            ['Compliance Document Copilot', 'Revisión asistida de documentos frente a políticas, privacidad, contratos o requisitos', 'RAG + reglas'],
+                            ['Onboarding Assistant', 'Asistente para nuevos colaboradores con preguntas frecuentes, procesos y documentos internos', 'RAG + flujo guiado'],
+                            ['Operations Ticketing Copilot', 'Registro, clasificación y derivación de solicitudes internas: TI, RRHH, legal, finanzas, operaciones', 'Ticketing + IA'],
+                            ['Graph Knowledge Navigator', 'Para organizaciones con documentos complejos, relaciones entre áreas, normas, contratos, personas y procesos', 'GraphRAG'],
+                        ],
+                    ],
+                ],
+            ],
+            'insightBlock' => [
+                'ariaLabel' => 'Síntesis y gobernanza de asistentes IA',
+                'left' => [
+                    'anchor' => 'gobernanza-operativa',
+                    'eyebrow' => 'Gobernanza',
+                    'title' => 'Gobernanza antes de automatización.',
+                    'body' => [
+                        'Definimos reglas claras para que la inteligencia artificial opere con límites, trazabilidad y responsabilidad humana.',
+                        'La gobernanza permite establecer qué información puede usar un asistente IA, qué tipo de respuestas puede entregar, cuándo debe pedir revisión humana y cuáles son los límites explícitos frente a clientes, equipos internos o procesos sensibles.',
+                        'Gobernar es poner reglas claras para que la IA sea útil, segura y revisable por humanos.',
+                    ],
+                ],
+                'right' => [
+                    'anchor' => 'criterio-humano',
+                    'eyebrow' => 'Criterio humano',
+                    'title' => 'Más rápido no siempre significa más inteligente.',
+                    'body' => [
+                        'Un asistente IA puede ordenar información, guiar flujos, responder preguntas, generar documentos, conectar sistemas y acelerar tareas repetitivas. Pero su valor depende de límites claros: qué puede hacer, qué debe escalar, qué datos puede usar y quién revisa sus respuestas.',
+                        'La eficiencia útil no consiste en sacar personas del proceso, sino en liberar tiempo y reducir fricción para que las personas puedan revisar mejor, decidir mejor y dedicar energía a tareas de mayor sentido.',
+                        'Una organización sin humanos revisando sus procesos no es más inteligente: solo es más rápida para equivocarse.',
+                    ],
+                ],
+            ],
+            'guardrails' => [],
+            'cta' => 'Conversar sobre Orquestación IA',
+        ]);
+    }
+
+    public function softwareFactory(): void
+    {
+        $this->view('pages/vertical-detail', [
+            'title' => 'Software Factory | AlmaDesign',
+            'metaDescription' => 'Construimos sistemas a medida para organizaciones que necesitan aplicaciones robustas, integraciones confiables y datos bien gobernados.',
+            'pageClass' => 'software-factory-page',
+            'eyebrow' => 'Software Factory',
+            'heading' => 'Software Factory',
+            'lead' => 'Construimos sistemas a medida para organizaciones que necesitan aplicaciones robustas, integraciones confiables y datos bien gobernados.',
+            'heroAnchor' => 'software-factory',
+            'featureBlock' => [
+                'ariaLabel' => 'Patrón de diseño de Software Factory',
+                'left' => [
+                    'anchor' => 'patron-diseno-software',
+                    'eyebrow' => 'Patrón de diseño',
+                    'title' => 'La IA no reemplaza la arquitectura de software.',
+                    'body' => [
+                        'La IA acelera y ordena la aplicación de buenas prácticas que ya existen.',
+                        'Los patrones clásicos siguen siendo la base: requerimientos, análisis funcional, arquitectura, orientación a objetos coherente, separación de responsabilidades, patrones de diseño, documentación técnica, QA, feedback con cliente, entregas incrementales y mantenimiento.',
+                    ],
+                ],
+                'right' => [
+                    'anchor' => 'ia-asistente-tecnico',
+                    'eyebrow' => 'IA asistiva',
+                    'title' => 'La IA entra como asistente técnico, no como arquitecto soberano.',
+                    'body' => [
+                        'Su rol es ordenar requerimientos, detectar inconsistencias, evitar duplicación de clases, sugerir patrones adecuados, mantener coherencia entre módulos, generar código base, revisar smells, crear tests, actualizar documentación y preparar entregables técnicos.',
+                        'Pero siempre bajo arquitectura humana.',
+                    ],
+                ],
+            ],
+            'ragGraphSection' => [
+                'anchor' => 'codigo-defendible-asistido-ia',
+                'eyebrow' => 'Código defendible',
+                'title' => 'Arquitectura clásica + IA asistiva + código defendible.',
+                'body' => 'En AlmaDesign usamos IA para acelerar la construcción de sistemas, pero siempre sobre fundamentos clásicos de ingeniería: arquitectura clara, orientación a objetos coherente, patrones de diseño, documentación técnica, feedback del cliente, código limpio y QA exigente.',
+                'comparisonLabel' => 'Principios de construcción y riesgos de deuda técnica',
+                'decisionLabel' => 'Criterios de calidad de Software Factory',
+                'flowLabel' => 'Flujo de construcción de software asistido por IA',
+                'columns' => [
+                    [
+                        'anchor' => 'fundamentos-software-factory',
+                        'label' => 'Fundamentos',
+                        'title' => 'El oficio técnico sigue siendo la base.',
+                        'body' => 'La IA puede ayudar a producir más rápido, pero el sistema debe nacer desde un brief claro, una arquitectura defendible y decisiones técnicas coherentes.',
+                        'items' => [
+                            'Brief del cliente y análisis funcional.',
+                            'Arquitectura, capas y responsabilidades claras.',
+                            'Patrones del lenguaje y orientación a objetos coherente.',
+                            'Documentación técnica, feedback, QA y mantenimiento.',
+                        ],
+                    ],
+                    [
+                        'anchor' => 'riesgos-software-ia',
+                        'label' => 'Riesgos',
+                        'title' => 'IA rápida + sin arquitectura = deuda técnica acelerada.',
+                        'body' => 'La IA puede generar mucho código, pero si no hay criterio puede duplicar lógica, inventar clases innecesarias, mezclar responsabilidades, romper capas e introducir dependencias difíciles de defender.',
+                        'items' => [
+                            'Código que pasa visualmente, pero falla en QA real.',
+                            'Módulos difíciles de mantener o escalar.',
+                            'Dependencias mal elegidas y responsabilidades mezcladas.',
+                            'Entregas rápidas que encarecen el producto después.',
+                        ],
+                    ],
+                ],
+                'decisionRows' => [
+                    ['¿Se entiende?', 'El código, la arquitectura y los módulos pueden ser explicados por otro equipo técnico.'],
+                    ['¿Se mantiene?', 'Las responsabilidades están separadas y los cambios no rompen capas innecesariamente.'],
+                    ['¿Se prueba?', 'El sistema incorpora QA interno, pruebas y revisión antes de entrega.'],
+                    ['¿Se escala?', 'Las decisiones técnicas permiten crecimiento, integración y mantenimiento.'],
+                    ['¿Cumple el brief?', 'La solución responde al problema del cliente, no solo a una generación rápida de código.'],
+                ],
+                'flow' => [
+                    'Brief',
+                    'Análisis',
+                    'Arquitectura',
+                    'Desarrollo IA',
+                    'QA',
+                    'Entrega',
+                ],
+            ],
+            'sections' => [],
+            'insightBlock' => [
+                'ariaLabel' => 'Síntesis técnica de Software Factory',
+                'left' => [
+                    'anchor' => 'principio-tecnico-almadesign',
+                    'eyebrow' => 'Principio técnico',
+                    'title' => 'No usamos IA para improvisar software.',
+                    'body' => [
+                        'Usamos IA para construir mejor, más rápido y con más control sobre bases sólidas de ingeniería.',
+                        'Todo sistema debe nacer desde el brief, pasar por arquitectura, respetar los patrones del lenguaje, mantener código limpio, recibir feedback del cliente y superar QA interno y externo.',
+                    ],
+                ],
+                'right' => [
+                    'anchor' => 'oficio-amplificado',
+                    'eyebrow' => 'Oficio',
+                    'title' => 'La IA no reemplaza el oficio.',
+                    'body' => [
+                        'Lo amplifica cuando existe arquitectura, criterio y responsabilidad humana.',
+                        'El resultado esperado no es solo más velocidad: es software que se entiende, se mantiene, se prueba, se escala y se puede defender ante otro equipo técnico.',
+                    ],
+                ],
+            ],
+            'guardrails' => [],
+            'cta' => 'Conversar sobre Software Factory',
         ]);
     }
 
@@ -352,185 +728,70 @@ final class ContentController extends BaseController
             'title' => 'AI for Humans | Manifiesto público de AlmaDesign',
             'metaDescription' => 'AI for Humans es el manifiesto público de AlmaDesign: inteligencia artificial gobernada para proteger, potenciar y no reemplazar al humano.',
             'pageClass' => 'ai-for-humans-manifest',
-            'eyebrow' => 'AI for Humans',
+            'eyebrow' => 'Manifiesto de AlmaDesign',
             'heading' => 'AI for Humans',
-            'lead' => 'Inteligencia artificial gobernada para proteger, potenciar y no reemplazar al humano.',
+            'lead' => 'La inteligencia artificial no debe reemplazar el criterio humano, sino ampliar nuestra capacidad para decidir mejor, trabajar con más claridad y construir organizaciones más justas, eficientes y responsables.',
+            'leadParagraphs' => [
+                'La inteligencia artificial no debe reemplazar el criterio humano, sino ampliar nuestra capacidad para decidir mejor, trabajar con más claridad y construir organizaciones más justas, eficientes y responsables.',
+                'AI for Humans es un llamado a empresas, instituciones y gobiernos a adoptar la inteligencia artificial con propósito: ordenando procesos, protegiendo datos, reduciendo fricciones y manteniendo siempre a las personas en el centro de cada decisión.',
+                'No todo debe automatizarse. No todo puede delegarse. La tecnología debe estar al servicio de quienes trabajan, gobiernan, cuidan, educan, emprenden y toman decisiones que afectan la vida de otros.',
+                'Construyamos una IA útil, verificable y humana. Una IA con arquitectura, gobernanza mínima viable, evidencia y responsabilidad. Una IA que no borre al ser humano del proceso, sino que lo ayude a pensar, crear y actuar mejor.',
+            ],
             'heroAnchor' => 'manifiesto',
             'sections' => [],
-            'audioCard' => [
-                'eyebrow' => 'Audio',
-                'title' => 'IA que protege y no reemplaza',
-                'body' => 'Audio creado con NotebookLM como resumen del manifiesto AI for Humans de AlmaDesign.',
-                'file' => 'audio/ia-que-protege-y-no-reemplaza.m4a',
-            ],
             'manifestSections' => [
                 [
-                    'title' => 'AI for Humans',
-                    'subtitle' => 'Manifiesto público de AlmaDesign',
+                    'title' => 'La IA debe estar al servicio del ser humano.',
+                    'subtitle' => 'AI for Humans',
                     'body' => [
-                        'AI for Humans es la postura fundacional de AlmaDesign frente a la inteligencia artificial.',
-                        'No nace como una frase de moda, ni como una promesa técnica, ni como una declaración cómoda para acompañar una página web. Nace desde una convicción más profunda: la tecnología solo tiene verdadero sentido cuando amplía la capacidad humana de crear, comprender, decidir y vivir con mayor dignidad.',
-                        'Durante demasiado tiempo, el acceso a la creación, al conocimiento, a la producción y al desarrollo dependió de recursos que no siempre estaban al alcance de todos. Una cámara, un estudio, un equipo, una red de contactos, una gran empresa, una formación técnica, una infraestructura costosa o una oportunidad precisa podían determinar quién podía crear y quién debía postergar su vocación.',
-                        'La inteligencia artificial cambia esa frontera.',
-                        'Cuando está bien diseñada, la IA puede devolver herramientas. Puede abrir caminos. Puede ampliar capacidades que antes dependían del capital, de la industria, de la ubicación, de la suerte o del acceso a tecnologías reservadas para pocos. Pero esa potencia no es neutra. También puede invadir, vigilar, reemplazar, acelerar sin sentido y reducir a las personas a métricas de eficiencia.',
-                        'Por eso AlmaDesign adopta AI for Humans como manifiesto público: porque no toda inteligencia artificial merece ser construida, no toda automatización representa progreso y no toda eficiencia justifica el costo humano que puede producir.',
+                        'AI for Humans es la postura fundacional de AlmaDesign: la tecnología solo tiene sentido cuando amplía la capacidad humana de crear, comprender, decidir y vivir con mayor dignidad.',
                     ],
-                    'quote' => 'AI for Humans afirma una dirección: la IA debe estar al servicio del ser humano, no el ser humano al servicio de la IA.',
                 ],
                 [
-                    'anchor' => 'origen',
-                    'title' => 'El origen de una convicción',
+                    'anchor' => 'tecnologia-correcta',
+                    'title' => 'La tecnología correcta devuelve capacidad.',
                     'body' => [
-                        'AlmaDesign nace desde una experiencia concreta: la tecnología puede devolver capacidad.',
-                        'Hay personas que no dejaron de crear porque les faltara imaginación. Dejaron de crear porque les faltaban medios. Hay personas que no dejaron de aprender porque les faltara inteligencia. Dejaron de avanzar porque el entorno no ofrecía las herramientas, los espacios o las oportunidades necesarias. Hay personas que terminaron reinventándose no por elección ideal, sino porque el camino original se volvió inaccesible.',
-                        'En esa tensión aparece una verdad profunda: el talento humano no siempre fracasa por falta de valor interior. Muchas veces queda detenido por falta de instrumentos.',
-                        'AI for Humans nace desde esa herida y desde esa posibilidad. La inteligencia artificial, cuando se gobierna correctamente, puede convertirse en una herramienta de restitución. Puede devolver lenguaje visual a quien no tuvo estudio fotográfico. Puede devolver composición sonora a quien no tuvo instrumentos. Puede devolver capacidad técnica a quien aprendió por necesidad. Puede devolver claridad a quien lleva años acumulando experiencia sin una estructura que le permita convertirla en sistema.',
-                        'Pero devolver capacidad no significa reemplazar al humano. Significa darle más superficie para actuar. Significa permitir que una persona piense, cree, diseñe, decida y exprese con mayor alcance.',
+                        'Muchas personas no dejan de crear, aprender o avanzar por falta de talento, sino por falta de instrumentos, medios u oportunidades. La IA bien gobernada puede restituir acceso, lenguaje, claridad y herramientas.',
                     ],
-                    'quote' => 'La tecnología correcta no borra la historia humana. La prolonga.',
                 ],
                 [
                     'anchor' => 'humano-al-centro',
-                    'title' => 'La IA no debe ocupar el lugar del humano',
+                    'title' => 'La IA no debe ocupar el centro.',
                     'body' => [
-                        'La inteligencia artificial no debe ocupar el centro. El centro le pertenece al ser humano.',
-                        'No al algoritmo. No al mercado. No a la plataforma. No a la automatización. No a la promesa de productividad infinita.',
-                        'El ser humano es quien imagina, quien interpreta, quien se equivoca, quien aprende, quien cuida, quien decide y quien asume responsabilidad por las consecuencias de sus actos. La IA puede asistir muchos de esos procesos, pero no puede apropiarse del sentido que los sostiene.',
-                        'Cuando una organización adopta IA sin esta claridad, corre el riesgo de confundir velocidad con avance. Puede automatizar procesos que todavía no comprende. Puede medir eficiencia mientras destruye criterio. Puede reducir tiempos mientras aumenta ansiedad. Puede delegar decisiones sin saber quién responde cuando algo falla.',
-                        'AI for Humans plantea lo contrario. Antes de automatizar, hay que comprender. Antes de escalar, hay que gobernar. Antes de delegar, hay que definir límites. Antes de medir productividad, hay que preguntarse qué tipo de vida laboral, creativa y mental se está construyendo.',
+                        'El centro sigue siendo humano: imaginación, interpretación, error, aprendizaje, cuidado, decisión y responsabilidad. Antes de automatizar hay que comprender; antes de escalar, gobernar; antes de delegar, definir límites.',
                     ],
-                    'quote' => 'La IA no debe ocupar el lugar del humano. Debe ampliar su campo de posibilidad.',
                 ],
                 [
                     'anchor' => 'proteger',
-                    'title' => 'Proteger',
+                    'title' => 'Proteger es la primera obligación.',
                     'body' => [
-                        'Proteger es la primera palabra del manifiesto porque la potencia sin protección se transforma en riesgo.',
-                        'Una inteligencia artificial verdaderamente humana no debe invadir todos los espacios disponibles. No debe convertir el trabajo en vigilancia permanente. No debe empujar a las personas a producir más sin preguntarse qué ocurre con su foco, su descanso, su salud mental o su dignidad. No debe transformar cada dato personal en materia prima disponible para optimizar sistemas que la persona no comprende ni controla.',
-                        'Proteger significa diseñar con límites.',
-                        'Significa respetar el tiempo humano, porque el tiempo no es solo una variable de productividad; es también vida, recuperación, vínculo, creatividad y silencio. Significa respetar el espacio personal, porque ninguna herramienta debería borrar la frontera entre trabajar, pensar, descansar y existir. Significa proteger el criterio profesional, porque una persona no debe ser desplazada por una recomendación automática que nadie puede explicar. Significa proteger la privacidad, porque la confianza no puede construirse sobre extracción invisible de datos.',
-                        'Para AlmaDesign, proteger no es frenar la innovación. Es darle dirección.',
-                        'Una tecnología que no protege termina exigiendo adaptación humana permanente. AI for Humans invierte esa lógica: la IA debe adaptarse al ser humano, a sus límites, a su contexto, a sus responsabilidades y a su necesidad de seguir siendo sujeto de decisión.',
-                        'Proteger es reconocer que el progreso técnico no vale lo mismo si debilita a las personas que pretende ayudar.',
+                        'Una IA humana no debe invadir, vigilar, extraer datos sin control ni exigir productividad permanente. Debe respetar privacidad, tiempo, descanso, foco, dignidad, criterio profesional y salud mental.',
                     ],
                 ],
                 [
                     'anchor' => 'potenciar',
-                    'title' => 'Potenciar',
+                    'title' => 'Potenciar no es explotar más.',
                     'body' => [
-                        'Potenciar no significa exigir más rendimiento hasta agotar a la persona.',
-                        'Potenciar significa entregar mejores instrumentos para pensar, crear y decidir. Significa reducir ruido para que aparezca claridad. Significa ordenar información dispersa para que el criterio humano pueda actuar con mayor profundidad. Significa transformar tareas repetitivas en procesos asistidos, no para eliminar valor humano, sino para liberar energía hacia lo que realmente requiere presencia, interpretación y creatividad.',
-                        'La IA puede ser un amplificador cognitivo. Puede ayudar a una persona a comparar alternativas, explorar ideas, resumir documentos, encontrar patrones, organizar proyectos, producir imágenes, escribir mejor, diseñar sistemas o traducir intuiciones en estructuras. Pero amplificar no es sustituir. Un amplificador aumenta una señal que ya existe. No inventa el alma de quien crea.',
-                        'Por eso AI for Humans entiende la IA como instrumento de expansión humana.',
-                        'Una persona potenciada por IA no es menos humana. Puede ser más libre frente a tareas que antes consumían su tiempo, más capaz de convertir ideas en obra, más rápida para aprender, más fuerte para enfrentar complejidad y más consciente de sus propias decisiones.',
-                        'Potenciar es devolver margen.',
-                        'Margen para crear. Margen para aprender. Margen para decidir. Margen para equivocarse menos por falta de información. Margen para trabajar con mayor profundidad y no solo con mayor velocidad.',
+                        'Potenciar significa entregar mejores instrumentos para pensar, crear, ordenar información, decidir y liberar energía hacia tareas con mayor sentido humano. La IA debe dar margen, no aumentar la presión.',
                     ],
-                    'quote' => 'La IA bien diseñada no reemplaza la chispa humana. Le entrega oxígeno.',
                 ],
                 [
                     'anchor' => 'no-reemplazar',
-                    'title' => 'No reemplazar',
+                    'title' => 'No reemplazar es una frontera ética.',
                     'body' => [
-                        'No reemplazar no es una frase defensiva. Es una frontera ética.',
-                        'La IA puede asistir, sugerir, clasificar, ordenar, redactar, explicar, buscar, resumir, conectar y alertar. Pero no debe apropiarse de aquello que exige juicio, responsabilidad, sensibilidad, experiencia y contexto humano.',
-                        'Hay decisiones que no pueden reducirse a una salida estadística. Hay momentos donde el dato no basta. Hay situaciones donde importa la historia, el tono, el impacto, la consecuencia y la persona que queda al otro lado de la decisión. La IA puede acompañar ese proceso, pero no debe convertirse en autoridad final por comodidad, presión económica o fascinación tecnológica.',
-                        'No reemplazar significa que el criterio humano permanece vivo.',
-                        'También significa rechazar una visión empobrecida del trabajo humano. Una persona no es solo una secuencia de tareas. Es memoria, oficio, intuición, aprendizaje, emociones, responsabilidad y sentido. Cuando una organización mira a las personas solo como funciones reemplazables, pierde una parte esencial de su inteligencia colectiva.',
-                        'AI for Humans no niega que algunas tareas puedan automatizarse. Niega que el reemplazo humano deba ser el horizonte de la innovación.',
-                        'El horizonte correcto es otro: que las personas tengan mejores herramientas para hacer mejor aquello que sigue requiriendo humanidad.',
-                    ],
-                ],
-                [
-                    'anchor' => 'creatividad',
-                    'title' => 'Creatividad',
-                    'body' => [
-                        'La creatividad humana no es un lujo. Es una forma de existencia.',
-                        'Crear no significa solamente producir arte, música, imágenes o palabras. Crear también es encontrar una solución donde antes había fricción. Es imaginar una ruta distinta. Es diseñar un proceso más claro. Es convertir una experiencia personal en empresa, una necesidad en sistema, una intuición en lenguaje, una dificultad en método.',
-                        'La IA puede abrir puertas creativas que antes estaban cerradas por falta de medios. Puede permitir que alguien visualice una idea sin estudio, componga una atmósfera sin instrumentos, diseñe una interfaz sin un equipo completo o explore un concepto sin esperar permiso de una industria.',
-                        'Pero la creatividad no debe ser uniformada por la máquina. Si todos los sistemas empujan hacia el mismo estilo, la misma respuesta y la misma optimización, la humanidad pierde diversidad expresiva. Por eso AI for Humans no busca que la IA cree por nosotros. Busca que amplíe nuestra capacidad de crear con identidad.',
-                        'La IA debe ser herramienta, no molde.',
-                        'Debe abrir posibilidades, no estandarizar el alma.',
-                    ],
-                ],
-                [
-                    'anchor' => 'toma-de-decision',
-                    'title' => 'Toma de decisión',
-                    'body' => [
-                        'Decidir es uno de los actos más humanos que existen.',
-                        'Una decisión no es solo elegir entre opciones. Es asumir responsabilidad frente a consecuencias. Es ponderar información, contexto, valores, riesgos, intuición, experiencia y propósito. La IA puede mejorar el acceso a información, ordenar evidencia, mostrar alternativas y advertir contradicciones. Pero la decisión relevante no debe desaparecer dentro de un sistema opaco.',
-                        'Cuando una IA decide sin trazabilidad, la responsabilidad se diluye. Cuando una organización delega demasiado pronto, el juicio se debilita. Cuando las personas dejan de comprender por qué se tomó una decisión, aparece una forma silenciosa de dependencia.',
-                        'AI for Humans defiende una inteligencia artificial que fortalece la decisión humana, no que la reemplaza.',
-                        'La IA debe ayudar a ver mejor. Debe reducir confusión. Debe presentar contexto. Debe permitir revisar. Debe dejar huella. Pero la decisión final, especialmente cuando afecta personas, recursos, derechos, bienestar o dirección estratégica, debe permanecer bajo responsabilidad humana.',
-                    ],
-                    'quote' => 'Una IA correcta no decide por la persona. Le permite decidir con mayor claridad.',
-                ],
-                [
-                    'anchor' => 'valor-cognitivo',
-                    'title' => 'Valor cognitivo',
-                    'body' => [
-                        'El pensamiento humano no es un costo operativo a reducir.',
-                        'En muchas organizaciones, la eficiencia se ha entendido como reducción de tiempo, reducción de pasos, reducción de personas, reducción de conversación. Pero no todo lo que parece lento es inútil. Pensar toma tiempo. Comprender toma tiempo. Crear toma tiempo. Cuidar toma tiempo. Decidir bien toma tiempo.',
-                        'El valor cognitivo de una persona está en su capacidad de conectar lo que sabe con lo que vive, lo que observa con lo que intuye, lo que mide con lo que comprende. Esa forma de inteligencia no aparece completa en una base de datos. No se resume solo en productividad. No se captura plenamente en un indicador.',
-                        'La IA puede ayudar a ordenar el entorno cognitivo. Puede reducir carga mental innecesaria, encontrar información, estructurar ideas y liberar espacio para pensar mejor. Pero si se usa para saturar más, exigir más y acelerar todo sin descanso, deja de potenciar y empieza a degradar.',
-                        'AI for Humans afirma que la inteligencia artificial debe respetar el valor cognitivo humano.',
-                        'No se trata de pensar menos. Se trata de pensar mejor.',
-                        'No se trata de reemplazar criterio. Se trata de darle mejores condiciones para existir.',
-                    ],
-                ],
-                [
-                    'anchor' => 'salud-fisica-y-mental',
-                    'title' => 'Salud física y mental',
-                    'body' => [
-                        'La eficiencia sin cuidado puede transformarse en una forma elegante de agotamiento.',
-                        'Una empresa puede volverse más rápida y, al mismo tiempo, más inhumana. Puede responder más correos, cerrar más tickets, generar más reportes y aun así deteriorar la salud de las personas que la sostienen. Por eso AI for Humans no puede hablar de tecnología sin hablar de límites, ritmo, foco, descanso y bienestar.',
-                        'La salud física y mental no es un adorno blando dentro de una estrategia tecnológica. Es una condición estructural para que exista creatividad, decisión y trabajo sostenible.',
-                        'Una IA diseñada sin sensibilidad puede aumentar la presión invisible. Puede llenar cada espacio libre con nuevas tareas. Puede convertir la disponibilidad en obligación. Puede medir todo menos el cansancio. Puede confundir movimiento con avance.',
-                        'Una IA diseñada para humanos debe hacer lo contrario. Debe ayudar a reducir fricción, no a multiplicarla. Debe proteger el foco, no fragmentarlo. Debe ordenar prioridades, no producir urgencias artificiales. Debe permitir que las personas trabajen mejor sin vivir permanentemente exigidas por sistemas que nunca se cansan.',
-                        'La tecnología no tiene cuerpo. Las personas sí.',
-                        'Por eso toda IA que pretenda servir al humano debe recordar que la mente necesita espacio y el cuerpo necesita límite.',
+                        'La IA puede asistir, sugerir, clasificar, redactar, resumir y conectar, pero no debe apropiarse de decisiones que requieren juicio, sensibilidad, experiencia, contexto y responsabilidad humana.',
                     ],
                 ],
                 [
                     'anchor' => 'gobernanza-antes-de-automatizacion',
                     'title' => 'Gobernanza antes de automatización',
                     'body' => [
-                        'Gobernar la IA no es burocracia. Es una forma de respeto.',
-                        'Antes de automatizar, debe estar claro qué se automatiza, por qué, con qué límites, bajo qué responsabilidad y con qué posibilidad de revisión. Antes de entregar una tarea a un modelo, debe saberse qué datos usa, qué decisiones afecta, qué errores puede cometer y quién responde cuando algo falla.',
-                        'La gobernanza no existe para frenar la inteligencia. Existe para evitar que la inteligencia se vuelva opaca, invasiva o irresponsable.',
-                        'AI for Humans sostiene que la IA debe operar dentro de reglas explícitas. Debe existir trazabilidad. Debe existir consentimiento cuando corresponde. Debe existir supervisión humana. Deben existir límites frente a decisiones críticas. Deben existir criterios para saber cuándo no automatizar.',
-                        'Una IA sin gobernanza puede ser rápida, impresionante y peligrosa.',
-                        'Una gobernanza sin inteligencia puede ser rígida e inútil.',
-                        'El desafío de AlmaDesign es unir ambas: inteligencia aplicada con dirección humana.',
+                        'AI for Humans no es anti-tecnología ni una certificación externa: es una brújula de diseño. AlmaDesign se compromete a construir IA con propósito, límites, trazabilidad, supervisión humana y responsabilidad, para que la tecnología no borre el alma humana, sino que la ayude a desarrollarse.',
                     ],
-                    'quote' => 'Gobernanza, en este manifiesto, significa que la tecnología no avanza sola. Avanza con propósito, con límites y con responsabilidad.',
-                ],
-                [
-                    'title' => 'Lo que AI for Humans no es',
-                    'body' => [
-                        'AI for Humans no es una promesa de automatización total. No nace para decir que todo proceso debe ser acelerado, reducido o entregado a una máquina. Esa mirada sería demasiado pobre para una tecnología tan poderosa y demasiado injusta para las personas que sostienen organizaciones reales con su experiencia, su creatividad y su juicio.',
-                        'Tampoco es una norma externa, una certificación o un sello de cumplimiento. Es una postura filosófica pública de AlmaDesign. Una forma de declarar desde dónde se diseña, qué se acepta construir y qué se decide rechazar. Su valor no está en parecer una regulación, sino en actuar como brújula.',
-                        'AI for Humans no es una postura anti-tecnología. Al contrario, nace del reconocimiento profundo de lo que la tecnología puede devolver cuando se pone al servicio correcto. La IA puede abrir posibilidades inmensas. Puede democratizar acceso creativo, acelerar aprendizaje, reducir fricción y permitir que personas con menos recursos construyan con herramientas que antes parecían imposibles.',
-                        'Pero tampoco es una campaña de productividad sin límites. No se trata de hacer más por hacer más. No se trata de convertir cada minuto humano en una unidad optimizable. No se trata de borrar descanso, duda, pausa o conversación en nombre de la eficiencia.',
-                        'AI for Humans es una decisión de diseño: afirmar que la inteligencia artificial solo tiene sentido cuando amplía la capacidad humana sin borrar el valor de la persona que piensa, crea, decide y vive las consecuencias del mundo real.',
-                    ],
-                ],
-                [
-                    'anchor' => 'compromiso-almadesign',
-                    'title' => 'Compromiso AlmaDesign',
-                    'body' => [
-                        'AlmaDesign adopta AI for Humans como manifiesto fundacional.',
-                        'Eso significa que la tecnología debe diseñarse con dirección humana. Que la IA debe ordenar información sin reemplazar criterio. Que debe reducir fricción sin invadir la vida. Que debe apoyar decisiones sin ocultar responsabilidad. Que debe potenciar creatividad sin uniformar expresión. Que debe mejorar productividad sin sacrificar salud física ni mental.',
-                        'Este compromiso no busca negar la potencia de la inteligencia artificial. Busca ponerla en el lugar correcto.',
-                        'AlmaDesign cree que el futuro no debe pertenecer a sistemas que hacen innecesarias a las personas, sino a sistemas que les devuelven capacidad para crear, decidir, aprender y construir con mayor libertad.',
-                        'La inteligencia artificial no debe borrar el alma humana.',
-                    ],
-                    'quote' => 'Debe ayudarla a desarrollarse.',
                 ],
             ],
             'guardrails' => [],
             'signatureAnchor' => 'firma-fundacional',
-            'finalCtaAnchor' => 'conversemos',
             'cta' => 'Hablemos de tu proyecto',
         ]);
     }

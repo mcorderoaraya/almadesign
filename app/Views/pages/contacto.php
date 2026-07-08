@@ -1,70 +1,43 @@
 <?php
 declare(strict_types=1);
-
-/** @var array<string, string> $old */
-/** @var array<string, string> $errors */
-/** @var string $csrfToken */
-
-$field = static fn (string $name): string => (string) ($old[$name] ?? '');
 ?>
-<section class="contact-hero">
-    <div class="section-heading">
-        <p class="eyebrow">Contacto</p>
-        <h1>Conversemos con calma.</h1>
-        <p class="lead">Cuéntanos qué necesitas revisar con AlmaDesign. Respondemos por correo, sin automatismos invasivos ni base de datos de contactos.</p>
+<section class="rag-contact" aria-label="RAG de contacto AlmaDesign">
+    <div class="rag-conversation" aria-live="polite">
+        <div id="status" class="status" hidden></div>
+
+        <div id="result" class="result" hidden>
+            <p id="answer"></p>
+        </div>
+
+        <p class="rag-privacy-notice">
+            <strong>solicitaremos sus datos de contacto si usted decide comunicarse con un ejecutivo o solicitar atención personalizada.
+            La información entregada será utilizada exclusivamente para responder a su solicitud, gestionar su contacto y entregar la orientación requerida. No será utilizada para otros fines sin su autorización.
+            Si posteriormente usted solicita la eliminación de sus datos personales, estos serán borrados de nuestros registros, salvo que exista una obligación legal que exija conservarlos por un período determinado.</strong>
+        </p>
+
+        <div id="error" class="error" hidden></div>
     </div>
-    <aside class="contact-note" aria-label="Estado del formulario">
-        <p>Contacto directo con AlmaDesign.</p>
-        <span>Usamos tus datos solo para responder esta conversación.</span>
-    </aside>
-</section>
 
-<section class="contact-section">
-    <form class="contact-form" action="<?= e(url('/contacto/enviar')) ?>" method="post" novalidate>
-        <?php if (!empty($errors['general'])): ?>
-            <div class="form-alert" role="alert"><?= e($errors['general']) ?></div>
-        <?php endif; ?>
-
-        <input type="hidden" name="csrf_token" value="<?= e($csrfToken) ?>">
-
-        <div class="honeypot" aria-hidden="true">
-            <!-- Nombre intencionalmente específico para evitar autofill accidental. -->
-            <input id="almadesign_hp_field" name="almadesign_hp_field" type="text" value="" tabindex="-1" autocomplete="off">
-        </div>
-
-        <label>
-            <span>Nombre</span>
-            <input name="nombre" type="text" value="<?= e($field('nombre')) ?>" minlength="2" maxlength="120" autocomplete="name" required>
-            <?php if (!empty($errors['nombre'])): ?><small><?= e($errors['nombre']) ?></small><?php endif; ?>
-        </label>
-
-        <label>
-            <span>Email</span>
-            <input name="email" type="email" value="<?= e($field('email')) ?>" maxlength="180" autocomplete="email" spellcheck="false" required>
-            <?php if (!empty($errors['email'])): ?><small><?= e($errors['email']) ?></small><?php endif; ?>
-        </label>
-
-        <label>
-            <span>Teléfono</span>
-            <input name="telefono" type="tel" value="<?= e($field('telefono')) ?>" maxlength="40" pattern="[0-9+() .-]{6,40}" autocomplete="tel" inputmode="tel" required>
-            <?php if (!empty($errors['telefono'])): ?><small><?= e($errors['telefono']) ?></small><?php endif; ?>
-        </label>
-
-        <label>
-            <span>Asunto</span>
-            <input name="asunto" type="text" value="<?= e($field('asunto')) ?>" minlength="3" maxlength="160" autocomplete="off" required>
-            <?php if (!empty($errors['asunto'])): ?><small><?= e($errors['asunto']) ?></small><?php endif; ?>
-        </label>
-
-        <label class="full-span">
-            <span>Mensaje</span>
-            <textarea name="mensaje" rows="8" minlength="10" maxlength="3000" autocomplete="off" required><?= e($field('mensaje')) ?></textarea>
-            <?php if (!empty($errors['mensaje'])): ?><small><?= e($errors['mensaje']) ?></small><?php endif; ?>
-        </label>
-
-        <div class="form-actions full-span">
-            <button class="button button-primary" type="submit" disabled>Enviar mensaje</button>
-            <p>No guardamos el contenido completo del mensaje en logs.</p>
-        </div>
+    <form
+        id="chat-form"
+        class="rag-composer"
+        data-chat-endpoint="<?= e(url('/contacto/rag/chat')) ?>"
+        data-conversation-start-endpoint="<?= e(url('/contacto/rag/iniciar')) ?>"
+        data-csrf-token="<?= e($csrfToken ?? '') ?>"
+    >
+        <label for="question" class="sr-only">Mensaje</label>
+        <textarea
+            id="question"
+            name="question"
+            maxlength="1000"
+            rows="1"
+            placeholder="Escribe tu mensaje"
+        ></textarea>
+        <button type="submit" id="submit-btn" aria-label="Enviar">
+            <span aria-hidden="true"></span>
+        </button>
+        <div id="char-counter" class="char-counter" aria-live="polite">(máximo 1000 caracteres) 0/1000</div>
+        <div id="reference" class="reference" aria-live="polite" hidden></div>
+        <button type="button" id="reset-btn" class="secondary" hidden>Nueva conversación</button>
     </form>
 </section>

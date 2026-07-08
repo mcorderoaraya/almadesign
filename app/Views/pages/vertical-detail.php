@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 
-/** @var array<int, array{title: string, body?: string|list<string>, items?: list<string>, anchor?: string}> $sections */
-/** @var array<int, array{title: string, body?: string|list<string>, items?: list<string>, anchor?: string}>|null $postSections */
+/** @var array<int, array{title: string, body?: string|list<string>, items?: list<string>, quote?: string, table?: array{headers: list<string>, rows: list<list<string>>}, anchor?: string}> $sections */
+/** @var array<int, array{title: string, body?: string|list<string>, items?: list<string>, quote?: string, table?: array{headers: list<string>, rows: list<list<string>>}, anchor?: string}>|null $postSections */
 /** @var array<int, array{title: string, intro: string, items: list<array{title: string, body?: string|list<string>, items?: list<string>, key: string, anchor?: string}>, eyebrow?: string, keyLabel?: string, variant?: string, anchor?: string}>|null $cardSections */
 /** @var list<string|array{title: string, body: string}> $guardrails */
 /** @var array<int, array{title: string, body: list<string>, subtitle?: string, quote?: string, anchor?: string}>|null $manifestSections */
@@ -14,11 +14,13 @@ $infographicSection = $infographicSection ?? null;
 $limitsSection = $limitsSection ?? null;
 $manifestSections = $manifestSections ?? [];
 $audioCard = $audioCard ?? null;
+$featureBlock = $featureBlock ?? null;
+$ragGraphSection = $ragGraphSection ?? null;
+$insightBlock = $insightBlock ?? null;
 $pageClass = $pageClass ?? '';
 $leadParagraphs = $leadParagraphs ?? [$lead];
 $heroAnchor = $heroAnchor ?? null;
 $signatureAnchor = $signatureAnchor ?? null;
-$finalCtaAnchor = $finalCtaAnchor ?? null;
 $guardrailsEyebrow = $guardrailsEyebrow ?? 'Gobernanza';
 $guardrailsTitle = $guardrailsTitle ?? 'Límites explícitos de comunicación.';
 $guardrailsIntro = $guardrailsIntro ?? null;
@@ -34,7 +36,9 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
                 <div class="manifest-hero__copy">
                     <p class="eyebrow"><?= e($eyebrow) ?></p>
                     <h1 id="manifest-title"><?= e($heading) ?></h1>
-                    <p class="lead"><?= e($lead) ?></p>
+                    <?php foreach ($leadParagraphs as $leadIndex => $leadParagraph): ?>
+                        <p class="lead<?= $leadIndex > 0 ? ' lead--secondary' : '' ?>"><?= e($leadParagraph) ?></p>
+                    <?php endforeach; ?>
                 </div>
                 <?php if ($audioCard !== null): ?>
                     <aside class="manifest-audio-card" aria-labelledby="manifest-audio-title">
@@ -74,7 +78,7 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
         <section class="ai-for-humans-signature alma-section"<?= $signatureAnchor !== null ? ' id="' . e($signatureAnchor) . '"' : '' ?> aria-labelledby="ai-for-humans-signature-title">
             <div class="ai-for-humans-signature__inner">
                 <figure class="ai-for-humans-signature__media">
-                    <img src="<?= e(asset('img/mauricio.webp')) ?>" alt="Mauricio Cordero Araya" loading="lazy" decoding="async" width="320" height="400">
+                    <img src="<?= e(asset('img/logos/logo_alma_vintage.svg')) ?>" alt="AlmaDesign" loading="lazy" decoding="async" width="320" height="110">
                 </figure>
                 <div class="ai-for-humans-signature__content">
                     <h2 id="ai-for-humans-signature-title" class="sr-only">Firma fundacional</h2>
@@ -87,18 +91,6 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
             </div>
         </section>
 
-        <section class="home-third home-third--human"<?= $finalCtaAnchor !== null ? ' id="' . e($finalCtaAnchor) . '"' : '' ?> aria-label="Conversemos">
-            <div class="home-third__inner">
-                <section class="alma-final-cta" aria-labelledby="final-cta-title">
-                    <div>
-                        <p class="eyebrow">Conversemos</p>
-                        <h2 id="final-cta-title">Hablemos de tu proyecto.</h2>
-                        <p>Si tu organización enfrenta información dispersa, procesos difíciles de explicar o decisiones que requieren mayor claridad, AlmaDesign puede ayudarte a diseñar una solución gobernada, trazable y sostenible.</p>
-                    </div>
-                    <a class="button button-primary" href="<?= e(url('/contacto')) ?>">Hablemos de tu proyecto</a>
-                </section>
-            </div>
-        </section>
     <?php else: ?>
     <section class="vertical-detail-hero"<?= $heroAnchor !== null ? ' id="' . e($heroAnchor) . '"' : '' ?> aria-labelledby="vertical-detail-title">
         <p class="eyebrow"><?= e($eyebrow) ?></p>
@@ -112,10 +104,97 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
         </div>
     </section>
 
+    <?php if ($featureBlock !== null): ?>
+        <section class="vertical-detail-content alma-section document-management-feature-section" aria-label="<?= e($featureBlock['ariaLabel'] ?? 'Bloque destacado') ?>">
+            <div class="alma-assistant-feature document-management-feature">
+                <article class="alma-assistant-feature__intro"<?= isset($featureBlock['left']['anchor']) ? ' id="' . e($featureBlock['left']['anchor']) . '"' : '' ?>>
+                    <?php if (isset($featureBlock['left']['eyebrow'])): ?>
+                        <p class="eyebrow"><?= e($featureBlock['left']['eyebrow']) ?></p>
+                    <?php endif; ?>
+                    <h2><?= e($featureBlock['left']['title']) ?></h2>
+                    <?php foreach ((array) $featureBlock['left']['body'] as $bodyParagraph): ?>
+                        <p><?= e($bodyParagraph) ?></p>
+                    <?php endforeach; ?>
+                </article>
+                <article class="alma-assistant-feature__support"<?= isset($featureBlock['right']['anchor']) ? ' id="' . e($featureBlock['right']['anchor']) . '"' : '' ?>>
+                    <?php if (isset($featureBlock['right']['eyebrow'])): ?>
+                        <p class="eyebrow"><?= e($featureBlock['right']['eyebrow']) ?></p>
+                    <?php endif; ?>
+                    <h2><?= e($featureBlock['right']['title']) ?></h2>
+                    <?php foreach ((array) $featureBlock['right']['body'] as $bodyParagraph): ?>
+                        <p><?= e($bodyParagraph) ?></p>
+                    <?php endforeach; ?>
+                </article>
+            </div>
+        </section>
+    <?php endif; ?>
+
+    <?php if ($ragGraphSection !== null): ?>
+        <section class="document-rag-section alma-section"<?= isset($ragGraphSection['anchor']) ? ' id="' . e($ragGraphSection['anchor']) . '"' : '' ?> aria-labelledby="document-rag-title">
+            <div class="document-rag-section__inner">
+                <header class="document-rag-section__header">
+                    <?php if (isset($ragGraphSection['eyebrow'])): ?>
+                        <p class="eyebrow"><?= e($ragGraphSection['eyebrow']) ?></p>
+                    <?php endif; ?>
+                    <h2 id="document-rag-title"><?= e($ragGraphSection['title']) ?></h2>
+                    <?php if (isset($ragGraphSection['body'])): ?>
+                        <p><?= e($ragGraphSection['body']) ?></p>
+                    <?php endif; ?>
+                </header>
+
+                <div class="document-rag-comparison" aria-label="<?= e($ragGraphSection['comparisonLabel'] ?? 'Comparación operativa') ?>">
+                    <?php foreach ($ragGraphSection['columns'] as $column): ?>
+                        <article class="document-rag-panel"<?= isset($column['anchor']) ? ' id="' . e($column['anchor']) . '"' : '' ?>>
+                            <p class="document-rag-panel__label"><?= e($column['label']) ?></p>
+                            <h3><?= e($column['title']) ?></h3>
+                            <p><?= e($column['body']) ?></p>
+                            <?php if (isset($column['items'])): ?>
+                                <ul>
+                                    <?php foreach ($column['items'] as $item): ?>
+                                        <li><?= e($item) ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            <?php endif; ?>
+                        </article>
+                    <?php endforeach; ?>
+                </div>
+
+                <?php if (isset($ragGraphSection['decisionRows'])): ?>
+                    <div class="document-rag-decision" role="region" aria-label="<?= e($ragGraphSection['decisionLabel'] ?? 'Criterios operativos') ?>" tabindex="0">
+                        <table>
+                            <tbody>
+                                <?php foreach ($ragGraphSection['decisionRows'] as $row): ?>
+                                    <tr>
+                                        <th scope="row"><?= e($row[0]) ?></th>
+                                        <td><?= e($row[1]) ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (isset($ragGraphSection['flow'])): ?>
+                    <ol class="document-rag-flow" aria-label="<?= e($ragGraphSection['flowLabel'] ?? 'Flujo operativo') ?>">
+                        <?php foreach ($ragGraphSection['flow'] as $step): ?>
+                            <li><?= e($step) ?></li>
+                        <?php endforeach; ?>
+                    </ol>
+                <?php endif; ?>
+            </div>
+        </section>
+    <?php endif; ?>
+
     <?php if ($sections !== []): ?>
         <section class="vertical-detail-content alma-section" aria-label="Contenido principal">
             <?php foreach ($sections as $section): ?>
-                <article class="vertical-detail-block"<?= isset($section['anchor']) ? ' id="' . e($section['anchor']) . '"' : '' ?>>
+                <?php
+                $sectionClass = 'vertical-detail-block';
+                if (isset($section['class']) && is_string($section['class'])) {
+                    $sectionClass .= ' ' . $section['class'];
+                }
+                ?>
+                <article class="<?= e($sectionClass) ?>"<?= isset($section['anchor']) ? ' id="' . e($section['anchor']) . '"' : '' ?>>
                     <h2><?= e($section['title']) ?></h2>
                     <?php if (isset($section['body'])): ?>
                         <?php foreach ((array) $section['body'] as $bodyParagraph): ?>
@@ -129,8 +208,64 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
                             <?php endforeach; ?>
                         </ul>
                     <?php endif; ?>
+                    <?php if (isset($section['quote'])): ?>
+                        <blockquote class="vertical-detail-quote">
+                            <p><?= e($section['quote']) ?></p>
+                        </blockquote>
+                    <?php endif; ?>
+                    <?php if (isset($section['table'])): ?>
+                        <div class="vertical-detail-table-wrap" role="region" aria-label="<?= e($section['title']) ?>" tabindex="0">
+                            <table class="vertical-detail-table">
+                                <thead>
+                                    <tr>
+                                        <?php foreach ($section['table']['headers'] as $header): ?>
+                                            <th scope="col"><?= e($header) ?></th>
+                                        <?php endforeach; ?>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($section['table']['rows'] as $row): ?>
+                                        <tr>
+                                            <?php foreach ($row as $cellIndex => $cell): ?>
+                                                <?php if ($cellIndex === 0): ?>
+                                                    <th scope="row"><?= e($cell) ?></th>
+                                                <?php else: ?>
+                                                    <td><?= e($cell) ?></td>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    <?php endif; ?>
                 </article>
             <?php endforeach; ?>
+        </section>
+    <?php endif; ?>
+
+    <?php if ($insightBlock !== null): ?>
+        <section class="vertical-detail-content alma-section document-management-feature-section" aria-label="<?= e($insightBlock['ariaLabel'] ?? 'Síntesis y gobernanza') ?>">
+            <div class="alma-assistant-feature document-management-feature document-management-feature--insight">
+                <article class="alma-assistant-feature__intro"<?= isset($insightBlock['left']['anchor']) ? ' id="' . e($insightBlock['left']['anchor']) . '"' : '' ?>>
+                    <?php if (isset($insightBlock['left']['eyebrow'])): ?>
+                        <p class="eyebrow"><?= e($insightBlock['left']['eyebrow']) ?></p>
+                    <?php endif; ?>
+                    <h2><?= e($insightBlock['left']['title']) ?></h2>
+                    <?php foreach ((array) $insightBlock['left']['body'] as $bodyParagraph): ?>
+                        <p><?= e($bodyParagraph) ?></p>
+                    <?php endforeach; ?>
+                </article>
+                <article class="alma-assistant-feature__support"<?= isset($insightBlock['right']['anchor']) ? ' id="' . e($insightBlock['right']['anchor']) . '"' : '' ?>>
+                    <?php if (isset($insightBlock['right']['eyebrow'])): ?>
+                        <p class="eyebrow"><?= e($insightBlock['right']['eyebrow']) ?></p>
+                    <?php endif; ?>
+                    <h2><?= e($insightBlock['right']['title']) ?></h2>
+                    <?php foreach ((array) $insightBlock['right']['body'] as $bodyParagraph): ?>
+                        <p><?= e($bodyParagraph) ?></p>
+                    <?php endforeach; ?>
+                </article>
+            </div>
         </section>
     <?php endif; ?>
 
@@ -249,6 +384,37 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
                             <?php endforeach; ?>
                         </ul>
                     <?php endif; ?>
+                    <?php if (isset($section['quote'])): ?>
+                        <blockquote class="vertical-detail-quote">
+                            <p><?= e($section['quote']) ?></p>
+                        </blockquote>
+                    <?php endif; ?>
+                    <?php if (isset($section['table'])): ?>
+                        <div class="vertical-detail-table-wrap" role="region" aria-label="<?= e($section['title']) ?>" tabindex="0">
+                            <table class="vertical-detail-table">
+                                <thead>
+                                    <tr>
+                                        <?php foreach ($section['table']['headers'] as $header): ?>
+                                            <th scope="col"><?= e($header) ?></th>
+                                        <?php endforeach; ?>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($section['table']['rows'] as $row): ?>
+                                        <tr>
+                                            <?php foreach ($row as $cellIndex => $cell): ?>
+                                                <?php if ($cellIndex === 0): ?>
+                                                    <th scope="row"><?= e($cell) ?></th>
+                                                <?php else: ?>
+                                                    <td><?= e($cell) ?></td>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    <?php endif; ?>
                 </article>
             <?php endforeach; ?>
         </section>
@@ -281,7 +447,7 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
                 </div>
             </div>
         </section>
-    <?php else: ?>
+    <?php elseif ($guardrails !== [] || $guardrailsIntro !== null): ?>
         <section class="vertical-detail-guardrails alma-section"<?= $guardrailsAnchor !== null ? ' id="' . e($guardrailsAnchor) . '"' : '' ?> aria-labelledby="guardrails-title">
             <?php foreach ($guardrailsSecondaryAnchors as $secondaryAnchor): ?>
                 <span id="<?= e($secondaryAnchor) ?>" class="anchor-target" aria-hidden="true"></span>
@@ -310,17 +476,5 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
         </section>
     <?php endif; ?>
 
-    <section class="home-third home-third--human"<?= $finalCtaAnchor !== null ? ' id="' . e($finalCtaAnchor) . '"' : '' ?> aria-label="Conversemos">
-        <div class="home-third__inner">
-            <section class="alma-final-cta" aria-labelledby="final-cta-title">
-                <div>
-                    <p class="eyebrow">Conversemos</p>
-                    <h2 id="final-cta-title">Hablemos de tu proyecto.</h2>
-                    <p>Si tu organización enfrenta información dispersa, procesos difíciles de explicar o decisiones que requieren mayor claridad, AlmaDesign puede ayudarte a diseñar una solución gobernada, trazable y sostenible.</p>
-                </div>
-                <a class="button button-primary" href="<?= e(url('/contacto')) ?>">Hablemos de tu proyecto</a>
-            </section>
-        </div>
-    </section>
     <?php endif; ?>
 </div>

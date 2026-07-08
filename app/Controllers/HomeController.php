@@ -8,8 +8,8 @@ final class HomeController extends BaseController
     public function index(): void
     {
         $this->view('pages/home', [
-            'title' => 'AlmaDesign | Arquitectura de conocimiento e IA gobernada',
-            'metaDescription' => 'AlmaDesign diseña arquitectura de conocimiento, procesos e inteligencia artificial gobernada para decisiones humanas complejas con trazabilidad y criterio humano.',
+            'title' => 'AlmaDesign | Charlas, software a medida y asistentes IA',
+            'metaDescription' => 'AlmaDesign crea charlas, gestión documental, asistentes personales 24/7, software a medida y soluciones de orquestación con IA para ordenar procesos y decisiones.',
         ]);
     }
 }

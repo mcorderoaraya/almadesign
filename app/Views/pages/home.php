@@ -1,89 +1,124 @@
 <?php
 declare(strict_types=1);
 
-$verticals = [
+$products = [
     [
-        'title' => 'Consultoría IA y procesos',
-        'href' => url('/consultoria-ia-procesos'),
-        'variant' => 'consulting',
-        'summary' => 'Ordenamos fricciones internas, procesos y criterios para implementar IA con claridad, control y adopción responsable.',
-        'cta' => 'Solicitar diagnóstico',
-        'label' => 'CONSULTORÍA IA EMPRESAS',
-        'image' => 'img/cards/consultoria-ia-procesos.webp',
-        'accessible' => 'Consultoría IA y procesos. Ordenamos fricciones internas, procesos y criterios para implementar IA con claridad, control y adopción responsable.',
+        'title' => 'Charlas AI for Humans',
+        'href' => url('/charlas-ai-for-humans'),
+        'variant' => 'talks',
+        'summary' => 'Charlas para ampliar capacidades humanas con herramientas basadas en IA: pensar mejor, decidir con más contexto y usar tecnología sin perder criterio.',
+        'cta' => 'Solicita una charla',
+        'label' => 'PRODUCTO DESTACADO',
+        'image' => 'img/cards/charlas-ai-for-humans.webp',
+        'accessible' => 'Charlas AI for Humans. Charlas para ampliar capacidades humanas con herramientas basadas en IA y tomar mejores decisiones.',
+        'audiences' => [
+            'Charla para usuarios, empleados o público general.',
+            'Charla para grupos de toma de decisión empresarial, especialmente gerentes TI.',
+            'Charla para gerencias y equipos directivos.',
+        ],
     ],
     [
-        'title' => 'Apogeo',
-        'href' => url('/apogeo'),
+        'title' => 'Gestión Documental',
+        'href' => url('/gestion-documental'),
         'variant' => 'apogeo',
-        'summary' => 'Sistemas de conocimiento aumentado para recuperar contexto, sostener trazabilidad y trabajar con documentación verificable entre partes.',
-        'cta' => 'Conocer Apogeo',
-        'label' => 'RECUPERACIÓN CONTEXTUAL',
-        'image' => 'img/cards/apogeo.webp',
-        'accessible' => 'Apogeo. Sistemas de conocimiento aumentado para recuperar contexto, sostener trazabilidad y trabajar con documentación verificable entre partes.',
+        'summary' => 'Ordenamos documentos, conversaciones y antecedentes para que encontrar contexto deje de ser una búsqueda agotadora.',
+        'cta' => 'Conocer Gestión Documental',
+        'label' => 'CONOCIMIENTO QUE SE PUEDE REVISAR',
+        'image' => 'img/cards/gestion-documental.webp',
+        'accessible' => 'Gestión Documental. Ordenamos documentos, conversaciones y antecedentes para que encontrar contexto deje de ser una búsqueda agotadora.',
     ],
     [
-        'title' => 'AI for Humans',
-        'href' => url('/ai-for-humans'),
-        'variant' => 'humans',
-        'summary' => 'IA gobernada para proteger, potenciar y no reemplazar al humano en sus decisiones, procesos y capacidades.',
-        'cta' => 'Explorar AI for Humans',
-        'label' => 'DECISIONES HUMANAS COMPLEJAS',
-        'image' => 'img/cards/ai-for-humans.webp',
-        'accessible' => 'AI for Humans. IA gobernada para proteger, potenciar y no reemplazar al humano en sus decisiones, procesos y capacidades.',
+        'title' => 'Orquestación con Asistentes IA',
+        'href' => url('/orquestacion-asistentes-ia'),
+        'variant' => 'automation',
+        'summary' => 'Desarrollamos asistentes, automatizaciones y aplicaciones a medida para resolver fricciones empresariales y conectar procesos con criterio operativo.',
+        'cta' => 'Diseñar una solución',
+        'label' => 'AUTOMATIZACIÓN Y DESARROLLO A MEDIDA',
+        'image' => 'img/cards/orquestacion-asistentes-ia.webp',
+        'accessible' => 'Orquestación con Asistentes IA. Automatización de procesos, solución de fricciones empresariales y desarrollo de aplicaciones a medida.',
+    ],
+    [
+        'title' => 'Software Factory',
+        'href' => url('/software-factory'),
+        'variant' => 'factory',
+        'summary' => 'Construimos sistemas a medida para organizaciones que necesitan aplicaciones robustas, integraciones confiables y datos bien gobernados.',
+        'cta' => 'Construir un sistema',
+        'label' => 'DESARROLLO DE SISTEMAS A MEDIDA',
+        'image' => 'img/cards/software-factory.webp',
+        'accessible' => 'Software Factory. Desarrollo de sistemas a medida con Python, Java Enterprise, Next.js, SQLite, MySQL, PostgreSQL, Oracle, conectores API REST y WebServices.',
+        'featuresLabel' => 'Tecnologías y capacidades de Software Factory',
+        'features' => [
+            'Python, Java Enterprise y Next.js',
+            'SQLite, MySQL, PostgreSQL y Oracle',
+            'Web, móvil, APIs e integraciones',
+            'Conectores API REST y WebServices',
+        ],
     ],
 ];
 
-$methodSteps = [
-    ['step' => 'Diagnosticar', 'text' => 'Identificar fricciones internas, responsabilidades, documentos y decisiones críticas.'],
-    ['step' => 'Ordenar', 'text' => 'Separar ruido, fuentes, criterios y prioridades para convertir confusión en claridad operativa.'],
-    ['step' => 'Diseñar', 'text' => 'Transformar objetivos en flujos, interfaces, reglas y sistemas comprensibles.'],
-    ['step' => 'Gobernar', 'text' => 'Definir límites, trazabilidad, supervisión humana y criterios de uso.'],
-    ['step' => 'Acompañar', 'text' => 'Apoyar adopción, aprendizaje y mejora continua con dirección humana.'],
+$designPatternSteps = [
+    'Brief del cliente',
+    'Análisis funcional',
+    'Arquitectura',
+    'Selección tecnológica',
+    'Patrones del lenguaje',
+    'Documentación técnica',
+    'Desarrollo asistido por IA',
+    'Revisión de coherencia',
+    'QA interno',
+    'Feedback cliente',
+    'Ajustes',
+    'QA externo',
+    'Entrega defendible',
 ];
 
 $trustPillars = [
-    ['title' => 'Claridad', 'detail' => 'Comprensión compartida antes de automatizar.'],
-    ['title' => 'Trazabilidad', 'detail' => 'Evidencia verificable para cada decisión.'],
-    ['title' => 'Seguridad', 'detail' => 'Límites, resguardos y supervisión humana.'],
-    ['title' => 'Criterio humano', 'detail' => 'La tecnología acompaña, no reemplaza.'],
+    ['title' => 'Calma', 'detail' => 'Avanzar sin alimentar miedo ni confusión.'],
+    ['title' => 'Claridad', 'detail' => 'Explicar antes de automatizar.'],
+    ['title' => 'Control humano', 'detail' => 'Las decisiones importantes mantienen responsable humano.'],
+    ['title' => 'Confianza', 'detail' => 'Evidencia, límites y lenguaje entendible.'],
 ];
 ?>
 <div class="alma-home">
     <section class="home-third home-third--hero" aria-labelledby="home-title">
         <div class="home-third__inner">
             <div class="alma-hero__top" aria-label="Contexto AlmaDesign">
-                <p class="eyebrow">Arquitectura de conocimiento · IA gobernada · AI for Humans</p>
-                <p class="meta">CLARIDAD · TRAZABILIDAD · CRITERIO HUMANO</p>
+                <p class="eyebrow">Charlas · conocimiento aumentado · decisiones humanas</p>
+                <p class="meta">PERSONAS · EQUIPOS · GERENCIAS</p>
             </div>
 
             <div class="alma-hero">
+                <figure class="alma-hero__lamp" aria-hidden="true">
+                    <picture>
+                        <source media="(max-width: 980px)" srcset="<?= e(asset('img/hero/lampara-de-pie-mobile.webp')) ?>">
+                        <img src="<?= e(asset('img/hero/lampara-de-pie.webp')) ?>" alt="" width="499" height="1405">
+                    </picture>
+                </figure>
                 <div class="alma-hero__content">
                     <div class="alma-hero__chapter">
-                        <span>AI for Humans</span>
-                        <small>Gobernanza antes que automatización.</small>
+                        <span>Alma Design</span>
+                        <small>Primero las personas. Después la automatización.</small>
                     </div>
-                    <h1 id="home-title">Arquitectura de conocimiento e inteligencia artificial gobernada para decisiones humanas complejas.</h1>
+                    <h1 id="home-title" class="o-heading">Potencia tus ideas y amplía tus horizontes con inteligencia artificial.</h1>
                     <p class="lead">AlmaDesign diseña, ordena y gobierna sistemas de información, procesos e inteligencia aplicada para que las organizaciones decidan con más claridad, trazabilidad y criterio humano.</p>
                     <div class="hero-actions" aria-label="Acciones principales">
-                        <a class="button button-primary" href="<?= e(url('/contacto')) ?>">Solicitar diagnóstico</a>
-                        <a class="button button-secondary" href="#verticales">Explorar verticales</a>
+                        <a class="button button-primary" href="<?= e(url('/contacto')) ?>">Diseñemos una charla</a>
+                        <a class="button button-secondary" href="#productos">Ver productos</a>
                     </div>
                 </div>
                 <aside class="alma-hero__signal" aria-label="Síntesis AlmaDesign">
-                    <img src="<?= e(asset('img/logos/logo_crema_horizontal.svg')) ?>" alt="AlmaDesign" width="258" height="113">
-                    <dl>
+                    <dl class="alma-hero__signal-list">
                         <div>
-                            <dt>Disciplina</dt>
-                            <dd>Consultoría de inteligencia artificial gobernada</dd>
+                            <dt>Qué hacemos</dt>
+                            <dd>Creamos charlas y productos para usar IA con criterio humano</dd>
                         </div>
                         <div>
-                            <dt>Línea de productos</dt>
-                            <dd>Apogeo · conocimiento aumentado y trazabilidad documental</dd>
+                            <dt>Para quién</dt>
+                            <dd>Personas, equipos y gerencias que necesitan decidir mejor</dd>
                         </div>
                         <div>
                             <dt>Enfoque</dt>
-                            <dd>Procesos, conocimiento y decisiones humanas complejas</dd>
+                            <dd>Herramientas comprensibles para ampliar capacidades humanas</dd>
                         </div>
                         <div>
                             <dt>Principio</dt>
@@ -93,46 +128,84 @@ $trustPillars = [
                 </aside>
             </div>
 
-            <div class="alma-hero__footstrip" aria-label="Verticales AlmaDesign">
-                <span>Consultoría IA</span>
-                <span>Apogeo</span>
-                <span>AI for Humans</span>
+            <div class="alma-hero__footstrip" aria-label="Productos AlmaDesign">
+                <span>Charlas AI for Humans</span>
+                <span>Gestión Documental</span>
+                <span>Orquestación IA</span>
+                <span>Asistente Personal 24/7</span>
+                <span>Software Factory</span>
             </div>
         </div>
     </section>
 
-    <section class="home-third home-third--verticals" id="verticales" aria-labelledby="verticales-title">
-        <div class="home-third__inner">
-            <div class="alma-purpose" aria-labelledby="purpose-title">
+    <section class="home-third home-third--verticals" id="productos" aria-label="Productos AlmaDesign">
+        <div class="alma-purpose alma-purpose--window" aria-labelledby="purpose-title">
+            <div class="alma-purpose__copy">
                 <div class="section-heading">
                     <p class="eyebrow">Propósito</p>
-                    <h2 id="purpose-title">Tecnología al servicio de la comprensión humana.</h2>
+                    <h2 id="purpose-title" class="o-heading">Productos para ampliar capacidades humanas, ordenar conocimiento y decidir con más claridad.</h2>
                 </div>
                 <div class="alma-purpose__text">
-                    <p>AlmaDesign nace desde una convicción simple: el problema no es la falta de información, sino la dificultad de comprenderla, ordenarla y convertirla en decisiones útiles.</p>
-                    <p>Por eso diseñamos arquitecturas de conocimiento: sistemas capaces de conectar datos, documentos, procesos, criterios y personas bajo una estructura clara, gobernada y trazable.</p>
+                    <p>Muchas personas y organizaciones sienten que deben adoptar IA rápido, aunque todavía no tengan claro cómo usarla para pensar mejor, decidir mejor o trabajar con menos ruido.</p>
+                    <p>AlmaDesign trabaja justo ahí: creando experiencias y productos que acercan la IA al criterio humano, al contexto y a decisiones que se puedan explicar.</p>
                 </div>
             </div>
-            <div class="verticals-section">
-                <div class="section-heading">
-                    <p class="eyebrow">Verticales</p>
-                    <h2 id="verticales-title">Tres caminos para convertir complejidad en claridad.</h2>
-                    <p>AlmaDesign trabaja en tres verticales conectadas por un mismo principio: ordenar procesos, conectar conocimiento y aplicar IA gobernada para apoyar decisiones humanas complejas.</p>
-                </div>
-                <div class="alma-vertical-card-grid">
-                    <?php foreach ($verticals as $vertical): ?>
-                        <article class="alma-vertical-card alma-vertical-card--<?= e($vertical['variant']) ?>">
-                            <a class="alma-vertical-card__link" href="<?= e($vertical['href']) ?>" aria-label="<?= e($vertical['title'] . ': ' . $vertical['cta']) ?>">
+        </div>
+        <div class="home-third__inner">
+            <div class="verticals-section products-section">
+                <section class="alma-assistant-feature" aria-labelledby="assistant-feature-title">
+                    <div class="alma-assistant-feature__intro">
+                        <p class="eyebrow">HERMES + Open Claw</p>
+                        <h3 id="assistant-feature-title">Asistente Personal 24/7</h3>
+                        <p>Un asistente personal gestionado por AlmaDesign para ordenar tu agenda, tareas, reuniones, ideas y comunicaciones diarias. Desde app web, móvil e interacción voz a voz, te ayuda a preparar reuniones, gestionar calendario, redactar correos, registrar acuerdos y dar seguimiento continuo a lo importante.</p>
+                        <a class="alma-assistant-feature__cta" href="<?= e(url('/contacto')) ?>">Ordenar mi día</a>
+                    </div>
+                    <div class="alma-assistant-feature__support">
+                        <p>AlmaDesign no solo entrega la herramienta: la mantiene, ajusta y evoluciona contigo.</p>
+                        <ul aria-label="Capacidades del asistente personal">
+                            <li>App web y móvil</li>
+                            <li>Interacción voz a voz</li>
+                            <li>Calendario, recordatorios y agenda</li>
+                            <li>Preparación y seguimiento de reuniones</li>
+                            <li>Redacción y envío asistido de emails</li>
+                            <li>Bitácoras y flujos personalizados</li>
+                        </ul>
+                    </div>
+                </section>
+                <div class="alma-product-card-grid">
+                    <?php foreach ($products as $productIndex => $product): ?>
+                        <article class="alma-product-card alma-product-card--<?= e($product['variant']) ?>">
+                            <a class="alma-product-card__media" href="<?= e($product['href']) ?>" aria-label="<?= e($product['title'] . ': ' . $product['cta']) ?>">
                                 <img
-                                    class="alma-vertical-card__image"
-                                    src="<?= e(asset($vertical['image'])) ?>"
-                                    alt="<?= e($vertical['accessible']) ?>"
-                                    loading="lazy"
+                                    class="alma-product-card__image"
+                                    src="<?= e(asset($product['image'])) ?>"
+                                    alt="<?= e($product['accessible']) ?>"
+                                    loading="<?= $productIndex === 0 ? 'eager' : 'lazy' ?>"
+                                    decoding="async"
                                     width="1254"
                                     height="1254"
                                 >
-                                <span class="sr-only"><?= e($vertical['accessible']) ?></span>
                             </a>
+                            <div class="alma-product-card__content">
+                                <p class="alma-product-card__label"><?= e($product['label']) ?></p>
+                                <h3><?= e($product['title']) ?></h3>
+                                <p><?= e($product['summary']) ?></p>
+                                <?php if (isset($product['audiences'])): ?>
+                                    <ul class="alma-product-card__audiences" aria-label="Tipos de charlas">
+                                        <?php foreach ($product['audiences'] as $audience): ?>
+                                            <li><?= e($audience) ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                <?php endif; ?>
+                                <?php if (isset($product['features'])): ?>
+                                    <ul class="alma-product-card__features" aria-label="<?= e($product['featuresLabel']) ?>">
+                                        <?php foreach ($product['features'] as $feature): ?>
+                                            <li><?= e($feature) ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                <?php endif; ?>
+                                <a class="alma-product-card__cta" href="<?= e($product['href']) ?>"><?= e($product['cta']) ?></a>
+                            </div>
                         </article>
                     <?php endforeach; ?>
                 </div>
@@ -144,37 +217,42 @@ $trustPillars = [
         <div class="home-third__inner">
             <section class="method-section" aria-labelledby="method-title">
                 <div class="section-heading">
-                    <p class="eyebrow">Método AlmaDesign</p>
-                    <h2 id="method-title">De la fricción al sistema gobernado.</h2>
+                    <p class="eyebrow">Código defendible asistido por IA</p>
+                    <h2 id="method-title" class="o-heading">Patrón de diseño</h2>
                 </div>
                 <div class="method-system">
+                    <div class="method-sky" aria-hidden="true">
+                        <span class="method-cloud method-cloud--one"></span>
+                        <span class="method-cloud method-cloud--two"></span>
+                        <span class="method-fish method-fish--one"></span>
+                        <span class="method-fish method-fish--two"></span>
+                        <span class="method-fish method-fish--three"></span>
+                    </div>
                     <svg class="method-system__trace" viewBox="0 0 1000 260" preserveAspectRatio="none" aria-hidden="true">
-                        <path d="M40 70 C170 70 170 186 300 186 S430 70 500 70 S630 186 700 186 S830 70 960 70" />
-                        <circle cx="40" cy="70" r="5" />
-                        <circle cx="300" cy="186" r="5" />
-                        <circle cx="500" cy="70" r="5" />
-                        <circle cx="700" cy="186" r="5" />
-                        <circle cx="960" cy="70" r="5" />
+                        <path d="M35 128 C140 42 214 214 318 128 S496 42 602 128 S780 214 965 128" />
                     </svg>
-                    <ol class="method-list" aria-label="Método AlmaDesign">
-                        <?php foreach ($methodSteps as $index => $methodStep): ?>
+                    <ol class="method-list method-list--flow" aria-label="Patrón de diseño AlmaDesign">
+                        <?php foreach ($designPatternSteps as $index => $methodStep): ?>
                             <li>
                                 <span class="method-list__node" aria-hidden="true"></span>
                                 <span class="method-list__step"><?= e(str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT)) ?></span>
-                                <strong><?= e($methodStep['step']) ?></strong>
-                                <span><?= e($methodStep['text']) ?></span>
+                                <strong><?= e($methodStep) ?></strong>
                             </li>
                         <?php endforeach; ?>
                     </ol>
+                    <div class="method-summary" aria-label="Principios del patrón de diseño">
+                        <p>Todo sistema debe nacer desde el brief, pasar por arquitectura, respetar los patrones del lenguaje, mantener código limpio, recibir feedback del cliente y superar QA interno y externo.</p>
+                        <p>La IA no reemplaza el oficio. Lo amplifica cuando existe arquitectura, criterio y responsabilidad humana.</p>
+                    </div>
                 </div>
             </section>
 
             <section class="trust-section" aria-labelledby="trust-title">
                 <div class="trust-section__intro">
                     <p class="eyebrow">AI for Humans</p>
-                    <h2 id="trust-title">IA gobernada, no automatización sin límites.</h2>
-                    <blockquote>¿Esta tecnología mejora la capacidad humana de comprender, decidir y crear?</blockquote>
-                    <p>Si la respuesta es no, no se construye. La eficiencia importa, pero nunca debe justificar deshumanización, pérdida de criterio, invasión de privacidad o automatización opaca.</p>
+                    <h2 id="trust-title" class="o-heading">IA que acompaña, no que intimida.</h2>
+                    <blockquote>¿Esta tecnología ayuda a las personas a trabajar con más claridad y menos miedo?</blockquote>
+                    <p>Si la respuesta es no, hay que detenerse. La eficiencia importa, pero no debe justificar pérdida de criterio, presión permanente, vigilancia invisible o decisiones que nadie puede explicar.</p>
                 </div>
                 <div class="trust-system">
                     <svg class="trust-system__map" viewBox="0 0 420 420" aria-hidden="true">
@@ -199,14 +277,6 @@ $trustPillars = [
                 </div>
             </section>
 
-            <section class="alma-final-cta" aria-labelledby="final-cta-title">
-                <div>
-                    <p class="eyebrow">Conversemos</p>
-                    <h2 id="final-cta-title">Hablemos de tu proyecto.</h2>
-                    <p>Si tu organización enfrenta información dispersa, procesos difíciles de explicar o decisiones que requieren mayor claridad, AlmaDesign puede ayudarte a diseñar una solución gobernada, trazable y sostenible.</p>
-                </div>
-                <a class="button button-primary" href="<?= e(url('/contacto')) ?>">Hablemos de tu proyecto</a>
-            </section>
         </div>
     </section>
 </div>

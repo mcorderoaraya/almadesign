@@ -10,7 +10,7 @@
 - PRODUCCION_ANCHORS_Y_FAVICON_FIX: PENDIENTE_DEPLOY_CONTROLADO.
 - MENU_VERTICAL_PRODUCTOS_ALMADESIGN_WEB: NO_VALIDADO.
 - SUBMENU_PRODUCTOS: REMOVER_SOLICITADO.
-- VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO: CERRADO_OK.
+- VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
 - HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
 
 ## Frentes completados
@@ -30,8 +30,8 @@
 - RUTAS_PRODUCTIVAS_POST_DEPLOY_FRONTEND: HTTP_200.
 - ASSETS_HOME_APOGEO_POST_DEPLOY: HTTP_200.
 - HOME_VISUAL_LOCAL: VALIDADO_POR_MAURICIO.
-- HOME_VISUAL_PRODUCTIVO: VALIDADO_POR_MAURICIO.
-- APOGEO_VISUAL_PRODUCTIVO: VALIDADO_POR_MAURICIO.
+- HOME_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
+- APOGEO_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
 - BASE_SEGURIDAD_POST_SSL_ALMADESIGN: CONFIGURADA.
 - HEADERS_SEGURIDAD: ACTIVOS.
 - CLOUDFLARE_PROXY: ACTIVO.
@@ -95,7 +95,7 @@
 - Contenido vigente: Apogeo como línea de productos de conocimiento aumentado, documentación verificable, trazabilidad y apoyo a decisiones gerenciales.
 - Componentes vigentes: hero extendido, sección de arquitecturas RAG / GraphRAG / RAGK, cards ejecutivas, infografía RAGK, bloque gerencial RAGK, límites explícitos y CTA final.
 - Assets vigentes: `public/assets/img/apogeo/apogeo-rag-card.webp`, `public/assets/img/apogeo/apogeo-graphrag-card.webp`, `public/assets/img/apogeo/apogeo-ragk-card.webp` y `public/assets/img/apogeo/infografia-ragk.webp`.
-- `/apogeo` productivo validado por HTTP y validado visualmente por Mauricio.
+- `/apogeo` productivo validado por HTTP; revisión visual productiva pendiente de Mauricio.
 
 ## Estado formulario
 
@@ -132,7 +132,7 @@
 - HOME_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
 - FORMULARIO_CONTACTO_ALMADESIGN_PRODUCTIVO: VALIDADO.
 - SMTP_PRODUCTIVO_ZOHO: VALIDADO.
-- VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO: CERRADO_OK.
+- Siguiente frente recomendado: VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
 - Frente acumulado AI for Humans / menu / formulario / footer: desplegado y validado productivamente por Mauricio.
 
 ## Separación obligatoria
@@ -181,4 +181,4 @@ AlmaDesign Web vive en `~/workspace/almadesign-web`. Apogeo Lux Gobernanza vive 
 - CACHE_BUSTING_ASSETS: ACTIVO.
 - REPLY_TO_PRODUCTIVO: PENDIENTE_CONFIRMACION_SECUNDARIA.
 - ROLLBACK_DISPONIBLE: SI.
-- VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO: CERRADO_OK.
+- Siguiente frente recomendado: VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.

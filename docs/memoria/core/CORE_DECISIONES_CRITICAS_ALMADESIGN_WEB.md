@@ -63,7 +63,7 @@ No hay base de datos, login ni uploads. SQL_SURFACE: NONE. SQLI_RISK: NOT_APPLIC
 
 HOME_ALMADESIGN_FRONTEND_LOCAL: VALIDADO_POR_MAURICIO. HOME_VISUAL_GLOBAL: VALIDADO. CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
 
-El Home frontend nuevo fue validado visualmente en entorno local. DEPLOY_FRONTEND_HOME: DESPLEGADO_Y_VALIDADO_HTTP. HOME_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP. VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO: CERRADO_OK.
+El Home frontend nuevo fue validado visualmente en entorno local. DEPLOY_FRONTEND_HOME: DESPLEGADO_Y_VALIDADO_HTTP. HOME_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP. El siguiente frente recomendado es VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
 
 ## Decisión 15
 
@@ -73,7 +73,7 @@ La ruta `/apogeo` presenta Apogeo como línea de productos de conocimiento aumen
 
 RAGK debe comunicarse públicamente como arquitectura de conocimiento confiable: recuperación contextual, conocimiento conectado, flujo gobernado de información y evidencia verificable para decisiones humanas. No debe presentarse como una lista de tecnologías ni como promesa de automatización total.
 
-DEPLOY_CONTROLADO_FRONTEND_HOME_APOGEO_Y_CONSULTORIA_ALMADESIGN_WEB: EJECUTADO_OK. `/apogeo` nuevo está publicado, validado por HTTP y validado visualmente por Mauricio.
+DEPLOY_CONTROLADO_FRONTEND_HOME_APOGEO_Y_CONSULTORIA_ALMADESIGN_WEB: EJECUTADO_OK. `/apogeo` nuevo está publicado y validado por HTTP; revisión visual productiva pendiente de Mauricio.
 
 ## Decisión 16
 
@@ -90,10 +90,10 @@ DEPLOY_CONTROLADO_FRONTEND_HOME_APOGEO_Y_CONSULTORIA_ALMADESIGN_WEB: EJECUTADO_O
 - RUTAS_PRODUCTIVAS_POST_DEPLOY_FRONTEND: HTTP_200.
 - ASSETS_HOME_APOGEO_POST_DEPLOY: HTTP_200.
 - HOME_VISUAL_LOCAL: VALIDADO_POR_MAURICIO.
-- HOME_VISUAL_PRODUCTIVO: VALIDADO_POR_MAURICIO.
-- APOGEO_VISUAL_PRODUCTIVO: VALIDADO_POR_MAURICIO.
+- HOME_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
+- APOGEO_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
 
-HTTP 200 y assets OK no equivalen a validación visual productiva completa. VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO: CERRADO_OK.
+HTTP 200 y assets OK no equivalen a validación visual productiva completa. El siguiente frente recomendado es VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
 
 ## Decisión 17
 

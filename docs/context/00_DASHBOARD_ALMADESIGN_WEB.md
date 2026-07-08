@@ -51,8 +51,8 @@ AlmaDesign Web está explícitamente separado del backend técnico Apogeo Lux.
 - RUTAS_PRODUCTIVAS_POST_DEPLOY_FRONTEND: HTTP_200.
 - ASSETS_HOME_APOGEO_POST_DEPLOY: HTTP_200.
 - HOME_VISUAL_LOCAL: VALIDADO_POR_MAURICIO.
-- HOME_VISUAL_PRODUCTIVO: VALIDADO_POR_MAURICIO.
-- APOGEO_VISUAL_PRODUCTIVO: VALIDADO_POR_MAURICIO.
+- HOME_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
+- APOGEO_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
 - MVC PHP local: creado.
 - Rutas locales activas: `/`, `/consultoria-ia-procesos`, `/apogeo`, `/ai-for-humans`, `/apogeo-lux`, `/contacto`, `/contacto/enviar` y `/contacto/gracias`.
 - Landing `/apogeo-lux`: APOGEO_LUX_COMERCIAL: DESPLEGADO_Y_VALIDADO_VISUALMENTE_POR_MAURICIO.
@@ -121,7 +121,7 @@ AlmaDesign Web está explícitamente separado del backend técnico Apogeo Lux.
 - REPARACION_COMERCIAL_APOGEO_LUX: CERRADO_OK.
 - MENU_VERTICAL_PRODUCTOS_ALMADESIGN_WEB: NO_VALIDADO.
 - SUBMENU_PRODUCTOS: REMOVER_SOLICITADO.
-- VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO: CERRADO_OK.
+- VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
 - HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
 
 ## Estado frontend acumulado cerrado
@@ -138,9 +138,9 @@ AlmaDesign Web está explícitamente separado del backend técnico Apogeo Lux.
 - CARDS_HOME_ALMADESIGN: VISUALMENTE_VALIDADAS.
 - DEPLOY_FRONTEND_HOME: DESPLEGADO_Y_VALIDADO_HTTP.
 - HOME_PRODUCTIVO: DESPLEGADO_Y_VALIDADO_HTTP.
-- VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO: CERRADO_OK.
-- Nota: Home está desplegado, validado por HTTP y validado visualmente por Mauricio.
-- Nota: `/apogeo` está desplegada, validada por HTTP y validada visualmente por Mauricio.
+- SIGUIENTE_FRENTE_RECOMENDADO: VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
+- Nota: Home está desplegado y validado por HTTP; la revisión visual productiva queda pendiente de Mauricio.
+- Nota: `/apogeo` está desplegada y validada por HTTP; la revisión visual productiva queda pendiente de Mauricio.
 
 ## Estado Apogeo local vigente
 

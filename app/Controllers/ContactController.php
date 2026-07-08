@@ -4,8 +4,12 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\Core\Csrf;
+use App\Core\Env;
 use App\Core\RateLimiter;
 use App\Services\Mailer;
+use App\Services\RagClient;
+use App\Services\RagUnavailable;
+use JsonException;
 use Throwable;
 
 final class ContactController extends BaseController
@@ -92,6 +96,68 @@ final class ContactController extends BaseController
         ]);
     }
 
+    public function ragStart(): void
+    {
+        try {
+            $response = $this->ragClient()->startConversation();
+            $this->jsonResponse($response->statusCode, $response->body);
+        } catch (RagUnavailable $exception) {
+            $this->jsonPayload(503, [
+                'detail' => $exception->getMessage(),
+            ]);
+        }
+    }
+
+    public function ragChat(): void
+    {
+        if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
+            $this->jsonPayload(405, [
+                'detail' => 'Método no permitido.',
+            ]);
+            return;
+        }
+
+        if (!Csrf::validate($this->csrfHeader())) {
+            $this->jsonPayload(419, [
+                'detail' => 'No pudimos validar la sesión. Recarga la página e intenta nuevamente.',
+            ]);
+            return;
+        }
+
+        $rawBody = file_get_contents('php://input') ?: '';
+        if (strlen($rawBody) > 20000) {
+            $this->jsonPayload(413, [
+                'detail' => 'La solicitud es demasiado extensa.',
+            ]);
+            return;
+        }
+
+        try {
+            $payload = json_decode($rawBody, true, 512, JSON_THROW_ON_ERROR);
+        } catch (JsonException) {
+            $this->jsonPayload(400, [
+                'detail' => 'El mensaje enviado no tiene un formato válido.',
+            ]);
+            return;
+        }
+
+        if (!is_array($payload)) {
+            $this->jsonPayload(400, [
+                'detail' => 'El mensaje enviado no tiene un formato válido.',
+            ]);
+            return;
+        }
+
+        try {
+            $response = $this->ragClient()->chat($payload);
+            $this->jsonResponse($response->statusCode, $response->body);
+        } catch (RagUnavailable $exception) {
+            $this->jsonPayload(503, [
+                'detail' => $exception->getMessage(),
+            ]);
+        }
+    }
+
     /**
      * @param array<string, mixed> $old
      * @param array<string, string> $errors
@@ -101,12 +167,46 @@ final class ContactController extends BaseController
         http_response_code($statusCode);
 
         $this->view('pages/contacto', [
-            'title' => 'Contacto | AlmaDesign',
-            'metaDescription' => 'Contacto de AlmaDesign para conversaciones sobre diseño, tecnología e IA gobernada.',
+            'title' => 'Conversemos | AlmaDesign',
+            'metaDescription' => 'RAG de contacto de AlmaDesign para orientar consultas sobre consultoría, gestión documental e IA gobernada.',
+            'bodyClass' => 'is-contact-rag-page',
+            'pageScripts' => ['js/rag-contact.js'],
+            'showFinalCta' => false,
+            'showFooter' => false,
             'csrfToken' => Csrf::token(),
             'old' => $old,
             'errors' => $errors,
         ]);
+    }
+
+    private function ragClient(): RagClient
+    {
+        return new RagClient(
+            baseUrl: Env::get('RAG_BASE_URL', 'http://127.0.0.1:8000') ?? 'http://127.0.0.1:8000',
+            timeoutSeconds: (float) (Env::get('RAG_TIMEOUT_SECONDS', '14') ?? '14'),
+        );
+    }
+
+    private function csrfHeader(): string
+    {
+        return (string) ($_SERVER['HTTP_X_CSRF_TOKEN'] ?? '');
+    }
+
+    /**
+     * @param array<string, mixed> $payload
+     */
+    private function jsonPayload(int $statusCode, array $payload): void
+    {
+        $body = json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        $this->jsonResponse($statusCode, $body !== false ? $body : '{"detail":"Error interno."}');
+    }
+
+    private function jsonResponse(int $statusCode, string $body): void
+    {
+        http_response_code($statusCode);
+        header('Content-Type: application/json; charset=utf-8');
+        header('Cache-Control: no-store');
+        echo $body;
     }
 
     /**

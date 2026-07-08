@@ -31,8 +31,8 @@ AlmaDesign Web no debe tratar el backend técnico Apogeo Lux como parte modifica
 - RUTAS_PRODUCTIVAS_POST_DEPLOY_FRONTEND: HTTP_200.
 - ASSETS_HOME_APOGEO_POST_DEPLOY: HTTP_200.
 - HOME_VISUAL_LOCAL: VALIDADO_POR_MAURICIO.
-- HOME_VISUAL_PRODUCTIVO: VALIDADO_POR_MAURICIO.
-- APOGEO_VISUAL_PRODUCTIVO: VALIDADO_POR_MAURICIO.
+- HOME_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
+- APOGEO_VISUAL_PRODUCTIVO: PENDIENTE_REVISION_MANUAL_MAURICIO.
 - DEPLOY_CONTROLADO_ALMADESIGN_WEB_A_VPS: EJECUTADO_OK.
 - EJECUTAR_BACKUP_Y_HEALTHCHECK_ALMADESIGN_EN_VPS: EJECUTADO_OK.
 - CONFIGURAR_FORMULARIO_CONTACTO_ALMADESIGN: CONFIGURADO_LOCALMENTE_CON_OBSERVACIONES.
@@ -86,8 +86,8 @@ No modificar desde este frente documental:
 
 ## Reglas para próximos frentes
 
-- El Home frontend nuevo fue desplegado, validado por HTTP y validado visualmente por Mauricio.
-- La nueva página `/apogeo` fue desplegada, validada por HTTP y validada visualmente por Mauricio.
+- El Home frontend nuevo fue desplegado y validado por HTTP; revisión visual productiva pendiente de Mauricio.
+- La nueva página `/apogeo` fue desplegada y validada por HTTP; revisión visual productiva pendiente de Mauricio.
 - El frente acumulado AI for Humans / menu / formulario / footer esta desplegado y validado productivamente en `DEPLOY_HEAD` 06b64fedcbc669fa570fbb7fe347da9c86e4f050.
 - No declarar anchors/favicon como desplegados: estan en `origin/main` y pendientes de deploy controlado.
 - REPARACION_COMERCIAL_APOGEO_LUX: CERRADO_OK.
@@ -108,7 +108,7 @@ No modificar desde este frente documental:
 - El formulario productivo ya fue desplegado y validado; no declarar nuevos cambios productivos sin su propio deploy controlado.
 - El envío end-to-end productivo fue validado por Mauricio; Reply-To productivo queda pendiente de confirmación secundaria.
 - No imprimir `.env` ni contraseñas SMTP.
-- VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO: CERRADO_OK.
+- Siguiente frente recomendado: VALIDACION_VISUAL_MANUAL_POST_DEPLOY_FRONTEND_HOME_APOGEO.
 - Frente futuro recomendado: HARDENING_INFRA_CLOUDFLARE_NGINX_VPS_ALMADESIGN.
 - No ejecutar deploy salvo frente explícito de deploy controlado.
 - No imprimir secretos.
