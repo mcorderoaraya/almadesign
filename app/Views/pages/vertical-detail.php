@@ -20,6 +20,7 @@ $insightBlock = $insightBlock ?? null;
 $pageClass = $pageClass ?? '';
 $leadParagraphs = $leadParagraphs ?? [$lead];
 $heroAnchor = $heroAnchor ?? null;
+$ctaHref = $ctaHref ?? url('/contacto');
 $signatureAnchor = $signatureAnchor ?? null;
 $guardrailsEyebrow = $guardrailsEyebrow ?? 'Gobernanza';
 $guardrailsTitle = $guardrailsTitle ?? 'Límites explícitos de comunicación.';
@@ -99,7 +100,7 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
             <p class="lead<?= $leadIndex > 0 ? ' lead--secondary' : '' ?>"><?= e($leadParagraph) ?></p>
         <?php endforeach; ?>
         <div class="hero-actions" aria-label="Acciones principales">
-            <a class="button button-primary" href="<?= e(url('/contacto')) ?>"><?= e($cta) ?></a>
+            <a class="button button-primary" href="<?= e($ctaHref) ?>"><?= e($cta) ?></a>
             <a class="button button-secondary" href="<?= e(url('/')) ?>">Volver al Home</a>
         </div>
     </section>

@@ -7,7 +7,7 @@ $products = [
         'href' => url('/charlas-ai-for-humans'),
         'variant' => 'talks',
         'summary' => 'Charlas para ampliar capacidades humanas con herramientas basadas en IA: pensar mejor, decidir con más contexto y usar tecnología sin perder criterio.',
-        'cta' => 'Solicita una charla',
+        'cta' => 'Detalles de nuestras charlas',
         'label' => 'PRODUCTO DESTACADO',
         'image' => 'img/cards/charlas-ai-for-humans.webp',
         'accessible' => 'Charlas AI for Humans. Charlas para ampliar capacidades humanas con herramientas basadas en IA y tomar mejores decisiones.',
@@ -99,10 +99,10 @@ $trustPillars = [
                         <span>Alma Design</span>
                         <small>Primero las personas. Después la automatización.</small>
                     </div>
-                    <h1 id="home-title" class="o-heading">Potencia tus ideas y amplía tus horizontes con inteligencia artificial.</h1>
+                    <h1 id="home-title" class="o-heading">Potencia tus ideas y expande tus horizontes con inteligencia artificial.</h1>
                     <p class="lead">AlmaDesign diseña, ordena y gobierna sistemas de información, procesos e inteligencia aplicada para que las organizaciones decidan con más claridad, trazabilidad y criterio humano.</p>
                     <div class="hero-actions" aria-label="Acciones principales">
-                        <a class="button button-primary" href="<?= e(url('/contacto')) ?>">Diseñemos una charla</a>
+                        <a class="button button-primary" href="<?= e(url('/contacto')) ?>">Diseñemos juntos</a>
                         <a class="button button-secondary" href="#productos">Ver productos</a>
                     </div>
                 </div>
@@ -110,19 +110,16 @@ $trustPillars = [
                     <dl class="alma-hero__signal-list">
                         <div>
                             <dt>Qué hacemos</dt>
-                            <dd>Creamos charlas y productos para usar IA con criterio humano</dd>
-                        </div>
-                        <div>
-                            <dt>Para quién</dt>
-                            <dd>Personas, equipos y gerencias que necesitan decidir mejor</dd>
+                            <dd>Expandimos al ser humano.
+Usamos inteligencia artificial para abrir nuevas formas de pensar, decidir, crear y descubrir, conectando a las personas con el conocimiento vivo del mundo que las rodea.</dd>
                         </div>
                         <div>
                             <dt>Enfoque</dt>
-                            <dd>Herramientas comprensibles para ampliar capacidades humanas</dd>
+                            <dd>En medio de la nueva revolución del conocimiento, diseñamos herramientas que transforman información dispersa en claridad, contexto y posibilidad. La IA acompaña; el ser humano interpreta, decide y da sentido.</dd>
                         </div>
                         <div>
                             <dt>Principio</dt>
-                            <dd>Proteger, potenciar y no reemplazar al humano</dd>
+                            <dd>Toda inteligencia artificial debe estar al servicio de la vida humana: protegerla, potenciarla y respetar su integridad mental, física y ética.</dd>
                         </div>
                     </dl>
                 </aside>
@@ -138,7 +135,7 @@ $trustPillars = [
         </div>
     </section>
 
-    <section class="home-third home-third--verticals" id="productos" aria-label="Productos AlmaDesign">
+    <section class="home-third home-third--verticals" aria-label="Productos AlmaDesign">
         <div class="alma-purpose alma-purpose--window" aria-labelledby="purpose-title">
             <div class="alma-purpose__copy">
                 <div class="section-heading">
@@ -153,12 +150,12 @@ $trustPillars = [
         </div>
         <div class="home-third__inner">
             <div class="verticals-section products-section">
-                <section class="alma-assistant-feature" aria-labelledby="assistant-feature-title">
+                <section class="alma-assistant-feature" id="productos" aria-labelledby="assistant-feature-title">
                     <div class="alma-assistant-feature__intro">
-                        <p class="eyebrow">HERMES + Open Claw</p>
-                        <h3 id="assistant-feature-title">Asistente Personal 24/7</h3>
+                        <p class="eyebrow">Asistente Personal 24/7</p>
+                        <h3 id="assistant-feature-title">Asistencia personal</h3>
                         <p>Un asistente personal gestionado por AlmaDesign para ordenar tu agenda, tareas, reuniones, ideas y comunicaciones diarias. Desde app web, móvil e interacción voz a voz, te ayuda a preparar reuniones, gestionar calendario, redactar correos, registrar acuerdos y dar seguimiento continuo a lo importante.</p>
-                        <a class="alma-assistant-feature__cta" href="<?= e(url('/contacto')) ?>">Ordenar mi día</a>
+                        <a class="alma-assistant-feature__cta" href="<?= e(url('/contacto?producto=asistente-247')) ?>">Quiero saber más de Asistente 24/7</a>
                     </div>
                     <div class="alma-assistant-feature__support">
                         <p>AlmaDesign no solo entrega la herramienta: la mantiene, ajusta y evoluciona contigo.</p>

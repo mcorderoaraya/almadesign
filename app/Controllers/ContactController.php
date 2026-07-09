@@ -18,10 +18,26 @@ final class ContactController extends BaseController
     private const HONEYPOT_FIELD = 'almadesign_hp_field';
     private const BUSINESS_FIELDS = ['nombre', 'email', 'telefono', 'asunto', 'mensaje'];
     private const TECHNICAL_FIELDS = ['csrf_token', self::HONEYPOT_FIELD];
+    private const PRODUCT_PROMPTS = [
+        'asistente-247' => 'Quiero saber más de Asistente 24/7',
+        'charlas' => 'Quiero saber más de las charlas AlmaDesign',
+        'charlahumanos' => 'Quiero saber más de Charlas para humanos',
+        'charlatecnica' => 'Quiero saber más de Charlas para equipos de trabajo y áreas IT',
+        'charlagerencia' => 'Quiero saber más de Charlas para gerencias y directivos',
+        'orquestacion-asistentes-ia' => 'Quiero saber más de Orquestación con Asistentes IA',
+        'consultoria' => 'Quiero saber más de Consultoría IA y procesos',
+        'gestion-documental-gobernada' => 'Quiero saber más de Gestión Documental Gobernada',
+        'software-factory' => 'Quiero saber más de Software Factory',
+    ];
 
     public function index(): void
     {
         $this->renderForm();
+    }
+
+    public function form(): void
+    {
+        $this->renderContactForm();
     }
 
     public function send(): void
@@ -37,7 +53,7 @@ final class ContactController extends BaseController
 
         if (!Csrf::validate($input['csrf_token'] ?? '')) {
             $this->logContact('csrf_failed', $ip, $input['email'] ?? '', 'csrf');
-            $this->renderForm($input, [
+            $this->renderContactForm($input, [
                 'general' => 'No pudimos validar la solicitud. Intenta nuevamente.',
             ], 422);
             return;
@@ -56,13 +72,13 @@ final class ContactController extends BaseController
 
         if ($errors !== []) {
             $this->logContact('validation_failed', $ip, $input['email'] ?? '', 'validation');
-            $this->renderForm($input, $errors, 422);
+            $this->renderContactForm($input, $errors, 422);
             return;
         }
 
         if (!RateLimiter::allow($rateKey, 3, 600)) {
             $this->logContact('rate_limited', $ip, $input['email'] ?? '', 'rate_limit');
-            $this->renderForm($input, [
+            $this->renderContactForm($input, [
                 'general' => 'Recibimos varias solicitudes en poco tiempo. Intenta nuevamente más tarde.',
             ], 429);
             return;
@@ -82,7 +98,7 @@ final class ContactController extends BaseController
             $this->redirect('/contacto/gracias');
         } catch (Throwable) {
             $this->logContact('send_failed', $ip, $input['email'], 'mailer');
-            $this->renderForm($input, [
+            $this->renderContactForm($input, [
                 'general' => 'No pudimos enviar el mensaje en este momento. Intenta nuevamente más tarde.',
             ]);
         }
@@ -148,6 +164,10 @@ final class ContactController extends BaseController
             return;
         }
 
+        if (isset($payload['product']) && !array_key_exists((string) $payload['product'], self::PRODUCT_PROMPTS)) {
+            unset($payload['product']);
+        }
+
         try {
             $response = $this->ragClient()->chat($payload);
             $this->jsonResponse($response->statusCode, $response->body);
@@ -165,6 +185,7 @@ final class ContactController extends BaseController
     private function renderForm(array $old = [], array $errors = [], int $statusCode = 200): void
     {
         http_response_code($statusCode);
+        $productSlug = $this->requestedProductSlug();
 
         $this->view('pages/contacto', [
             'title' => 'Conversemos | AlmaDesign',
@@ -176,7 +197,37 @@ final class ContactController extends BaseController
             'csrfToken' => Csrf::token(),
             'old' => $old,
             'errors' => $errors,
+            'initialProduct' => $productSlug,
+            'initialQuestion' => $productSlug !== null ? self::PRODUCT_PROMPTS[$productSlug] : '',
+            'fallbackUrl' => url('/contacto/formulario?motivo=limite'),
         ]);
+    }
+
+    /**
+     * @param array<string, mixed> $old
+     * @param array<string, string> $errors
+     */
+    private function renderContactForm(array $old = [], array $errors = [], int $statusCode = 200): void
+    {
+        http_response_code($statusCode);
+
+        $this->view('pages/contacto-formulario', [
+            'title' => 'Formulario de contacto | AlmaDesign',
+            'metaDescription' => 'Formulario tradicional de contacto de AlmaDesign para solicitar atención personalizada.',
+            'bodyClass' => 'is-contact-form-page',
+            'showFinalCta' => false,
+            'csrfToken' => Csrf::token(),
+            'honeypotName' => self::HONEYPOT_FIELD,
+            'old' => $old,
+            'errors' => $errors,
+            'timeoutFallback' => ($_GET['motivo'] ?? '') === 'limite',
+        ]);
+    }
+
+    private function requestedProductSlug(): ?string
+    {
+        $product = (string) ($_GET['producto'] ?? '');
+        return array_key_exists($product, self::PRODUCT_PROMPTS) ? $product : null;
     }
 
     private function ragClient(): RagClient
@@ -238,7 +289,7 @@ final class ContactController extends BaseController
             $errors['nombre'] = 'Ingresa un nombre de 2 a 120 caracteres.';
         }
 
-        if (!filter_var($input['email'], FILTER_VALIDATE_EMAIL) || mb_strlen($input['email']) > 180 || $this->hasLineBreak($input['email']) || $this->hasUnsafeControlChars($input['email'])) {
+        if (!$this->isValidEmail($input['email']) || mb_strlen($input['email']) > 180 || $this->hasLineBreak($input['email']) || $this->hasUnsafeControlChars($input['email'])) {
             $errors['email'] = 'Ingresa un email válido de máximo 180 caracteres.';
         }
 
@@ -255,6 +306,26 @@ final class ContactController extends BaseController
         }
 
         return $errors;
+    }
+
+    private function isValidEmail(string $email): bool
+    {
+        if (!preg_match('/^[A-Z0-9._%+-]{2,64}@[A-Z0-9-]{1,63}(?:\.[A-Z0-9-]{2,63})+$/i', $email)) {
+            return false;
+        }
+
+        [$local, $domain] = explode('@', $email, 2);
+        if (str_starts_with($local, '.') || str_ends_with($local, '.') || str_contains($local, '..')) {
+            return false;
+        }
+
+        foreach (explode('.', $domain) as $label) {
+            if ($label === '' || str_starts_with($label, '-') || str_ends_with($label, '-')) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**

@@ -111,6 +111,7 @@ final class ContentController extends BaseController
                 'limites-explicitos-de-comunicacion',
             ],
             'cta' => 'Solicitar diagnóstico',
+            'ctaHref' => url('/contacto?producto=consultoria'),
         ]);
     }
 
@@ -465,6 +466,7 @@ final class ContentController extends BaseController
             ],
             'guardrails' => [],
             'cta' => 'Conversar sobre Gestión Documental',
+            'ctaHref' => url('/contacto?producto=gestion-documental-gobernada'),
         ]);
     }
 
@@ -611,6 +613,7 @@ final class ContentController extends BaseController
             ],
             'guardrails' => [],
             'cta' => 'Conversar sobre Orquestación IA',
+            'ctaHref' => url('/contacto?producto=orquestacion-asistentes-ia'),
         ]);
     }
 
@@ -719,6 +722,7 @@ final class ContentController extends BaseController
             ],
             'guardrails' => [],
             'cta' => 'Conversar sobre Software Factory',
+            'ctaHref' => url('/contacto?producto=software-factory'),
         ]);
     }
 

@@ -5862,27 +5862,143 @@ body .site-footer a:focus-visible {
     }
 }
 
+/* Formulario tradicional de contacto (/contacto/formulario) */
+body.is-contact-form-page .contact-section {
+    width: min(1740px, calc(90% - 300px));
+    max-width: none;
+    margin: 0 auto;
+    padding: 5rem 5rem 5rem;
+    background: transparent;
+}
+
+body.is-contact-form-page .site-main {
+    padding-top: 0;
+}
+
+body.is-contact-form-page .form-alert--session-timeout {
+    margin: 0 0 1.45rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--rojo);
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    font-size: clamp(0.7rem, 1.35vw, 0.8rem);
+    font-weight: 800;
+    line-height: 1.35;
+}
+
+body.is-contact-form-page .contact-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.9rem 1.6rem;
+    margin: 0;
+    padding: clamp(1.55rem, 2vw, 2.25rem);
+    border: 1px solid rgba(35, 49, 66, 0.13);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow: 0 26px 82px rgba(35, 49, 66, 0.08);
+}
+
+body.is-contact-form-page .contact-form label {
+    gap: 0.72rem;
+}
+
+body.is-contact-form-page .contact-form span {
+    color: var(--tinta);
+    font-size: 0.8rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+body.is-contact-form-page .contact-form em {
+    color: rgba(35, 49, 66, 0.58);
+    font-size: 0.92em;
+    font-weight: 800;
+}
+
+body.is-contact-form-page .contact-form input,
+body.is-contact-form-page .contact-form textarea {
+    border: 1px solid rgba(35, 49, 66, 0.14);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.94);
+    color: var(--tinta);
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    font-size: 0.8rem;
+}
+
+body.is-contact-form-page .contact-form input {
+    min-height: 40px;
+    padding: 0 1.05rem;
+}
+
+body.is-contact-form-page .contact-form textarea {
+    min-height: clamp(240px, 30vh, 285px);
+    padding: 1rem 1.05rem;
+}
+
+body.is-contact-form-page .form-actions {
+    flex-direction: row;
+    gap: 1.55rem;
+    align-items: center;
+}
+
+body.is-contact-form-page .form-actions p {
+    color: var(--tinta);
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    font-size: 1rem;
+}
+
+body.is-contact-form-page .contact-form .button-primary {
+    width: auto;
+    min-height: 38px;
+    padding: 0.68rem 1.25rem;
+    border: 0;
+    border-radius: 8px;
+    background: rgba(233, 121, 82, 0.32);
+    color: rgba(35, 49, 66, 0.68);
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    font-size: 0.76rem;
+    font-weight: 800;
+}
+
+@media (max-width: 760px) {
+    body.is-contact-form-page .contact-section {
+        width: min(100% - 32px, 620px);
+    }
+
+    body.is-contact-form-page .contact-form {
+        grid-template-columns: 1fr;
+    }
+
+    body.is-contact-form-page .form-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    body.is-contact-form-page .contact-form .button-primary {
+        width: 100%;
+    }
+}
+
 /* RAG de contacto (/contacto)
    Contrato editable: HTML en app/Views/pages/contacto.php y JS en public/assets/js/rag-contact.js. */
 .rag-contact {
     --rag-measure: min(61vw, 780px);
     --rag-input-width: min(61vw, 835px);
     --rag-header-offset: 92px;
-    height: calc(100dvh - var(--rag-header-offset));
-    min-height: 420px;
+    min-height: max(420px, calc(100dvh - var(--rag-header-offset)));
     position: relative;
     display: grid;
     grid-template-rows: 1fr;
     background: var(--pastel-cream);
-    overflow: hidden;
+    overflow: visible;
 }
 
 body.is-contact-rag-page {
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 body.is-contact-rag-page .site-main {
-    min-height: 0;
+    min-height: calc(100dvh - var(--rag-header-offset, 92px));
 }
 
 .rag-conversation {
@@ -5890,12 +6006,11 @@ body.is-contact-rag-page .site-main {
     z-index: 1;
     width: var(--rag-measure);
     max-width: 100%;
-    height: 100%;
+    min-height: calc(100dvh - var(--rag-header-offset, 92px));
     margin: 0 auto;
     padding: clamp(4.5rem, 12vh, 9rem) 0 clamp(8rem, 18vh, 13rem);
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    scrollbar-gutter: stable;
+    overflow: visible;
+    overscroll-behavior: auto;
 }
 
 .rag-conversation .status,
@@ -5920,39 +6035,142 @@ body.is-contact-rag-page .site-main {
     animation: rag-rise 220ms ease-out;
 }
 
-#answer {
-    max-width: 68ch;
-    margin: 0;
+.markdown-viewport {
+    max-width: 100ch;
+    min-height: 100%;
+    overflow: visible;
+    overscroll-behavior: auto;
+    padding: 0;
     color: var(--tinta);
     font-family: var(--serif);
     font-size: clamp(0.98rem, 1.18vw, 1.12rem);
     line-height: 1.7;
     letter-spacing: 0;
-    white-space: pre-wrap;
 }
 
-#answer :where(p, ul, ol, blockquote) {
-    margin: 0 0 0.95rem;
+#markdown-content {
+    min-width: 0;
 }
 
-#answer :where(ul, ol) {
-    padding-left: 1.25rem;
+#markdown-content > :first-child {
+    margin-top: 0;
 }
 
-#answer li {
-    margin: 0.18rem 0;
+#markdown-content > :last-child {
+    margin-bottom: 0;
 }
 
-#answer blockquote {
-    padding-left: 1rem;
-    border-left: 2px solid var(--naranja);
-    color: rgba(35, 49, 66, 0.86);
-}
-
-#answer code {
-    font-family: var(--sans);
-    font-size: 0.92em;
+#markdown-content h1,
+#markdown-content h2,
+#markdown-content h3,
+#markdown-content h4,
+#markdown-content h5,
+#markdown-content h6 {
+    margin: 1.15rem 0 0.45rem;
     color: var(--tinta);
+    font-family: var(--serif);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0;
+}
+
+#markdown-content h1 {
+    font-size: 1.38rem;
+}
+
+#markdown-content h2 {
+    font-size: 1.2rem;
+}
+
+#markdown-content h3,
+#markdown-content h4,
+#markdown-content h5,
+#markdown-content h6 {
+    font-size: 1.05rem;
+}
+
+#markdown-content p,
+#markdown-content ul,
+#markdown-content ol,
+#markdown-content blockquote,
+#markdown-content pre,
+#markdown-content table {
+    margin: 0.7rem 0;
+}
+
+#markdown-content ul,
+#markdown-content ol {
+    padding-left: 1.35rem;
+}
+
+#markdown-content li + li {
+    margin-top: 0.25rem;
+}
+
+#markdown-content a {
+    color: var(--naranja);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.16em;
+}
+
+#markdown-content blockquote {
+    padding: 0.15rem 0 0.15rem 1rem;
+    border-left: 3px solid var(--naranja);
+    color: var(--ink-muted);
+}
+
+#markdown-content code {
+    padding: 0.1rem 0.28rem;
+    border-radius: 4px;
+    background: rgba(16, 36, 58, 0.08);
+    font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+    font-size: 0.9em;
+}
+
+#markdown-content pre {
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 0.85rem 0.95rem;
+    border: 1px solid rgba(217, 165, 127, 0.55);
+    border-radius: var(--ui-radius);
+    background: rgba(255, 248, 239, 0.72);
+}
+
+#markdown-content pre code {
+    display: block;
+    padding: 0;
+    background: transparent;
+    white-space: pre;
+}
+
+#markdown-content table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+#markdown-content th,
+#markdown-content td {
+    min-width: 8rem;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid rgba(217, 165, 127, 0.65);
+    text-align: left;
+    vertical-align: top;
+}
+
+#markdown-content th {
+    background: rgba(233, 121, 82, 0.1);
+    font-weight: 700;
+}
+
+#markdown-content tr:nth-child(even) td {
+    background: rgba(255, 248, 239, 0.45);
 }
 
 .rag-privacy-notice {
@@ -5971,16 +6189,25 @@ body.is-contact-rag-page .site-main {
 }
 
 .rag-composer {
-    position: absolute;
+    position: fixed;
     z-index: 22;
     left: 50%;
     bottom: clamp(3.15rem, 7vh, 4.75rem);
     width: var(--rag-input-width, min(61vw, 835px));
     transform: translateX(-50%);
     display: grid;
-    grid-template-columns: 1fr 44px;
+    grid-template-columns: 1fr auto 44px;
     align-items: end;
     isolation: isolate;
+    min-height: 3.5rem;
+    padding: 0.45rem 0.52rem 0.45rem 0.9rem;
+    border: 1px solid rgba(35, 49, 66, 0.12);
+    border-radius: 1.6rem;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow:
+        0 18px 48px rgba(35, 49, 66, 0.12),
+        0 2px 8px rgba(35, 49, 66, 0.06);
+    backdrop-filter: blur(10px);
 }
 
 .rag-composer::before {
@@ -5998,20 +6225,54 @@ body.is-contact-rag-page .site-main {
 }
 
 .rag-composer textarea {
-    grid-column: 1 / -1;
+    grid-column: 1;
     width: 100%;
-    min-height: 3.25rem;
+    min-height: 2.45rem;
     max-height: 10rem;
     resize: none;
     overflow-y: auto;
-    padding: 0.95rem 4.25rem 0.9rem 1.05rem;
-    border: 1px solid var(--naranja);
-    border-radius: var(--ui-radius);
-    background: rgba(255, 248, 239, 0.74);
+    padding: 0.5rem 0.75rem 0.46rem 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
     color: var(--tinta);
     font-family: var(--sans);
-    font-size: 0.95rem;
+    font-size: 0.96rem;
+    line-height: 1.5;
     outline: none;
+}
+
+.session-meter {
+    grid-column: 2;
+    position: static;
+    display: inline-flex;
+    align-items: center;
+    align-self: center;
+    gap: 0.34rem;
+    margin-right: 0.52rem;
+    color: var(--tinta);
+    font-family: var(--sans);
+    font-size: 0.88rem;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.session-budget-value {
+    min-width: 2.55rem;
+    text-align: right;
+    color: var(--tinta);
+    font-variant-numeric: tabular-nums;
+}
+
+.session-mode-label {
+    color: rgba(35, 49, 66, 0.58);
+}
+
+.session-meter.is-low,
+.session-meter.is-low .session-budget-value,
+.session-meter.is-low .session-mode-label {
+    color: var(--rojo);
 }
 
 .rag-composer textarea::placeholder {
@@ -6019,21 +6280,22 @@ body.is-contact-rag-page .site-main {
 }
 
 .rag-composer textarea:focus {
-    border-color: var(--naranja);
-    box-shadow: 0 0 0 3px rgba(233, 121, 82, 0.16);
+    box-shadow: none;
 }
 
 #submit-btn {
-    position: absolute;
-    right: 0.7rem;
-    bottom: 0.45rem;
-    width: 2.25rem;
-    height: 2.25rem;
+    grid-column: 3;
+    position: static;
+    width: 2.35rem;
+    height: 2.35rem;
     display: grid;
     place-items: center;
     border: 0;
-    background: transparent;
+    border-radius: 999px;
+    background: var(--naranja);
+    box-shadow: 0 8px 18px rgba(233, 121, 82, 0.26);
     cursor: pointer;
+    transition: background 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
 
 #submit-btn span {
@@ -6042,22 +6304,30 @@ body.is-contact-rag-page .site-main {
     height: 0;
     border-top: 0.56rem solid transparent;
     border-bottom: 0.56rem solid transparent;
-    border-left: 1rem solid var(--naranja);
+    border-left: 0.92rem solid #fff8ef;
     transform: translateX(0.12rem);
-    transition: border-left-color 160ms ease, transform 160ms ease;
+    transition: transform 160ms ease;
+}
+
+#submit-btn:hover {
+    background: #9b4d37;
+    box-shadow: 0 10px 22px rgba(155, 77, 55, 0.28);
+    transform: translateY(-1px);
 }
 
 #submit-btn:hover span {
-    border-left-color: #9b4d37;
-    transform: translateX(0.24rem);
+    transform: translateX(0.18rem);
 }
 
 #submit-btn:disabled {
     cursor: wait;
+    background: rgba(233, 121, 82, 0.38);
+    box-shadow: none;
+    transform: none;
 }
 
 #submit-btn:disabled span {
-    border-left-color: rgba(233, 121, 82, 0.42);
+    border-left-color: rgba(255, 248, 239, 0.72);
     transform: none;
 }
 
@@ -6075,6 +6345,11 @@ body.is-contact-rag-page .site-main {
     top: calc(100% + 0.38rem);
     color: var(--ink-muted);
     white-space: nowrap;
+}
+
+.char-counter.is-over-limit {
+    color: var(--rojo);
+    font-weight: 700;
 }
 
 .reference {
@@ -6161,7 +6436,17 @@ body.is-contact-rag-page .site-main {
 
     .rag-composer textarea {
         min-height: 3.1rem;
-        padding-right: 3.75rem;
+        padding-right: 0.45rem;
+    }
+
+    .session-meter {
+        gap: 0.22rem;
+        margin-right: 0.32rem;
+        font-size: 0.76rem;
+    }
+
+    .session-budget-value {
+        min-width: 2.25rem;
     }
 
     .char-counter {

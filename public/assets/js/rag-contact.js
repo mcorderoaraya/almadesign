@@ -4,10 +4,109 @@ const ALMA_RAG_CONFIG = Object.freeze({
   defaultPlaceholder: "Escribe tu mensaje",
 });
 
+class MarkdownViewport {
+  constructor(contentEl) {
+    this.contentEl = contentEl;
+    this.viewportEl = contentEl.closest(".markdown-viewport");
+    this.bindDomScroll();
+
+    if (window.marked) {
+      window.marked.setOptions({
+        breaks: true,
+        gfm: true,
+        headerIds: false,
+        mangle: false,
+      });
+    }
+  }
+
+  render(markdown) {
+    const source = typeof markdown === "string" ? markdown : "";
+
+    if (!window.marked || !window.DOMPurify) {
+      this.contentEl.textContent = source;
+      return;
+    }
+
+    const rawHtml = window.marked.parse(source);
+    const safeHtml = window.DOMPurify.sanitize(rawHtml, {
+      USE_PROFILES: { html: true },
+      ALLOWED_TAGS: [
+        "a",
+        "blockquote",
+        "br",
+        "code",
+        "del",
+        "em",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "hr",
+        "li",
+        "ol",
+        "p",
+        "pre",
+        "strong",
+        "table",
+        "tbody",
+        "td",
+        "th",
+        "thead",
+        "tr",
+        "ul",
+      ],
+      ALLOWED_ATTR: ["href", "target", "rel"],
+    });
+
+    this.contentEl.innerHTML = safeHtml;
+    this.hardenLinks();
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }
+
+  clear() {
+    this.contentEl.replaceChildren();
+  }
+
+  hardenLinks() {
+    this.contentEl.querySelectorAll("a[href]").forEach((link) => {
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+    });
+  }
+
+  bindDomScroll() {
+    if (!this.viewportEl) {
+      return;
+    }
+
+    this.viewportEl.addEventListener(
+      "wheel",
+      (event) => {
+        window.scrollBy({
+          top: event.deltaY,
+          left: event.deltaX,
+          behavior: "auto",
+        });
+        event.preventDefault();
+      },
+      { passive: false }
+    );
+  }
+}
+
 class AlmaRagWidget {
   constructor(config) {
     this.leadState = null;
     this.conversationState = null;
+    this.initialProductSubmitted = false;
+    this.leadCompleted = false;
+    this.sessionTimer = null;
+    this.sessionInterval = null;
+    this.closeRedirectTimer = null;
+    this.sessionStartedAt = Date.now();
 
     this.ui = {
       form: document.getElementById("chat-form"),
@@ -16,15 +115,19 @@ class AlmaRagWidget {
       resetBtn: document.getElementById("reset-btn"),
       statusEl: document.getElementById("status"),
       resultEl: document.getElementById("result"),
-      answerEl: document.getElementById("answer"),
+      markdownContentEl: document.getElementById("markdown-content"),
       errorEl: document.getElementById("error"),
       charCounterEl: document.getElementById("char-counter"),
       referenceEl: document.getElementById("reference"),
+      sessionMeterEl: document.getElementById("session-meter"),
+      sessionBudgetValueEl: document.getElementById("session-budget-value"),
+      sessionModeLabelEl: document.getElementById("session-mode-label"),
       privacyNoticeEl: document.querySelector(".rag-privacy-notice"),
     };
 
     this.config = this.resolveConfig(config);
-    this.maxQuestionLength = Number(this.ui.questionInput.getAttribute("maxlength")) || 1000;
+    this.maxQuestionWords = 500;
+    this.markdownViewport = new MarkdownViewport(this.ui.markdownContentEl);
   }
 
   resolveConfig(config) {
@@ -34,19 +137,69 @@ class AlmaRagWidget {
       conversationStartEndpoint:
         this.ui.form.dataset.conversationStartEndpoint || config.conversationStartEndpoint,
       csrfToken: this.ui.form.dataset.csrfToken || "",
+      initialProduct: this.ui.form.dataset.initialProduct || "",
+      initialQuestion: this.ui.form.dataset.initialQuestion || "",
+      fallbackUrl: this.ui.form.dataset.fallbackUrl || "/contacto/formulario?motivo=limite",
+      closeRedirectUrl: "/",
+      closeRedirectDelayMs: 10 * 1000,
+      sessionLimitMs: 5 * 60 * 1000,
     };
   }
 
   init() {
     this.bindEvents();
+    this.startSessionLimitTimer();
     this.boot();
     this.updateCharCounter();
+  }
+
+  startSessionLimitTimer() {
+    window.clearTimeout(this.sessionTimer);
+    window.clearInterval(this.sessionInterval);
+    this.sessionStartedAt = Date.now();
+    this.updateSessionMeter();
+    this.sessionInterval = window.setInterval(() => this.updateSessionMeter(), 1000);
+    this.sessionTimer = window.setTimeout(() => {
+      this.updateSessionMeter(0);
+      if (!this.leadCompleted) {
+        window.location.assign(this.config.fallbackUrl);
+      }
+    }, this.config.sessionLimitMs);
+  }
+
+  updateSessionMeter(forcedRemainingMs = null) {
+    if (!this.ui.sessionMeterEl || !this.ui.sessionBudgetValueEl || !this.ui.sessionModeLabelEl) {
+      return;
+    }
+
+    const elapsedMs = Date.now() - this.sessionStartedAt;
+    const remainingMs = forcedRemainingMs ?? Math.max(0, this.config.sessionLimitMs - elapsedMs);
+    const totalSeconds = Math.ceil(remainingMs / 1000);
+    const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, "0");
+    const seconds = String(totalSeconds % 60).padStart(2, "0");
+    const isLow = remainingMs <= 0;
+
+    this.ui.sessionBudgetValueEl.textContent = `${minutes}:${seconds}`;
+    this.ui.sessionModeLabelEl.textContent = isLow ? "Low" : "High";
+    this.ui.sessionMeterEl.classList.toggle("is-low", isLow);
   }
 
   bindEvents() {
     this.ui.form.addEventListener("submit", (event) => this.handleSubmit(event));
     this.ui.questionInput.addEventListener("input", () => this.updateCharCounter());
+    this.ui.questionInput.addEventListener("keydown", (event) => this.handleQuestionKeydown(event));
     this.ui.resetBtn.addEventListener("click", () => this.handleReset());
+  }
+
+  handleQuestionKeydown(event) {
+    if (event.key !== "Enter" || event.shiftKey || event.ctrlKey || event.altKey || event.metaKey) {
+      return;
+    }
+
+    event.preventDefault();
+    if (!this.ui.submitBtn.disabled) {
+      this.ui.form.requestSubmit();
+    }
   }
 
   updateLeadControls() {
@@ -60,9 +213,16 @@ class AlmaRagWidget {
   }
 
   updateCharCounter() {
+    const words = this.countWords(this.ui.questionInput.value);
     this.ui.charCounterEl.textContent =
-      `(máximo ${this.maxQuestionLength} caracteres) ` +
-      `${this.ui.questionInput.value.length}/${this.maxQuestionLength}`;
+      `(máximo ${this.maxQuestionWords} palabras) ` +
+      `${words}/${this.maxQuestionWords}`;
+    this.ui.charCounterEl.classList.toggle("is-over-limit", words > this.maxQuestionWords);
+  }
+
+  countWords(value) {
+    const normalized = value.trim();
+    return normalized ? normalized.split(/\s+/).length : 0;
   }
 
   hideReference() {
@@ -131,10 +291,16 @@ class AlmaRagWidget {
   clearConversationState() {
     this.leadState = null;
     this.conversationState = null;
+    this.leadCompleted = false;
+    window.clearTimeout(this.closeRedirectTimer);
+    this.closeRedirectTimer = null;
+    this.ui.questionInput.disabled = false;
+    this.ui.submitBtn.disabled = false;
     this.ui.questionInput.value = "";
     this.setComposerPrompt();
     this.updateCharCounter();
     this.hideReference();
+    this.markdownViewport.clear();
     this.updateLeadControls();
   }
 
@@ -203,7 +369,7 @@ class AlmaRagWidget {
   }
 
   renderResult(data) {
-    this.ui.answerEl.replaceChildren(this.sanitizeHtml(this.formatAnswer(data)));
+    this.markdownViewport.render(this.formatAnswer(data));
     this.renderReference(data.sources);
     this.ui.resultEl.hidden = false;
   }
@@ -217,8 +383,11 @@ class AlmaRagWidget {
     return typeof detail === "string" ? detail : JSON.stringify(detail);
   }
 
-  async submitQuestion(question) {
+  async submitQuestion(question, product = "") {
     const body = { question };
+    if (product) {
+      body.product = product;
+    }
     if (this.conversationState) {
       body.conversation_state = this.conversationState;
     }
@@ -294,6 +463,10 @@ class AlmaRagWidget {
       this.showError("Escribe un mensaje para continuar.");
       return;
     }
+    if (this.countWords(question) > this.maxQuestionWords) {
+      this.showError(`Tu mensaje supera el máximo de ${this.maxQuestionWords} palabras.`);
+      return;
+    }
 
     this.hidePrivacyNotice();
     this.ui.submitBtn.disabled = true;
@@ -315,12 +488,24 @@ class AlmaRagWidget {
           "Intenta nuevamente en unos segundos o vuelve a cargar la página."
       );
     } finally {
-      this.ui.submitBtn.disabled = false;
+      if (!this.closeRedirectTimer) {
+        this.ui.submitBtn.disabled = false;
+      }
     }
   }
 
   handleSuccessfulResponse(data) {
     this.renderResult(data);
+    if (this.isMailSentWithCompletedLead(data)) {
+      this.leadCompleted = true;
+      window.clearTimeout(this.sessionTimer);
+      window.clearInterval(this.sessionInterval);
+      this.scheduleCloseRedirect();
+    } else if (data.lead_state && data.lead_state.next_field === null) {
+      this.leadCompleted = true;
+      window.clearTimeout(this.sessionTimer);
+      window.clearInterval(this.sessionInterval);
+    }
     this.conversationState =
       data.conversation_state && data.conversation_state.stage !== "done"
         ? data.conversation_state
@@ -335,11 +520,32 @@ class AlmaRagWidget {
     this.setComposerPrompt();
   }
 
+  isMailSentWithCompletedLead(data) {
+    return Boolean(
+      data &&
+        data.intent === "lead_resumido" &&
+        data.email_status &&
+        data.email_status.status === "sent"
+    );
+  }
+
+  scheduleCloseRedirect() {
+    window.clearTimeout(this.closeRedirectTimer);
+    this.ui.questionInput.disabled = true;
+    this.ui.submitBtn.disabled = true;
+    this.ui.resetBtn.hidden = true;
+
+    this.closeRedirectTimer = window.setTimeout(() => {
+      window.location.assign(this.config.closeRedirectUrl);
+    }, this.config.closeRedirectDelayMs);
+  }
+
   async handleReset() {
     this.hideElement(this.ui.statusEl);
     this.hideElement(this.ui.errorEl);
     this.ui.resultEl.hidden = true;
     this.clearConversationState();
+    this.startSessionLimitTimer();
     this.showStatus("Iniciando nueva conversación...");
     await this.boot();
     this.hideElement(this.ui.statusEl);
@@ -356,11 +562,43 @@ class AlmaRagWidget {
           : null;
       this.setComposerPrompt();
       this.updateLeadControls();
+      await this.submitInitialProductQuestion();
     } catch (err) {
       this.showError(
         "El RAG de contacto no está disponible por un momento. " +
           "Puedes intentar nuevamente en unos segundos."
       );
+    }
+  }
+
+  async submitInitialProductQuestion() {
+    if (
+      this.initialProductSubmitted ||
+      !this.config.initialProduct ||
+      !this.config.initialQuestion
+    ) {
+      return;
+    }
+
+    this.initialProductSubmitted = true;
+    this.hidePrivacyNotice();
+    this.ui.submitBtn.disabled = true;
+    this.showStatus("Consultando...");
+
+    try {
+      const result = await this.submitQuestion(
+        this.config.initialQuestion,
+        this.config.initialProduct
+      );
+      this.hideElement(this.ui.statusEl);
+
+      if (result.ok) {
+        this.handleSuccessfulResponse(result.data);
+      } else {
+        this.showError(result.message);
+      }
+    } finally {
+      this.ui.submitBtn.disabled = false;
     }
   }
 }

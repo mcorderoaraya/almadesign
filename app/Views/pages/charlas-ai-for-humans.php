@@ -4,19 +4,22 @@ declare(strict_types=1);
 $talks = [
     [
         'number' => '01',
-        'title' => 'Charlas para personas comunes',
+        'title' => 'Charlas para humanos',
+        'productSlug' => 'charlahumanos',
         'subtitle' => 'Entender la IA como expansión humana',
         'body' => 'Para personas no técnicas que quieren comprender qué es la IA, cómo usarla en la vida diaria y por qué puede ampliar creatividad, aprendizaje, trabajo y organización personal sin reemplazar el criterio humano.',
     ],
     [
         'number' => '02',
         'title' => 'Charlas para equipos de trabajo y áreas IT',
+        'productSlug' => 'charlatecnica',
         'subtitle' => 'Adoptar IA con criterio, procesos y gobernanza',
         'body' => 'Para equipos que necesitan pasar del entusiasmo inicial a una adopción ordenada: detectar procesos candidatos, diseñar pilotos responsables, cuidar datos, trazabilidad, permisos y límites antes de automatizar.',
     ],
     [
         'number' => '03',
         'title' => 'Charlas para gerencias y directivos',
+        'productSlug' => 'charlagerencia',
         'subtitle' => 'IA como decisión estratégica, no como moda tecnológica',
         'body' => 'Para líderes que necesitan decidir qué capacidades humanas, comerciales y operativas quieren ampliar con IA, bajo qué límites, con qué responsabilidad y con qué hoja de ruta realista.',
     ],
@@ -94,7 +97,7 @@ $executiveTalkTopics = [
                     <p>No hablamos de IA como reemplazo del ser humano. Hablamos de IA como herramienta para devolver capacidad, abrir posibilidades y construir una relación más consciente entre personas, trabajo y tecnología.</p>
                 </div>
                 <div class="hero-actions">
-                    <a class="button button-primary" href="<?= e(url('/contacto')) ?>">Solicitar una charla</a>
+                    <a class="button button-primary" href="<?= e(url('/contacto?producto=charlas')) ?>">Solicitar una charla</a>
                     <a class="button button-secondary" href="<?= e(url('/ai-for-humans')) ?>">Leer manifiesto</a>
                 </div>
             </div>
@@ -116,7 +119,7 @@ $executiveTalkTopics = [
                             <h3><?= e($talk['title']) ?></h3>
                             <p class="talks-product-card__subtitle"><?= e($talk['subtitle']) ?></p>
                             <p><?= e($talk['body']) ?></p>
-                            <a class="talks-product-card__cta" href="<?= e(url('/contacto')) ?>">Solicitar</a>
+                            <a class="talks-product-card__cta" href="<?= e(url('/contacto?producto=' . $talk['productSlug'])) ?>">Solicitar</a>
                         </article>
                     <?php endforeach; ?>
                 </div>
@@ -128,7 +131,7 @@ $executiveTalkTopics = [
         <div class="talks-detail__inner">
             <div class="talks-detail__intro">
                 <p class="eyebrow">Charla 01</p>
-                <h2 id="talks-people-title">Charlas para personas comunes</h2>
+                <h2 id="talks-people-title">Charlas para humanos</h2>
                 <p>Entender la IA como expansión humana</p>
             </div>
 

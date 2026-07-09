@@ -19,6 +19,7 @@ $router->get('/ai-for-humans', [ContentController::class, 'aiForHumans']);
 $router->get('/charlas-ai-for-humans', [ContentController::class, 'talksAiForHumans']);
 $router->get('/apogeo-lux', [ApogeoLuxController::class, 'index']);
 $router->get('/contacto', [ContactController::class, 'index']);
+$router->get('/contacto/formulario', [ContactController::class, 'form']);
 $router->get('/contacto/rag/iniciar', [ContactController::class, 'ragStart']);
 $router->post('/contacto/rag/chat', [ContactController::class, 'ragChat']);
 $router->post('/contacto/enviar', [ContactController::class, 'send']);

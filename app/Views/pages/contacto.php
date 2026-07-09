@@ -6,7 +6,9 @@ declare(strict_types=1);
         <div id="status" class="status" hidden></div>
 
         <div id="result" class="result" hidden>
-            <p id="answer"></p>
+            <section class="markdown-viewport" aria-label="Respuesta">
+                <article id="markdown-content"></article>
+            </section>
         </div>
 
         <p class="rag-privacy-notice">
@@ -24,20 +26,29 @@ declare(strict_types=1);
         data-chat-endpoint="<?= e(url('/contacto/rag/chat')) ?>"
         data-conversation-start-endpoint="<?= e(url('/contacto/rag/iniciar')) ?>"
         data-csrf-token="<?= e($csrfToken ?? '') ?>"
+        data-initial-product="<?= e($initialProduct ?? '') ?>"
+        data-initial-question="<?= e($initialQuestion ?? '') ?>"
+        data-fallback-url="<?= e($fallbackUrl ?? url('/contacto/formulario?motivo=limite')) ?>"
     >
         <label for="question" class="sr-only">Mensaje</label>
         <textarea
             id="question"
             name="question"
-            maxlength="1000"
+            maxlength="4000"
             rows="1"
             placeholder="Escribe tu mensaje"
         ></textarea>
+        <div id="session-meter" class="session-meter" aria-live="polite" title="Modo de respuesta">
+            <span id="session-budget-value" class="session-budget-value">05:00</span>
+            <span id="session-mode-label" class="session-mode-label">High</span>
+        </div>
         <button type="submit" id="submit-btn" aria-label="Enviar">
             <span aria-hidden="true"></span>
         </button>
-        <div id="char-counter" class="char-counter" aria-live="polite">(máximo 1000 caracteres) 0/1000</div>
+        <div id="char-counter" class="char-counter" aria-live="polite">(máximo 500 palabras) 0/500</div>
         <div id="reference" class="reference" aria-live="polite" hidden></div>
         <button type="button" id="reset-btn" class="secondary" hidden>Nueva conversación</button>
     </form>
 </section>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
