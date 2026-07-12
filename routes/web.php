@@ -17,6 +17,7 @@ $router->get('/software-factory', [ContentController::class, 'softwareFactory'])
 $router->get('/apogeo', [ContentController::class, 'apogeo']);
 $router->get('/ai-for-humans', [ContentController::class, 'aiForHumans']);
 $router->get('/charlas-ai-for-humans', [ContentController::class, 'talksAiForHumans']);
+$router->get('/politica-almadesign', [ContentController::class, 'policy']);
 $router->get('/apogeo-lux', [ApogeoLuxController::class, 'index']);
 $router->get('/contacto', [ContactController::class, 'index']);
 $router->get('/contacto/formulario', [ContactController::class, 'form']);

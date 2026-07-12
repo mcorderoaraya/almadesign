@@ -82,8 +82,8 @@ $executiveTalkTopics = [
     'Gobernanza antes de automatización.',
 ];
 ?>
-<main class="talks-page" aria-labelledby="talks-title">
-    <section class="home-third home-third--verticals talks-hero talks-hero--background">
+<div class="talks-page alma-content-page" aria-labelledby="talks-title">
+    <section class="home-third home-third--verticals alma-content-hero talks-hero talks-hero--background">
         <div class="home-third__inner talks-hero__inner">
             <div class="talks-hero__copy">
                 <p class="eyebrow">Charlas AI for Humans</p>
@@ -104,7 +104,7 @@ $executiveTalkTopics = [
         </div>
     </section>
 
-    <section class="home-third home-third--verticals talks-products" aria-labelledby="talks-products-title">
+    <section class="home-third home-third--verticals alma-content-section talks-products" aria-labelledby="talks-products-title">
         <div class="home-third__inner">
             <div class="verticals-section talks-products__inner">
                 <div class="talks-products__heading">
@@ -127,7 +127,7 @@ $executiveTalkTopics = [
         </div>
     </section>
 
-    <section class="talks-detail" id="charlas-para-personas" aria-labelledby="talks-people-title">
+    <section class="talks-detail alma-content-section" id="charlas-para-personas" aria-labelledby="talks-people-title">
         <div class="talks-detail__inner">
             <div class="talks-detail__intro">
                 <p class="eyebrow">Charla 01</p>
@@ -170,7 +170,7 @@ $executiveTalkTopics = [
         </div>
     </section>
 
-    <section class="talks-detail" id="charlas-para-equipos-it" aria-labelledby="talks-team-title">
+    <section class="talks-detail alma-content-section" id="charlas-para-equipos-it" aria-labelledby="talks-team-title">
         <div class="talks-detail__inner">
             <div class="talks-detail__intro">
                 <p class="eyebrow">Charla 02</p>
@@ -213,7 +213,7 @@ $executiveTalkTopics = [
         </div>
     </section>
 
-    <section class="talks-detail" id="charlas-para-gerencias" aria-labelledby="talks-executive-title">
+    <section class="talks-detail alma-content-section" id="charlas-para-gerencias" aria-labelledby="talks-executive-title">
         <div class="talks-detail__inner">
             <div class="talks-detail__intro">
                 <p class="eyebrow">Charla 03</p>
@@ -255,4 +255,4 @@ $executiveTalkTopics = [
             </div>
         </div>
     </section>
-</main>
+</div>

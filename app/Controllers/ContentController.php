@@ -5,6 +5,16 @@ namespace App\Controllers;
 
 final class ContentController extends BaseController
 {
+    public function policy(): void
+    {
+        $this->view('pages/politica-almadesign', [
+            'title' => 'Política AlmaDesign | IA para humanos',
+            'metaDescription' => 'Política de AlmaDesign sobre protección de datos personales, consentimiento, sistemas RAG e inteligencia artificial responsable.',
+            'bodyClass' => 'policy-page',
+            'showFinalCta' => false,
+        ]);
+    }
+
     public function consulting(): void
     {
         $this->view('pages/vertical-detail', [

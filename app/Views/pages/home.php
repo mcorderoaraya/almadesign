@@ -79,8 +79,8 @@ $trustPillars = [
     ['title' => 'Confianza', 'detail' => 'Evidencia, límites y lenguaje entendible.'],
 ];
 ?>
-<div class="alma-home">
-    <section class="home-third home-third--hero" aria-labelledby="home-title">
+<div class="alma-home alma-content-page">
+    <section class="home-third home-third--hero alma-content-hero" aria-labelledby="home-title">
         <div class="home-third__inner">
             <div class="alma-hero__top" aria-label="Contexto AlmaDesign">
                 <p class="eyebrow">Charlas · conocimiento aumentado · decisiones humanas</p>
@@ -135,7 +135,7 @@ Usamos inteligencia artificial para abrir nuevas formas de pensar, decidir, crea
         </div>
     </section>
 
-    <section class="home-third home-third--verticals" aria-label="Productos AlmaDesign">
+    <section class="home-third home-third--verticals alma-content-section" aria-label="Productos AlmaDesign">
         <div class="alma-purpose alma-purpose--window" aria-labelledby="purpose-title">
             <div class="alma-purpose__copy">
                 <div class="section-heading">
@@ -210,7 +210,7 @@ Usamos inteligencia artificial para abrir nuevas formas de pensar, decidir, crea
         </div>
     </section>
 
-    <section class="home-third home-third--human" aria-labelledby="trust-title">
+    <section class="home-third home-third--human alma-content-section" aria-labelledby="trust-title">
         <div class="home-third__inner">
             <section class="method-section" aria-labelledby="method-title">
                 <div class="section-heading">

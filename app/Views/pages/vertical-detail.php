@@ -30,9 +30,9 @@ $guardrailsSecondaryAnchors = $guardrailsSecondaryAnchors ?? [];
 $hasStructuredGuardrails = $guardrails !== [] && is_array($guardrails[0] ?? null);
 $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
 ?>
-<div class="alma-home<?= e($pageClassAttribute) ?>">
+<div class="alma-home alma-content-page<?= e($pageClassAttribute) ?>">
     <?php if ($manifestSections !== []): ?>
-        <section class="manifest-hero"<?= $heroAnchor !== null ? ' id="' . e($heroAnchor) . '"' : '' ?> aria-labelledby="manifest-title">
+        <section class="manifest-hero alma-content-hero"<?= $heroAnchor !== null ? ' id="' . e($heroAnchor) . '"' : '' ?> aria-labelledby="manifest-title">
             <div class="manifest-hero__grid">
                 <div class="manifest-hero__copy">
                     <p class="eyebrow"><?= e($eyebrow) ?></p>
@@ -54,7 +54,7 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
             </div>
         </section>
 
-        <section class="manifest-body" aria-label="Manifiesto AI for Humans">
+        <section class="manifest-body alma-content-section" aria-label="Manifiesto AI for Humans">
             <?php foreach ($manifestSections as $manifestIndex => $manifestSection): ?>
                 <article class="manifest-section"<?= isset($manifestSection['anchor']) ? ' id="' . e($manifestSection['anchor']) . '"' : '' ?>>
                     <p class="manifest-section__number"><em><?= e(str_pad((string) ($manifestIndex + 1), 2, '0', STR_PAD_LEFT)) ?></em></p>
@@ -76,7 +76,7 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
             <?php endforeach; ?>
         </section>
 
-        <section class="ai-for-humans-signature alma-section"<?= $signatureAnchor !== null ? ' id="' . e($signatureAnchor) . '"' : '' ?> aria-labelledby="ai-for-humans-signature-title">
+        <section class="ai-for-humans-signature alma-section alma-content-section"<?= $signatureAnchor !== null ? ' id="' . e($signatureAnchor) . '"' : '' ?> aria-labelledby="ai-for-humans-signature-title">
             <div class="ai-for-humans-signature__inner">
                 <figure class="ai-for-humans-signature__media">
                     <img src="<?= e(asset('img/logos/logo_alma_vintage.svg')) ?>" alt="AlmaDesign" loading="lazy" decoding="async" width="320" height="110">
@@ -93,20 +93,22 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
         </section>
 
     <?php else: ?>
-    <section class="vertical-detail-hero"<?= $heroAnchor !== null ? ' id="' . e($heroAnchor) . '"' : '' ?> aria-labelledby="vertical-detail-title">
-        <p class="eyebrow"><?= e($eyebrow) ?></p>
-        <h1 id="vertical-detail-title"><?= e($heading) ?></h1>
-        <?php foreach ($leadParagraphs as $leadIndex => $leadParagraph): ?>
-            <p class="lead<?= $leadIndex > 0 ? ' lead--secondary' : '' ?>"><?= e($leadParagraph) ?></p>
-        <?php endforeach; ?>
-        <div class="hero-actions" aria-label="Acciones principales">
-            <a class="button button-primary" href="<?= e($ctaHref) ?>"><?= e($cta) ?></a>
-            <a class="button button-secondary" href="<?= e(url('/')) ?>">Volver al Home</a>
+    <section class="vertical-detail-hero alma-content-hero"<?= $heroAnchor !== null ? ' id="' . e($heroAnchor) . '"' : '' ?> aria-labelledby="vertical-detail-title">
+        <div class="home-third__inner vertical-detail-hero__inner">
+            <p class="eyebrow"><?= e($eyebrow) ?></p>
+            <h1 id="vertical-detail-title"><?= e($heading) ?></h1>
+            <?php foreach ($leadParagraphs as $leadIndex => $leadParagraph): ?>
+                <p class="lead<?= $leadIndex > 0 ? ' lead--secondary' : '' ?>"><?= e($leadParagraph) ?></p>
+            <?php endforeach; ?>
+            <div class="hero-actions" aria-label="Acciones principales">
+                <a class="button button-primary" href="<?= e($ctaHref) ?>"><?= e($cta) ?></a>
+                <a class="button button-secondary" href="<?= e(url('/')) ?>">Volver al Home</a>
+            </div>
         </div>
     </section>
 
     <?php if ($featureBlock !== null): ?>
-        <section class="vertical-detail-content alma-section document-management-feature-section" aria-label="<?= e($featureBlock['ariaLabel'] ?? 'Bloque destacado') ?>">
+        <section class="vertical-detail-content alma-section alma-content-section document-management-feature-section" aria-label="<?= e($featureBlock['ariaLabel'] ?? 'Bloque destacado') ?>">
             <div class="alma-assistant-feature document-management-feature">
                 <article class="alma-assistant-feature__intro"<?= isset($featureBlock['left']['anchor']) ? ' id="' . e($featureBlock['left']['anchor']) . '"' : '' ?>>
                     <?php if (isset($featureBlock['left']['eyebrow'])): ?>
@@ -131,7 +133,7 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
     <?php endif; ?>
 
     <?php if ($ragGraphSection !== null): ?>
-        <section class="document-rag-section alma-section"<?= isset($ragGraphSection['anchor']) ? ' id="' . e($ragGraphSection['anchor']) . '"' : '' ?> aria-labelledby="document-rag-title">
+        <section class="document-rag-section alma-section alma-content-section"<?= isset($ragGraphSection['anchor']) ? ' id="' . e($ragGraphSection['anchor']) . '"' : '' ?> aria-labelledby="document-rag-title">
             <div class="document-rag-section__inner">
                 <header class="document-rag-section__header">
                     <?php if (isset($ragGraphSection['eyebrow'])): ?>
@@ -187,7 +189,7 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
     <?php endif; ?>
 
     <?php if ($sections !== []): ?>
-        <section class="vertical-detail-content alma-section" aria-label="Contenido principal">
+        <section class="vertical-detail-content alma-section alma-content-section" aria-label="Contenido principal">
             <?php foreach ($sections as $section): ?>
                 <?php
                 $sectionClass = 'vertical-detail-block';
@@ -246,7 +248,7 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
     <?php endif; ?>
 
     <?php if ($insightBlock !== null): ?>
-        <section class="vertical-detail-content alma-section document-management-feature-section" aria-label="<?= e($insightBlock['ariaLabel'] ?? 'Síntesis y gobernanza') ?>">
+        <section class="vertical-detail-content alma-section alma-content-section document-management-feature-section" aria-label="<?= e($insightBlock['ariaLabel'] ?? 'Síntesis y gobernanza') ?>">
             <div class="alma-assistant-feature document-management-feature document-management-feature--insight">
                 <article class="alma-assistant-feature__intro"<?= isset($insightBlock['left']['anchor']) ? ' id="' . e($insightBlock['left']['anchor']) . '"' : '' ?>>
                     <?php if (isset($insightBlock['left']['eyebrow'])): ?>
@@ -271,7 +273,7 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
     <?php endif; ?>
 
     <?php if ($architectureSection !== null): ?>
-        <section class="apogeo-architectures-section"<?= isset($architectureSection['anchor']) ? ' id="' . e($architectureSection['anchor']) . '"' : '' ?> aria-labelledby="apogeo-architectures-title">
+        <section class="apogeo-architectures-section alma-content-section"<?= isset($architectureSection['anchor']) ? ' id="' . e($architectureSection['anchor']) . '"' : '' ?> aria-labelledby="apogeo-architectures-title">
             <div class="apogeo-architectures-inner">
                 <header class="apogeo-architectures-header">
                     <p class="eyebrow"><?= e($architectureSection['eyebrow']) ?></p>
@@ -305,7 +307,7 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
             $cardSectionVariant = $cardSection['variant'] ?? ($cardSectionIndex === 0 ? 'approach' : 'deliverables');
             $cardSectionId = 'card-section-' . $cardSectionIndex;
         ?>
-        <section class="consulting-section consulting-section--<?= e($cardSectionVariant) ?><?= $cardSectionVariant === 'executive' ? ' executive-section' : '' ?>"<?= isset($cardSection['anchor']) ? ' id="' . e($cardSection['anchor']) . '"' : '' ?> aria-labelledby="<?= e($cardSectionId) ?>">
+        <section class="consulting-section alma-content-section consulting-section--<?= e($cardSectionVariant) ?><?= $cardSectionVariant === 'executive' ? ' executive-section' : '' ?>"<?= isset($cardSection['anchor']) ? ' id="' . e($cardSection['anchor']) . '"' : '' ?> aria-labelledby="<?= e($cardSectionId) ?>">
             <div class="section-heading">
                 <p class="eyebrow"><?= e($cardSection['eyebrow'] ?? $eyebrow) ?></p>
                 <h2 id="<?= e($cardSectionId) ?>"><?= e($cardSection['title']) ?></h2>
@@ -336,7 +338,7 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
     <?php endforeach; ?>
 
     <?php if ($infographicSection !== null): ?>
-        <section class="apogeo-infographic-section"<?= isset($infographicSection['anchor']) ? ' id="' . e($infographicSection['anchor']) . '"' : '' ?> aria-labelledby="apogeo-infographic-title">
+        <section class="apogeo-infographic-section alma-content-section"<?= isset($infographicSection['anchor']) ? ' id="' . e($infographicSection['anchor']) . '"' : '' ?> aria-labelledby="apogeo-infographic-title">
             <div class="section-heading">
                 <p class="eyebrow"><?= e($infographicSection['eyebrow']) ?></p>
                 <h2 id="apogeo-infographic-title"><?= e($infographicSection['title']) ?></h2>
@@ -369,7 +371,7 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
     <?php endif; ?>
 
     <?php if ($postSections !== []): ?>
-        <section class="vertical-detail-content vertical-detail-content--after alma-section" aria-label="Contenido complementario">
+        <section class="vertical-detail-content vertical-detail-content--after alma-section alma-content-section" aria-label="Contenido complementario">
             <?php foreach ($postSections as $section): ?>
                 <article class="vertical-detail-block"<?= isset($section['anchor']) ? ' id="' . e($section['anchor']) . '"' : '' ?>>
                     <h2><?= e($section['title']) ?></h2>
@@ -422,7 +424,7 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
     <?php endif; ?>
 
     <?php if ($limitsSection !== null): ?>
-        <section class="apogeo-limits-section"<?= isset($limitsSection['anchor']) ? ' id="' . e($limitsSection['anchor']) . '"' : '' ?> aria-labelledby="apogeo-limits-title">
+        <section class="apogeo-limits-section alma-content-section"<?= isset($limitsSection['anchor']) ? ' id="' . e($limitsSection['anchor']) . '"' : '' ?> aria-labelledby="apogeo-limits-title">
             <div class="apogeo-limits-grid">
                 <header class="apogeo-limits-header">
                     <p class="eyebrow"><?= e($limitsSection['eyebrow']) ?></p>
@@ -449,7 +451,7 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
             </div>
         </section>
     <?php elseif ($guardrails !== [] || $guardrailsIntro !== null): ?>
-        <section class="vertical-detail-guardrails alma-section"<?= $guardrailsAnchor !== null ? ' id="' . e($guardrailsAnchor) . '"' : '' ?> aria-labelledby="guardrails-title">
+        <section class="vertical-detail-guardrails alma-section alma-content-section"<?= $guardrailsAnchor !== null ? ' id="' . e($guardrailsAnchor) . '"' : '' ?> aria-labelledby="guardrails-title">
             <?php foreach ($guardrailsSecondaryAnchors as $secondaryAnchor): ?>
                 <span id="<?= e($secondaryAnchor) ?>" class="anchor-target" aria-hidden="true"></span>
             <?php endforeach; ?>

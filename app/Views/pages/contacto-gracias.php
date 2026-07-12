@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 ?>
-<section class="final-cta contact-thanks">
+<section class="final-cta contact-thanks alma-content-hero">
     <div>
         <p class="eyebrow">Mensaje recibido</p>
         <h1>Gracias por contactar a AlmaDesign.</h1>

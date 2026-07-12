@@ -41,26 +41,28 @@ $faqJsonLd = [
     ], $faqItems),
 ];
 ?>
-<div class="alma-home apogeo-lux-landing">
-    <section class="vertical-detail-hero" aria-labelledby="apogeo-lux-title">
-        <p class="eyebrow apogeo-lux-hero__eyebrow">Apogeo Lux</p>
-        <div class="apogeo-lux-hero__brand">
-            <span class="apogeo-lux-wordmark apogeo-lux-wordmark--dark">
-                <span class="apogeo-lux-wordmark__apogeo">Apogeo</span>
-                <em class="apogeo-lux-wordmark__lux">Lux</em>
-            </span>
-        </div>
-        <div class="apogeo-lux-hero__separator" aria-hidden="true"></div>
-        <h1 id="apogeo-lux-title">Consulta jurídica confiable sobre normas, leyes chilenas y relaciones de conocimiento.</h1>
-        <p class="lead">Apogeo Lux es la visión de AlmaDesign para una solución jurídica gobernada capaz de reunir normas, fuentes, trazabilidad, relaciones de contexto y criterio humano en una misma arquitectura de consulta confiable.</p>
-        <p class="lead lead--secondary">Nuestra visión es ofrecer una forma más profunda de estudiar leyes chilenas y sus fuentes, conectando información jurídica dispersa mediante una arquitectura GraphRAG pensada para aportar claridad, continuidad, evidencia y confianza.</p>
-        <div class="hero-actions" aria-label="Acciones principales">
-            <a class="button button-primary" href="#interes-primero">Quiero conocer esta solución</a>
-            <a class="button button-secondary" href="#vision-apogeo-lux">Conocer la visión completa</a>
+<div class="alma-home alma-content-page apogeo-lux-landing">
+    <section class="vertical-detail-hero alma-content-hero" aria-labelledby="apogeo-lux-title">
+        <div class="home-third__inner apogeo-lux-hero__inner">
+            <p class="eyebrow apogeo-lux-hero__eyebrow">Apogeo Lux</p>
+            <div class="apogeo-lux-hero__brand">
+                <span class="apogeo-lux-wordmark apogeo-lux-wordmark--dark">
+                    <span class="apogeo-lux-wordmark__apogeo">Apogeo</span>
+                    <em class="apogeo-lux-wordmark__lux">Lux</em>
+                </span>
+            </div>
+            <div class="apogeo-lux-hero__separator" aria-hidden="true"></div>
+            <h1 id="apogeo-lux-title">Consulta jurídica confiable sobre normas, leyes chilenas y relaciones de conocimiento.</h1>
+            <p class="lead">Apogeo Lux es la visión de AlmaDesign para una solución jurídica gobernada capaz de reunir normas, fuentes, trazabilidad, relaciones de contexto y criterio humano en una misma arquitectura de consulta confiable.</p>
+            <p class="lead lead--secondary">Nuestra visión es ofrecer una forma más profunda de estudiar leyes chilenas y sus fuentes, conectando información jurídica dispersa mediante una arquitectura GraphRAG pensada para aportar claridad, continuidad, evidencia y confianza.</p>
+            <div class="hero-actions" aria-label="Acciones principales">
+                <a class="button button-primary" href="#interes-primero">Quiero conocer esta solución</a>
+                <a class="button button-secondary" href="#vision-apogeo-lux">Conocer la visión completa</a>
+            </div>
         </div>
     </section>
 
-    <section class="apogeo-lux-editorial-section alma-section" aria-labelledby="apogeo-lux-problema">
+    <section class="apogeo-lux-editorial-section alma-section alma-content-section" aria-labelledby="apogeo-lux-problema">
         <div class="section-heading">
             <p class="eyebrow">El problema</p>
             <h2 id="apogeo-lux-problema">El derecho exige más que respuestas: exige contexto, fuente y relación.</h2>
@@ -72,7 +74,7 @@ $faqJsonLd = [
         </div>
     </section>
 
-    <section class="apogeo-lux-technical-application" aria-labelledby="apogeo-lux-technical-application-title">
+    <section class="apogeo-lux-technical-application alma-content-section" aria-labelledby="apogeo-lux-technical-application-title">
         <div class="apogeo-lux-technical-application__inner">
             <article class="apogeo-lux-technical-application__card">
                 <div class="apogeo-lux-technical-application__heading">
@@ -93,7 +95,7 @@ $faqJsonLd = [
         </div>
     </section>
 
-    <section class="apogeo-lux-editorial-section alma-section" id="vision-apogeo-lux" aria-labelledby="apogeo-lux-vision-title">
+    <section class="apogeo-lux-editorial-section alma-section alma-content-section" id="vision-apogeo-lux" aria-labelledby="apogeo-lux-vision-title">
         <div class="section-heading">
             <p class="eyebrow">Nuestra visión</p>
             <h2 id="apogeo-lux-vision-title">
@@ -111,7 +113,7 @@ $faqJsonLd = [
         </div>
     </section>
 
-    <section class="consulting-section consulting-section--approach" aria-labelledby="apogeo-lux-graphrag">
+    <section class="consulting-section alma-content-section consulting-section--approach" aria-labelledby="apogeo-lux-graphrag">
         <div class="section-heading">
             <p class="eyebrow">Por qué GraphRAG</p>
             <h2 id="apogeo-lux-graphrag">Las ventajas de contar con una arquitectura GraphRAG.</h2>
@@ -157,7 +159,7 @@ $faqJsonLd = [
         </div>
     </section>
 
-    <section class="consulting-section consulting-section--deliverables" aria-labelledby="apogeo-lux-piezas">
+    <section class="consulting-section alma-content-section consulting-section--deliverables" aria-labelledby="apogeo-lux-piezas">
         <div class="section-heading">
             <p class="eyebrow">Arquitectura de valor</p>
             <h2 id="apogeo-lux-piezas">Una solución pensada para reunir todas las piezas relevantes.</h2>
@@ -179,7 +181,7 @@ $faqJsonLd = [
         </div>
     </section>
 
-    <section class="vertical-detail-content alma-section" aria-labelledby="apogeo-lux-jurisprudencia">
+    <section class="vertical-detail-content alma-section alma-content-section" aria-labelledby="apogeo-lux-jurisprudencia">
         <article class="vertical-detail-block apogeo-lux-editorial">
             <p class="eyebrow">Jurisprudencia</p>
             <h2 id="apogeo-lux-jurisprudencia">La jurisprudencia completa la lectura del derecho.</h2>
@@ -188,7 +190,7 @@ $faqJsonLd = [
         </article>
     </section>
 
-    <section class="consulting-section apogeo-lux-diagrams" aria-labelledby="apogeo-lux-diagrams-title">
+    <section class="consulting-section alma-content-section apogeo-lux-diagrams" aria-labelledby="apogeo-lux-diagrams-title">
         <div class="section-heading">
             <p class="eyebrow">Diagramas conceptuales</p>
             <h2 id="apogeo-lux-diagrams-title">La arquitectura explicada como sistema de conocimiento.</h2>
@@ -232,7 +234,7 @@ $faqJsonLd = [
         </div>
     </section>
 
-    <section class="consulting-section consulting-section--executive executive-section" aria-labelledby="apogeo-lux-audiencias">
+    <section class="consulting-section alma-content-section consulting-section--executive executive-section" aria-labelledby="apogeo-lux-audiencias">
         <div class="section-heading">
             <p class="eyebrow">Para quién es</p>
             <h2 id="apogeo-lux-audiencias">Pensado para organizaciones que trabajan con complejidad jurídica real.</h2>
@@ -249,7 +251,7 @@ $faqJsonLd = [
         </div>
     </section>
 
-    <section class="vertical-detail-content vertical-detail-content--after alma-section" aria-labelledby="apogeo-lux-compromiso">
+    <section class="vertical-detail-content vertical-detail-content--after alma-section alma-content-section" aria-labelledby="apogeo-lux-compromiso">
         <article class="vertical-detail-block apogeo-lux-editorial">
             <p class="eyebrow">Compromiso</p>
             <h2 id="apogeo-lux-compromiso">Nuestro compromiso es una inteligencia jurídica gobernada.</h2>
@@ -258,7 +260,7 @@ $faqJsonLd = [
         </article>
     </section>
 
-    <section class="vertical-detail-guardrails alma-section" aria-labelledby="apogeo-lux-limites">
+    <section class="vertical-detail-guardrails alma-section alma-content-section" aria-labelledby="apogeo-lux-limites">
         <div class="section-heading">
             <p class="eyebrow">Límites explícitos</p>
             <h2 id="apogeo-lux-limites">Límites explícitos de la propuesta.</h2>
@@ -282,7 +284,7 @@ $faqJsonLd = [
         </blockquote>
     </section>
 
-    <section class="consulting-section apogeo-lux-interest" id="interes-primero" aria-labelledby="apogeo-lux-interest-title">
+    <section class="consulting-section alma-content-section apogeo-lux-interest" id="interes-primero" aria-labelledby="apogeo-lux-interest-title">
         <div class="section-heading">
             <p class="eyebrow">Captura de interés</p>
             <h2 id="apogeo-lux-interest-title">Quiero ser el primero en contar con esta solución.</h2>
@@ -294,7 +296,7 @@ $faqJsonLd = [
         </div>
     </section>
 
-    <section class="consulting-section faq" aria-labelledby="apogeo-lux-faq">
+    <section class="consulting-section alma-content-section faq" aria-labelledby="apogeo-lux-faq">
         <div class="section-heading">
             <p class="eyebrow">FAQ</p>
             <h2 id="apogeo-lux-faq">Preguntas frecuentes.</h2>
