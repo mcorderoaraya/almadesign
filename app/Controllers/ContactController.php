@@ -250,11 +250,8 @@ final class ContactController extends BaseController
 
     private function allowRagChat(): bool
     {
-        $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
-        $key = 'rag_chat|' . $ip;
-
         return RateLimiter::allowShared(
-            $key,
+            'rag_chat_global',
             1,
             self::RAG_CHAT_COOLDOWN_SECONDS,
             BASE_PATH . '/logs/rate-limits'
