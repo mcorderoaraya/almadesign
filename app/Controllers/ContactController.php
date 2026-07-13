@@ -16,6 +16,7 @@ final class ContactController extends BaseController
 {
     // Nombre específico para evitar autofill accidental del honeypot.
     private const HONEYPOT_FIELD = 'almadesign_hp_field';
+    private const RAG_CHAT_COOLDOWN_SECONDS = 20;
     private const BUSINESS_FIELDS = ['nombre', 'email', 'telefono', 'asunto', 'mensaje'];
     private const TECHNICAL_FIELDS = ['csrf_token', self::HONEYPOT_FIELD];
     private const PRODUCT_PROMPTS = [
@@ -168,6 +169,15 @@ final class ContactController extends BaseController
             unset($payload['product']);
         }
 
+        if (!$this->allowRagChat()) {
+            header('Retry-After: ' . self::RAG_CHAT_COOLDOWN_SECONDS);
+            $this->jsonPayload(429, [
+                'detail' => 'Recibimos muchas consultas seguidas. Espera unos segundos antes de enviar otra pregunta.',
+                'retry_after_seconds' => self::RAG_CHAT_COOLDOWN_SECONDS,
+            ]);
+            return;
+        }
+
         try {
             $response = $this->ragClient()->chat($payload);
             $this->jsonResponse($response->statusCode, $response->body);
@@ -235,6 +245,19 @@ final class ContactController extends BaseController
         return new RagClient(
             baseUrl: Env::get('RAG_BASE_URL', 'http://127.0.0.1:8000') ?? 'http://127.0.0.1:8000',
             timeoutSeconds: (float) (Env::get('RAG_TIMEOUT_SECONDS', '14') ?? '14'),
+        );
+    }
+
+    private function allowRagChat(): bool
+    {
+        $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
+        $key = 'rag_chat|' . $ip;
+
+        return RateLimiter::allowShared(
+            $key,
+            1,
+            self::RAG_CHAT_COOLDOWN_SECONDS,
+            BASE_PATH . '/logs/rate-limits'
         );
     }
 
