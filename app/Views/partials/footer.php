@@ -5,17 +5,21 @@ declare(strict_types=1);
     <div class="site-footer__inner">
         <div class="site-footer__identity">
             <p class="site-footer__statement">Inteligencia artificial clara, humana y útil para equipos que necesitan avanzar sin perder control.</p>
+            <a class="button button-primary site-footer__policy-button" href="<?= e(url('/politica-almadesign')) ?>">Políticas de AlmaDesign</a>
         </div>
-        <nav class="site-footer__nav" aria-label="Mapa del sitio">
-            <a href="<?= e(url('/')) ?>">Inicio</a>
-            <a href="<?= e(url('/consultoria-ia-procesos')) ?>">Consultoría</a>
-            <a href="<?= e(url('/charlas-ai-for-humans')) ?>">Charlas</a>
-            <a href="<?= e(url('/gestion-documental')) ?>">Gestión Documental</a>
-            <a href="<?= e(url('/orquestacion-asistentes-ia')) ?>">Orquestación IA</a>
-            <a href="<?= e(url('/software-factory')) ?>">Software Factory</a>
-            <a href="<?= e(url('/ai-for-humans')) ?>">AI for Humans</a>
-            <a href="<?= e(url('/contacto')) ?>">Conversemos</a>
-        </nav>
+        <div class="site-footer__menu">
+            <p class="site-footer__menu-title">Menú</p>
+            <nav class="site-footer__nav" aria-label="Mapa del sitio">
+                <a href="<?= e(url('/')) ?>">Inicio</a>
+                <a href="<?= e(url('/consultoria-ia-procesos')) ?>">Consultoría</a>
+                <a href="<?= e(url('/charlas-ai-for-humans')) ?>">Charlas</a>
+                <a href="<?= e(url('/gestion-documental')) ?>">Gestión Documental</a>
+                <a href="<?= e(url('/orquestacion-asistentes-ia')) ?>">Orquestación IA</a>
+                <a href="<?= e(url('/software-factory')) ?>">Software Factory</a>
+                <a href="<?= e(url('/ai-for-humans')) ?>">AI for Humans</a>
+                <a href="<?= e(url('/contacto')) ?>">Conversemos</a>
+            </nav>
+        </div>
         <div class="site-footer__social" aria-label="Redes sociales">
             <a class="site-footer__social-link site-footer__instagram" href="https://www.instagram.com/almadesign_ai/" target="_blank" rel="noopener noreferrer" aria-label="Instagram AlmaDesign" data-tooltip="Instagram">
                 <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
