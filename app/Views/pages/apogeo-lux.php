@@ -58,6 +58,7 @@ $faqJsonLd = [
             <div class="hero-actions" aria-label="Acciones principales">
                 <a class="button button-primary" href="#interes-primero">Quiero conocer esta solución</a>
                 <a class="button button-secondary" href="#vision-apogeo-lux">Conocer la visión completa</a>
+                <a class="button button-primary" href="<?= e(url('/politica-almadesign')) ?>">Políticas de AlmaDesign</a>
             </div>
         </div>
     </section>

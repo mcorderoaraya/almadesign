@@ -103,6 +103,7 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
             <div class="hero-actions" aria-label="Acciones principales">
                 <a class="button button-primary" href="<?= e($ctaHref) ?>"><?= e($cta) ?></a>
                 <a class="button button-secondary" href="<?= e(url('/')) ?>">Volver al Home</a>
+                <a class="button button-primary" href="<?= e(url('/politica-almadesign')) ?>">Políticas de AlmaDesign</a>
             </div>
         </div>
     </section>

@@ -1,6 +1,31 @@
 <?php
 declare(strict_types=1);
 
+use App\Core\Markdown;
+
+/** @var array<int, array<string, mixed>>|null $sections */
+
+$sectionMap = [];
+if (isset($sections) && is_array($sections)) {
+    foreach ($sections as $section) {
+        if (is_array($section) && isset($section['section_key'])) {
+            $sectionMap[(string) $section['section_key']] = $section;
+        }
+    }
+}
+
+$sectionValue = static function (string $key, string $field, string $fallback) use ($sectionMap): string {
+    $value = trim((string) ($sectionMap[$key][$field] ?? ''));
+
+    return $value !== '' ? $value : $fallback;
+};
+
+$sectionMarkdown = static function (string $key, string $fallback) use ($sectionMap): string {
+    $markdown = trim((string) ($sectionMap[$key]['body_markdown'] ?? ''));
+
+    return $markdown !== '' ? Markdown::safeBasic($markdown) : '<p>' . e($fallback) . '</p>';
+};
+
 $products = [
     [
         'title' => 'Charlas AI for Humans',
@@ -79,11 +104,14 @@ $trustPillars = [
     ['title' => 'Confianza', 'detail' => 'Evidencia, límites y lenguaje entendible.'],
 ];
 ?>
+<?php if (($contentSource ?? '') === 'postgresql'): ?>
+    <!-- content-source:postgresql -->
+<?php endif; ?>
 <div class="alma-home alma-content-page">
     <section class="home-third home-third--hero alma-content-hero" aria-labelledby="home-title">
         <div class="home-third__inner">
             <div class="alma-hero__top" aria-label="Contexto AlmaDesign">
-                <p class="eyebrow">Charlas · conocimiento aumentado · decisiones humanas</p>
+                <p class="eyebrow"><?= e($sectionValue('hero', 'eyebrow', 'Charlas · conocimiento aumentado · decisiones humanas')) ?></p>
                 <p class="meta">PERSONAS · EQUIPOS · GERENCIAS</p>
             </div>
 
@@ -99,11 +127,12 @@ $trustPillars = [
                         <span>Alma Design</span>
                         <small>Primero las personas. Después la automatización.</small>
                     </div>
-                    <h1 id="home-title" class="o-heading">Potencia tus ideas y expande tus horizontes con inteligencia artificial.</h1>
-                    <p class="lead">AlmaDesign diseña, ordena y gobierna sistemas de información, procesos e inteligencia aplicada para que las organizaciones decidan con más claridad, trazabilidad y criterio humano.</p>
+                    <h1 id="home-title" class="o-heading"><?= e($sectionValue('hero', 'title', 'Potencia tus ideas y expande tus horizontes con inteligencia artificial.')) ?></h1>
+                    <div class="lead"><?= $sectionMarkdown('hero', 'AlmaDesign diseña, ordena y gobierna sistemas de información, procesos e inteligencia aplicada para que las organizaciones decidan con más claridad, trazabilidad y criterio humano.') ?></div>
                     <div class="hero-actions" aria-label="Acciones principales">
                         <a class="button button-primary" href="<?= e(url('/contacto')) ?>">Diseñemos juntos</a>
                         <a class="button button-secondary" href="#productos">Ver productos</a>
+                        <a class="button button-primary" href="<?= e(url('/politica-almadesign')) ?>">Políticas de AlmaDesign</a>
                     </div>
                 </div>
                 <aside class="alma-hero__signal" aria-label="Síntesis AlmaDesign">
@@ -139,12 +168,11 @@ Usamos inteligencia artificial para abrir nuevas formas de pensar, decidir, crea
         <div class="alma-purpose alma-purpose--window" aria-labelledby="purpose-title">
             <div class="alma-purpose__copy">
                 <div class="section-heading">
-                    <p class="eyebrow">Propósito</p>
-                    <h2 id="purpose-title" class="o-heading">Productos para ampliar capacidades humanas, ordenar conocimiento y decidir con más claridad.</h2>
+                    <p class="eyebrow"><?= e($sectionValue('productos', 'eyebrow', 'Propósito')) ?></p>
+                    <h2 id="purpose-title" class="o-heading"><?= e($sectionValue('productos', 'title', 'Productos para ampliar capacidades humanas, ordenar conocimiento y decidir con más claridad.')) ?></h2>
                 </div>
                 <div class="alma-purpose__text">
-                    <p>Muchas personas y organizaciones sienten que deben adoptar IA rápido, aunque todavía no tengan claro cómo usarla para pensar mejor, decidir mejor o trabajar con menos ruido.</p>
-                    <p>AlmaDesign trabaja justo ahí: creando experiencias y productos que acercan la IA al criterio humano, al contexto y a decisiones que se puedan explicar.</p>
+                    <?= $sectionMarkdown('productos', 'Muchas personas y organizaciones sienten que deben adoptar IA rápido, aunque todavía no tengan claro cómo usarla para pensar mejor, decidir mejor o trabajar con menos ruido. AlmaDesign trabaja justo ahí: creando experiencias y productos que acercan la IA al criterio humano, al contexto y a decisiones que se puedan explicar.') ?>
                 </div>
             </div>
         </div>
@@ -152,9 +180,9 @@ Usamos inteligencia artificial para abrir nuevas formas de pensar, decidir, crea
             <div class="verticals-section products-section">
                 <section class="alma-assistant-feature" id="productos" aria-labelledby="assistant-feature-title">
                     <div class="alma-assistant-feature__intro">
-                        <p class="eyebrow">Asistente Personal 24/7</p>
-                        <h3 id="assistant-feature-title">Asistencia personal</h3>
-                        <p>Un asistente personal gestionado por AlmaDesign para ordenar tu agenda, tareas, reuniones, ideas y comunicaciones diarias. Desde app web, móvil e interacción voz a voz, te ayuda a preparar reuniones, gestionar calendario, redactar correos, registrar acuerdos y dar seguimiento continuo a lo importante.</p>
+                        <p class="eyebrow"><?= e($sectionValue('asistente-247', 'eyebrow', 'Asistente Personal 24/7')) ?></p>
+                        <h3 id="assistant-feature-title"><?= e($sectionValue('asistente-247', 'title', 'Asistencia personal')) ?></h3>
+                        <?= $sectionMarkdown('asistente-247', 'Un asistente personal gestionado por AlmaDesign para ordenar tu agenda, tareas, reuniones, ideas y comunicaciones diarias. Desde app web, móvil e interacción voz a voz, te ayuda a preparar reuniones, gestionar calendario, redactar correos, registrar acuerdos y dar seguimiento continuo a lo importante.') ?>
                         <a class="alma-assistant-feature__cta" href="<?= e(url('/contacto?producto=asistente-247')) ?>">Quiero saber más de Asistente 24/7</a>
                     </div>
                     <div class="alma-assistant-feature__support">
@@ -177,7 +205,7 @@ Usamos inteligencia artificial para abrir nuevas formas de pensar, decidir, crea
                                     class="alma-product-card__image"
                                     src="<?= e(asset($product['image'])) ?>"
                                     alt="<?= e($product['accessible']) ?>"
-                                    loading="<?= $productIndex === 0 ? 'eager' : 'lazy' ?>"
+                                    loading="eager"
                                     decoding="async"
                                     width="1254"
                                     height="1254"
@@ -246,10 +274,10 @@ Usamos inteligencia artificial para abrir nuevas formas de pensar, decidir, crea
 
             <section class="trust-section" aria-labelledby="trust-title">
                 <div class="trust-section__intro">
-                    <p class="eyebrow">AI for Humans</p>
-                    <h2 id="trust-title" class="o-heading">IA que acompaña, no que intimida.</h2>
+                    <p class="eyebrow"><?= e($sectionValue('pilares', 'eyebrow', 'AI for Humans')) ?></p>
+                    <h2 id="trust-title" class="o-heading"><?= e($sectionValue('pilares', 'title', 'IA que acompaña, no que intimida.')) ?></h2>
                     <blockquote>¿Esta tecnología ayuda a las personas a trabajar con más claridad y menos miedo?</blockquote>
-                    <p>Si la respuesta es no, hay que detenerse. La eficiencia importa, pero no debe justificar pérdida de criterio, presión permanente, vigilancia invisible o decisiones que nadie puede explicar.</p>
+                    <?= $sectionMarkdown('pilares', 'Si la respuesta es no, hay que detenerse. La eficiencia importa, pero no debe justificar pérdida de criterio, presión permanente, vigilancia invisible o decisiones que nadie puede explicar.') ?>
                 </div>
                 <div class="trust-system">
                     <svg class="trust-system__map" viewBox="0 0 420 420" aria-hidden="true">

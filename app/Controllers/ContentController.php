@@ -3,10 +3,35 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
+use App\Services\ContentRepository;
+use App\Services\Database;
+use Throwable;
+
 final class ContentController extends BaseController
 {
     public function policy(): void
     {
+        try {
+            $content = (new ContentRepository(Database::pdo($this->config)))
+                ->publishedPageBySlug('politica-almadesign');
+
+            if ($content !== null) {
+                $this->view('pages/content-db', [
+                    'title' => (string) $content['page']['title'],
+                    'metaDescription' => (string) $content['page']['meta_description'],
+                    'bodyClass' => 'policy-page',
+                    'showFinalCta' => false,
+                    'page' => $content['page'],
+                    'sections' => $content['sections'],
+                    'viewClass' => 'ai-for-humans-manifest policy-page',
+                    'ariaLabel' => 'Política AlmaDesign',
+                ]);
+                return;
+            }
+        } catch (Throwable) {
+            // Si la DB no está disponible, la página pública mantiene el render PHP original.
+        }
+
         $this->view('pages/politica-almadesign', [
             'title' => 'Política AlmaDesign | IA para humanos',
             'metaDescription' => 'Política de AlmaDesign sobre protección de datos personales, consentimiento, sistemas RAG e inteligencia artificial responsable.',
@@ -17,6 +42,24 @@ final class ContentController extends BaseController
 
     public function consulting(): void
     {
+        try {
+            $content = (new ContentRepository(Database::pdo($this->config)))
+                ->publishedPageBySlug('consultoria-ia-procesos');
+
+            if ($content !== null) {
+                $this->view('pages/layout-object-db', [
+                    'title' => (string) $content['page']['title'],
+                    'metaDescription' => (string) $content['page']['meta_description'],
+                    'showFinalCta' => false,
+                    'page' => $content['page'],
+                    'sections' => $content['sections'],
+                ]);
+                return;
+            }
+        } catch (Throwable) {
+            // Si la DB no está disponible, la página pública mantiene el render PHP original.
+        }
+
         $this->view('pages/vertical-detail', [
             'title' => 'Consultoría de inteligencia artificial y procesos | AlmaDesign',
             'metaDescription' => 'Consultoría IA para empresas que necesitan ordenar procesos, diagnosticar fricciones internas e implementar inteligencia artificial con gobernanza y trazabilidad.',
@@ -350,6 +393,24 @@ final class ContentController extends BaseController
 
     public function talksAiForHumans(): void
     {
+        try {
+            $content = (new ContentRepository(Database::pdo($this->config)))
+                ->publishedPageBySlug('charlas-ai-for-humans');
+
+            if ($content !== null) {
+                $this->view('pages/talks-db', [
+                    'title' => (string) $content['page']['title'],
+                    'metaDescription' => (string) $content['page']['meta_description'],
+                    'showFinalCta' => false,
+                    'page' => $content['page'],
+                    'sections' => $content['sections'],
+                ]);
+                return;
+            }
+        } catch (Throwable) {
+            // Si la DB no está disponible, la página pública mantiene el render PHP original.
+        }
+
         $this->view('pages/charlas-ai-for-humans', [
             'title' => 'Charlas AlmaDesign | Inteligencia artificial para personas y equipos',
             'metaDescription' => 'Charlas AlmaDesign sobre inteligencia artificial para personas, equipos y organizaciones: comprender la IA sin miedo, sin humo y sin tecnicismos innecesarios.',
@@ -358,6 +419,24 @@ final class ContentController extends BaseController
 
     public function documentManagement(): void
     {
+        try {
+            $content = (new ContentRepository(Database::pdo($this->config)))
+                ->publishedPageBySlug('gestion-documental');
+
+            if ($content !== null) {
+                $this->view('pages/layout-object-db', [
+                    'title' => (string) $content['page']['title'],
+                    'metaDescription' => (string) $content['page']['meta_description'],
+                    'showFinalCta' => false,
+                    'page' => $content['page'],
+                    'sections' => $content['sections'],
+                ]);
+                return;
+            }
+        } catch (Throwable) {
+            // Si la DB no está disponible, la página pública mantiene el render PHP original.
+        }
+
         $this->view('pages/vertical-detail', [
             'title' => 'Gestión Documental Gobernada | AlmaDesign',
             'metaDescription' => 'Gestión documental gobernada para ordenar documentos críticos, habilitar asistentes IA con evidencia, trazabilidad y límites claros de uso.',
@@ -482,6 +561,24 @@ final class ContentController extends BaseController
 
     public function assistantOrchestration(): void
     {
+        try {
+            $content = (new ContentRepository(Database::pdo($this->config)))
+                ->publishedPageBySlug('orquestacion-asistentes-ia');
+
+            if ($content !== null) {
+                $this->view('pages/layout-object-db', [
+                    'title' => (string) $content['page']['title'],
+                    'metaDescription' => (string) $content['page']['meta_description'],
+                    'showFinalCta' => false,
+                    'page' => $content['page'],
+                    'sections' => $content['sections'],
+                ]);
+                return;
+            }
+        } catch (Throwable) {
+            // Si la DB no está disponible, la página pública mantiene el render PHP original.
+        }
+
         $this->view('pages/vertical-detail', [
             'title' => 'Orquestación con Asistentes IA | AlmaDesign',
             'metaDescription' => 'Automatización con criterio humano: asistentes IA, procesos y aplicaciones a medida que aumentan eficiencia sin borrar responsabilidad, validación ni juicio humano.',
@@ -629,6 +726,24 @@ final class ContentController extends BaseController
 
     public function softwareFactory(): void
     {
+        try {
+            $content = (new ContentRepository(Database::pdo($this->config)))
+                ->publishedPageBySlug('software-factory');
+
+            if ($content !== null) {
+                $this->view('pages/layout-object-db', [
+                    'title' => (string) $content['page']['title'],
+                    'metaDescription' => (string) $content['page']['meta_description'],
+                    'showFinalCta' => false,
+                    'page' => $content['page'],
+                    'sections' => $content['sections'],
+                ]);
+                return;
+            }
+        } catch (Throwable) {
+            // Si la DB no está disponible, la página pública mantiene el render PHP original.
+        }
+
         $this->view('pages/vertical-detail', [
             'title' => 'Software Factory | AlmaDesign',
             'metaDescription' => 'Construimos sistemas a medida para organizaciones que necesitan aplicaciones robustas, integraciones confiables y datos bien gobernados.',
@@ -738,6 +853,27 @@ final class ContentController extends BaseController
 
     public function aiForHumans(): void
     {
+        try {
+            $content = (new ContentRepository(Database::pdo($this->config)))
+                ->publishedPageBySlug('ai-for-humans');
+
+            if ($content !== null) {
+                $this->view('pages/content-db', [
+                    'title' => (string) $content['page']['title'],
+                    'metaDescription' => (string) $content['page']['meta_description'],
+                    'showFinalCta' => false,
+                    'page' => $content['page'],
+                    'sections' => $content['sections'],
+                    'viewClass' => 'ai-for-humans-manifest',
+                    'ariaLabel' => 'Manifiesto AI for Humans',
+                    'showSignature' => true,
+                ]);
+                return;
+            }
+        } catch (Throwable) {
+            // Si la DB no está disponible, la página pública mantiene el render PHP original.
+        }
+
         $this->view('pages/vertical-detail', [
             'title' => 'AI for Humans | Manifiesto público de AlmaDesign',
             'metaDescription' => 'AI for Humans es el manifiesto público de AlmaDesign: inteligencia artificial gobernada para proteger, potenciar y no reemplazar al humano.',

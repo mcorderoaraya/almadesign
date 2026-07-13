@@ -99,6 +99,7 @@ $executiveTalkTopics = [
                 <div class="hero-actions">
                     <a class="button button-primary" href="<?= e(url('/contacto?producto=charlas')) ?>">Solicitar una charla</a>
                     <a class="button button-secondary" href="<?= e(url('/ai-for-humans')) ?>">Leer manifiesto</a>
+                    <a class="button button-primary" href="<?= e(url('/politica-almadesign')) ?>">Políticas de AlmaDesign</a>
                 </div>
             </div>
         </div>
