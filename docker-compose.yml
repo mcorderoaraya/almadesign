@@ -1,0 +1,21 @@
+services:
+  almadesign-site-postgres:
+    image: postgres:16-alpine
+    container_name: almadesign-site-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: almadesign_site
+      POSTGRES_USER: almadesign_site
+      POSTGRES_PASSWORD: almadesign_site_local
+    ports:
+      - "45433:5432"
+    volumes:
+      - almadesign_site_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U almadesign_site -d almadesign_site"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  almadesign_site_postgres_data:
