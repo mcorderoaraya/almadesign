@@ -24,6 +24,9 @@ class MarkdownViewport {
         startOnLoad: false,
         securityLevel: "strict",
         theme: "base",
+        flowchart: {
+          htmlLabels: false,
+        },
         themeVariables: {
           primaryColor: "#fff5e9",
           primaryTextColor: "#172f45",

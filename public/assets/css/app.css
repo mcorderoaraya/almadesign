@@ -6876,6 +6876,12 @@ body.is-contact-rag-page .site-main {
     margin: 0 auto;
 }
 
+.mermaid-viewport svg text,
+.mermaid-viewport svg tspan {
+    fill: var(--tinta);
+    font-family: var(--sans);
+}
+
 .mermaid-viewport--fallback {
     white-space: pre;
     font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
