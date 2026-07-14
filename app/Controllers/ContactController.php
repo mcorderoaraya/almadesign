@@ -16,7 +16,7 @@ final class ContactController extends BaseController
 {
     // Nombre específico para evitar autofill accidental del honeypot.
     private const HONEYPOT_FIELD = 'almadesign_hp_field';
-    private const RAG_CHAT_COOLDOWN_SECONDS = 20;
+    private const RAG_CHAT_COOLDOWN_SECONDS = 8;
     private const BUSINESS_FIELDS = ['nombre', 'email', 'telefono', 'asunto', 'mensaje'];
     private const TECHNICAL_FIELDS = ['csrf_token', self::HONEYPOT_FIELD];
     private const PRODUCT_PROMPTS = [
