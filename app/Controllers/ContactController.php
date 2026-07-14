@@ -169,7 +169,7 @@ final class ContactController extends BaseController
             unset($payload['product']);
         }
 
-        if (!$this->allowRagChat()) {
+        if (!$this->isContactFlowPayload($payload) && !$this->allowRagChat()) {
             header('Retry-After: ' . self::RAG_CHAT_COOLDOWN_SECONDS);
             $this->jsonPayload(429, [
                 'detail' => 'Recibimos muchas consultas seguidas. Espera unos segundos antes de enviar otra pregunta.',
@@ -257,6 +257,26 @@ final class ContactController extends BaseController
             self::RAG_CHAT_COOLDOWN_SECONDS,
             BASE_PATH . '/logs/rate-limits'
         );
+    }
+
+    /**
+     * @param array<string, mixed> $payload
+     */
+    private function isContactFlowPayload(array $payload): bool
+    {
+        $state = $payload['conversation_state'] ?? null;
+        if (!is_array($state)) {
+            return false;
+        }
+
+        return in_array((string) ($state['stage'] ?? ''), [
+            'consent_pending',
+            'offer_contact',
+            'collect_contact',
+            'collect_first_name',
+            'collect_email',
+            'collect_phone',
+        ], true);
     }
 
     private function csrfHeader(): string
