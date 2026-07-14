@@ -43,7 +43,7 @@ final class AnalyticsService
     }
 
     /**
-     * @return array{today: int, last_30_days: int, top_pages: array<int, array<string, mixed>>, top_referrers: array<int, array<string, mixed>>, top_campaigns: array<int, array<string, mixed>>}
+     * @return array{today: int, last_30_days: int, top_pages: array<int, array<string, mixed>>, top_referrers: array<int, array<string, mixed>>, top_campaigns: array<int, array<string, mixed>>, top_rag_questions: array<int, array<string, mixed>>}
      */
     public function dashboardSummary(): array
     {
@@ -53,7 +53,37 @@ final class AnalyticsService
             'top_pages' => $this->top('path'),
             'top_referrers' => $this->top('referrer_domain'),
             'top_campaigns' => $this->topCampaigns(),
+            'top_rag_questions' => $this->topRagQuestions(),
         ];
+    }
+
+    /**
+     * Registra preguntas RAG de forma agregada y anonimizada. No guarda IP, sesión,
+     * user-agent ni conversación completa.
+     */
+    public function recordRagQuestion(string $question, string $productSlug = '', string $conversationStage = ''): void
+    {
+        $normalizedQuestion = $this->normalizeQuestion($question);
+        if ($normalizedQuestion === '') {
+            return;
+        }
+
+        $statement = $this->pdo->prepare(<<<'SQL'
+            INSERT INTO rag_question_analytics_daily
+                (day, question_normalized, product_slug, conversation_stage, questions_count)
+            VALUES
+                (CURRENT_DATE, :question_normalized, :product_slug, :conversation_stage, 1)
+            ON CONFLICT (day, question_normalized, product_slug, conversation_stage)
+            DO UPDATE SET
+                questions_count = rag_question_analytics_daily.questions_count + 1,
+                updated_at = NOW()
+        SQL);
+
+        $statement->execute([
+            'question_normalized' => $normalizedQuestion,
+            'product_slug' => $this->dimension($productSlug),
+            'conversation_stage' => $this->dimension($conversationStage),
+        ]);
     }
 
     private function shouldTrack(array $server): bool
@@ -178,5 +208,36 @@ final class AnalyticsService
                 LIMIT 8
             SQL)
             ->fetchAll();
+    }
+
+    /**
+     * @return array<int, array{label: string, visits: int}>
+     */
+    private function topRagQuestions(): array
+    {
+        return $this->pdo
+            ->query(<<<'SQL'
+                SELECT
+                    question_normalized AS label,
+                    COALESCE(SUM(questions_count), 0)::INT AS visits
+                FROM rag_question_analytics_daily
+                WHERE day >= CURRENT_DATE - INTERVAL '29 days'
+                GROUP BY question_normalized
+                ORDER BY visits DESC, label ASC
+                LIMIT 12
+            SQL)
+            ->fetchAll();
+    }
+
+    private function normalizeQuestion(string $question): string
+    {
+        $question = mb_strtolower(trim($question), 'UTF-8');
+        $question = preg_replace('/[A-Z0-9._%+-]{2,64}@[A-Z0-9-]{1,63}(?:\.[A-Z0-9-]{2,63})+/iu', '[email]', $question) ?? '';
+        $question = preg_replace('/(?:\+?\d[\d\-\s().]{6,}\d)/u', '[telefono]', $question) ?? '';
+        $question = preg_replace('/https?:\/\/\S+/iu', '[url]', $question) ?? '';
+        $question = preg_replace('/\s+/u', ' ', $question) ?? '';
+        $question = trim($question, " \t\n\r\0\x0B.?!¡¿,;:");
+
+        return mb_substr($question, 0, 220, 'UTF-8');
     }
 }

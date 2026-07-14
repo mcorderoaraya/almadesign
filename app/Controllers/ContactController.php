@@ -6,6 +6,8 @@ namespace App\Controllers;
 use App\Core\Csrf;
 use App\Core\Env;
 use App\Core\RateLimiter;
+use App\Services\AnalyticsService;
+use App\Services\Database;
 use App\Services\Mailer;
 use App\Services\RagClient;
 use App\Services\RagUnavailable;
@@ -169,6 +171,10 @@ final class ContactController extends BaseController
             unset($payload['product']);
         }
 
+        if (!$this->isContactFlowPayload($payload)) {
+            $this->recordRagQuestion($payload);
+        }
+
         if (!$this->isContactFlowPayload($payload) && !$this->allowRagChat()) {
             header('Retry-After: ' . self::RAG_CHAT_COOLDOWN_SECONDS);
             $this->jsonPayload(429, [
@@ -257,6 +263,30 @@ final class ContactController extends BaseController
             self::RAG_CHAT_COOLDOWN_SECONDS,
             BASE_PATH . '/logs/rate-limits'
         );
+    }
+
+    /**
+     * @param array<string, mixed> $payload
+     */
+    private function recordRagQuestion(array $payload): void
+    {
+        $question = trim((string) ($payload['question'] ?? ''));
+        if ($question === '') {
+            return;
+        }
+
+        $state = $payload['conversation_state'] ?? [];
+        $stage = is_array($state) ? (string) ($state['stage'] ?? '') : '';
+
+        try {
+            (new AnalyticsService(Database::pdo($this->config)))->recordRagQuestion(
+                $question,
+                (string) ($payload['product'] ?? ''),
+                $stage,
+            );
+        } catch (Throwable) {
+            // La analítica no debe bloquear la atención del RAG.
+        }
     }
 
     /**

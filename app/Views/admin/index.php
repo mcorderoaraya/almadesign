@@ -83,6 +83,21 @@
                     </div>
                 <?php endforeach; ?>
             </article>
+
+            <article class="dashboard-card">
+                <h2>Preguntas frecuentes al RAG</h2>
+                <?php if (($analytics['top_rag_questions'] ?? []) === []): ?>
+                    <p class="dashboard-muted">Sin preguntas registradas todavía.</p>
+                <?php endif; ?>
+                <?php foreach (($analytics['top_rag_questions'] ?? []) as $row): ?>
+                    <div class="dashboard-row">
+                        <div>
+                            <strong><?= e((string) ($row['label'] ?? '')) ?></strong>
+                            <span><?= e((string) ($row['visits'] ?? 0)) ?> consultas</span>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </article>
         </div>
     </section>
 </section>
