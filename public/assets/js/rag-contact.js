@@ -18,6 +18,23 @@ class MarkdownViewport {
         mangle: false,
       });
     }
+
+    if (window.mermaid) {
+      window.mermaid.initialize({
+        startOnLoad: false,
+        securityLevel: "strict",
+        theme: "base",
+        themeVariables: {
+          primaryColor: "#fff5e9",
+          primaryTextColor: "#172f45",
+          primaryBorderColor: "#e97952",
+          lineColor: "#4f5f6d",
+          secondaryColor: "#f8d4c3",
+          tertiaryColor: "#ffffff",
+          fontFamily: "Inter, system-ui, -apple-system, sans-serif",
+        },
+      });
+    }
   }
 
   render(markdown) {
@@ -58,11 +75,12 @@ class MarkdownViewport {
         "tr",
         "ul",
       ],
-      ALLOWED_ATTR: ["href", "target", "rel"],
+      ALLOWED_ATTR: ["class", "href", "target", "rel"],
     });
 
     this.contentEl.innerHTML = safeHtml;
     this.hardenLinks();
+    this.renderMermaidBlocks();
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }
 
@@ -75,6 +93,40 @@ class MarkdownViewport {
       link.target = "_blank";
       link.rel = "noopener noreferrer";
     });
+  }
+
+  async renderMermaidBlocks() {
+    if (!window.mermaid || !window.DOMPurify) {
+      return;
+    }
+
+    const blocks = Array.from(this.contentEl.querySelectorAll("pre code.language-mermaid"));
+    for (const block of blocks) {
+      const source = block.textContent.trim();
+      const pre = block.closest("pre");
+      if (!source || !pre) {
+        continue;
+      }
+
+      const container = document.createElement("div");
+      container.className = "mermaid-viewport";
+      container.setAttribute("role", "img");
+      container.setAttribute("aria-label", "Diagrama generado desde Markdown");
+
+      try {
+        const diagramId = `alma-mermaid-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+        const rendered = await window.mermaid.render(diagramId, source);
+        const safeSvg = window.DOMPurify.sanitize(rendered.svg, {
+          USE_PROFILES: { svg: true, svgFilters: true },
+        });
+        container.innerHTML = safeSvg;
+      } catch (error) {
+        container.textContent = source;
+        container.classList.add("mermaid-viewport--fallback");
+      }
+
+      pre.replaceWith(container);
+    }
   }
 
   bindDomScroll() {
