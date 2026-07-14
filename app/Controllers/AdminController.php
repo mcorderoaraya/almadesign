@@ -266,9 +266,11 @@ final class AdminController extends BaseController
         }
 
         try {
+            $learningDraft = $this->ragLearningDraft((string) ($_GET['question'] ?? ''));
             $this->adminView('admin/rag-markdown', [
                 'title' => 'Markdown RAG | Dashboard AlmaDesign',
                 'documents' => $this->ragMarkdownService()->documents(),
+                'learningDraft' => $learningDraft,
                 'csrfToken' => Csrf::token(),
             ]);
         } catch (Throwable $exception) {
@@ -306,6 +308,32 @@ final class AdminController extends BaseController
     private function analytics(): AnalyticsService
     {
         return new AnalyticsService(Database::pdo($this->config));
+    }
+
+    /**
+     * Crea un borrador supervisado desde una pregunta recurrente del RAG.
+     *
+     * @return array<string, string>
+     */
+    private function ragLearningDraft(string $question): array
+    {
+        $question = trim($question);
+        if ($question === '') {
+            return [];
+        }
+
+        $slug = $this->content()->slug('respuesta-' . $question);
+
+        return [
+            'slug' => $slug,
+            'status' => 'draft',
+            'content_type' => 'reference',
+            'visibility' => 'rag_only',
+            'title' => 'Respuesta RAG: ' . mb_substr($question, 0, 80, 'UTF-8'),
+            'parent_slug' => '',
+            'source_url' => 'https://almadesign.cl/',
+            'content_markdown' => "## Pregunta recurrente\n\n{$question}\n\n## Respuesta aprobada\n\nEscribe aquí la respuesta oficial de AlmaDesign basada en evidencia validada.\n\n## Evidencia o fuente interna\n\nIndica aquí la fuente documental que respalda esta respuesta.\n",
+        ];
     }
 
     private function ragMarkdownService(): RagMarkdownService

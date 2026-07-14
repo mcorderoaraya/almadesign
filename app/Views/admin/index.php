@@ -95,6 +95,7 @@
                             <strong><?= e((string) ($row['label'] ?? '')) ?></strong>
                             <span><?= e((string) ($row['visits'] ?? 0)) ?> consultas</span>
                         </div>
+                        <a href="<?= e(url('/dashboard/rag-markdown?question=' . rawurlencode((string) ($row['label'] ?? '')))) ?>">Crear borrador RAG</a>
                     </div>
                 <?php endforeach; ?>
             </article>
