@@ -101,7 +101,7 @@ final class ContactController extends BaseController
             $this->logContact('send_failed', $ip, $input['email'], 'mailer');
             $this->renderContactForm($input, [
                 'general' => 'No pudimos enviar el mensaje en este momento. Intenta nuevamente más tarde.',
-            ]);
+            ], 503);
         }
     }
 
@@ -225,6 +225,7 @@ final class ContactController extends BaseController
             'title' => 'Formulario de contacto | AlmaDesign',
             'metaDescription' => 'Formulario tradicional de contacto de AlmaDesign para solicitar atención personalizada.',
             'bodyClass' => 'is-contact-form-page',
+            'pageScripts' => ['js/contact-form.js'],
             'showFinalCta' => false,
             'csrfToken' => Csrf::token(),
             'honeypotName' => self::HONEYPOT_FIELD,
@@ -305,8 +306,8 @@ final class ContactController extends BaseController
     {
         $errors = [];
 
-        if (mb_strlen($input['nombre']) < 2 || mb_strlen($input['nombre']) > 120 || $this->hasLineBreak($input['nombre']) || $this->hasUnsafeControlChars($input['nombre'])) {
-            $errors['nombre'] = 'Ingresa un nombre de 2 a 120 caracteres.';
+        if (!$this->isValidName($input['nombre'])) {
+            $errors['nombre'] = 'Ingresa solo letras y espacios, entre 2 y 20 caracteres.';
         }
 
         if (!$this->isValidEmail($input['email']) || mb_strlen($input['email']) > 180 || $this->hasLineBreak($input['email']) || $this->hasUnsafeControlChars($input['email'])) {
@@ -321,11 +322,20 @@ final class ContactController extends BaseController
             $errors['asunto'] = 'Ingresa un asunto de 3 a 160 caracteres.';
         }
 
-        if (mb_strlen($input['mensaje']) < 10 || mb_strlen($input['mensaje']) > 3000 || $this->hasUnsafeControlChars($input['mensaje'])) {
-            $errors['mensaje'] = 'Ingresa un mensaje de 10 a 3000 caracteres.';
+        if (mb_strlen($input['mensaje']) < 10 || mb_strlen($input['mensaje']) > 1000 || $this->hasUnsafeControlChars($input['mensaje'])) {
+            $errors['mensaje'] = 'Ingresa un mensaje de 10 a 1000 caracteres.';
         }
 
         return $errors;
+    }
+
+    private function isValidName(string $name): bool
+    {
+        return mb_strlen($name) >= 2
+            && mb_strlen($name) <= 20
+            && !$this->hasLineBreak($name)
+            && !$this->hasUnsafeControlChars($name)
+            && preg_match('/^[\p{L} ]+$/u', $name) === 1;
     }
 
     private function isValidEmail(string $email): bool
