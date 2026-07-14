@@ -11,12 +11,6 @@ declare(strict_types=1);
             </section>
         </div>
 
-        <p class="rag-privacy-notice">
-            <strong>solicitaremos sus datos de contacto si usted decide comunicarse con un ejecutivo o solicitar atención personalizada.
-            La información entregada será utilizada exclusivamente para responder a su solicitud, gestionar su contacto y entregar la orientación requerida. No será utilizada para otros fines sin su autorización.
-            Si posteriormente usted solicita la eliminación de sus datos personales, estos serán borrados de nuestros registros, salvo que exista una obligación legal que exija conservarlos por un período determinado.</strong>
-        </p>
-
         <div id="error" class="error" hidden></div>
     </div>
 
