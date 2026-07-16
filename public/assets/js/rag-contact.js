@@ -241,9 +241,13 @@ class AlmaRagWidget {
 
   bindEvents() {
     this.ui.form.addEventListener("submit", (event) => this.handleSubmit(event));
-    this.ui.questionInput.addEventListener("input", () => this.updateCharCounter());
+    this.ui.questionInput.addEventListener("input", () => {
+      this.updateCharCounter();
+      this.resizeQuestionInput();
+    });
     this.ui.questionInput.addEventListener("keydown", (event) => this.handleQuestionKeydown(event));
     this.ui.resetBtn.addEventListener("click", () => this.handleReset());
+    this.resizeQuestionInput();
   }
 
   handleQuestionKeydown(event) {
@@ -273,6 +277,21 @@ class AlmaRagWidget {
       `(máximo ${this.maxQuestionWords} palabras) ` +
       `${words}/${this.maxQuestionWords}`;
     this.ui.charCounterEl.classList.toggle("is-over-limit", words > this.maxQuestionWords);
+  }
+
+  resizeQuestionInput() {
+    const textarea = this.ui.questionInput;
+    textarea.style.height = "auto";
+    textarea.style.overflow = "hidden";
+    textarea.style.overflowY = "hidden";
+    textarea.style.resize = "none";
+
+    const computed = window.getComputedStyle(textarea);
+    const maxHeight = parseFloat(computed.maxHeight) || textarea.scrollHeight;
+    const nextHeight = Math.min(textarea.scrollHeight, maxHeight);
+
+    textarea.style.height = `${nextHeight}px`;
+    textarea.scrollTop = 0;
   }
 
   countWords(value) {
@@ -354,6 +373,7 @@ class AlmaRagWidget {
     this.ui.questionInput.value = "";
     this.setComposerPrompt();
     this.updateCharCounter();
+    this.resizeQuestionInput();
     this.hideReference();
     this.markdownViewport.clear();
     this.updateLeadControls();
@@ -523,6 +543,9 @@ class AlmaRagWidget {
       return;
     }
 
+    this.ui.questionInput.value = "";
+    this.updateCharCounter();
+    this.resizeQuestionInput();
     this.hidePrivacyNotice();
     this.ui.submitBtn.disabled = true;
     this.showStatus("Consultando...");
@@ -572,6 +595,7 @@ class AlmaRagWidget {
     this.updateLeadControls();
     this.ui.questionInput.value = "";
     this.updateCharCounter();
+    this.resizeQuestionInput();
     this.setComposerPrompt();
   }
 
