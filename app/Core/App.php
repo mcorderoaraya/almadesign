@@ -18,6 +18,8 @@ final class App
 
     public function run(Router $router): void
     {
+        SecurityHeaders::send();
+
         $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 
         if ($method !== 'HEAD' && $this->needsSession($_SERVER['REQUEST_URI'] ?? '/') && session_status() !== PHP_SESSION_ACTIVE) {
