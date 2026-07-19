@@ -20,6 +20,7 @@ $insightBlock = $insightBlock ?? null;
 $pageClass = $pageClass ?? '';
 $leadParagraphs = $leadParagraphs ?? [$lead];
 $heroAnchor = $heroAnchor ?? null;
+$heroImageAlt = trim((string) ($heroImageAlt ?? ''));
 $ctaHref = $ctaHref ?? url('/contacto');
 $signatureAnchor = $signatureAnchor ?? null;
 $guardrailsEyebrow = $guardrailsEyebrow ?? 'Gobernanza';
@@ -79,7 +80,7 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
         <section class="ai-for-humans-signature alma-section alma-content-section"<?= $signatureAnchor !== null ? ' id="' . e($signatureAnchor) . '"' : '' ?> aria-labelledby="ai-for-humans-signature-title">
             <div class="ai-for-humans-signature__inner">
                 <figure class="ai-for-humans-signature__media">
-                    <img src="<?= e(asset('img/logos/logo_alma_vintage.svg')) ?>" alt="AlmaDesign" loading="lazy" decoding="async" width="320" height="110">
+                    <img src="<?= e(asset('img/logos/logo_alma_vintage.svg')) ?>" alt="Logotipo vintage de AlmaDesign asociado al manifiesto AI for Humans." loading="lazy" decoding="async" width="320" height="110">
                 </figure>
                 <div class="ai-for-humans-signature__content">
                     <h2 id="ai-for-humans-signature-title" class="sr-only">Firma fundacional</h2>
@@ -94,6 +95,9 @@ $pageClassAttribute = $pageClass !== '' ? ' ' . $pageClass : '';
 
     <?php else: ?>
     <section class="vertical-detail-hero alma-content-hero"<?= $heroAnchor !== null ? ' id="' . e($heroAnchor) . '"' : '' ?> aria-labelledby="vertical-detail-title">
+        <?php if ($heroImageAlt !== ''): ?>
+            <span class="sr-only"><?= e($heroImageAlt) ?></span>
+        <?php endif; ?>
         <div class="home-third__inner vertical-detail-hero__inner">
             <p class="eyebrow"><?= e($eyebrow) ?></p>
             <h1 id="vertical-detail-title"><?= e($heading) ?></h1>

@@ -11,11 +11,19 @@ $primaryLabel = (string) ($extra['primary_label'] ?? 'Conversemos');
 $secondaryHref = (string) ($extra['secondary_href'] ?? url('/'));
 $secondaryLabel = (string) ($extra['secondary_label'] ?? 'Volver al Home');
 $backgroundImage = (string) ($extra['background_image'] ?? '');
+$backgroundImageAlt = trim((string) ($extra['image_alt'] ?? ''));
 $style = $backgroundImage !== ''
     ? "--alo-hero-image: url('" . e(asset($backgroundImage)) . "');"
     : '';
 ?>
-<section class="alo-hero" id="<?= e((string) $section['section_key']) ?>"<?= $style !== '' ? ' style="' . $style . '"' : '' ?>>
+<section
+    class="alo-hero"
+    id="<?= e((string) $section['section_key']) ?>"
+    <?= $style !== '' ? ' style="' . $style . '"' : '' ?>
+>
+    <?php if ($backgroundImageAlt !== ''): ?>
+        <span class="sr-only"><?= e($backgroundImageAlt) ?></span>
+    <?php endif; ?>
     <div class="alo-hero__inner">
         <?php if ((string) $section['eyebrow'] !== ''): ?>
             <p class="alo-eyebrow"><?= e((string) $section['eyebrow']) ?></p>

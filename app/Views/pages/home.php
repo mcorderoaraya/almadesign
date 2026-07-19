@@ -35,7 +35,7 @@ $products = [
         'cta' => 'Detalles de nuestras charlas',
         'label' => 'PRODUCTO DESTACADO',
         'image' => 'img/cards/charlas-ai-for-humans.webp',
-        'accessible' => 'Charlas AI for Humans. Charlas para ampliar capacidades humanas con herramientas basadas en IA y tomar mejores decisiones.',
+        'accessible' => 'Grupo de personas conversando sobre inteligencia artificial, aprendizaje y decisiones humanas en un entorno imaginativo.',
         'audiences' => [
             'Charla para usuarios, empleados o público general.',
             'Charla para grupos de toma de decisión empresarial, especialmente gerentes TI.',
@@ -50,7 +50,7 @@ $products = [
         'cta' => 'Conocer Gestión Documental',
         'label' => 'CONOCIMIENTO QUE SE PUEDE REVISAR',
         'image' => 'img/cards/gestion-documental.webp',
-        'accessible' => 'Gestión Documental. Ordenamos documentos, conversaciones y antecedentes para que encontrar contexto deje de ser una búsqueda agotadora.',
+        'accessible' => 'Equipo revisando documentos conectados como una red de conocimiento para ordenar información crítica.',
     ],
     [
         'title' => 'Orquestación con Asistentes IA',
@@ -116,10 +116,10 @@ $trustPillars = [
             </div>
 
             <div class="alma-hero">
-                <figure class="alma-hero__lamp" aria-hidden="true">
+                <figure class="alma-hero__lamp">
                     <picture>
                         <source media="(max-width: 980px)" srcset="<?= e(asset('img/hero/lampara-de-pie-mobile.webp')) ?>">
-                        <img src="<?= e(asset('img/hero/lampara-de-pie.webp')) ?>" alt="" width="499" height="1405">
+                        <img src="<?= e(asset('img/hero/lampara-de-pie.webp')) ?>" alt="Lámpara cálida rodeada de peces, símbolo de ideas que se iluminan y circulan con libertad." width="499" height="1405">
                     </picture>
                 </figure>
                 <div class="alma-hero__content">

@@ -60,7 +60,7 @@ $bodySections = array_slice($sections, 1);
         <section class="ai-for-humans-signature alma-section alma-content-section" id="firma-fundacional" aria-labelledby="ai-for-humans-signature-title">
             <div class="ai-for-humans-signature__inner">
                 <figure class="ai-for-humans-signature__media">
-                    <img src="<?= e(asset('img/logos/logo_alma_vintage.svg')) ?>" alt="AlmaDesign" loading="lazy" decoding="async" width="320" height="110">
+                    <img src="<?= e(asset('img/logos/logo_alma_vintage.svg')) ?>" alt="Logotipo vintage de AlmaDesign asociado al manifiesto AI for Humans." loading="lazy" decoding="async" width="320" height="110">
                 </figure>
                 <div class="ai-for-humans-signature__content">
                     <h2 id="ai-for-humans-signature-title" class="sr-only">Firma fundacional</h2>

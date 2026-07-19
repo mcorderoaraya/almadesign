@@ -86,7 +86,7 @@ $faqJsonLd = [
                 <img
                     class="apogeo-lux-technical-application__image"
                     src="<?= e(asset('img/apogeo-lux/diagrama_graphRAG.png')) ?>"
-                    alt="Diagrama conceptual de GraphRAG jurídico de Apogeo Lux, desde la consulta hasta el contexto jurídico compuesto"
+                    alt="Diagrama de Apogeo Lux que conecta consulta, fuentes jurídicas, relaciones de contexto y respuesta revisable."
                     loading="lazy"
                     decoding="async"
                     width="1672"
