@@ -66,13 +66,14 @@ final class ContentController extends BaseController
             'pageClass' => 'consulting-page',
             'eyebrow' => 'Consultoría IA y procesos',
             'heading' => 'Consultoría de inteligencia artificial y procesos para empresas.',
-            'lead' => 'Antes de automatizar, ordenamos procesos, fricciones, criterios y responsabilidades. AlmaDesign ayuda a organizaciones a identificar dónde la IA puede aportar valor real y cómo implementarla con trazabilidad, gobernanza y control humano.',
+            'lead' => 'Antes de automatizar, miramos el oficio: qué decisiones importan, qué dolores se repiten y dónde la IA puede devolver capacidad. AlmaDesign ayuda a identificar dónde la IA amplía criterio, tiempo creativo y capacidad de acción humana con trazabilidad, gobernanza y control humano.',
+            'heroImageAlt' => 'Personas observando un mapa de procesos conectado, con tecnología y conocimiento al servicio del criterio humano.',
             'sections' => [],
             'cardSections' => [
                 [
                     'anchor' => 'enfoque-almadesign',
                     'title' => 'Enfoque AlmaDesign',
-                    'intro' => 'No partimos por la herramienta. Partimos por la realidad de la organización. Nuestro enfoque busca ordenar procesos, criterios y decisiones antes de automatizar, para que la inteligencia artificial se integre con claridad, trazabilidad y sentido humano.',
+                    'intro' => 'No partimos por la herramienta. Partimos por la realidad de la organización. Nuestro enfoque busca ordenar procesos, criterios y decisiones antes de automatizar, para que la inteligencia artificial devuelva espacio para pensar mejor, crear con más tiempo y actuar con sentido humano.',
                     'items' => [
                         [
                             'title' => 'Diagnóstico de fricciones internas',
@@ -194,7 +195,7 @@ final class ContentController extends BaseController
                         'body' => 'Recuperación contextual de información relevante a partir de documentos y fuentes disponibles, para responder mejor una consulta sin depender de búsqueda manual dispersa.',
                         'micro' => 'Primer nivel de conocimiento aumentado.',
                         'image' => 'img/apogeo/apogeo-rag-card.webp',
-                        'alt' => 'Diagrama abstracto de búsqueda contextual conectando una pregunta con documentos recuperados.',
+                        'alt' => 'Representación visual de una consulta que recupera documentos relevantes para apoyar decisiones con contexto.',
                     ],
                     [
                         'anchor' => 'graphrag',
@@ -333,7 +334,7 @@ final class ContentController extends BaseController
                 'title' => 'Cómo Apogeo organiza el contexto para decisiones complejas.',
                 'body' => 'Desde una consulta inicial hasta la construcción de una respuesta compuesta con trazabilidad, relaciones documentales y validación contextual.',
                 'image' => 'img/apogeo/infografia-ragk.webp',
-                'alt' => 'Proceso RAGK desde la pregunta hasta una respuesta compuesta con trazabilidad y validación humana.',
+                'alt' => 'Flujo RAGK que conecta pregunta, recuperación, relaciones documentales, validación humana y respuesta trazable.',
                 'caption' => 'La arquitectura articula recuperación contextual, relaciones documentales, flujo gobernado de información y evidencia verificable para sostener respuestas compuestas con criterio humano.',
                 'concept' => [
                     'anchor' => 'ragk-como-concepto-gerencial',
